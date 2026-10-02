@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f4eddf" />
   <meta name="description" content="A real-time 3D world for the AI agents already doing your work. Every one of them a character with a face, a room and a job." />
-  <title>Pizza Fleet — Real Work. Real Fun.</title>
+  <title>DungenAI — Real Work. Real Fun.</title>
 <style>
 :root {
   --cream: #f4eddf;
@@ -16,11 +16,27 @@
   --muted: #6e756f;
   --line: rgba(16, 37, 49, .18);
   --shadow: 0 24px 70px rgba(23, 31, 33, .14);
+  /* DungenAI rebrand, 2026-10-02: the page background is now dark (sampled
+     off the logo's own navy — center ~#031533, mid ~#04112b, edges ~#040f25
+     to #020a1c, see body below). --ink/--muted/--cream/--paper KEEP their
+     original values and KEEP their original jobs: every card/button/input
+     in this file is still a light "paper" surface with dark ink text and a
+     hand-drawn ink border/shadow, floating on the page, same as before —
+     those are unaffected by a page-background change and are NOT touched
+     here. Only COPY THAT SITS DIRECTLY ON THE PAGE BACKGROUND (no card
+     behind it) needs a light color now, which is what these two tokens are
+     for — never used inside a .card/.loop/.mockup/.cta/etc. */
+  --on-dark: #f4ead8;
+  --on-dark-muted: #b7c2c5; /* matches .dark-section's own pre-existing muted-on-dark tone (.centered p:last-child / .role p), not a new pick */
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--cream); color: var(--ink); font-family: Inter, system-ui, sans-serif; overflow-x: hidden; }
+/* Radial navy gradient, fixed (Brandon: "a gradient of dark blues", sampled
+   from the new logo's own background). scroll-attached content still reads
+   against it since every content surface is one of the light paper cards
+   above, or explicitly re-colored via --on-dark/--on-dark-muted below. */
+body { margin: 0; background: radial-gradient(ellipse at 50% 38%, #031533 0%, #04112b 48%, #040f25 78%, #020a1c 100%) fixed; color: var(--on-dark); font-family: Inter, system-ui, sans-serif; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 .shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
 .noise { position: fixed; inset: 0; pointer-events: none; opacity: .08; z-index: 20; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); }
@@ -39,7 +55,7 @@ h1,h2,h3 { font-family: "Barlow Condensed", sans-serif; margin: 0; }
 h1 { font-size: clamp(64px, 7vw, 108px); line-height: .86; letter-spacing: -.035em; text-transform: uppercase; }
 h1 em { color: var(--red); font-style: italic; }
 .sub { font: italic 800 30px/1.1 "Barlow Condensed", sans-serif; color: var(--red); letter-spacing: .02em; margin: 26px 0 0; }
-.lede { max-width: 620px; font-size: 20px; line-height: 1.65; color: #45555a; margin: 28px 0 32px; }
+.lede { max-width: 620px; font-size: 20px; line-height: 1.65; color: var(--on-dark); margin: 28px 0 32px; }
 .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 .text-link { font-weight: 700; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
 .text-link span { color: var(--red); }
@@ -50,15 +66,21 @@ h1 em { color: var(--red); font-style: italic; }
 /* hero media sequence: the mark loads first, then SHRINKS AND SLIDES to the
    Quest-Accepted corner (it stays, as a chip) while the overview capture fades in
    and takes over the whole right side of the hero, full bleed. */
-.hero-art .hero-mark { z-index: 3; transition: transform 1.3s cubic-bezier(.4,0,.2,1); }
+/* DungenAI rebrand: the new mark is its own finished navy card (not a
+   transparent/white-bg mark), so it drops the generic .hero-art img
+   multiply blend + drop-shadow (those muddy a solid dark image against the
+   now-dark page) and instead gets the SAME framed-card treatment the
+   shrunk "Quest accepted" chip state already used below — applied from the
+   start now, not just after the swap, so the two states share one look. */
+.hero-art .hero-mark { position: relative; z-index: 3; width: min(590px, 110%); height: auto; mix-blend-mode: normal; filter: none; background: #fffaf0; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); border-radius: 14px; transition: transform 1.3s cubic-bezier(.4,0,.2,1); }
 .hero-art .hero-base { position: absolute; z-index: 1; top: -72px; bottom: -80px; left: -19px; right: calc(-1 * max((100vw - 1180px) / 2, 20px)); opacity: 0; transition: opacity 1.4s ease; object-fit: cover; }
-.hero-art.swap .hero-mark { transform: rotate(1deg) translate(28%, -46%) scale(.3); mix-blend-mode: normal; background: #fffaf0; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); border-radius: 14px; }
+.hero-art.swap .hero-mark { transform: rotate(1deg) translate(28%, -46%) scale(.3); }
 .hero-art.swap .hero-base { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .hero-art .hero-mark, .hero-art .hero-base { transition: none; } }
 .orbit { position: absolute; border: 2px solid rgba(16,37,49,.12); border-radius: 50%; transform: rotate(-28deg); }
 .orbit-one { width: 520px; height: 280px; }
 .orbit-two { width: 410px; height: 220px; border-color: rgba(233,75,45,.18); }
-.status-card { position: absolute; z-index: 4; background: var(--paper); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: .05em; }
+.status-card { position: absolute; z-index: 4; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: .05em; }
 .status-card b { font: 800 28px/1 "Barlow Condensed"; color: var(--red); }
 .status-card i { width: 10px; height: 10px; border-radius: 50%; background: #45a96f; box-shadow: 0 0 0 5px rgba(69,169,111,.15); }
 .status-one { left: -2%; bottom: 15%; transform: rotate(-4deg); }
@@ -70,19 +92,19 @@ h1 em { color: var(--red); font-style: italic; }
 .section { padding-block: 130px; }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
 h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: uppercase; letter-spacing: -.02em; }
-.section-copy { font-size: 22px; line-height: 1.6; color: #45555a; padding-top: 38px; }
+.section-copy { font-size: 22px; line-height: 1.6; color: var(--on-dark); padding-top: 38px; }
 .section-copy p:first-child { margin-top: 0; }
-.loop { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); background: var(--paper); }
+.loop { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid var(--ink); color: var(--ink); box-shadow: 10px 10px 0 var(--ink); background: var(--paper); }
 .loop-card { padding: 34px; min-height: 260px; border-right: 1px solid var(--line); }
 .loop-card:last-child { border-right: 0; }
 .loop-card span { color: var(--red); font: italic 800 42px/1 "Barlow Condensed"; }
 .loop-card h3 { font-size: 38px; text-transform: uppercase; margin: 42px 0 12px; }
 .loop-card p { color: #596366; line-height: 1.55; margin: 0; }
 .product-showcase { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
-.product-copy > p:not(.eyebrow) { font-size: 18px; color: #526064; line-height: 1.65; }
+.product-copy > p:not(.eyebrow) { font-size: 18px; color: var(--on-dark); line-height: 1.65; }
 .product-copy ul { list-style: none; padding: 0; margin: 28px 0 0; }
 .product-copy li { padding: 15px 0; border-top: 1px solid var(--line); }
-.mockup { background: var(--paper); border: 3px solid var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 14px 14px 0 var(--ink); transform: rotate(1deg); }
+.mockup { background: var(--paper); color: var(--ink); border: 3px solid var(--ink); border-radius: 18px; overflow: hidden; box-shadow: 14px 14px 0 var(--ink); transform: rotate(1deg); }
 .mockup-bar { height: 52px; border-bottom: 2px solid var(--ink); display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #e8decb; }
 .mockup-bar span { width: 10px; height: 10px; border: 1.5px solid var(--ink); border-radius: 50%; }
 .mockup-bar b { margin-left: 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
@@ -103,9 +125,9 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .integration-grid { display:grid;grid-template-columns:repeat(2,1fr);margin-top:60px;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink); }
 .integration-grid div { min-height:140px;padding:28px;background:var(--paper);border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:end; }
 .integration-grid div:nth-child(3n){border-right:0}.integration-grid div:nth-last-child(-n+3){border-bottom:0}.integration-grid b{font:800 32px "Barlow Condensed";text-transform:uppercase}.integration-grid span{color:#6f7778;margin-top:5px}
-.cta { margin-block: 40px 120px; padding: 70px; background: var(--gold); border: 3px solid var(--ink); box-shadow: 14px 14px 0 var(--ink); display:grid;grid-template-columns:1fr;gap:24px;align-items:start; }
-.cta h2 { max-width: 650px; }.cta > div > p:last-child{font-size:18px;line-height:1.6;max-width:600px}.signup{display:grid;grid-template-columns:1fr auto;gap:12px}.signup input{min-width:0;height:54px;border:2px solid var(--ink);background:var(--paper);padding:0 16px;font:600 15px Inter}.success{display:none;grid-column:1/-1;font-weight:700}.signup.submitted .success{display:block}.signup.submitted input,.signup.submitted button{display:none}
-.footer { min-height:120px; border-top:1px solid var(--line); display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:13px }.footer p:last-child{text-align:right}.footer p{color:#6d7474}
+.cta { margin-block: 40px 120px; padding: 70px; background: var(--gold); color: var(--ink); border: 3px solid var(--ink); box-shadow: 14px 14px 0 var(--ink); display:grid;grid-template-columns:1fr;gap:24px;align-items:start; }
+.cta h2 { max-width: 650px; }.cta > div > p:last-child{font-size:18px;line-height:1.6;max-width:600px}.signup{display:grid;grid-template-columns:1fr auto;gap:12px}.signup input{min-width:0;height:54px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:0 16px;font:600 15px Inter}.success{display:none;grid-column:1/-1;font-weight:700}.signup.submitted .success{display:block}.signup.submitted input,.signup.submitted button{display:none}
+.footer { min-height:120px; border-top:1px solid var(--line); display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:13px }.footer p:last-child{text-align:right}.footer p{color:var(--on-dark-muted)}
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
 .reveal { opacity:0; transform:translateY(24px); transition:opacity .75s ease, transform .75s ease; }.reveal.visible{opacity:1;transform:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
 @media (max-width: 900px){
@@ -139,8 +161,8 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .duo { display: grid; gap: 74px; padding-top: 130px; margin-bottom: 96px; }
 .duo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .duo-copy h3 { margin: 0 0 16px; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1;
-  letter-spacing: -.01em; color: var(--ink); text-wrap: balance; }
-.duo-copy p { margin: 0; font-size: 18px; line-height: 1.65; color: #45555a; }
+  letter-spacing: -.01em; color: var(--on-dark); text-wrap: balance; }
+.duo-copy p { margin: 0; font-size: 18px; line-height: 1.65; color: var(--on-dark); }
 .duo-art { margin: 0; min-width: 0; }
 .duo-art img, .duo-art video { display: block; width: 100%; height: auto; border-radius: 14px;
   box-shadow: 0 18px 44px rgba(23,31,33,.16); }
@@ -152,9 +174,9 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   .duo-row.flip .duo-copy { order: 1; }
 }
 .duo-copy .reply { font-size: clamp(20px, 2.4vw, 26px); line-height: 1.35; font-style: italic;
-  color: var(--muted); letter-spacing: -.005em; }
+  color: var(--on-dark-muted); letter-spacing: -.005em; }
 .duo-fun { text-align: center; }
-.duo-fun h3 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -.01em; color: var(--ink); }
+.duo-fun h3 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -.01em; color: var(--on-dark); }
 /* --- the compact duo cycle: offset overlapping scenes, mirrored beat entrances --- */
 .duo-cycle { position: relative; height: clamp(430px, 50vw, 640px); }
 .cycle-art { position: absolute; inset: 0; z-index: 1; }
@@ -192,7 +214,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 28px; margin-top: 60px; max-width: 920px; margin-inline: auto; }
 .button[disabled] { background: var(--muted); cursor: not-allowed; }
 .button[disabled]:hover { transform: none; box-shadow: 5px 5px 0 var(--ink); }
-.card { background: var(--paper); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.card { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .card h3 { font-size: 34px; text-transform: uppercase; }
 .card p { margin: 0; color: #526064; line-height: 1.6; }
 .card-tier { font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; color: var(--red); }
@@ -213,9 +235,9 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 <body>
   <div class="noise" aria-hidden="true"></div>
   <header class="nav shell">
-    <a href="#top" class="brand" aria-label="Pizza Fleet home">
+    <a href="#top" class="brand" aria-label="DungenAI home">
       <span class="brand-orbit">✦</span>
-      <span>PIZZA FLEET</span>
+      <span>DUNGENAI</span>
     </a>
     <nav aria-label="Primary navigation">
       <a href="#why">Why</a>
@@ -238,13 +260,11 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
       </div>
 
       <!-- MEDIA-SLOT S1: hero capture (animated webp) lands here on designer delivery + review. EMPTY by rule. -->
-      <div class="hero-art reveal delay-1" role="img" aria-label="Pizza slices flying like a retro rocket fleet">
+      <div class="hero-art reveal delay-1" role="img" aria-label="The DungenAI stone and crystal wordmark">
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
-        <img class="hero-mark" src="assets/hero-mark.jpg" width="1180" height="1180" fetchpriority="high" decoding="async" alt="Pizza Fleet retro pizza rocket logo" />
-        <!-- Hero video PULLED by the owner (quality). The sequence code stays; re-wire by
-             restoring a src on this element when a better encode passes review. -->
-        <video class="hero-base" muted loop playsinline preload="auto" hidden
+        <img class="hero-mark" src="assets/dungenai-mark.png" width="1254" height="550" fetchpriority="high" decoding="async" alt="DungenAI logo — carved stone letters and a glowing blue AI crystal" />
+        <video class="hero-base" src="assets/dungenai-hero.mp4" muted loop playsinline preload="auto" hidden
                aria-label="An overview of the dungeon world, zooming from the whole base down to rooms of working agents with alert and question markers overhead."></video>
         <div class="status-card status-two"><i></i><span>Quest accepted</span></div>
       </div>
@@ -317,9 +337,9 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
         </div>
         <div class="cycle-art">
           <img class="img-a" src="assets/nocontrol.webp" width="640" height="400" loading="lazy" decoding="async"
-               alt="An astronaut drifting outside a sealed hatch, tether loose in his hand, a red light lit, the pizza still inside." />
+               alt="An astronaut drifting outside a sealed hatch, tether loose in his hand, a red light lit, the mission still inside." />
           <img class="img-b" src="assets/bridge.webp" width="640" height="400" loading="lazy" decoding="async"
-               alt="A ship's bridge, alive: nine crew at consoles, holograms turning, and the viewscreen reading pizza delivery confirmed." />
+               alt="A ship's bridge, alive: nine crew at consoles, holograms turning, and the viewscreen reading mission confirmed." />
         </div>
       </div>
     </section>
@@ -373,13 +393,13 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   </main>
 
   <footer class="footer shell">
-    <a class="brand" href="#top"><span class="brand-orbit">✦</span><span>PIZZA FLEET</span></a>
+    <a class="brand" href="#top"><span class="brand-orbit">✦</span><span>DUNGENAI</span></a>
     <p>Real Work. Real Fun.</p>
     <!-- LEGAL-SLOT: terms + privacy links land here. Content authority CEO/CPO+Brandon;
          EMPTY by rule — a drafted stand-in is not a hold (per the tracked marketing record). -->
     <!-- SUPPORT-SLOT: the support/contact path lands here, same authority, same rule. -->
     <!-- PRIVACY-SLOT: reserved, ungated. -->
-    <p>© 2026 Pizza Fleet</p>
+    <p>© 2026 DungenAI</p>
   </footer>
 
   <script>
