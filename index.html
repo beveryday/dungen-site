@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f4eddf" />
   <meta name="description" content="A real-time 3D world for the AI agents already doing your work. Every one of them a character with a face, a room and a job." />
-  <title>DungenAI — Real Work. Real Fun.</title>
+  <title>DunGenAI — Real Work. Real Fun.</title>
 <style>
 :root {
   --cream: #f4eddf;
@@ -16,7 +16,7 @@
   --muted: #6e756f;
   --line: rgba(16, 37, 49, .18);
   --shadow: 0 24px 70px rgba(23, 31, 33, .14);
-  /* DungenAI rebrand, 2026-10-02: the page background is now dark (sampled
+  /* DunGenAI rebrand, 2026-10-02: the page background is now dark (sampled
      off the logo's own navy — center ~#031533, mid ~#04112b, edges ~#040f25
      to #020a1c, see body below). --ink/--muted/--cream/--paper KEEP their
      original values and KEEP their original jobs: every card/button/input
@@ -44,6 +44,33 @@ a { color: inherit; text-decoration: none; }
 .nav nav { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
 .nav nav a:hover { color: var(--red); }
 .brand { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 22px; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 9px; }
+.brand-img { gap: 0; }
+.brand-img img { display: block; height: 44px; width: auto; }
+
+/* --- training & AI education --- */
+.training-head h2 { margin: 0 0 6px; }
+.training-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: 10px; }
+.tree-wrap { margin: 0; }
+.tree-wrap .tree { display: block; width: 100%; height: auto; }
+.tree-wrap figcaption { margin-top: 14px; font-size: 14px; color: var(--muted); }
+.tn-eyebrow { font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .16em; fill: var(--red); text-transform: uppercase; }
+.tn-title { font: 800 italic 23px/1 "Barlow Condensed", sans-serif; letter-spacing: .02em; fill: var(--ink); }
+.tree-list { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 15px; }
+.tree-list li { padding-left: 20px; position: relative; font-size: 17px; line-height: 1.6; color: #45555a; }
+.tree-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 9px; height: 9px; background: var(--red); transform: rotate(45deg); }
+.tree-list b { color: var(--ink); }
+.training-kicker { margin: 0 0 24px; font-size: 18px; line-height: 1.6; color: #45555a; }
+
+/* --- waitlist --- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.waitlist-form { margin-top: 24px; max-width: 640px; }
+.waitlist-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.waitlist-input { flex: 1 1 260px; min-height: 52px; padding: 0 16px; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font: 600 18px/1 Inter, system-ui, sans-serif; }
+.waitlist-input::placeholder { color: #8d9699; }
+.waitlist-input:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.waitlist-status { min-height: 26px; margin: 18px 0 0; font-size: 16px; font-weight: 600; color: #45555a; }
+.waitlist-status[data-state="err"] { color: var(--red); }
+
 .brand-orbit { width: 28px; height: 28px; border: 2px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-size: 11px; transform: rotate(-18deg); }
 .nav > .button { justify-self: end; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; background: var(--red); color: #fffaf0; border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font: 800 italic 18px/1 "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .04em; transition: transform .15s, box-shadow .15s; cursor: pointer; }
@@ -62,29 +89,15 @@ h1 em { color: var(--red); font-style: italic; }
 .proof-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 42px; }
 .proof-row span { border: 1px solid var(--line); background: rgba(255,255,255,.35); border-radius: 99px; padding: 9px 13px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
 .hero-art { position: relative; min-height: 590px; display: grid; place-items: center; }
-.hero-art img { position: relative; z-index: 2; width: min(590px, 110%); height: auto; filter: drop-shadow(0 25px 28px rgba(14,35,44,.18)); mix-blend-mode: multiply; transform: rotate(1deg); }
 /* hero media sequence: the mark loads first, then SHRINKS AND SLIDES to the
    Quest-Accepted corner (it stays, as a chip) while the overview capture fades in
    and takes over the whole right side of the hero, full bleed. */
-/* DungenAI rebrand: the new mark is its own finished navy card (not a
-   transparent/white-bg mark), so it drops the generic .hero-art img
-   multiply blend + drop-shadow (those muddy a solid dark image against the
-   now-dark page) and instead gets the SAME framed-card treatment the
-   shrunk "Quest accepted" chip state already used below — applied from the
-   start now, not just after the swap, so the two states share one look. */
-.hero-art .hero-mark { position: relative; z-index: 3; width: min(590px, 110%); height: auto; mix-blend-mode: normal; filter: none; background: #fffaf0; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); border-radius: 14px; transition: transform 1.3s cubic-bezier(.4,0,.2,1); }
-.hero-art .hero-base { position: absolute; z-index: 1; top: -72px; bottom: -80px; left: -19px; right: calc(-1 * max((100vw - 1180px) / 2, 20px)); opacity: 0; transition: opacity 1.4s ease; object-fit: cover; }
-.hero-art.swap .hero-mark { transform: rotate(1deg) translate(28%, -46%) scale(.3); }
-.hero-art.swap .hero-base { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .hero-art .hero-mark, .hero-art .hero-base { transition: none; } }
+/* The hero video is square (1080x1080 source) and stays inside its box — never wider than
+   the column, never bleeding off the page. */
+.hero-art .hero-base { position: relative; z-index: 2; width: min(540px, 100%); aspect-ratio: 1 / 1; height: auto; object-fit: cover; background: var(--paper); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); border-radius: 14px; }
 .orbit { position: absolute; border: 2px solid rgba(16,37,49,.12); border-radius: 50%; transform: rotate(-28deg); }
 .orbit-one { width: 520px; height: 280px; }
 .orbit-two { width: 410px; height: 220px; border-color: rgba(233,75,45,.18); }
-.status-card { position: absolute; z-index: 4; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: .05em; }
-.status-card b { font: 800 28px/1 "Barlow Condensed"; color: var(--red); }
-.status-card i { width: 10px; height: 10px; border-radius: 50%; background: #45a96f; box-shadow: 0 0 0 5px rgba(69,169,111,.15); }
-.status-one { left: -2%; bottom: 15%; transform: rotate(-4deg); }
-.status-two { right: 1%; top: 17%; transform: rotate(4deg); }
 .ticker { overflow: hidden; border-block: 2px solid var(--ink); background: var(--ink); color: var(--cream); transform: rotate(-1deg) scale(1.02); }
 .ticker-track { width: max-content; display: flex; align-items: center; gap: 24px; padding: 15px 0; animation: ticker 25s linear infinite; font: italic 800 22px/1 "Barlow Condensed"; letter-spacing: .06em; }
 .ticker-track i { color: var(--red); }
@@ -134,7 +147,8 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   .nav{grid-template-columns:1fr auto}.nav nav{display:none}.hero{grid-template-columns:1fr;padding-top:60px}.hero-art{min-height:500px}.split,.product-showcase,.cta{grid-template-columns:1fr}.loop{grid-template-columns:1fr 1fr}.loop-card:nth-child(2){border-right:0}.loop-card:nth-child(-n+2){border-bottom:1px solid var(--line)}.roles{grid-template-columns:1fr}.integration-grid{grid-template-columns:1fr 1fr}.integration-grid div:nth-child(3n){border-right:1px solid var(--line)}.integration-grid div:nth-child(2n){border-right:0}.integration-grid div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}.integration-grid div:nth-last-child(-n+2){border-bottom:0}.footer{grid-template-columns:1fr;text-align:center;gap:10px;padding-block:30px}.footer p:last-child{text-align:center}
 }
 @media (max-width: 600px){
-  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-art{min-height:380px}.hero-art img{width:115%}.status-card{transform:scale(.85)}.status-one{left:0}.status-two{right:-5%;top:10%}h1{font-size:58px}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
+  .training-grid{grid-template-columns:1fr;gap:30px}.brand-img img{height:38px}
+  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-art{min-height:380px}h1{font-size:58px}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
 }
 
 
@@ -177,33 +191,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   color: var(--on-dark-muted); letter-spacing: -.005em; }
 .duo-fun { text-align: center; }
 .duo-fun h3 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -.01em; color: var(--on-dark); }
-/* --- the compact duo cycle: offset overlapping scenes, mirrored beat entrances --- */
-.duo-cycle { position: relative; height: clamp(430px, 50vw, 640px); }
-.cycle-art { position: absolute; inset: 0; z-index: 1; }
-.cycle-art img { position: absolute; width: 68%; height: 84%; object-fit: cover; border-radius: 16px; box-shadow: 0 24px 60px rgba(16,37,49,.28); }
-.cycle-art .img-a { left: 0; top: 0; animation: sceneA 12s ease-in-out infinite; }
-.cycle-art .img-b { right: 0; bottom: 0; opacity: .22; animation: sceneB 12s ease-in-out infinite; }
-@keyframes sceneA { 0%, 42% { opacity: 1; } 50%, 92% { opacity: .3; } 100% { opacity: 1; } }
-@keyframes sceneB { 0%, 42% { opacity: .22; } 50%, 92% { opacity: 1; } 100% { opacity: .22; } }
-.cycle-copy { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-.cycle-beat { position: absolute; background: rgba(16,37,49,.82); border-radius: 12px; padding: 20px 26px; max-width: min(540px, 78%); backdrop-filter: blur(4px); }
-.cycle-beat h3 { margin: 0 0 10px; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.05; letter-spacing: -.01em; color: #fffaf0; text-wrap: balance; }
-.cycle-beat .reply { margin: 0; color: rgba(255,250,240,.88); }
-.beat-a { left: 26px; bottom: 30px; opacity: 0; animation: beatA 12s ease-in-out infinite; }
-.beat-b { right: 26px; bottom: 30px; opacity: 0; animation: beatB 12s ease-in-out infinite; }
-@keyframes beatA { 0% { opacity: 0; transform: translateX(-46px); } 6%, 40% { opacity: 1; transform: none; } 48%, 100% { opacity: 0; transform: translateX(-46px); } }
-@keyframes beatB { 0%, 50% { opacity: 0; transform: translateX(46px); } 56%, 90% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: translateX(46px); } }
-@media (prefers-reduced-motion: reduce) {
-  .cycle-art .img-a, .cycle-art .img-b, .beat-a, .beat-b { animation: none; }
-  .cycle-art .img-b { opacity: .9; }
-  .beat-a, .beat-b { opacity: 1; transform: none; }
-}
 @media (max-width: 900px) {
-  .duo-cycle { height: clamp(400px, 118vw, 560px); }
-  .cycle-art img { width: 86%; height: 58%; }
-  .cycle-beat { padding: 14px 18px; max-width: 88%; }
-  .beat-a { left: 10px; bottom: 14px; }
-  .beat-b { right: 10px; bottom: 14px; }
 }
 /* Pricing must stack on small screens; an inline column count overrides media rules. */
 .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -235,12 +223,12 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 <body>
   <div class="noise" aria-hidden="true"></div>
   <header class="nav shell">
-    <a href="#top" class="brand" aria-label="DungenAI home">
-      <span class="brand-orbit">✦</span>
-      <span>DUNGENAI</span>
+    <a href="#top" class="brand brand-img" aria-label="DunGenAI home">
+      <img src="assets/dungenai-logo.webp" width="240" height="97" alt="DunGenAI" decoding="async" />
     </a>
     <nav aria-label="Primary navigation">
       <a href="#why">Why</a>
+      <a href="#training">Training</a>
     </nav>
     <a class="button button-small" href="#pricing">Pricing</a>
   </header>
@@ -259,14 +247,19 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
         </div>
       </div>
 
-      <!-- MEDIA-SLOT S1: hero capture (animated webp) lands here on designer delivery + review. EMPTY by rule. -->
-      <div class="hero-art reveal delay-1" role="img" aria-label="The DungenAI stone and crystal wordmark">
+      <!-- HERO: the video plays immediately. Brandon, 2026-10-04: "load the video right away
+           instead of showing the logo and the quest accepted tag" — so the mark intro, the 2.2s
+           .swap sequence and the Quest-accepted card are all gone. The poster frame covers the
+           load so there is never a blank box, and the reduced-motion handler below strips
+           autoplay on every video[autoplay], which leaves the poster showing and nothing moving.
+           Source is 1080x1080 (square), re-encoded to 720x720 H.264 and framed inside its box
+           rather than bleeding past the column. -->
+      <div class="hero-art reveal delay-1">
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
-        <img class="hero-mark" src="assets/dungenai-mark.png" width="1254" height="550" fetchpriority="high" decoding="async" alt="DungenAI logo — carved stone letters and a glowing blue AI crystal" />
-        <video class="hero-base" src="assets/dungenai-hero.mp4" muted loop playsinline preload="auto" hidden
+        <video class="hero-base" src="assets/dungenai-hero.mp4" poster="assets/dungenai-hero-poster.webp"
+               width="480" height="480" autoplay muted loop playsinline preload="auto"
                aria-label="An overview of the dungeon world, zooming from the whole base down to rooms of working agents with alert and question markers overhead."></video>
-        <div class="status-card status-two"><i></i><span>Quest accepted</span></div>
       </div>
     </section>
 
@@ -324,24 +317,94 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
                alt="A low-poly archery range: an archer faces the target while a card reads Retro &middot; Brainstorm &mdash; type your answer to draw the bow, and shoot." />
         </figure>
       </div>
-      <div class="duo-cycle reveal" aria-label="Locked out, or on the bridge">
-        <div class="cycle-copy">
-          <div class="cycle-beat beat-a">
-            <h3>Don&rsquo;t be locked out of your orchestration.</h3>
-            <p class="reply">&ldquo;I&rsquo;m sorry, Dave.&rdquo;</p>
-          </div>
-          <div class="cycle-beat beat-b">
-            <h3>Run it like a Captain.</h3>
-            <p class="reply">&ldquo;Computer, on screen.&rdquo;</p>
-          </div>
-        </div>
-        <div class="cycle-art">
-          <img class="img-a" src="assets/nocontrol.webp" width="640" height="400" loading="lazy" decoding="async"
-               alt="An astronaut drifting outside a sealed hatch, tether loose in his hand, a red light lit, the mission still inside." />
-          <img class="img-b" src="assets/bridge.webp" width="640" height="400" loading="lazy" decoding="async"
-               alt="A ship's bridge, alive: nine crew at consoles, holograms turning, and the viewscreen reading mission confirmed." />
+    </section>
+
+
+    <section id="training" class="section shell">
+      <div class="training-head">
+        <p class="eyebrow">TRAINING &amp; AI EDUCATION</p>
+        <h2>Learn it by doing it.</h2>
+        <p class="lede">Everyone&rsquo;s been told to use AI. Almost nobody&rsquo;s been taught. Start at the trunk and work out
+          along the branches &mdash; on your own real work, with a real fleet, and verification built in so you can
+          always see what actually changed.</p>
+      </div>
+      <div class="training-grid">
+        <figure class="tree-wrap">
+        <svg class="tree" viewBox="0 0 900 520" role="img"
+             aria-label="The starter skill tree. Everyone begins at the trunk, Course 0 Meet AI Gently. The trunk unlocks four branches: Prompting and Delegation on the left, Verification and Responsible Use on the right. Both capstone branches feed the Mastery node, Ship a Reusable Quest.">
+          <g class="tree-edges" fill="none" stroke="#102531" stroke-width="4" stroke-linecap="round">
+            <path d="M450 420 V392 M180 392 H720 M180 392 V364 M720 392 V364"/>
+            <path d="M180 300 V244 M720 300 V244"/>
+            <path d="M180 180 V152 M180 152 H720 M720 180 V152 M450 152 V124"/>
+          </g>
+      <rect x="305" y="425" width="300" height="74" rx="9" fill="#102531"/>
+      <rect x="300" y="420" width="300" height="74" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="450.0" y="445" text-anchor="middle" class="tn-eyebrow">TRUNK &#183; START HERE</text>
+      <text x="450.0" y="468" text-anchor="middle" class="tn-title">Meet AI, Gently</text>
+
+      <rect x="65" y="305" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="60" y="300" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="180.0" y="325" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="180.0" y="348" text-anchor="middle" class="tn-title">Prompting</text>
+
+      <rect x="605" y="305" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="600" y="300" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="720.0" y="325" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="720.0" y="348" text-anchor="middle" class="tn-title">Verification</text>
+
+      <rect x="65" y="185" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="60" y="180" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="180.0" y="205" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="180.0" y="228" text-anchor="middle" class="tn-title">Delegation</text>
+
+      <rect x="605" y="185" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="600" y="180" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="720.0" y="205" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="720.0" y="228" text-anchor="middle" class="tn-title">Responsible Use</text>
+
+      <rect x="305" y="55" width="300" height="74" rx="9" fill="#102531"/>
+      <rect x="300" y="50" width="300" height="74" rx="9" fill="#f1b84b" stroke="#102531" stroke-width="2.5"/>
+      <text x="450.0" y="75" text-anchor="middle" class="tn-eyebrow">MASTERY &#183; CAPSTONE</text>
+      <text x="450.0" y="98" text-anchor="middle" class="tn-title">Ship a Reusable Quest</text>
+
+        </svg>
+          <figcaption>Nodes are lessons. Branches are courses. Everyone starts at the trunk.</figcaption>
+        </figure>
+        <div class="training-copy">
+          <ul class="tree-list">
+            <li><b>Start at the trunk.</b> Course&nbsp;0 &mdash; Meet AI, Gently. No jargon, and nothing to install first.</li>
+            <li><b>Pick a branch.</b> Prompting, Delegation, Verification, Responsible&nbsp;Use.</li>
+            <li><b>Never trust a claim untested.</b> Verification isn&rsquo;t a module bolted on the end &mdash; it&rsquo;s wired through every branch.</li>
+            <li><b>Earn the capstone.</b> Ship a reusable quest your whole crew can run.</li>
+          </ul>
+          <p class="training-kicker">Team workshops run on your work, in your base, with your fleet. <b>No slides.</b></p>
+          <a class="button" href="#waitlist">Book team training</a>
         </div>
       </div>
+    </section>
+
+    <!-- WAITLIST: the one email capture on the page. It is also the destination for
+         "Book team training", because there is no download to send anyone yet — the
+         releases repo went private on 2026-10-04 and no current signed build has shipped.
+         Posts to Supabase public.waitlist. The key below is the PUBLISHABLE key and the
+         table is INSERT-only for anon with no SELECT policy, so it grants "add a row" and
+         nothing else — the list cannot be read back through it. -->
+    <section id="waitlist" class="section shell">
+      <div class="waitlist-head">
+        <p class="eyebrow">NOT OUT YET</p>
+        <h2>Get the first build.</h2>
+        <p class="lede">We&rsquo;re finishing the look and the onboarding. Leave your email and you&rsquo;ll be first
+          through the door &mdash; or say hello the same way about team training.</p>
+      </div>
+      <form class="waitlist-form" id="waitlist-form" novalidate>
+        <label class="sr-only" for="waitlist-email">Email address</label>
+        <div class="waitlist-row">
+          <input class="waitlist-input" id="waitlist-email" name="email" type="email" required
+                 autocomplete="email" inputmode="email" placeholder="you@yourcrew.com" />
+          <button class="button" id="waitlist-submit" type="submit">Join the waitlist</button>
+        </div>
+        <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
+      </form>
     </section>
 
     <!-- MEDIA-SLOT S4: theme montage beside the tiers. EMPTY by rule. -->
@@ -360,7 +423,12 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
           <p class="card-price">Free</p>
           <h3>The Clean world</h3>
           <p>Your whole fleet as a living world. The rituals, the quests, the map &mdash; in the clean theme, drawn from nothing. On your own machine.</p>
-          <a class="button card-btn" href="https://github.com/beveryday/pizza-fleet-releases/releases/latest">Download free &darr;</a>
+          <button class="button card-btn" type="button" disabled>Coming Soon</button>
+          <!-- HELD: the free download link is gone because beveryday/pizza-fleet-releases is
+               PRIVATE as of 2026-10-04 (Brandon's call) — the link 404'd. It also pointed at
+               free-28 (2026-09-13), which predates this codebase's first commit (2026-09-21),
+               so it would have handed someone a dead build. Restore a download only when a
+               current signed build ships. SHOW_FREE_TIER is untouched. -->
         </article>
         <article class="card card-star">
           <p class="card-tier">WORLDS</p>
@@ -399,7 +467,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
          EMPTY by rule — a drafted stand-in is not a hold (per the tracked marketing record). -->
     <!-- SUPPORT-SLOT: the support/contact path lands here, same authority, same rule. -->
     <!-- PRIVACY-SLOT: reserved, ungated. -->
-    <p>© 2026 DungenAI</p>
+    <p>© 2026 DunGenAI</p>
   </footer>
 
   <script>
@@ -412,22 +480,43 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('video[autoplay]').forEach((v) => { v.removeAttribute('autoplay'); v.pause(); });
 }
 
-// HERO sequence: the mark first; then it shrinks to the Quest-Accepted corner and
-// stays while the overview capture fades in full-bleed. No asset, no broken state:
-// the video element 404s silently and the mark simply remains.
-const art = document.querySelector('.hero-art');
+// HERO: no sequence any more — the video autoplays on load behind its poster frame.
+// The reduced-motion block above has already stripped autoplay if the user asked for it,
+// so this only nudges the play() that some browsers withhold until a gesture; if it is
+// refused the poster simply stays, which is a correct state rather than a broken one.
 const heroVid = document.querySelector('video.hero-base');
-if (art && heroVid) {
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const go = () => {
-    heroVid.hidden = false;
-    if (reduced) { art.classList.add('swap'); return; }
-    heroVid.play().catch(() => {});
-    setTimeout(() => art.classList.add('swap'), 2200);
-  };
-  if (heroVid.readyState >= 2) { go(); } else { heroVid.addEventListener('loadeddata', go, { once: true }); }
-}
+if (heroVid && heroVid.hasAttribute('autoplay')) { heroVid.play().catch(() => {}); }
 if (SHOW_FREE_TIER) { document.getElementById('free-card').hidden = false; }
+
+// WAITLIST -> Supabase. return=minimal is REQUIRED: the table has no SELECT policy for
+// anon, so return=representation would need a read it is not granted and would fail.
+const WL_URL = 'https://jsrjgefqhehiwknseoos.supabase.co/rest/v1/waitlist';
+const WL_KEY = 'sb_publishable_eDvRdW3L6nfHz7MPa5gd2w_UkHPRAHL';
+const wlForm = document.getElementById('waitlist-form');
+if (wlForm) {
+  const wlIn = document.getElementById('waitlist-email');
+  const wlBtn = document.getElementById('waitlist-submit');
+  const wlMsg = document.getElementById('waitlist-status');
+  const say = (t, ok) => { wlMsg.textContent = t; wlMsg.dataset.state = ok ? 'ok' : 'err'; };
+  wlForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = wlIn.value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('That email looks off \u2014 give it another look?', false); return; }
+    wlBtn.disabled = true; say('Adding you\u2026', true);
+    try {
+      const res = await fetch(WL_URL, {
+        method: 'POST',
+        headers: { apikey: WL_KEY, Authorization: 'Bearer ' + WL_KEY,
+                   'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({ email, source: 'dungen.ai' })
+      });
+      if (res.ok) { say("You\u2019re on the list. We\u2019ll be in touch.", true); wlForm.reset(); }
+      else if (res.status === 409) { say("You\u2019re already on the list.", true); wlForm.reset(); }
+      else { say("That didn\u2019t go through. Try again in a minute?", false); }
+    } catch { say('No connection \u2014 try again in a minute?', false); }
+    wlBtn.disabled = false;
+  });
+}
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
