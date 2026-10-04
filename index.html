@@ -5,18 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f4eddf" />
   <meta name="description" content="A real-time 3D world for the AI agents already doing your work. Every one of them a character with a face, a room and a job." />
-  <title>DungenAI — Real Work. Real Fun.</title>
+  <title>DunGenAI — Real Work. Real Fun.</title>
 <style>
 :root {
   --cream: #f4eddf;
   --paper: #fffaf0;
   --ink: #102531;
-  --red: #e94b2d;
+  /* Accents, 2026-10-04. Brandon: "change the accent colors in the site, from red to
+     the light blue and yellow used in the logo". the old --red accent is retired; nothing
+     references it any more. These two are SOURCED by sampling assets/dungenai-mark.png
+     (1254x550, the full-resolution logo) with Pillow -- not picked by eye, and not off
+     the downscaled nav webp, whose hexes are its own compression:
+       --blue       the "AI" letters   (most-sampled pixel of 33,558 in that region)
+       --gold-logo  the shield + star  (most-sampled pixel of 6,849)
+     --blue-deep is DERIVED, not sampled: --blue measures 12.3:1 on the navy page but
+     only 1.4:1 on a paper card, so accent text on a light surface uses the same hue
+     (192) darkened until it clears 4.5:1 -- it measures 5.5:1 on --paper.
+     --gold (#f1b84b) is UNCHANGED and keeps its job: the big CTA panel and the
+     skill-tree Mastery node. */
+  --blue: #74e0fc;
+  --blue-deep: #07708a;
+  --gold-logo: #f49428;
   --gold: #f1b84b;
   --muted: #6e756f;
   --line: rgba(16, 37, 49, .18);
   --shadow: 0 24px 70px rgba(23, 31, 33, .14);
-  /* DungenAI rebrand, 2026-10-02: the page background is now dark (sampled
+  /* DunGenAI rebrand, 2026-10-02: the page background is now dark (sampled
      off the logo's own navy — center ~#031533, mid ~#04112b, edges ~#040f25
      to #020a1c, see body below). --ink/--muted/--cream/--paper KEEP their
      original values and KEEP their original jobs: every card/button/input
@@ -42,52 +56,65 @@ a { color: inherit; text-decoration: none; }
 .noise { position: fixed; inset: 0; pointer-events: none; opacity: .08; z-index: 20; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E"); }
 .nav { height: 84px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; border-bottom: 1px solid var(--line); position: relative; z-index: 10; }
 .nav nav { display: flex; gap: 28px; font-size: 14px; font-weight: 600; }
-.nav nav a:hover { color: var(--red); }
+.nav nav a:hover { color: var(--blue); }
 .brand { font-family: "Barlow Condensed", sans-serif; font-style: italic; font-weight: 800; font-size: 22px; letter-spacing: .04em; display: inline-flex; align-items: center; gap: 9px; }
+.brand-img { gap: 0; }
+.brand-img img { display: block; height: 44px; width: auto; }
+
+/* --- training & AI education --- */
+.training-head h2 { margin: 0 0 6px; }
+.training-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: 10px; }
+.tree-wrap { margin: 0; }
+.tree-wrap .tree { display: block; width: 100%; height: auto; }
+.tree-wrap figcaption { margin-top: 14px; font-size: 14px; color: var(--on-dark-muted); }
+.tn-eyebrow { font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .16em; fill: var(--blue-deep); text-transform: uppercase; }
+.tn-title { font: 800 italic 23px/1 "Barlow Condensed", sans-serif; letter-spacing: .02em; fill: var(--ink); }
+.tree-list { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 15px; }
+.tree-list li { padding-left: 20px; position: relative; font-size: 17px; line-height: 1.6; color: var(--on-dark-muted); }
+.tree-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 9px; height: 9px; background: var(--blue); transform: rotate(45deg); }
+.tree-list b, .training-kicker b { color: var(--on-dark); }
+.training-kicker { margin: 0 0 24px; font-size: 18px; line-height: 1.6; color: var(--on-dark-muted); }
+
+/* --- waitlist --- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.waitlist-form { margin-top: 24px; max-width: 640px; }
+.waitlist-row { display: flex; flex-wrap: wrap; gap: 14px; }
+.waitlist-input { flex: 1 1 260px; min-height: 52px; padding: 0 16px; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font: 600 18px/1 Inter, system-ui, sans-serif; }
+.waitlist-input::placeholder { color: #8d9699; }
+.waitlist-input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.waitlist-status { min-height: 26px; margin: 18px 0 0; font-size: 16px; font-weight: 600; color: var(--on-dark); }
+.waitlist-status[data-state="err"] { color: var(--gold-logo); }
+
 .brand-orbit { width: 28px; height: 28px; border: 2px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-size: 11px; transform: rotate(-18deg); }
 .nav > .button { justify-self: end; }
-.button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; background: var(--red); color: #fffaf0; border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font: 800 italic 18px/1 "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .04em; transition: transform .15s, box-shadow .15s; cursor: pointer; }
+.button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; background: var(--gold-logo); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font: 800 italic 18px/1 "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .04em; transition: transform .15s, box-shadow .15s; cursor: pointer; }
 .button:hover { transform: translate(3px,3px); box-shadow: 2px 2px 0 var(--ink); }
 .button-small { min-height: 42px; padding-inline: 18px; font-size: 16px; }
-.hero { min-height: 730px; display: grid; grid-template-columns: .96fr 1.04fr; align-items: center; gap: 38px; padding-block: 72px 80px; }
-.eyebrow { font: 800 14px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; color: var(--red); margin: 0 0 22px; }
+.hero { min-height: min(730px, calc(100svh - 84px)); display: grid; grid-template-columns: .96fr 1.04fr; align-items: center; gap: 38px; padding-block: clamp(28px, 4.5vh, 72px) clamp(32px, 5vh, 80px); }
+.eyebrow { font: 800 14px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; color: var(--blue); margin: 0 0 22px; }
 h1,h2,h3 { font-family: "Barlow Condensed", sans-serif; margin: 0; }
 h1 { font-size: clamp(64px, 7vw, 108px); line-height: .86; letter-spacing: -.035em; text-transform: uppercase; }
-h1 em { color: var(--red); font-style: italic; }
-.sub { font: italic 800 30px/1.1 "Barlow Condensed", sans-serif; color: var(--red); letter-spacing: .02em; margin: 26px 0 0; }
+h1 em { color: var(--blue); font-style: italic; }
+.sub { font: italic 800 30px/1.1 "Barlow Condensed", sans-serif; color: var(--blue); letter-spacing: .02em; margin: 26px 0 0; }
 .lede { max-width: 620px; font-size: 20px; line-height: 1.65; color: var(--on-dark); margin: 28px 0 32px; }
 .hero-actions { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 .text-link { font-weight: 700; border-bottom: 2px solid var(--ink); padding-bottom: 6px; }
-.text-link span { color: var(--red); }
+.text-link span { color: var(--blue); }
 .proof-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 42px; }
 .proof-row span { border: 1px solid var(--line); background: rgba(255,255,255,.35); border-radius: 99px; padding: 9px 13px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.hero-art { position: relative; min-height: 590px; display: grid; place-items: center; }
-.hero-art img { position: relative; z-index: 2; width: min(590px, 110%); height: auto; filter: drop-shadow(0 25px 28px rgba(14,35,44,.18)); mix-blend-mode: multiply; transform: rotate(1deg); }
+.hero-art { position: relative; min-height: 0; display: grid; place-items: center; }
 /* hero media sequence: the mark loads first, then SHRINKS AND SLIDES to the
    Quest-Accepted corner (it stays, as a chip) while the overview capture fades in
    and takes over the whole right side of the hero, full bleed. */
-/* DungenAI rebrand: the new mark is its own finished navy card (not a
-   transparent/white-bg mark), so it drops the generic .hero-art img
-   multiply blend + drop-shadow (those muddy a solid dark image against the
-   now-dark page) and instead gets the SAME framed-card treatment the
-   shrunk "Quest accepted" chip state already used below — applied from the
-   start now, not just after the swap, so the two states share one look. */
-.hero-art .hero-mark { position: relative; z-index: 3; width: min(590px, 110%); height: auto; mix-blend-mode: normal; filter: none; background: #fffaf0; border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); border-radius: 14px; transition: transform 1.3s cubic-bezier(.4,0,.2,1); }
-.hero-art .hero-base { position: absolute; z-index: 1; top: -72px; bottom: -80px; left: -19px; right: calc(-1 * max((100vw - 1180px) / 2, 20px)); opacity: 0; transition: opacity 1.4s ease; object-fit: cover; }
-.hero-art.swap .hero-mark { transform: rotate(1deg) translate(28%, -46%) scale(.3); }
-.hero-art.swap .hero-base { opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .hero-art .hero-mark, .hero-art .hero-base { transition: none; } }
+/* The hero video is square (1080x1080 source) and stays inside its box — never wider than
+   the column, never bleeding off the page. */
+.hero-art .hero-base { position: relative; z-index: 2; width: min(480px, 100%, calc(100svh - 300px)); aspect-ratio: 1 / 1; height: auto; object-fit: cover; background: var(--paper); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); border-radius: 14px; }
 .orbit { position: absolute; border: 2px solid rgba(16,37,49,.12); border-radius: 50%; transform: rotate(-28deg); }
-.orbit-one { width: 520px; height: 280px; }
-.orbit-two { width: 410px; height: 220px; border-color: rgba(233,75,45,.18); }
-.status-card { position: absolute; z-index: 4; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); padding: 12px 16px; display: flex; align-items: center; gap: 10px; font-size: 12px; text-transform: uppercase; font-weight: 700; letter-spacing: .05em; }
-.status-card b { font: 800 28px/1 "Barlow Condensed"; color: var(--red); }
-.status-card i { width: 10px; height: 10px; border-radius: 50%; background: #45a96f; box-shadow: 0 0 0 5px rgba(69,169,111,.15); }
-.status-one { left: -2%; bottom: 15%; transform: rotate(-4deg); }
-.status-two { right: 1%; top: 17%; transform: rotate(4deg); }
+.orbit-one { width: min(520px, 100%); height: min(280px, 54vw); }
+.orbit-two { width: min(410px, 78%); height: min(220px, 42vw); border-color: rgba(116,224,252,.22); }
 .ticker { overflow: hidden; border-block: 2px solid var(--ink); background: var(--ink); color: var(--cream); transform: rotate(-1deg) scale(1.02); }
 .ticker-track { width: max-content; display: flex; align-items: center; gap: 24px; padding: 15px 0; animation: ticker 25s linear infinite; font: italic 800 22px/1 "Barlow Condensed"; letter-spacing: .06em; }
-.ticker-track i { color: var(--red); }
+.ticker-track i { color: var(--blue); }
 @keyframes ticker { to { transform: translateX(-50%); } }
 .section { padding-block: 130px; }
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
@@ -97,7 +124,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .loop { display: grid; grid-template-columns: repeat(4, 1fr); border: 2px solid var(--ink); color: var(--ink); box-shadow: 10px 10px 0 var(--ink); background: var(--paper); }
 .loop-card { padding: 34px; min-height: 260px; border-right: 1px solid var(--line); }
 .loop-card:last-child { border-right: 0; }
-.loop-card span { color: var(--red); font: italic 800 42px/1 "Barlow Condensed"; }
+.loop-card span { color: var(--blue-deep); font: italic 800 42px/1 "Barlow Condensed"; }
 .loop-card h3 { font-size: 38px; text-transform: uppercase; margin: 42px 0 12px; }
 .loop-card p { color: #596366; line-height: 1.55; margin: 0; }
 .product-showcase { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: center; }
@@ -110,17 +137,17 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .mockup-bar b { margin-left: 10px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
 .world { height: 520px; position: relative; overflow: hidden; background: linear-gradient(30deg, rgba(16,37,49,.035) 12%, transparent 12.5%, transparent 87%, rgba(16,37,49,.035) 87.5%), linear-gradient(150deg, rgba(16,37,49,.035) 12%, transparent 12.5%, transparent 87%, rgba(16,37,49,.035) 87.5%); background-size: 80px 140px; }
 .tile { width: 150px; height: 110px; position: absolute; background: #f5cf6a; border: 2px solid var(--ink); box-shadow: 7px 7px 0 var(--ink); display: grid; place-items: center; transform: rotate(-2deg); }
-.tile span { font-size: 34px; }.tile small { font-weight: 800; text-transform: uppercase; }.tile em { position: absolute; right: -15px; top: -14px; background: var(--red); color: white; border: 2px solid var(--ink); padding: 5px 8px; font: 700 11px Inter; }
+.tile span { font-size: 34px; }.tile small { font-weight: 800; text-transform: uppercase; }.tile em { position: absolute; right: -15px; top: -14px; background: var(--blue-deep); color: white; border: 2px solid var(--ink); padding: 5px 8px; font: 700 11px Inter; }
 .tile-a { left: 8%; top: 12%; }.tile-b { left: 39%; top: 21%; background: #f49d69; }.tile-c { right: 8%; top: 10%; background:#b8d6c1; }.tile-d { right: 16%; bottom: 14%; background:#9ec4d3; }
 .road { position:absolute; height: 16px; background: var(--ink); opacity:.13; transform-origin:left center; }.road-one{width:390px;left:18%;top:48%;transform:rotate(19deg)}.road-two{width:330px;left:33%;top:61%;transform:rotate(-14deg)}
 .agent { position:absolute; width:42px;height:42px;border-radius:50%;background:var(--paper);border:2px solid var(--ink);box-shadow:4px 4px 0 var(--ink);display:grid;place-items:center;font:800 12px Inter; }.agent-one{left:31%;top:49%}.agent-two{left:55%;top:48%}.agent-three{right:25%;top:61%}
-.mission-card { position:absolute; left:7%; bottom:7%; width:260px; padding:18px; background:var(--paper); border:2px solid var(--ink); box-shadow:6px 6px 0 var(--ink); }.mission-card small{display:block;color:var(--red);font-weight:800;letter-spacing:.08em}.mission-card b{display:block;font:800 25px "Barlow Condensed";text-transform:uppercase;margin:5px 0 12px}.mission-card div{display:flex;gap:10px;align-items:center}.mission-card i{height:7px;flex:1;background:#ddd3c2;display:block}.mission-card u{display:block;height:100%;width:68%;background:var(--red)}
+.mission-card { position:absolute; left:7%; bottom:7%; width:260px; padding:18px; background:var(--paper); border:2px solid var(--ink); box-shadow:6px 6px 0 var(--ink); }.mission-card small{display:block;color:var(--blue-deep);font-weight:800;letter-spacing:.08em}.mission-card b{display:block;font:800 25px "Barlow Condensed";text-transform:uppercase;margin:5px 0 12px}.mission-card div{display:flex;gap:10px;align-items:center}.mission-card i{height:7px;flex:1;background:#ddd3c2;display:block}.mission-card u{display:block;height:100%;width:68%;background:var(--gold-logo)}
 .dark-section { background: var(--ink); color: var(--cream); position: relative; }
 .centered { text-align: center; max-width: 800px; margin: 0 auto; }
 .centered p:last-child { color: #b7c2c5; font-size: 19px; line-height: 1.6; max-width: 670px; margin: 24px auto 0; }
 .roles { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 70px; }
 .role { border: 1px solid rgba(255,255,255,.18); padding: 34px; min-height: 250px; background: rgba(255,255,255,.035); }
-.role span { font-size: 44px; color: var(--red); }.role h3{font-size:34px;text-transform:uppercase;margin:35px 0 12px}.role p{color:#aab8bb;line-height:1.55}
+.role span { font-size: 44px; color: var(--blue); }.role h3{font-size:34px;text-transform:uppercase;margin:35px 0 12px}.role p{color:#aab8bb;line-height:1.55}
 .integrations .section-heading { max-width: 780px; }
 .integration-grid { display:grid;grid-template-columns:repeat(2,1fr);margin-top:60px;border:2px solid var(--ink);box-shadow:10px 10px 0 var(--ink); }
 .integration-grid div { min-height:140px;padding:28px;background:var(--paper);border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;justify-content:end; }
@@ -129,12 +156,14 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .cta h2 { max-width: 650px; }.cta > div > p:last-child{font-size:18px;line-height:1.6;max-width:600px}.signup{display:grid;grid-template-columns:1fr auto;gap:12px}.signup input{min-width:0;height:54px;border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:0 16px;font:600 15px Inter}.success{display:none;grid-column:1/-1;font-weight:700}.signup.submitted .success{display:block}.signup.submitted input,.signup.submitted button{display:none}
 .footer { min-height:120px; border-top:1px solid var(--line); display:grid;grid-template-columns:1fr auto 1fr;align-items:center;font-size:13px }.footer p:last-child{text-align:right}.footer p{color:var(--on-dark-muted)}
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
-.reveal { opacity:0; transform:translateY(24px); transition:opacity .75s ease, transform .75s ease; }.reveal.visible{opacity:1;transform:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+.reveal { transition:opacity .75s ease, transform .75s ease; }html.has-reveal .reveal{opacity:0;transform:translateY(24px)}html.has-reveal .reveal.visible{opacity:1;transform:none}html.has-reveal .reveal.shown{opacity:1;transform:none;transition:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+@media (prefers-reduced-motion: reduce){html.has-reveal .reveal{opacity:1;transform:none;transition:none}}
 @media (max-width: 900px){
-  .nav{grid-template-columns:1fr auto}.nav nav{display:none}.hero{grid-template-columns:1fr;padding-top:60px}.hero-art{min-height:500px}.split,.product-showcase,.cta{grid-template-columns:1fr}.loop{grid-template-columns:1fr 1fr}.loop-card:nth-child(2){border-right:0}.loop-card:nth-child(-n+2){border-bottom:1px solid var(--line)}.roles{grid-template-columns:1fr}.integration-grid{grid-template-columns:1fr 1fr}.integration-grid div:nth-child(3n){border-right:1px solid var(--line)}.integration-grid div:nth-child(2n){border-right:0}.integration-grid div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}.integration-grid div:nth-last-child(-n+2){border-bottom:0}.footer{grid-template-columns:1fr;text-align:center;gap:10px;padding-block:30px}.footer p:last-child{text-align:center}
+  .nav{grid-template-columns:1fr auto}.nav nav{display:none}.hero{grid-template-columns:1fr;min-height:0;padding-top:48px}.hero-art{min-height:0}.hero-art .hero-base{width:min(480px,100%)}.split,.product-showcase,.cta{grid-template-columns:1fr}.loop{grid-template-columns:1fr 1fr}.loop-card:nth-child(2){border-right:0}.loop-card:nth-child(-n+2){border-bottom:1px solid var(--line)}.roles{grid-template-columns:1fr}.integration-grid{grid-template-columns:1fr 1fr}.integration-grid div:nth-child(3n){border-right:1px solid var(--line)}.integration-grid div:nth-child(2n){border-right:0}.integration-grid div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}.integration-grid div:nth-last-child(-n+2){border-bottom:0}.footer{grid-template-columns:1fr;text-align:center;gap:10px;padding-block:30px}.footer p:last-child{text-align:center}
 }
 @media (max-width: 600px){
-  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-art{min-height:380px}.hero-art img{width:115%}.status-card{transform:scale(.85)}.status-one{left:0}.status-two{right:-5%;top:10%}h1{font-size:58px}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
+  .training-grid{grid-template-columns:1fr;gap:30px}.brand-img img{height:38px}.orbit{display:none}
+  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-art{min-height:380px}h1{font-size:58px}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
 }
 
 
@@ -177,33 +206,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   color: var(--on-dark-muted); letter-spacing: -.005em; }
 .duo-fun { text-align: center; }
 .duo-fun h3 { margin: 0; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.1; letter-spacing: -.01em; color: var(--on-dark); }
-/* --- the compact duo cycle: offset overlapping scenes, mirrored beat entrances --- */
-.duo-cycle { position: relative; height: clamp(430px, 50vw, 640px); }
-.cycle-art { position: absolute; inset: 0; z-index: 1; }
-.cycle-art img { position: absolute; width: 68%; height: 84%; object-fit: cover; border-radius: 16px; box-shadow: 0 24px 60px rgba(16,37,49,.28); }
-.cycle-art .img-a { left: 0; top: 0; animation: sceneA 12s ease-in-out infinite; }
-.cycle-art .img-b { right: 0; bottom: 0; opacity: .22; animation: sceneB 12s ease-in-out infinite; }
-@keyframes sceneA { 0%, 42% { opacity: 1; } 50%, 92% { opacity: .3; } 100% { opacity: 1; } }
-@keyframes sceneB { 0%, 42% { opacity: .22; } 50%, 92% { opacity: 1; } 100% { opacity: .22; } }
-.cycle-copy { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
-.cycle-beat { position: absolute; background: rgba(16,37,49,.82); border-radius: 12px; padding: 20px 26px; max-width: min(540px, 78%); backdrop-filter: blur(4px); }
-.cycle-beat h3 { margin: 0 0 10px; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.05; letter-spacing: -.01em; color: #fffaf0; text-wrap: balance; }
-.cycle-beat .reply { margin: 0; color: rgba(255,250,240,.88); }
-.beat-a { left: 26px; bottom: 30px; opacity: 0; animation: beatA 12s ease-in-out infinite; }
-.beat-b { right: 26px; bottom: 30px; opacity: 0; animation: beatB 12s ease-in-out infinite; }
-@keyframes beatA { 0% { opacity: 0; transform: translateX(-46px); } 6%, 40% { opacity: 1; transform: none; } 48%, 100% { opacity: 0; transform: translateX(-46px); } }
-@keyframes beatB { 0%, 50% { opacity: 0; transform: translateX(46px); } 56%, 90% { opacity: 1; transform: none; } 98%, 100% { opacity: 0; transform: translateX(46px); } }
-@media (prefers-reduced-motion: reduce) {
-  .cycle-art .img-a, .cycle-art .img-b, .beat-a, .beat-b { animation: none; }
-  .cycle-art .img-b { opacity: .9; }
-  .beat-a, .beat-b { opacity: 1; transform: none; }
-}
 @media (max-width: 900px) {
-  .duo-cycle { height: clamp(400px, 118vw, 560px); }
-  .cycle-art img { width: 86%; height: 58%; }
-  .cycle-beat { padding: 14px 18px; max-width: 88%; }
-  .beat-a { left: 10px; bottom: 14px; }
-  .beat-b { right: 10px; bottom: 14px; }
 }
 /* Pricing must stack on small screens; an inline column count overrides media rules. */
 .pricing-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -217,10 +220,10 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .card { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .card h3 { font-size: 34px; text-transform: uppercase; }
 .card p { margin: 0; color: #526064; line-height: 1.6; }
-.card-tier { font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; color: var(--red); }
+.card-tier { font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; color: var(--blue-deep); }
 .card-price { font: italic 800 54px/1 "Barlow Condensed", sans-serif; color: var(--ink); }
 .card-price small { font-size: 20px; color: var(--muted); letter-spacing: .04em; }
-.card-star { border-width: 3px; box-shadow: 12px 12px 0 var(--red); transform: rotate(-1deg); }
+.card-star { border-width: 3px; box-shadow: 12px 12px 0 var(--gold-logo); transform: rotate(-1deg); }
 .card-cta { font-weight: 700; font-style: italic; color: var(--ink); }
 .card .button { margin-top: auto; align-self: start; }
 .gate-line { max-width: 64ch; margin: 46px auto 0; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.6; }
@@ -235,12 +238,12 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 <body>
   <div class="noise" aria-hidden="true"></div>
   <header class="nav shell">
-    <a href="#top" class="brand" aria-label="DungenAI home">
-      <span class="brand-orbit">✦</span>
-      <span>DUNGENAI</span>
+    <a href="#top" class="brand brand-img" aria-label="DunGenAI home">
+      <img src="assets/dungenai-logo.webp" width="240" height="97" alt="DunGenAI" decoding="async" />
     </a>
     <nav aria-label="Primary navigation">
       <a href="#why">Why</a>
+      <a href="#training">Training</a>
     </nav>
     <a class="button button-small" href="#pricing">Pricing</a>
   </header>
@@ -259,14 +262,19 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
         </div>
       </div>
 
-      <!-- MEDIA-SLOT S1: hero capture (animated webp) lands here on designer delivery + review. EMPTY by rule. -->
-      <div class="hero-art reveal delay-1" role="img" aria-label="The DungenAI stone and crystal wordmark">
+      <!-- HERO: the video plays immediately. Brandon, 2026-10-04: "load the video right away
+           instead of showing the logo and the quest accepted tag" — so the mark intro, the 2.2s
+           .swap sequence and the Quest-accepted card are all gone. The poster frame covers the
+           load so there is never a blank box, and the reduced-motion handler below strips
+           autoplay on every video[autoplay], which leaves the poster showing and nothing moving.
+           Source is 1080x1080 (square), re-encoded to 720x720 H.264 and framed inside its box
+           rather than bleeding past the column. -->
+      <div class="hero-art reveal delay-1">
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
-        <img class="hero-mark" src="assets/dungenai-mark.png" width="1254" height="550" fetchpriority="high" decoding="async" alt="DungenAI logo — carved stone letters and a glowing blue AI crystal" />
-        <video class="hero-base" src="assets/dungenai-hero.mp4" muted loop playsinline preload="auto" hidden
+        <video class="hero-base" src="assets/dungenai-hero.mp4" poster="assets/dungenai-hero-poster.webp"
+               width="480" height="480" autoplay muted loop playsinline preload="auto"
                aria-label="An overview of the dungeon world, zooming from the whole base down to rooms of working agents with alert and question markers overhead."></video>
-        <div class="status-card status-two"><i></i><span>Quest accepted</span></div>
       </div>
     </section>
 
@@ -324,24 +332,94 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
                alt="A low-poly archery range: an archer faces the target while a card reads Retro &middot; Brainstorm &mdash; type your answer to draw the bow, and shoot." />
         </figure>
       </div>
-      <div class="duo-cycle reveal" aria-label="Locked out, or on the bridge">
-        <div class="cycle-copy">
-          <div class="cycle-beat beat-a">
-            <h3>Don&rsquo;t be locked out of your orchestration.</h3>
-            <p class="reply">&ldquo;I&rsquo;m sorry, Dave.&rdquo;</p>
-          </div>
-          <div class="cycle-beat beat-b">
-            <h3>Run it like a Captain.</h3>
-            <p class="reply">&ldquo;Computer, on screen.&rdquo;</p>
-          </div>
-        </div>
-        <div class="cycle-art">
-          <img class="img-a" src="assets/nocontrol.webp" width="640" height="400" loading="lazy" decoding="async"
-               alt="An astronaut drifting outside a sealed hatch, tether loose in his hand, a red light lit, the mission still inside." />
-          <img class="img-b" src="assets/bridge.webp" width="640" height="400" loading="lazy" decoding="async"
-               alt="A ship's bridge, alive: nine crew at consoles, holograms turning, and the viewscreen reading mission confirmed." />
+    </section>
+
+
+    <section id="training" class="section shell">
+      <div class="training-head">
+        <p class="eyebrow">TRAINING &amp; AI EDUCATION</p>
+        <h2>Learn it by doing it.</h2>
+        <p class="lede">Everyone&rsquo;s been told to use AI. Almost nobody&rsquo;s been taught. Start at the trunk and work out
+          along the branches &mdash; on your own real work, with a real fleet, and verification built in so you can
+          always see what actually changed.</p>
+      </div>
+      <div class="training-grid">
+        <figure class="tree-wrap">
+        <svg class="tree" viewBox="0 0 900 520" role="img"
+             aria-label="The starter skill tree. Everyone begins at the trunk, Course 0 Meet AI Gently. The trunk unlocks four branches: Prompting and Delegation on the left, Verification and Responsible Use on the right. Both capstone branches feed the Mastery node, Ship a Reusable Quest.">
+          <g class="tree-edges" fill="none" stroke="#102531" stroke-width="4" stroke-linecap="round">
+            <path d="M450 420 V392 M180 392 H720 M180 392 V364 M720 392 V364"/>
+            <path d="M180 300 V244 M720 300 V244"/>
+            <path d="M180 180 V152 M180 152 H720 M720 180 V152 M450 152 V124"/>
+          </g>
+      <rect x="305" y="425" width="300" height="74" rx="9" fill="#102531"/>
+      <rect x="300" y="420" width="300" height="74" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="450.0" y="445" text-anchor="middle" class="tn-eyebrow">TRUNK &#183; START HERE</text>
+      <text x="450.0" y="468" text-anchor="middle" class="tn-title">Meet AI, Gently</text>
+
+      <rect x="65" y="305" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="60" y="300" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="180.0" y="325" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="180.0" y="348" text-anchor="middle" class="tn-title">Prompting</text>
+
+      <rect x="605" y="305" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="600" y="300" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="720.0" y="325" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="720.0" y="348" text-anchor="middle" class="tn-title">Verification</text>
+
+      <rect x="65" y="185" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="60" y="180" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="180.0" y="205" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="180.0" y="228" text-anchor="middle" class="tn-title">Delegation</text>
+
+      <rect x="605" y="185" width="240" height="64" rx="9" fill="#102531"/>
+      <rect x="600" y="180" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
+      <text x="720.0" y="205" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
+      <text x="720.0" y="228" text-anchor="middle" class="tn-title">Responsible Use</text>
+
+      <rect x="305" y="55" width="300" height="74" rx="9" fill="#102531"/>
+      <rect x="300" y="50" width="300" height="74" rx="9" fill="#f1b84b" stroke="#102531" stroke-width="2.5"/>
+      <text x="450.0" y="75" text-anchor="middle" class="tn-eyebrow">MASTERY &#183; CAPSTONE</text>
+      <text x="450.0" y="98" text-anchor="middle" class="tn-title">Ship a Reusable Quest</text>
+
+        </svg>
+          <figcaption>Nodes are lessons. Branches are courses. Everyone starts at the trunk.</figcaption>
+        </figure>
+        <div class="training-copy">
+          <ul class="tree-list">
+            <li><b>Start at the trunk.</b> Course&nbsp;0 &mdash; Meet AI, Gently. No jargon, and nothing to install first.</li>
+            <li><b>Pick a branch.</b> Prompting, Delegation, Verification, Responsible&nbsp;Use.</li>
+            <li><b>Never trust a claim untested.</b> Verification isn&rsquo;t a module bolted on the end &mdash; it&rsquo;s wired through every branch.</li>
+            <li><b>Earn the capstone.</b> Ship a reusable quest your whole crew can run.</li>
+          </ul>
+          <p class="training-kicker">Team workshops run on your work, in your base, with your fleet. <b>No slides.</b></p>
+          <a class="button" href="#waitlist">Book team training</a>
         </div>
       </div>
+    </section>
+
+    <!-- WAITLIST: the one email capture on the page. It is also the destination for
+         "Book team training", because there is no download to send anyone yet — the
+         releases repo went private on 2026-10-04 and no current signed build has shipped.
+         Posts to Supabase public.waitlist. The key below is the PUBLISHABLE key and the
+         table is INSERT-only for anon with no SELECT policy, so it grants "add a row" and
+         nothing else — the list cannot be read back through it. -->
+    <section id="waitlist" class="section shell">
+      <div class="waitlist-head">
+        <p class="eyebrow">NOT OUT YET</p>
+        <h2>Get the first build.</h2>
+        <p class="lede">We&rsquo;re finishing the look and the onboarding. Leave your email and you&rsquo;ll be first
+          through the door &mdash; or say hello the same way about team training.</p>
+      </div>
+      <form class="waitlist-form" id="waitlist-form" novalidate>
+        <label class="sr-only" for="waitlist-email">Email address</label>
+        <div class="waitlist-row">
+          <input class="waitlist-input" id="waitlist-email" name="email" type="email" required
+                 autocomplete="email" inputmode="email" placeholder="you@yourcrew.com" />
+          <button class="button" id="waitlist-submit" type="submit">Join the waitlist</button>
+        </div>
+        <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
+      </form>
     </section>
 
     <!-- MEDIA-SLOT S4: theme montage beside the tiers. EMPTY by rule. -->
@@ -360,7 +438,12 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
           <p class="card-price">Free</p>
           <h3>The Clean world</h3>
           <p>Your whole fleet as a living world. The rituals, the quests, the map &mdash; in the clean theme, drawn from nothing. On your own machine.</p>
-          <a class="button card-btn" href="https://github.com/beveryday/pizza-fleet-releases/releases/latest">Download free &darr;</a>
+          <button class="button card-btn" type="button" disabled>Coming Soon</button>
+          <!-- HELD: the free download link is gone because beveryday/pizza-fleet-releases is
+               PRIVATE as of 2026-10-04 (Brandon's call) — the link 404'd. It also pointed at
+               free-28 (2026-09-13), which predates this codebase's first commit (2026-09-21),
+               so it would have handed someone a dead build. Restore a download only when a
+               current signed build ships. SHOW_FREE_TIER is untouched. -->
         </article>
         <article class="card card-star">
           <p class="card-tier">WORLDS</p>
@@ -393,13 +476,13 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   </main>
 
   <footer class="footer shell">
-    <a class="brand" href="#top"><span class="brand-orbit">✦</span><span>DUNGENAI</span></a>
+    <a class="brand" href="#top"><span class="brand-orbit">✦</span><span>DunGenAI</span></a>
     <p>Real Work. Real Fun.</p>
     <!-- LEGAL-SLOT: terms + privacy links land here. Content authority CEO/CPO+Brandon;
          EMPTY by rule — a drafted stand-in is not a hold (per the tracked marketing record). -->
     <!-- SUPPORT-SLOT: the support/contact path lands here, same authority, same rule. -->
     <!-- PRIVACY-SLOT: reserved, ungated. -->
-    <p>© 2026 DungenAI</p>
+    <p>© 2026 DunGenAI</p>
   </footer>
 
   <script>
@@ -412,33 +495,90 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('video[autoplay]').forEach((v) => { v.removeAttribute('autoplay'); v.pause(); });
 }
 
-// HERO sequence: the mark first; then it shrinks to the Quest-Accepted corner and
-// stays while the overview capture fades in full-bleed. No asset, no broken state:
-// the video element 404s silently and the mark simply remains.
-const art = document.querySelector('.hero-art');
+// HERO: no sequence any more — the video autoplays on load behind its poster frame.
+// The reduced-motion block above has already stripped autoplay if the user asked for it,
+// so this only nudges the play() that some browsers withhold until a gesture; if it is
+// refused the poster simply stays, which is a correct state rather than a broken one.
 const heroVid = document.querySelector('video.hero-base');
-if (art && heroVid) {
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const go = () => {
-    heroVid.hidden = false;
-    if (reduced) { art.classList.add('swap'); return; }
-    heroVid.play().catch(() => {});
-    setTimeout(() => art.classList.add('swap'), 2200);
-  };
-  if (heroVid.readyState >= 2) { go(); } else { heroVid.addEventListener('loadeddata', go, { once: true }); }
-}
+if (heroVid && heroVid.hasAttribute('autoplay')) { heroVid.play().catch(() => {}); }
 if (SHOW_FREE_TIER) { document.getElementById('free-card').hidden = false; }
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
+// WAITLIST -> Supabase. return=minimal is REQUIRED: the table has no SELECT policy for
+// anon, so return=representation would need a read it is not granted and would fail.
+const WL_URL = 'https://jsrjgefqhehiwknseoos.supabase.co/rest/v1/waitlist';
+const WL_KEY = 'sb_publishable_eDvRdW3L6nfHz7MPa5gd2w_UkHPRAHL';
+const wlForm = document.getElementById('waitlist-form');
+if (wlForm) {
+  const wlIn = document.getElementById('waitlist-email');
+  const wlBtn = document.getElementById('waitlist-submit');
+  const wlMsg = document.getElementById('waitlist-status');
+  const say = (t, ok) => { wlMsg.textContent = t; wlMsg.dataset.state = ok ? 'ok' : 'err'; };
+  wlForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = wlIn.value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { say('That email looks off \u2014 give it another look?', false); return; }
+    wlBtn.disabled = true; say('Adding you\u2026', true);
+    try {
+      const res = await fetch(WL_URL, {
+        method: 'POST',
+        headers: { apikey: WL_KEY, Authorization: 'Bearer ' + WL_KEY,
+                   'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({ email, source: 'dungen.ai' })
+      });
+      if (res.ok) { say("You\u2019re on the list. We\u2019ll be in touch.", true); wlForm.reset(); }
+      else if (res.status === 409) { say("You\u2019re already on the list.", true); wlForm.reset(); }
+      else { say("That didn\u2019t go through. Try again in a minute?", false); }
+    } catch { say('No connection \u2014 try again in a minute?', false); }
+    wlBtn.disabled = false;
   });
-}, { threshold: 0.12 });
+}
 
-document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+// SCROLL REVEAL. Decoration only, and deliberately built so that a failure of the
+// decoration can never cost anyone the content. Three things were getting this wrong:
+//
+// 1. The CSS used to hide .reveal unconditionally. Now it leaves everything visible at
+//    rest and only html.has-reveal hides it, so no JS (or reduced motion) means no
+//    hiding, rather than a page of invisible sections.
+// 2. A CSS transition only advances on rendered frames. A throttled or backgrounded
+//    frame creates the 0 -> 1 transition and then never ticks it, pinning the element
+//    at opacity 0 with no CSS rule to blame and no transitionend ever firing. That is
+//    the "whole section stuck dim" bug. Timers still run where frames do not, so .shown
+//    lands a beat after .visible and states the end value outright, transition and all.
+// 3. IntersectionObserver callbacks also need a rendering update, so in the same
+//    throttled frame the observer never fires at all and the element is never even
+//    asked to appear. A scroll listener fires from the event, not from a frame, so
+//    that is what drives this instead — nine elements and a rect read, which is
+//    cheap enough not to need the observer.
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  const show = (el) => {
+    if (el.classList.contains('visible')) return;
+    el.classList.add('visible');
+    setTimeout(() => el.classList.add('shown'), 900);
+  };
+  // ORDER MATTERS. Every rect is read here, in one pass, BEFORE either class write
+  // below, and the two writes then happen back to back. Reading a rect in between
+  // flushes style, the browser resolves opacity 0 for real, and the first screen
+  // fades in instead of painting solid — which is what kept getting screenshotted
+  // mid-fade. Anything already on the first screen is simply never hidden.
+  const onFirstScreen = reveals.filter((el) => el.getBoundingClientRect().top < window.innerHeight);
+  onFirstScreen.forEach((el) => { el.classList.add('visible'); el.classList.add('shown'); });
+  document.documentElement.classList.add('has-reveal');
+
+  let pending = reveals.filter((el) => !el.classList.contains('visible'));
+  const sweep = () => {
+    if (!pending.length) return;
+    const limit = window.innerHeight * 0.92;
+    pending.filter((el) => el.getBoundingClientRect().top < limit).forEach(show);
+    pending = pending.filter((el) => !el.classList.contains('visible'));
+    if (!pending.length) {
+      removeEventListener('scroll', sweep);
+      removeEventListener('resize', sweep);
+    }
+  };
+  addEventListener('scroll', sweep, { passive: true });
+  addEventListener('resize', sweep);
+}
 
 </script>
 </body>
