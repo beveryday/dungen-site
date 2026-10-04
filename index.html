@@ -90,7 +90,23 @@ a { color: inherit; text-decoration: none; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 24px; background: var(--gold-logo); color: var(--ink); border: 2px solid var(--ink); box-shadow: 5px 5px 0 var(--ink); font: 800 italic 18px/1 "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .04em; transition: transform .15s, box-shadow .15s; cursor: pointer; }
 .button:hover { transform: translate(3px,3px); box-shadow: 2px 2px 0 var(--ink); }
 .button-small { min-height: 42px; padding-inline: 18px; font-size: 16px; }
-.hero { min-height: min(730px, calc(100svh - 84px)); display: grid; grid-template-columns: .96fr 1.04fr; align-items: center; gap: 38px; padding-block: clamp(28px, 4.5vh, 72px) clamp(32px, 5vh, 80px); }
+/* HERO, 2026-10-04. Brandon: "The home page carousel is not taking up the full height
+   and width of it's side" -- the video on the right. It has to reach the window's right
+   edge and run from under the nav down to the marquee, with no box around it, while his
+   earlier rule still holds: nav + hero fit one screen, nothing past the right edge.
+
+   So the hero is NO LONGER a .shell. It is full-bleed, and the shell's own left gutter is
+   rebuilt as track 1 so the headline still lines up with the nav logo above it:
+     track 1  max(20px, (100% - 1180px)/2)  -- .shell's left margin, expressed as a track.
+              100% here is the grid container, i.e. the body width. 100vw would INCLUDE
+              the scrollbar and misalign the copy against the nav by its width.
+     track 2  the copy. minmax(0,1fr), never plain 1fr: a 1fr track floors at min-content,
+              so long copy would grow the track and shove track 3 off the right edge.
+     track 3  exactly 50% -- "the right half" -- so the video ends flush at the window edge.
+   min-height, not height: if the copy is ever taller than the viewport (short window, big
+   text) the hero grows instead of clipping, and the stretched video grows with it. */
+.hero { min-height: calc(100svh - 84px); display: grid; grid-template-columns: max(20px, calc((100% - 1180px) / 2)) minmax(0, 1fr) 50%; align-items: stretch; }
+.hero-copy { grid-column: 2; align-self: center; padding-block: 24px; padding-right: 38px; }
 .eyebrow { font: 800 14px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; color: var(--blue); margin: 0 0 22px; }
 h1,h2,h3 { font-family: "Barlow Condensed", sans-serif; margin: 0; }
 h1 { font-size: clamp(64px, 7vw, 108px); line-height: .86; letter-spacing: -.035em; text-transform: uppercase; }
@@ -102,16 +118,20 @@ h1 em { color: var(--blue); font-style: italic; }
 .text-link span { color: var(--blue); }
 .proof-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 42px; }
 .proof-row span { border: 1px solid var(--line); background: rgba(255,255,255,.35); border-radius: 99px; padding: 9px 13px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
-.hero-art { position: relative; min-height: 0; display: grid; place-items: center; }
-/* hero media sequence: the mark loads first, then SHRINKS AND SLIDES to the
-   Quest-Accepted corner (it stays, as a chip) while the overview capture fades in
-   and takes over the whole right side of the hero, full bleed. */
-/* The hero video is square (1080x1080 source) and stays inside its box — never wider than
-   the column, never bleeding off the page. */
-.hero-art .hero-base { position: relative; z-index: 2; width: min(480px, 100%, calc(100svh - 300px)); aspect-ratio: 1 / 1; height: auto; object-fit: cover; background: var(--paper); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); border-radius: 14px; }
-.orbit { position: absolute; border: 2px solid rgba(16,37,49,.12); border-radius: 50%; transform: rotate(-28deg); }
-.orbit-one { width: min(520px, 100%); height: min(280px, 54vw); }
-.orbit-two { width: min(410px, 78%); height: min(220px, 42vw); border-color: rgba(116,224,252,.22); }
+.hero-art { grid-column: 3; position: relative; min-height: 0; }
+/* The source is SQUARE (1080x1080); the right half of a 16:9 window is very close to
+   square too (at 1920x1080 it is 960x996), so cover crops only ~2-3% off one pair of
+   edges at every laptop and desktop size. object-position is pinned to the BOTTOM, not
+   centre: the wordmark sits at ~60-78% of the frame height and the "Gather the party"
+   banner runs to the very bottom edge, so whatever has to go should come off the top
+   (the arch and ceiling, which carry nothing). Bottom-anchoring is a no-op in the common
+   case anyway, where the overflow is horizontal. Removing the frame is the point of the
+   change, so border/shadow/radius all go -- the poster still covers the load.
+   position:absolute is LOAD-BEARING, not tidiness. In flow, the element keeps its 1:1
+   intrinsic ratio as a min-content contribution, so a 640px-wide column sized the grid row
+   to 640px when the fold allowed only 636 -- the hero sat 4px below the fold at 1280x720
+   and 1440x800. Out of flow it contributes no height, so the row is exactly the fold. */
+.hero-art .hero-base { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; background: var(--paper); border: 0; border-radius: 0; box-shadow: none; }
 .ticker { overflow: hidden; border-block: 2px solid var(--ink); background: var(--ink); color: var(--cream); transform: rotate(-1deg) scale(1.02); }
 .ticker-track { width: max-content; display: flex; align-items: center; gap: 24px; padding: 15px 0; animation: ticker 25s linear infinite; font: italic 800 22px/1 "Barlow Condensed"; letter-spacing: .06em; }
 .ticker-track i { color: var(--blue); }
@@ -159,11 +179,11 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 .reveal { transition:opacity .75s ease, transform .75s ease; }html.has-reveal .reveal{opacity:0;transform:translateY(24px)}html.has-reveal .reveal.visible{opacity:1;transform:none}html.has-reveal .reveal.shown{opacity:1;transform:none;transition:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
 @media (prefers-reduced-motion: reduce){html.has-reveal .reveal{opacity:1;transform:none;transition:none}}
 @media (max-width: 900px){
-  .nav{grid-template-columns:1fr auto}.nav nav{display:none}.hero{grid-template-columns:1fr;min-height:0;padding-top:48px}.hero-art{min-height:0}.hero-art .hero-base{width:min(480px,100%)}.split,.product-showcase,.cta{grid-template-columns:1fr}.loop{grid-template-columns:1fr 1fr}.loop-card:nth-child(2){border-right:0}.loop-card:nth-child(-n+2){border-bottom:1px solid var(--line)}.roles{grid-template-columns:1fr}.integration-grid{grid-template-columns:1fr 1fr}.integration-grid div:nth-child(3n){border-right:1px solid var(--line)}.integration-grid div:nth-child(2n){border-right:0}.integration-grid div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}.integration-grid div:nth-last-child(-n+2){border-bottom:0}.footer{grid-template-columns:1fr;text-align:center;gap:10px;padding-block:30px}.footer p:last-child{text-align:center}
+  .nav{grid-template-columns:1fr auto}.nav nav{display:none}.hero{grid-template-columns:1fr;min-height:0;padding-top:48px;row-gap:34px}.hero-copy{grid-column:1;padding:0 20px}.hero-art{grid-column:1;min-height:0;height:min(100vw,520px)}.split,.product-showcase,.cta{grid-template-columns:1fr}.loop{grid-template-columns:1fr 1fr}.loop-card:nth-child(2){border-right:0}.loop-card:nth-child(-n+2){border-bottom:1px solid var(--line)}.roles{grid-template-columns:1fr}.integration-grid{grid-template-columns:1fr 1fr}.integration-grid div:nth-child(3n){border-right:1px solid var(--line)}.integration-grid div:nth-child(2n){border-right:0}.integration-grid div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}.integration-grid div:nth-last-child(-n+2){border-bottom:0}.footer{grid-template-columns:1fr;text-align:center;gap:10px;padding-block:30px}.footer p:last-child{text-align:center}
 }
 @media (max-width: 600px){
-  .training-grid{grid-template-columns:1fr;gap:30px}.brand-img img{height:38px}.orbit{display:none}
-  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-art{min-height:380px}h1{font-size:58px}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
+  .training-grid{grid-template-columns:1fr;gap:30px}.brand-img img{height:38px}
+  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-copy{padding:0 12px}.hero-art{min-height:0;height:min(100vw,440px)}h1{font-size:58px}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
 }
 
 
@@ -249,7 +269,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   </header>
 
   <main id="top">
-    <section class="hero shell">
+    <section class="hero">
       <div class="hero-copy reveal">
         <p class="eyebrow">Mission control for your AI crew.</p>
         <h1>Real Work. Real Fun.</h1>
@@ -267,13 +287,13 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
            .swap sequence and the Quest-accepted card are all gone. The poster frame covers the
            load so there is never a blank box, and the reduced-motion handler below strips
            autoplay on every video[autoplay], which leaves the poster showing and nothing moving.
-           Source is 1080x1080 (square), re-encoded to 720x720 H.264 and framed inside its box
-           rather than bleeding past the column. -->
+           Source is 1080x1080 (square), re-encoded to 720x720 H.264, and as of 2026-10-04 it
+           FILLS the hero's right half edge to edge (see the .hero comment in the style block).
+           The two .orbit rings used to sit behind it; an opaque full-bleed video covers them
+           completely, so the divs and their CSS are gone rather than left as dead decoration. -->
       <div class="hero-art reveal delay-1">
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
         <video class="hero-base" src="assets/dungenai-hero.mp4" poster="assets/dungenai-hero-poster.webp"
-               width="480" height="480" autoplay muted loop playsinline preload="auto"
+               width="720" height="720" autoplay muted loop playsinline preload="auto"
                aria-label="An overview of the dungeon world, zooming from the whole base down to rooms of working agents with alert and question markers overhead."></video>
       </div>
     </section>
