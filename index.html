@@ -109,7 +109,13 @@ a { color: inherit; text-decoration: none; }
 .hero-copy { grid-column: 2; align-self: center; padding-block: 24px; padding-right: 38px; }
 .eyebrow { font: 800 14px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; color: var(--blue); margin: 0 0 22px; }
 h1,h2,h3 { font-family: "Barlow Condensed", sans-serif; margin: 0; }
-h1 { font-size: clamp(64px, 7vw, 108px); line-height: .86; letter-spacing: -.035em; text-transform: uppercase; }
+/* The cap is 90px, not 108px. The copy column is a constant 552px of text at every
+   width above 1220px (track 2 = 50% minus the shell gutter minus the 38px channel), so
+   above that point the headline no longer gains room as the window grows -- 7vw does.
+   At 108px "Real Work." no longer fits one line and the tagline broke as
+   "REAL / WORK. / REAL FUN." from 1440px up. 90px is the largest size that still holds
+   the intended two-line break in 552px; 7vw keeps the old behaviour below 1286px. */
+h1 { font-size: clamp(64px, 7vw, 90px); line-height: .86; letter-spacing: -.035em; text-transform: uppercase; }
 h1 em { color: var(--blue); font-style: italic; }
 .sub { font: italic 800 30px/1.1 "Barlow Condensed", sans-serif; color: var(--blue); letter-spacing: .02em; margin: 26px 0 0; }
 .lede { max-width: 620px; font-size: 20px; line-height: 1.65; color: var(--on-dark); margin: 28px 0 32px; }
@@ -183,7 +189,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
 }
 @media (max-width: 600px){
   .training-grid{grid-template-columns:1fr;gap:30px}.brand-img img{height:38px}
-  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-copy{padding:0 12px}.hero-art{min-height:0;height:min(100vw,440px)}h1{font-size:58px}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
+  .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-copy{padding:0 12px}.hero-art{min-height:0;height:min(100vw,440px)}h1{font-size:min(58px,15vw)}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
 }
 
 
