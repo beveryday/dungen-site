@@ -61,20 +61,6 @@ a { color: inherit; text-decoration: none; }
 .brand-img { gap: 0; }
 .brand-img img { display: block; height: 44px; width: auto; }
 
-/* --- training & AI education --- */
-.training-head h2 { margin: 0 0 6px; }
-.training-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: 10px; }
-.tree-wrap { margin: 0; }
-.tree-wrap .tree { display: block; width: 100%; height: auto; }
-.tree-wrap figcaption { margin-top: 14px; font-size: 14px; color: var(--on-dark-muted); }
-.tn-eyebrow { font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .16em; fill: var(--blue-deep); text-transform: uppercase; }
-.tn-title { font: 800 italic 23px/1 "Barlow Condensed", sans-serif; letter-spacing: .02em; fill: var(--ink); }
-.tree-list { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 15px; }
-.tree-list li { padding-left: 20px; position: relative; font-size: 17px; line-height: 1.6; color: var(--on-dark-muted); }
-.tree-list li::before { content: ""; position: absolute; left: 0; top: .62em; width: 9px; height: 9px; background: var(--blue); transform: rotate(45deg); }
-.tree-list b, .training-kicker b { color: var(--on-dark); }
-.training-kicker { margin: 0 0 24px; font-size: 18px; line-height: 1.6; color: var(--on-dark-muted); }
-
 /* --- waitlist --- */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 .waitlist-form { margin-top: 24px; max-width: 640px; }
@@ -188,7 +174,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   .nav{grid-template-columns:1fr auto}.nav nav{display:none}.hero{grid-template-columns:1fr;min-height:0;padding-top:48px;row-gap:34px}.hero-copy{grid-column:1;padding:0 20px}.hero-art{grid-column:1;min-height:0;height:min(100vw,520px)}.split,.product-showcase,.cta{grid-template-columns:1fr}.loop{grid-template-columns:1fr 1fr}.loop-card:nth-child(2){border-right:0}.loop-card:nth-child(-n+2){border-bottom:1px solid var(--line)}.roles{grid-template-columns:1fr}.integration-grid{grid-template-columns:1fr 1fr}.integration-grid div:nth-child(3n){border-right:1px solid var(--line)}.integration-grid div:nth-child(2n){border-right:0}.integration-grid div:nth-last-child(-n+3){border-bottom:1px solid var(--line)}.integration-grid div:nth-last-child(-n+2){border-bottom:0}.footer{grid-template-columns:1fr;text-align:center;gap:10px;padding-block:30px}.footer p:last-child{text-align:center}
 }
 @media (max-width: 600px){
-  .training-grid{grid-template-columns:1fr;gap:30px}.brand-img img{height:38px}
+  .brand-img img{height:38px}
   .shell{width:min(100% - 24px,1180px)}.nav>.button{display:none}.nav{grid-template-columns:1fr}.hero{min-height:auto;padding-block:55px}.hero-copy{padding:0 12px}.hero-art{min-height:0;height:min(100vw,440px)}h1{font-size:min(58px,15vw)}.lede{font-size:17px}.section{padding-block:90px}.split{gap:25px}.section-copy{padding-top:0;font-size:18px}.loop{grid-template-columns:1fr}.loop-card{border-right:0;border-bottom:1px solid var(--line)!important}.loop-card:last-child{border-bottom:0!important}.world{height:430px}.tile{transform:scale(.78)}.tile-a{left:0}.tile-b{left:28%}.tile-c{right:-4%}.tile-d{right:3%}.mission-card{width:230px}.integration-grid{grid-template-columns:1fr}.integration-grid div{border-right:0!important;border-bottom:1px solid var(--line)!important}.integration-grid div:last-child{border-bottom:0!important}.cta{padding:38px 24px}.signup{grid-template-columns:1fr}.footer{margin-top:40px}
 }
 
@@ -269,7 +255,6 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
     </a>
     <nav aria-label="Primary navigation">
       <a href="#why">Why</a>
-      <a href="#training">Training</a>
     </nav>
     <a class="button button-small" href="#pricing">Pricing</a>
   </header>
@@ -360,73 +345,8 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
       </div>
     </section>
 
-
-    <section id="training" class="section shell">
-      <div class="training-head">
-        <p class="eyebrow">TRAINING &amp; AI EDUCATION</p>
-        <h2>Learn it by doing it.</h2>
-        <p class="lede">Everyone&rsquo;s been told to use AI. Almost nobody&rsquo;s been taught. Start at the trunk and work out
-          along the branches &mdash; on your own real work, with a real fleet, and verification built in so you can
-          always see what actually changed.</p>
-      </div>
-      <div class="training-grid">
-        <figure class="tree-wrap">
-        <svg class="tree" viewBox="0 0 900 520" role="img"
-             aria-label="The starter skill tree. Everyone begins at the trunk, Course 0 Meet AI Gently. The trunk unlocks four branches: Prompting and Delegation on the left, Verification and Responsible Use on the right. Both capstone branches feed the Mastery node, Ship a Reusable Quest.">
-          <g class="tree-edges" fill="none" stroke="#102531" stroke-width="4" stroke-linecap="round">
-            <path d="M450 420 V392 M180 392 H720 M180 392 V364 M720 392 V364"/>
-            <path d="M180 300 V244 M720 300 V244"/>
-            <path d="M180 180 V152 M180 152 H720 M720 180 V152 M450 152 V124"/>
-          </g>
-      <rect x="305" y="425" width="300" height="74" rx="9" fill="#102531"/>
-      <rect x="300" y="420" width="300" height="74" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
-      <text x="450.0" y="445" text-anchor="middle" class="tn-eyebrow">TRUNK &#183; START HERE</text>
-      <text x="450.0" y="468" text-anchor="middle" class="tn-title">Meet AI, Gently</text>
-
-      <rect x="65" y="305" width="240" height="64" rx="9" fill="#102531"/>
-      <rect x="60" y="300" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
-      <text x="180.0" y="325" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
-      <text x="180.0" y="348" text-anchor="middle" class="tn-title">Prompting</text>
-
-      <rect x="605" y="305" width="240" height="64" rx="9" fill="#102531"/>
-      <rect x="600" y="300" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
-      <text x="720.0" y="325" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
-      <text x="720.0" y="348" text-anchor="middle" class="tn-title">Verification</text>
-
-      <rect x="65" y="185" width="240" height="64" rx="9" fill="#102531"/>
-      <rect x="60" y="180" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
-      <text x="180.0" y="205" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
-      <text x="180.0" y="228" text-anchor="middle" class="tn-title">Delegation</text>
-
-      <rect x="605" y="185" width="240" height="64" rx="9" fill="#102531"/>
-      <rect x="600" y="180" width="240" height="64" rx="9" fill="#fffaf0" stroke="#102531" stroke-width="2.5"/>
-      <text x="720.0" y="205" text-anchor="middle" class="tn-eyebrow">BRANCH</text>
-      <text x="720.0" y="228" text-anchor="middle" class="tn-title">Responsible Use</text>
-
-      <rect x="305" y="55" width="300" height="74" rx="9" fill="#102531"/>
-      <rect x="300" y="50" width="300" height="74" rx="9" fill="#f1b84b" stroke="#102531" stroke-width="2.5"/>
-      <text x="450.0" y="75" text-anchor="middle" class="tn-eyebrow">MASTERY &#183; CAPSTONE</text>
-      <text x="450.0" y="98" text-anchor="middle" class="tn-title">Ship a Reusable Quest</text>
-
-        </svg>
-          <figcaption>Nodes are lessons. Branches are courses. Everyone starts at the trunk.</figcaption>
-        </figure>
-        <div class="training-copy">
-          <ul class="tree-list">
-            <li><b>Start at the trunk.</b> Course&nbsp;0 &mdash; Meet AI, Gently. No jargon, and nothing to install first.</li>
-            <li><b>Pick a branch.</b> Prompting, Delegation, Verification, Responsible&nbsp;Use.</li>
-            <li><b>Never trust a claim untested.</b> Verification isn&rsquo;t a module bolted on the end &mdash; it&rsquo;s wired through every branch.</li>
-            <li><b>Earn the capstone.</b> Ship a reusable quest your whole crew can run.</li>
-          </ul>
-          <p class="training-kicker">Team workshops run on your work, in your base, with your fleet. <b>No slides.</b></p>
-          <a class="button" href="#waitlist">Book team training</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- WAITLIST: the one email capture on the page. It is also the destination for
-         "Book team training", because there is no download to send anyone yet — the
-         releases repo went private on 2026-10-04 and no current signed build has shipped.
+    <!-- WAITLIST: the one email capture on the page. There is no download to send anyone
+         yet — the releases repo went private on 2026-10-04 and no current signed build has shipped.
          Posts to Supabase public.waitlist. The key below is the PUBLISHABLE key and the
          table is INSERT-only for anon with no SELECT policy, so it grants "add a row" and
          nothing else — the list cannot be read back through it. -->
@@ -435,7 +355,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
         <p class="eyebrow">NOT OUT YET</p>
         <h2>Get the first build.</h2>
         <p class="lede">We&rsquo;re finishing the look and the onboarding. Leave your email and you&rsquo;ll be first
-          through the door &mdash; or say hello the same way about team training.</p>
+          through the door.</p>
       </div>
       <form class="waitlist-form" id="waitlist-form" novalidate>
         <label class="sr-only" for="waitlist-email">Email address</label>
