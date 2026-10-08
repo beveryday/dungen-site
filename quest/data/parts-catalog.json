@@ -1,0 +1,3069 @@
+{
+ "version": 1,
+ "rig": "anim_v1/Rig_Medium_General.glb",
+ "bases": [
+  {
+   "id": "actors/Barbarian.glb",
+   "file": "actors/Barbarian.glb",
+   "label": "Barbarian",
+   "atlas": "barbarian_texture",
+   "slots": {
+    "headwear": "actors/Barbarian.glb#Barbarian_Hat",
+    "back": "actors/Barbarian.glb#Barbarian_Cape",
+    "armLeft": "actors/Barbarian.glb#Barbarian_ArmLeft",
+    "armRight": "actors/Barbarian.glb#Barbarian_ArmRight",
+    "body": "actors/Barbarian.glb#Barbarian_Body",
+    "head": "actors/Barbarian.glb#Barbarian_Head",
+    "legLeft": "actors/Barbarian.glb#Barbarian_LegLeft",
+    "legRight": "actors/Barbarian.glb#Barbarian_LegRight"
+   }
+  },
+  {
+   "id": "actors/Caveman.glb",
+   "file": "actors/Caveman.glb",
+   "label": "Caveman",
+   "atlas": "caveman_texture",
+   "slots": {
+    "armLeft": "actors/Caveman.glb#Caveman_ArmLeft",
+    "armRight": "actors/Caveman.glb#Caveman_ArmRight",
+    "body": "actors/Caveman.glb#Caveman_Body",
+    "head": "actors/Caveman.glb#Caveman_Head",
+    "legLeft": "actors/Caveman.glb#Caveman_LegLeft",
+    "legRight": "actors/Caveman.glb#Caveman_LegRight"
+   }
+  },
+  {
+   "id": "actors/CombatMech.glb",
+   "file": "actors/CombatMech.glb",
+   "label": "Combat Mech",
+   "atlas": "combatmech_texture",
+   "slots": {
+    "back": "actors/CombatMech.glb#CombatMech_WingLeft",
+    "armLeft": "actors/CombatMech.glb#CombatMech_ArmLeft",
+    "armRight": "actors/CombatMech.glb#CombatMech_ArmRight",
+    "body": "actors/CombatMech.glb#CombatMech_Body",
+    "head": "actors/CombatMech.glb#CombatMech_Head",
+    "legLeft": "actors/CombatMech.glb#CombatMech_LegLeft",
+    "legRight": "actors/CombatMech.glb#CombatMech_LegRight"
+   }
+  },
+  {
+   "id": "actors/Helper_A.glb",
+   "file": "actors/Helper_A.glb",
+   "label": "Helper A",
+   "atlas": "helpers_texture",
+   "slots": {
+    "armLeft": "actors/Helper_A.glb#Helper_A_ArmLeft",
+    "armRight": "actors/Helper_A.glb#Helper_A_ArmRight",
+    "body": "actors/Helper_A.glb#Helper_A_Body",
+    "headwear": "actors/Helper_A.glb#Helper_A_Hat",
+    "head": "actors/Helper_A.glb#Helper_A_Head",
+    "legLeft": "actors/Helper_A.glb#Helper_A_LegLeft",
+    "legRight": "actors/Helper_A.glb#Helper_A_LegRight"
+   }
+  },
+  {
+   "id": "actors/Helper_B.glb",
+   "file": "actors/Helper_B.glb",
+   "label": "Helper B",
+   "atlas": "helpers_texture",
+   "slots": {
+    "armLeft": "actors/Helper_B.glb#Helper_B_ArmLeft",
+    "armRight": "actors/Helper_B.glb#Helper_B_ArmRight",
+    "body": "actors/Helper_B.glb#Helper_B_Body",
+    "headwear": "actors/Helper_B.glb#Helper_B_Hat",
+    "head": "actors/Helper_B.glb#Helper_B_Head",
+    "legLeft": "actors/Helper_B.glb#Helper_B_LegLeft",
+    "legRight": "actors/Helper_B.glb#Helper_B_LegRight"
+   }
+  },
+  {
+   "id": "actors/Hiker.glb",
+   "file": "actors/Hiker.glb",
+   "label": "Hiker",
+   "atlas": "hiker_texture",
+   "slots": {
+    "armLeft": "actors/Hiker.glb#Hiker_ArmLeft",
+    "armRight": "actors/Hiker.glb#Hiker_ArmRight",
+    "back": "actors/Hiker.glb#Hiker_Backpack",
+    "body": "actors/Hiker.glb#Hiker_Body",
+    "headwear": "actors/Hiker.glb#Hiker_Hat",
+    "head": "actors/Hiker.glb#Hiker_Head",
+    "legLeft": "actors/Hiker.glb#Hiker_LegLeft",
+    "legRight": "actors/Hiker.glb#Hiker_LegRight"
+   }
+  },
+  {
+   "id": "actors/Knight.glb",
+   "file": "actors/Knight.glb",
+   "label": "Knight",
+   "atlas": "knight_texture",
+   "slots": {
+    "headwear": "actors/Knight.glb#Knight_Helmet",
+    "back": "actors/Knight.glb#Knight_Cape",
+    "armLeft": "actors/Knight.glb#Knight_ArmLeft",
+    "armRight": "actors/Knight.glb#Knight_ArmRight",
+    "body": "actors/Knight.glb#Knight_Body",
+    "head": "actors/Knight.glb#Knight_Head",
+    "legLeft": "actors/Knight.glb#Knight_LegLeft",
+    "legRight": "actors/Knight.glb#Knight_LegRight"
+   }
+  },
+  {
+   "id": "actors/Mage.glb",
+   "file": "actors/Mage.glb",
+   "label": "Mage",
+   "atlas": "mage_texture",
+   "slots": {
+    "headwear": "actors/Mage.glb#Mage_Hat",
+    "back": "actors/Mage.glb#Mage_Cape",
+    "armLeft": "actors/Mage.glb#Mage_ArmLeft",
+    "armRight": "actors/Mage.glb#Mage_ArmRight",
+    "body": "actors/Mage.glb#Mage_Body",
+    "head": "actors/Mage.glb#Mage_Head",
+    "legLeft": "actors/Mage.glb#Mage_LegLeft",
+    "legRight": "actors/Mage.glb#Mage_LegRight"
+   }
+  },
+  {
+   "id": "actors/Protagonist_A.glb",
+   "file": "actors/Protagonist_A.glb",
+   "label": "Protagonist A",
+   "atlas": "protagonist_texture",
+   "slots": {
+    "armLeft": "actors/Protagonist_A.glb#Protagonist_A_ArmLeft",
+    "armRight": "actors/Protagonist_A.glb#Protagonist_A_ArmRight",
+    "back": "actors/Protagonist_A.glb#Protagonist_A_Backpack",
+    "body": "actors/Protagonist_A.glb#Protagonist_A_Body",
+    "face": "actors/Protagonist_A.glb#Protagonist_A_Glasses",
+    "head": "actors/Protagonist_A.glb#Protagonist_A_Head",
+    "legLeft": "actors/Protagonist_A.glb#Protagonist_A_LegLeft",
+    "legRight": "actors/Protagonist_A.glb#Protagonist_A_LegRight"
+   }
+  },
+  {
+   "id": "actors/Protagonist_B.glb",
+   "file": "actors/Protagonist_B.glb",
+   "label": "Protagonist B",
+   "atlas": "protagonist_texture",
+   "slots": {
+    "armLeft": "actors/Protagonist_B.glb#Protagonist_B_ArmLeft",
+    "armRight": "actors/Protagonist_B.glb#Protagonist_B_ArmRight",
+    "back": "actors/Protagonist_B.glb#Protagonist_B_Backpack",
+    "body": "actors/Protagonist_B.glb#Protagonist_B_Body",
+    "head": "actors/Protagonist_B.glb#Protagonist_B_Head",
+    "legLeft": "actors/Protagonist_B.glb#Protagonist_B_LegLeft",
+    "legRight": "actors/Protagonist_B.glb#Protagonist_B_LegRight"
+   }
+  },
+  {
+   "id": "actors/Ranger.glb",
+   "file": "actors/Ranger.glb",
+   "label": "Ranger",
+   "atlas": "ranger_texture",
+   "slots": {
+    "armLeft": "actors/Ranger.glb#Ranger_ArmLeft",
+    "armRight": "actors/Ranger.glb#Ranger_ArmRight",
+    "body": "actors/Ranger.glb#Ranger_Body",
+    "back": "actors/Ranger.glb#Ranger_Cape",
+    "head": "actors/Ranger.glb#Ranger_Head",
+    "legLeft": "actors/Ranger.glb#Ranger_LegLeft",
+    "legRight": "actors/Ranger.glb#Ranger_LegRight"
+   }
+  },
+  {
+   "id": "actors/Rogue.glb",
+   "file": "actors/Rogue.glb",
+   "label": "Rogue",
+   "atlas": "rogue_texture",
+   "slots": {
+    "back": "actors/Rogue.glb#Rogue_Cape",
+    "armLeft": "actors/Rogue.glb#Rogue_ArmLeft",
+    "armRight": "actors/Rogue.glb#Rogue_ArmRight",
+    "body": "actors/Rogue.glb#Rogue_Body",
+    "head": "actors/Rogue.glb#Rogue_Head",
+    "legLeft": "actors/Rogue.glb#Rogue_LegLeft",
+    "legRight": "actors/Rogue.glb#Rogue_LegRight"
+   }
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb",
+   "file": "actors/Rogue_Hooded.glb",
+   "label": "Rogue Hooded",
+   "atlas": "rogue_texture",
+   "slots": {
+    "back": "actors/Rogue_Hooded.glb#Rogue_Cape",
+    "armLeft": "actors/Rogue_Hooded.glb#Rogue_ArmLeft",
+    "armRight": "actors/Rogue_Hooded.glb#Rogue_ArmRight",
+    "body": "actors/Rogue_Hooded.glb#Rogue_Body",
+    "head": "actors/Rogue_Hooded.glb#Rogue_Head_Hooded",
+    "legLeft": "actors/Rogue_Hooded.glb#Rogue_LegLeft",
+    "legRight": "actors/Rogue_Hooded.glb#Rogue_LegRight"
+   }
+  },
+  {
+   "id": "actors/Santa.glb",
+   "file": "actors/Santa.glb",
+   "label": "Santa",
+   "atlas": "santa_texture",
+   "slots": {
+    "armLeft": "actors/Santa.glb#Santa_ArmLeft",
+    "armRight": "actors/Santa.glb#Santa_ArmRight",
+    "body": "actors/Santa.glb#Santa_Body",
+    "headwear": "actors/Santa.glb#Santa_Hat",
+    "head": "actors/Santa.glb#Santa_Head",
+    "legLeft": "actors/Santa.glb#Santa_LegLeft",
+    "legRight": "actors/Santa.glb#Santa_LegRight"
+   }
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb",
+   "file": "actors/Skeleton_Mage.glb",
+   "label": "Skeleton Mage",
+   "atlas": "skeleton_texture",
+   "slots": {
+    "headwear": "actors/Skeleton_Mage.glb#Skeleton_Mage_Hat",
+    "armLeft": "actors/Skeleton_Mage.glb#Skeleton_Mage_ArmLeft",
+    "armRight": "actors/Skeleton_Mage.glb#Skeleton_Mage_ArmRight",
+    "body": "actors/Skeleton_Mage.glb#Skeleton_Mage_Body",
+    "legLeft": "actors/Skeleton_Mage.glb#Skeleton_Mage_LegLeft",
+    "legRight": "actors/Skeleton_Mage.glb#Skeleton_Mage_LegRight",
+    "head": "actors/Skeleton_Mage.glb#Skeleton_Mage_Skull"
+   }
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb",
+   "file": "actors/Skeleton_Minion.glb",
+   "label": "Skeleton Minion",
+   "atlas": "skeleton_texture",
+   "slots": {
+    "armLeft": "actors/Skeleton_Minion.glb#Skeleton_Minion_ArmLeft",
+    "armRight": "actors/Skeleton_Minion.glb#Skeleton_Minion_ArmRight",
+    "body": "actors/Skeleton_Minion.glb#Skeleton_Minion_Body",
+    "back": "actors/Skeleton_Minion.glb#Skeleton_Minion_Cloak",
+    "head": "actors/Skeleton_Minion.glb#Skeleton_Minion_Head",
+    "legLeft": "actors/Skeleton_Minion.glb#Skeleton_Minion_LegLeft",
+    "legRight": "actors/Skeleton_Minion.glb#Skeleton_Minion_LegRight"
+   }
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb",
+   "file": "actors/Skeleton_Rogue.glb",
+   "label": "Skeleton Rogue",
+   "atlas": "skeleton_texture",
+   "slots": {
+    "headwear": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Hood",
+    "back": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Cape",
+    "armLeft": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_ArmLeft",
+    "armRight": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_ArmRight",
+    "body": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Body",
+    "head": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Head",
+    "legLeft": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_LegLeft",
+    "legRight": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_LegRight"
+   }
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb",
+   "file": "actors/Skeleton_Warrior.glb",
+   "label": "Skeleton Warrior",
+   "atlas": "skeleton_texture",
+   "slots": {
+    "headwear": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Helmet",
+    "armLeft": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_ArmLeft",
+    "armRight": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_ArmRight",
+    "body": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Body",
+    "back": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Cloak",
+    "head": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Head",
+    "legLeft": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_LegLeft",
+    "legRight": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_LegRight"
+   }
+  },
+  {
+   "id": "actors/Superhero.glb",
+   "file": "actors/Superhero.glb",
+   "label": "Superhero",
+   "atlas": "superhero_texture",
+   "slots": {
+    "back": "actors/Superhero.glb#Superhero_Cape",
+    "armLeft": "actors/Superhero.glb#Superhero_ArmLeft",
+    "armRight": "actors/Superhero.glb#Superhero_ArmRight",
+    "body": "actors/Superhero.glb#Superhero_Body",
+    "head": "actors/Superhero.glb#Superhero_Head",
+    "legLeft": "actors/Superhero.glb#Superhero_LegLeft",
+    "legRight": "actors/Superhero.glb#Superhero_LegRight"
+   }
+  },
+  {
+   "id": "actors/Vampire.glb",
+   "file": "actors/Vampire.glb",
+   "label": "Vampire",
+   "atlas": "vampire_texture",
+   "slots": {
+    "back": "actors/Vampire.glb#Vampire_WingLeft",
+    "armLeft": "actors/Vampire.glb#Vampire_ArmLeft",
+    "armRight": "actors/Vampire.glb#Vampire_ArmRight",
+    "body": "actors/Vampire.glb#Vampire_Body",
+    "head": "actors/Vampire.glb#Vampire_Head",
+    "legLeft": "actors/Vampire.glb#Vampire_LegLeft",
+    "legRight": "actors/Vampire.glb#Vampire_LegRight"
+   }
+  },
+  {
+   "id": "actors/Witch.glb",
+   "file": "actors/Witch.glb",
+   "label": "Witch",
+   "atlas": "witch_texture_A",
+   "slots": {
+    "armLeft": "actors/Witch.glb#Witch_ArmLeft",
+    "armRight": "actors/Witch.glb#Witch_ArmRight",
+    "body": "actors/Witch.glb#Witch_Body",
+    "face": "actors/Witch.glb#Witch_Glasses",
+    "headwear": "actors/Witch.glb#Witch_Hat",
+    "head": "actors/Witch.glb#Witch_Head",
+    "legLeft": "actors/Witch.glb#Witch_LegLeft",
+    "legRight": "actors/Witch.glb#Witch_LegRight"
+   }
+  },
+  {
+   "id": "adventurers/Barbarian.glb",
+   "file": "adventurers/Barbarian.glb",
+   "label": "Barbarian (Adventurers)",
+   "atlas": "barbarian_texture",
+   "slots": {
+    "armLeft": "adventurers/Barbarian.glb#Barbarian_ArmLeft",
+    "armRight": "adventurers/Barbarian.glb#Barbarian_ArmRight",
+    "headwear": "adventurers/Barbarian.glb#Barbarian_BearHat",
+    "body": "adventurers/Barbarian.glb#Barbarian_Body",
+    "head": "adventurers/Barbarian.glb#Barbarian_Head",
+    "legLeft": "adventurers/Barbarian.glb#Barbarian_LegLeft",
+    "legRight": "adventurers/Barbarian.glb#Barbarian_LegRight"
+   }
+  },
+  {
+   "id": "adventurers/Knight.glb",
+   "file": "adventurers/Knight.glb",
+   "label": "Knight (Adventurers)",
+   "atlas": "knight_texture",
+   "slots": {
+    "armLeft": "adventurers/Knight.glb#Knight_ArmLeft",
+    "armRight": "adventurers/Knight.glb#Knight_ArmRight",
+    "body": "adventurers/Knight.glb#Knight_Body",
+    "back": "adventurers/Knight.glb#Knight_Cape",
+    "head": "adventurers/Knight.glb#Knight_Head",
+    "headwear": "adventurers/Knight.glb#Knight_Helmet",
+    "legLeft": "adventurers/Knight.glb#Knight_LegLeft",
+    "legRight": "adventurers/Knight.glb#Knight_LegRight"
+   }
+  },
+  {
+   "id": "adventurers/Mage.glb",
+   "file": "adventurers/Mage.glb",
+   "label": "Mage (Adventurers)",
+   "atlas": "mage_texture",
+   "slots": {
+    "armLeft": "adventurers/Mage.glb#Mage_ArmLeft",
+    "armRight": "adventurers/Mage.glb#Mage_ArmRight",
+    "body": "adventurers/Mage.glb#Mage_Body",
+    "back": "adventurers/Mage.glb#Mage_Cape",
+    "headwear": "adventurers/Mage.glb#Mage_Hat",
+    "head": "adventurers/Mage.glb#Mage_Head",
+    "legLeft": "adventurers/Mage.glb#Mage_LegLeft",
+    "legRight": "adventurers/Mage.glb#Mage_LegRight"
+   }
+  },
+  {
+   "id": "adventurers/Ranger.glb",
+   "file": "adventurers/Ranger.glb",
+   "label": "Ranger (Adventurers)",
+   "atlas": "ranger_texture",
+   "slots": {
+    "armLeft": "adventurers/Ranger.glb#Ranger_ArmLeft",
+    "armRight": "adventurers/Ranger.glb#Ranger_ArmRight",
+    "body": "adventurers/Ranger.glb#Ranger_Body",
+    "back": "adventurers/Ranger.glb#Ranger_Cape",
+    "head": "adventurers/Ranger.glb#Ranger_Head",
+    "legLeft": "adventurers/Ranger.glb#Ranger_LegLeft",
+    "legRight": "adventurers/Ranger.glb#Ranger_LegRight"
+   }
+  },
+  {
+   "id": "adventurers/Rogue.glb",
+   "file": "adventurers/Rogue.glb",
+   "label": "Rogue (Adventurers)",
+   "atlas": "rogue_texture",
+   "slots": {
+    "armLeft": "adventurers/Rogue.glb#Rogue_ArmLeft",
+    "armRight": "adventurers/Rogue.glb#Rogue_ArmRight",
+    "body": "adventurers/Rogue.glb#Rogue_Body",
+    "back": "adventurers/Rogue.glb#Rogue_Cape",
+    "head": "adventurers/Rogue.glb#Rogue_Head",
+    "legLeft": "adventurers/Rogue.glb#Rogue_LegLeft",
+    "legRight": "adventurers/Rogue.glb#Rogue_LegRight"
+   }
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "label": "Rogue Hooded (Adventurers)",
+   "atlas": "rogue_texture",
+   "slots": {
+    "armLeft": "adventurers/Rogue_Hooded.glb#RogueHooded_ArmLeft",
+    "armRight": "adventurers/Rogue_Hooded.glb#RogueHooded_ArmRight",
+    "body": "adventurers/Rogue_Hooded.glb#RogueHooded_Body",
+    "back": "adventurers/Rogue_Hooded.glb#RogueHooded_Cape",
+    "head": "adventurers/Rogue_Hooded.glb#RogueHooded_Head",
+    "legLeft": "adventurers/Rogue_Hooded.glb#RogueHooded_LegLeft",
+    "legRight": "adventurers/Rogue_Hooded.glb#RogueHooded_LegRight",
+    "face": "adventurers/Rogue_Hooded.glb#RogueHooded_Mask"
+   }
+  }
+ ],
+ "parts": [
+  {
+   "id": "actors/Barbarian.glb#Barbarian_Hat",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_Hat",
+   "slot": "headwear",
+   "skinned": false,
+   "bone": "head",
+   "atlas": "barbarian_texture",
+   "label": "Barbarian hat"
+  },
+  {
+   "id": "actors/Barbarian.glb#Barbarian_Cape",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_Cape",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "barbarian_texture",
+   "label": "Barbarian cape"
+  },
+  {
+   "id": "actors/Barbarian.glb#Barbarian_ArmLeft",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian arm left"
+  },
+  {
+   "id": "actors/Barbarian.glb#Barbarian_ArmRight",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian arm right"
+  },
+  {
+   "id": "actors/Barbarian.glb#Barbarian_Body",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian body"
+  },
+  {
+   "id": "actors/Barbarian.glb#Barbarian_Head",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian head"
+  },
+  {
+   "id": "actors/Barbarian.glb#Barbarian_LegLeft",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian leg left"
+  },
+  {
+   "id": "actors/Barbarian.glb#Barbarian_LegRight",
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian leg right"
+  },
+  {
+   "id": "actors/Caveman.glb#Caveman_ArmLeft",
+   "file": "actors/Caveman.glb",
+   "node": "Caveman_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "caveman_texture",
+   "label": "Caveman arm left"
+  },
+  {
+   "id": "actors/Caveman.glb#Caveman_ArmRight",
+   "file": "actors/Caveman.glb",
+   "node": "Caveman_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "caveman_texture",
+   "label": "Caveman arm right"
+  },
+  {
+   "id": "actors/Caveman.glb#Caveman_Body",
+   "file": "actors/Caveman.glb",
+   "node": "Caveman_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "caveman_texture",
+   "label": "Caveman body"
+  },
+  {
+   "id": "actors/Caveman.glb#Caveman_Head",
+   "file": "actors/Caveman.glb",
+   "node": "Caveman_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "caveman_texture",
+   "label": "Caveman head"
+  },
+  {
+   "id": "actors/Caveman.glb#Caveman_LegLeft",
+   "file": "actors/Caveman.glb",
+   "node": "Caveman_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "caveman_texture",
+   "label": "Caveman leg left"
+  },
+  {
+   "id": "actors/Caveman.glb#Caveman_LegRight",
+   "file": "actors/Caveman.glb",
+   "node": "Caveman_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "caveman_texture",
+   "label": "Caveman leg right"
+  },
+  {
+   "id": "actors/CombatMech.glb#CombatMech_WingLeft",
+   "file": "actors/CombatMech.glb",
+   "node": "CombatMech_WingLeft",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "combatmech_texture",
+   "label": "Combat mech wing left",
+   "with": [
+    "CombatMech_WingRight"
+   ]
+  },
+  {
+   "id": "actors/CombatMech.glb#CombatMech_ArmLeft",
+   "file": "actors/CombatMech.glb",
+   "node": "CombatMech_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "combatmech_texture",
+   "label": "Combat mech arm left"
+  },
+  {
+   "id": "actors/CombatMech.glb#CombatMech_ArmRight",
+   "file": "actors/CombatMech.glb",
+   "node": "CombatMech_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "combatmech_texture",
+   "label": "Combat mech arm right"
+  },
+  {
+   "id": "actors/CombatMech.glb#CombatMech_Body",
+   "file": "actors/CombatMech.glb",
+   "node": "CombatMech_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "combatmech_texture",
+   "label": "Combat mech body",
+   "with": [
+    "CombatMech_ShoulderLeft",
+    "CombatMech_ShoulderRight"
+   ]
+  },
+  {
+   "id": "actors/CombatMech.glb#CombatMech_Head",
+   "file": "actors/CombatMech.glb",
+   "node": "CombatMech_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "combatmech_texture",
+   "label": "Combat mech head"
+  },
+  {
+   "id": "actors/CombatMech.glb#CombatMech_LegLeft",
+   "file": "actors/CombatMech.glb",
+   "node": "CombatMech_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "combatmech_texture",
+   "label": "Combat mech leg left"
+  },
+  {
+   "id": "actors/CombatMech.glb#CombatMech_LegRight",
+   "file": "actors/CombatMech.glb",
+   "node": "CombatMech_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "combatmech_texture",
+   "label": "Combat mech leg right"
+  },
+  {
+   "id": "actors/Helper_A.glb#Helper_A_ArmLeft",
+   "file": "actors/Helper_A.glb",
+   "node": "Helper_A_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper a arm left"
+  },
+  {
+   "id": "actors/Helper_A.glb#Helper_A_ArmRight",
+   "file": "actors/Helper_A.glb",
+   "node": "Helper_A_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper a arm right"
+  },
+  {
+   "id": "actors/Helper_A.glb#Helper_A_Body",
+   "file": "actors/Helper_A.glb",
+   "node": "Helper_A_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper a body"
+  },
+  {
+   "id": "actors/Helper_A.glb#Helper_A_Hat",
+   "file": "actors/Helper_A.glb",
+   "node": "Helper_A_Hat",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper a hat"
+  },
+  {
+   "id": "actors/Helper_A.glb#Helper_A_Head",
+   "file": "actors/Helper_A.glb",
+   "node": "Helper_A_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper a head"
+  },
+  {
+   "id": "actors/Helper_A.glb#Helper_A_LegLeft",
+   "file": "actors/Helper_A.glb",
+   "node": "Helper_A_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper a leg left"
+  },
+  {
+   "id": "actors/Helper_A.glb#Helper_A_LegRight",
+   "file": "actors/Helper_A.glb",
+   "node": "Helper_A_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper a leg right"
+  },
+  {
+   "id": "actors/Helper_B.glb#Helper_B_ArmLeft",
+   "file": "actors/Helper_B.glb",
+   "node": "Helper_B_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper b arm left"
+  },
+  {
+   "id": "actors/Helper_B.glb#Helper_B_ArmRight",
+   "file": "actors/Helper_B.glb",
+   "node": "Helper_B_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper b arm right"
+  },
+  {
+   "id": "actors/Helper_B.glb#Helper_B_Body",
+   "file": "actors/Helper_B.glb",
+   "node": "Helper_B_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper b body"
+  },
+  {
+   "id": "actors/Helper_B.glb#Helper_B_Hat",
+   "file": "actors/Helper_B.glb",
+   "node": "Helper_B_Hat",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper b hat"
+  },
+  {
+   "id": "actors/Helper_B.glb#Helper_B_Head",
+   "file": "actors/Helper_B.glb",
+   "node": "Helper_B_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper b head"
+  },
+  {
+   "id": "actors/Helper_B.glb#Helper_B_LegLeft",
+   "file": "actors/Helper_B.glb",
+   "node": "Helper_B_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper b leg left"
+  },
+  {
+   "id": "actors/Helper_B.glb#Helper_B_LegRight",
+   "file": "actors/Helper_B.glb",
+   "node": "Helper_B_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "helpers_texture",
+   "label": "Helper b leg right"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_ArmLeft",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker arm left"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_ArmRight",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker arm right"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_Backpack",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_Backpack",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker backpack"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_Body",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker body"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_Hat",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_Hat",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker hat"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_Head",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker head"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_LegLeft",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker leg left"
+  },
+  {
+   "id": "actors/Hiker.glb#Hiker_LegRight",
+   "file": "actors/Hiker.glb",
+   "node": "Hiker_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "hiker_texture",
+   "label": "Hiker leg right"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_Helmet",
+   "file": "actors/Knight.glb",
+   "node": "Knight_Helmet",
+   "slot": "headwear",
+   "skinned": false,
+   "bone": "head",
+   "atlas": "knight_texture",
+   "label": "Knight helmet"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_Cape",
+   "file": "actors/Knight.glb",
+   "node": "Knight_Cape",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "knight_texture",
+   "label": "Knight cape"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_ArmLeft",
+   "file": "actors/Knight.glb",
+   "node": "Knight_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight arm left"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_ArmRight",
+   "file": "actors/Knight.glb",
+   "node": "Knight_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight arm right"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_Body",
+   "file": "actors/Knight.glb",
+   "node": "Knight_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight body"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_Head",
+   "file": "actors/Knight.glb",
+   "node": "Knight_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight head"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_LegLeft",
+   "file": "actors/Knight.glb",
+   "node": "Knight_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight leg left"
+  },
+  {
+   "id": "actors/Knight.glb#Knight_LegRight",
+   "file": "actors/Knight.glb",
+   "node": "Knight_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight leg right"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_Hat",
+   "file": "actors/Mage.glb",
+   "node": "Mage_Hat",
+   "slot": "headwear",
+   "skinned": false,
+   "bone": "head",
+   "atlas": "mage_texture",
+   "label": "Mage hat"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_Cape",
+   "file": "actors/Mage.glb",
+   "node": "Mage_Cape",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "mage_texture",
+   "label": "Mage cape"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_ArmLeft",
+   "file": "actors/Mage.glb",
+   "node": "Mage_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage arm left"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_ArmRight",
+   "file": "actors/Mage.glb",
+   "node": "Mage_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage arm right"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_Body",
+   "file": "actors/Mage.glb",
+   "node": "Mage_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage body"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_Head",
+   "file": "actors/Mage.glb",
+   "node": "Mage_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage head"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_LegLeft",
+   "file": "actors/Mage.glb",
+   "node": "Mage_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage leg left"
+  },
+  {
+   "id": "actors/Mage.glb#Mage_LegRight",
+   "file": "actors/Mage.glb",
+   "node": "Mage_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage leg right"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_ArmLeft",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a arm left"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_ArmRight",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a arm right"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_Backpack",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_Backpack",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a backpack"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_Body",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a body"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_Glasses",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_Glasses",
+   "slot": "face",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a glasses"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_Head",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a head"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_LegLeft",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a leg left"
+  },
+  {
+   "id": "actors/Protagonist_A.glb#Protagonist_A_LegRight",
+   "file": "actors/Protagonist_A.glb",
+   "node": "Protagonist_A_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist a leg right"
+  },
+  {
+   "id": "actors/Protagonist_B.glb#Protagonist_B_ArmLeft",
+   "file": "actors/Protagonist_B.glb",
+   "node": "Protagonist_B_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist b arm left"
+  },
+  {
+   "id": "actors/Protagonist_B.glb#Protagonist_B_ArmRight",
+   "file": "actors/Protagonist_B.glb",
+   "node": "Protagonist_B_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist b arm right"
+  },
+  {
+   "id": "actors/Protagonist_B.glb#Protagonist_B_Backpack",
+   "file": "actors/Protagonist_B.glb",
+   "node": "Protagonist_B_Backpack",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist b backpack"
+  },
+  {
+   "id": "actors/Protagonist_B.glb#Protagonist_B_Body",
+   "file": "actors/Protagonist_B.glb",
+   "node": "Protagonist_B_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist b body"
+  },
+  {
+   "id": "actors/Protagonist_B.glb#Protagonist_B_Head",
+   "file": "actors/Protagonist_B.glb",
+   "node": "Protagonist_B_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist b head"
+  },
+  {
+   "id": "actors/Protagonist_B.glb#Protagonist_B_LegLeft",
+   "file": "actors/Protagonist_B.glb",
+   "node": "Protagonist_B_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist b leg left"
+  },
+  {
+   "id": "actors/Protagonist_B.glb#Protagonist_B_LegRight",
+   "file": "actors/Protagonist_B.glb",
+   "node": "Protagonist_B_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "protagonist_texture",
+   "label": "Protagonist b leg right"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_ArmLeft",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger arm left"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_ArmRight",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger arm right"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_Body",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger body"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_Cape",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_Cape",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger cape"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_Head",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger head"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_LegLeft",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger leg left"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_LegRight",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger leg right"
+  },
+  {
+   "id": "actors/Ranger.glb#Ranger_Quiver",
+   "file": "actors/Ranger.glb",
+   "node": "Ranger_Quiver",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger quiver"
+  },
+  {
+   "id": "actors/Rogue.glb#Rogue_Cape",
+   "file": "actors/Rogue.glb",
+   "node": "Rogue_Cape",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "rogue_texture",
+   "label": "Rogue cape"
+  },
+  {
+   "id": "actors/Rogue.glb#Rogue_ArmLeft",
+   "file": "actors/Rogue.glb",
+   "node": "Rogue_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue arm left"
+  },
+  {
+   "id": "actors/Rogue.glb#Rogue_ArmRight",
+   "file": "actors/Rogue.glb",
+   "node": "Rogue_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue arm right"
+  },
+  {
+   "id": "actors/Rogue.glb#Rogue_Body",
+   "file": "actors/Rogue.glb",
+   "node": "Rogue_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue body"
+  },
+  {
+   "id": "actors/Rogue.glb#Rogue_Head",
+   "file": "actors/Rogue.glb",
+   "node": "Rogue_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue head"
+  },
+  {
+   "id": "actors/Rogue.glb#Rogue_LegLeft",
+   "file": "actors/Rogue.glb",
+   "node": "Rogue_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue leg left"
+  },
+  {
+   "id": "actors/Rogue.glb#Rogue_LegRight",
+   "file": "actors/Rogue.glb",
+   "node": "Rogue_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue leg right"
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb#Rogue_Cape",
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Rogue_Cape",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "rogue_texture",
+   "label": "Rogue cape"
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb#Rogue_ArmLeft",
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Rogue_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue arm left"
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb#Rogue_ArmRight",
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Rogue_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue arm right"
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb#Rogue_Body",
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Rogue_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue body"
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb#Rogue_Head_Hooded",
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Rogue_Head_Hooded",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue head hooded"
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb#Rogue_LegLeft",
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Rogue_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue leg left"
+  },
+  {
+   "id": "actors/Rogue_Hooded.glb#Rogue_LegRight",
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Rogue_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue leg right"
+  },
+  {
+   "id": "actors/Santa.glb#Santa_ArmLeft",
+   "file": "actors/Santa.glb",
+   "node": "Santa_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "santa_texture",
+   "label": "Santa arm left"
+  },
+  {
+   "id": "actors/Santa.glb#Santa_ArmRight",
+   "file": "actors/Santa.glb",
+   "node": "Santa_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "santa_texture",
+   "label": "Santa arm right"
+  },
+  {
+   "id": "actors/Santa.glb#Santa_Body",
+   "file": "actors/Santa.glb",
+   "node": "Santa_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "santa_texture",
+   "label": "Santa body"
+  },
+  {
+   "id": "actors/Santa.glb#Santa_Hat",
+   "file": "actors/Santa.glb",
+   "node": "Santa_Hat",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "santa_texture",
+   "label": "Santa hat"
+  },
+  {
+   "id": "actors/Santa.glb#Santa_Head",
+   "file": "actors/Santa.glb",
+   "node": "Santa_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "santa_texture",
+   "label": "Santa head"
+  },
+  {
+   "id": "actors/Santa.glb#Santa_LegLeft",
+   "file": "actors/Santa.glb",
+   "node": "Santa_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "santa_texture",
+   "label": "Santa leg left"
+  },
+  {
+   "id": "actors/Santa.glb#Santa_LegRight",
+   "file": "actors/Santa.glb",
+   "node": "Santa_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "santa_texture",
+   "label": "Santa leg right"
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb#Skeleton_Mage_Hat",
+   "file": "actors/Skeleton_Mage.glb",
+   "node": "Skeleton_Mage_Hat",
+   "slot": "headwear",
+   "skinned": false,
+   "bone": "head",
+   "atlas": "skeleton_texture",
+   "label": "Skeleton mage hat"
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb#Skeleton_Mage_ArmLeft",
+   "file": "actors/Skeleton_Mage.glb",
+   "node": "Skeleton_Mage_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton mage arm left"
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb#Skeleton_Mage_ArmRight",
+   "file": "actors/Skeleton_Mage.glb",
+   "node": "Skeleton_Mage_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton mage arm right"
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb#Skeleton_Mage_Body",
+   "file": "actors/Skeleton_Mage.glb",
+   "node": "Skeleton_Mage_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton mage body"
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb#Skeleton_Mage_LegLeft",
+   "file": "actors/Skeleton_Mage.glb",
+   "node": "Skeleton_Mage_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton mage leg left"
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb#Skeleton_Mage_LegRight",
+   "file": "actors/Skeleton_Mage.glb",
+   "node": "Skeleton_Mage_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton mage leg right"
+  },
+  {
+   "id": "actors/Skeleton_Mage.glb#Skeleton_Mage_Skull",
+   "file": "actors/Skeleton_Mage.glb",
+   "node": "Skeleton_Mage_Skull",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton mage skull",
+   "with": [
+    "Skeleton_Mage_Eyes",
+    "Skeleton_Mage_Jaw"
+   ]
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb#Skeleton_Minion_ArmLeft",
+   "file": "actors/Skeleton_Minion.glb",
+   "node": "Skeleton_Minion_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton minion arm left"
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb#Skeleton_Minion_ArmRight",
+   "file": "actors/Skeleton_Minion.glb",
+   "node": "Skeleton_Minion_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton minion arm right"
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb#Skeleton_Minion_Body",
+   "file": "actors/Skeleton_Minion.glb",
+   "node": "Skeleton_Minion_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton minion body"
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb#Skeleton_Minion_Cloak",
+   "file": "actors/Skeleton_Minion.glb",
+   "node": "Skeleton_Minion_Cloak",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton minion cloak"
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb#Skeleton_Minion_Head",
+   "file": "actors/Skeleton_Minion.glb",
+   "node": "Skeleton_Minion_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton minion head",
+   "with": [
+    "Skeleton_Minion_Eyes",
+    "Skeleton_Minion_Jaw"
+   ]
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb#Skeleton_Minion_LegLeft",
+   "file": "actors/Skeleton_Minion.glb",
+   "node": "Skeleton_Minion_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton minion leg left"
+  },
+  {
+   "id": "actors/Skeleton_Minion.glb#Skeleton_Minion_LegRight",
+   "file": "actors/Skeleton_Minion.glb",
+   "node": "Skeleton_Minion_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton minion leg right"
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Hood",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_Hood",
+   "slot": "headwear",
+   "skinned": false,
+   "bone": "head",
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue hood"
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Cape",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_Cape",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue cape"
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_ArmLeft",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue arm left"
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_ArmRight",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue arm right"
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Body",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue body"
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_Head",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue head",
+   "with": [
+    "Skeleton_Rogue_Eyes",
+    "Skeleton_Rogue_Jaw"
+   ]
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_LegLeft",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue leg left"
+  },
+  {
+   "id": "actors/Skeleton_Rogue.glb#Skeleton_Rogue_LegRight",
+   "file": "actors/Skeleton_Rogue.glb",
+   "node": "Skeleton_Rogue_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton rogue leg right"
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Helmet",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_Helmet",
+   "slot": "headwear",
+   "skinned": false,
+   "bone": "head",
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior helmet"
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_ArmLeft",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior arm left"
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_ArmRight",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior arm right"
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Body",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior body"
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Cloak",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_Cloak",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior cloak"
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_Head",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior head",
+   "with": [
+    "Skeleton_Warrior_Eyes",
+    "Skeleton_Warrior_Jaw"
+   ]
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_LegLeft",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior leg left"
+  },
+  {
+   "id": "actors/Skeleton_Warrior.glb#Skeleton_Warrior_LegRight",
+   "file": "actors/Skeleton_Warrior.glb",
+   "node": "Skeleton_Warrior_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "skeleton_texture",
+   "label": "Skeleton warrior leg right"
+  },
+  {
+   "id": "actors/Superhero.glb#Superhero_Cape",
+   "file": "actors/Superhero.glb",
+   "node": "Superhero_Cape",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "superhero_texture",
+   "label": "Superhero cape"
+  },
+  {
+   "id": "actors/Superhero.glb#Superhero_ArmLeft",
+   "file": "actors/Superhero.glb",
+   "node": "Superhero_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "superhero_texture",
+   "label": "Superhero arm left"
+  },
+  {
+   "id": "actors/Superhero.glb#Superhero_ArmRight",
+   "file": "actors/Superhero.glb",
+   "node": "Superhero_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "superhero_texture",
+   "label": "Superhero arm right"
+  },
+  {
+   "id": "actors/Superhero.glb#Superhero_Body",
+   "file": "actors/Superhero.glb",
+   "node": "Superhero_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "superhero_texture",
+   "label": "Superhero body"
+  },
+  {
+   "id": "actors/Superhero.glb#Superhero_Head",
+   "file": "actors/Superhero.glb",
+   "node": "Superhero_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "superhero_texture",
+   "label": "Superhero head"
+  },
+  {
+   "id": "actors/Superhero.glb#Superhero_LegLeft",
+   "file": "actors/Superhero.glb",
+   "node": "Superhero_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "superhero_texture",
+   "label": "Superhero leg left"
+  },
+  {
+   "id": "actors/Superhero.glb#Superhero_LegRight",
+   "file": "actors/Superhero.glb",
+   "node": "Superhero_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "superhero_texture",
+   "label": "Superhero leg right"
+  },
+  {
+   "id": "actors/Vampire.glb#Vampire_WingLeft",
+   "file": "actors/Vampire.glb",
+   "node": "Vampire_WingLeft",
+   "slot": "back",
+   "skinned": false,
+   "bone": "chest",
+   "atlas": "vampire_texture",
+   "label": "Vampire wing left",
+   "with": [
+    "Vampire_WingRight"
+   ]
+  },
+  {
+   "id": "actors/Vampire.glb#Vampire_ArmLeft",
+   "file": "actors/Vampire.glb",
+   "node": "Vampire_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "vampire_texture",
+   "label": "Vampire arm left"
+  },
+  {
+   "id": "actors/Vampire.glb#Vampire_ArmRight",
+   "file": "actors/Vampire.glb",
+   "node": "Vampire_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "vampire_texture",
+   "label": "Vampire arm right"
+  },
+  {
+   "id": "actors/Vampire.glb#Vampire_Body",
+   "file": "actors/Vampire.glb",
+   "node": "Vampire_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "vampire_texture",
+   "label": "Vampire body"
+  },
+  {
+   "id": "actors/Vampire.glb#Vampire_Head",
+   "file": "actors/Vampire.glb",
+   "node": "Vampire_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "vampire_texture",
+   "label": "Vampire head"
+  },
+  {
+   "id": "actors/Vampire.glb#Vampire_LegLeft",
+   "file": "actors/Vampire.glb",
+   "node": "Vampire_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "vampire_texture",
+   "label": "Vampire leg left"
+  },
+  {
+   "id": "actors/Vampire.glb#Vampire_LegRight",
+   "file": "actors/Vampire.glb",
+   "node": "Vampire_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "vampire_texture",
+   "label": "Vampire leg right"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_ArmLeft",
+   "file": "actors/Witch.glb",
+   "node": "Witch_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch arm left"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_ArmRight",
+   "file": "actors/Witch.glb",
+   "node": "Witch_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch arm right"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_Body",
+   "file": "actors/Witch.glb",
+   "node": "Witch_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch body"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_Glasses",
+   "file": "actors/Witch.glb",
+   "node": "Witch_Glasses",
+   "slot": "face",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch glasses"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_Hat",
+   "file": "actors/Witch.glb",
+   "node": "Witch_Hat",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch hat"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_Head",
+   "file": "actors/Witch.glb",
+   "node": "Witch_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch head"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_LegLeft",
+   "file": "actors/Witch.glb",
+   "node": "Witch_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch leg left"
+  },
+  {
+   "id": "actors/Witch.glb#Witch_LegRight",
+   "file": "actors/Witch.glb",
+   "node": "Witch_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "witch_texture_A",
+   "label": "Witch leg right"
+  },
+  {
+   "id": "adventurers/Barbarian.glb#Barbarian_ArmLeft",
+   "file": "adventurers/Barbarian.glb",
+   "node": "Barbarian_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian arm left"
+  },
+  {
+   "id": "adventurers/Barbarian.glb#Barbarian_ArmRight",
+   "file": "adventurers/Barbarian.glb",
+   "node": "Barbarian_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian arm right"
+  },
+  {
+   "id": "adventurers/Barbarian.glb#Barbarian_BearHat",
+   "file": "adventurers/Barbarian.glb",
+   "node": "Barbarian_BearHat",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian bear hat"
+  },
+  {
+   "id": "adventurers/Barbarian.glb#Barbarian_Body",
+   "file": "adventurers/Barbarian.glb",
+   "node": "Barbarian_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian body"
+  },
+  {
+   "id": "adventurers/Barbarian.glb#Barbarian_Head",
+   "file": "adventurers/Barbarian.glb",
+   "node": "Barbarian_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian head"
+  },
+  {
+   "id": "adventurers/Barbarian.glb#Barbarian_LegLeft",
+   "file": "adventurers/Barbarian.glb",
+   "node": "Barbarian_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian leg left"
+  },
+  {
+   "id": "adventurers/Barbarian.glb#Barbarian_LegRight",
+   "file": "adventurers/Barbarian.glb",
+   "node": "Barbarian_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "barbarian_texture",
+   "label": "Barbarian leg right"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_ArmLeft",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight arm left"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_ArmRight",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight arm right"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_Body",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight body"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_Cape",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_Cape",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight cape"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_Head",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight head"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_Helmet",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_Helmet",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight helmet"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_HelmetVisor",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_HelmetVisor",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight helmet visor"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_LegLeft",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight leg left"
+  },
+  {
+   "id": "adventurers/Knight.glb#Knight_LegRight",
+   "file": "adventurers/Knight.glb",
+   "node": "Knight_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "knight_texture",
+   "label": "Knight leg right"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_ArmLeft",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage arm left"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_ArmRight",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage arm right"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_Body",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage body"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_Cape",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_Cape",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage cape"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_Hat",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_Hat",
+   "slot": "headwear",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage hat"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_Head",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage head"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_LegLeft",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage leg left"
+  },
+  {
+   "id": "adventurers/Mage.glb#Mage_LegRight",
+   "file": "adventurers/Mage.glb",
+   "node": "Mage_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "mage_texture",
+   "label": "Mage leg right"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_ArmLeft",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger arm left"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_ArmRight",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger arm right"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_Body",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger body"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_Cape",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_Cape",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger cape"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_Head",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger head"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_LegLeft",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger leg left"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_LegRight",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger leg right"
+  },
+  {
+   "id": "adventurers/Ranger.glb#Ranger_Quiver",
+   "file": "adventurers/Ranger.glb",
+   "node": "Ranger_Quiver",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "ranger_texture",
+   "label": "Ranger quiver"
+  },
+  {
+   "id": "adventurers/Rogue.glb#Rogue_ArmLeft",
+   "file": "adventurers/Rogue.glb",
+   "node": "Rogue_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue arm left"
+  },
+  {
+   "id": "adventurers/Rogue.glb#Rogue_ArmRight",
+   "file": "adventurers/Rogue.glb",
+   "node": "Rogue_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue arm right"
+  },
+  {
+   "id": "adventurers/Rogue.glb#Rogue_Body",
+   "file": "adventurers/Rogue.glb",
+   "node": "Rogue_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue body"
+  },
+  {
+   "id": "adventurers/Rogue.glb#Rogue_Cape",
+   "file": "adventurers/Rogue.glb",
+   "node": "Rogue_Cape",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue cape"
+  },
+  {
+   "id": "adventurers/Rogue.glb#Rogue_Head",
+   "file": "adventurers/Rogue.glb",
+   "node": "Rogue_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue head"
+  },
+  {
+   "id": "adventurers/Rogue.glb#Rogue_LegLeft",
+   "file": "adventurers/Rogue.glb",
+   "node": "Rogue_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue leg left"
+  },
+  {
+   "id": "adventurers/Rogue.glb#Rogue_LegRight",
+   "file": "adventurers/Rogue.glb",
+   "node": "Rogue_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue leg right"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_ArmLeft",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_ArmLeft",
+   "slot": "armLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded arm left"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_ArmRight",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_ArmRight",
+   "slot": "armRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded arm right"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_Body",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_Body",
+   "slot": "body",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded body"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_Cape",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_Cape",
+   "slot": "back",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded cape"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_Head",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_Head",
+   "slot": "head",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded head"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_LegLeft",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_LegLeft",
+   "slot": "legLeft",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded leg left"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_LegRight",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_LegRight",
+   "slot": "legRight",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded leg right"
+  },
+  {
+   "id": "adventurers/Rogue_Hooded.glb#RogueHooded_Mask",
+   "file": "adventurers/Rogue_Hooded.glb",
+   "node": "RogueHooded_Mask",
+   "slot": "face",
+   "skinned": true,
+   "bone": null,
+   "atlas": "rogue_texture",
+   "label": "Rogue hooded mask"
+  }
+ ],
+ "heldProps": [
+  {
+   "file": "actors/Barbarian.glb",
+   "node": "1H_Axe_Offhand",
+   "hand": "left",
+   "local": [
+    0.9999999999997989,
+    2.8014684971823003e-7,
+    5.688130499947832e-7,
+    0,
+    -2.8014684971821266e-7,
+    0.9999999999999608,
+    -1.1024585811668137e-13,
+    0,
+    -5.688130499947917e-7,
+    -4.910532591797147e-14,
+    0.9999999999998382,
+    0,
+    0,
+    0.03330897735071431,
+    -1.506257119032739e-9,
+    1
+   ]
+  },
+  {
+   "file": "actors/Barbarian.glb",
+   "node": "Barbarian_Round_Shield",
+   "hand": "left",
+   "local": [
+    0.9999999999960215,
+    0.000002800595176913593,
+    -3.370686039403485e-7,
+    0,
+    -0.0000028005952465629167,
+    0.9999999999960569,
+    -2.0663219098420122e-7,
+    0,
+    3.37068025245902e-7,
+    2.0663313497610907e-7,
+    0.9999999999999218,
+    0,
+    0,
+    0.01701178596925984,
+    0.15588533878326416,
+    1
+   ]
+  },
+  {
+   "file": "actors/Barbarian.glb",
+   "node": "1H_Axe",
+   "hand": "right",
+   "local": [
+    -1.0000000000000213,
+    2.8014682318089426e-7,
+    1.823898668748622e-8,
+    0,
+    2.801468194121296e-7,
+    0.9999999999999394,
+    -2.066320260464941e-7,
+    0,
+    -1.823904457479078e-8,
+    -2.0663202093689183e-7,
+    -1.000000000000039,
+    0,
+    0,
+    0.03330930517626057,
+    -1.2071546962033608e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Barbarian.glb",
+   "node": "2H_Axe",
+   "hand": "right",
+   "local": [
+    -1.0000000000000213,
+    2.8014682318089426e-7,
+    1.823898668748622e-8,
+    0,
+    2.801468194121296e-7,
+    0.9999999999999394,
+    -2.066320260464941e-7,
+    0,
+    -1.823904457479078e-8,
+    -2.0663202093689183e-7,
+    -1.000000000000039,
+    0,
+    0,
+    0.03330930517626057,
+    -1.2071546962033608e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Barbarian.glb",
+   "node": "Mug",
+   "hand": "right",
+   "local": [
+    -1.0000000000000213,
+    2.8014682318089426e-7,
+    1.823898668748622e-8,
+    0,
+    2.801468194121296e-7,
+    0.9999999999999394,
+    -2.066320260464941e-7,
+    0,
+    -1.823904457479078e-8,
+    -2.0663202093689183e-7,
+    -1.000000000000039,
+    0,
+    0.3005661368370056,
+    -0.015636777415749925,
+    -1.2577926611356816e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Knight.glb",
+   "node": "1H_Sword_Offhand",
+   "hand": "left",
+   "local": [
+    0.9999999999999102,
+    2.654133481883148e-7,
+    3.303944424715065e-7,
+    0,
+    -2.654133481882925e-7,
+    0.9999999999999648,
+    -1.1156751224593507e-13,
+    0,
+    -3.303944424715245e-7,
+    2.3876417046762264e-14,
+    0.9999999999999454,
+    0,
+    0,
+    0.01701178596925984,
+    -2.736658455404495e-9,
+    1
+   ]
+  },
+  {
+   "file": "actors/Knight.glb",
+   "node": "Badge_Shield",
+   "hand": "left",
+   "local": [
+    0.9999999999960215,
+    0.000002800595176913593,
+    -3.370686039403485e-7,
+    0,
+    -0.0000028005952465629167,
+    0.9999999999960569,
+    -2.0663219098420122e-7,
+    0,
+    3.37068025245902e-7,
+    2.0663313497610907e-7,
+    0.9999999999999218,
+    0,
+    0,
+    0.01701178596925984,
+    0.15588533878326416,
+    1
+   ]
+  },
+  {
+   "file": "actors/Knight.glb",
+   "node": "Rectangle_Shield",
+   "hand": "left",
+   "local": [
+    0.9999999999960215,
+    0.000002800595176913593,
+    -3.370686039403485e-7,
+    0,
+    -0.0000028005952465629167,
+    0.9999999999960569,
+    -2.0663219098420122e-7,
+    0,
+    3.37068025245902e-7,
+    2.0663313497610907e-7,
+    0.9999999999999218,
+    0,
+    0,
+    0.01701178596925984,
+    0.15588533878326416,
+    1
+   ]
+  },
+  {
+   "file": "actors/Knight.glb",
+   "node": "Round_Shield",
+   "hand": "left",
+   "local": [
+    0.9999999999960215,
+    0.000002800595176913593,
+    -3.370686039403485e-7,
+    0,
+    -0.0000028005952465629167,
+    0.9999999999960569,
+    -2.0663219098420122e-7,
+    0,
+    3.37068025245902e-7,
+    2.0663313497610907e-7,
+    0.9999999999999218,
+    0,
+    0,
+    0.01701178596925984,
+    0.15588533878326416,
+    1
+   ]
+  },
+  {
+   "file": "actors/Knight.glb",
+   "node": "Spike_Shield",
+   "hand": "left",
+   "local": [
+    0.9999999999960215,
+    0.000002800595176913593,
+    -3.370686039403485e-7,
+    0,
+    -0.0000028005952465629167,
+    0.9999999999960569,
+    -2.0663219098420122e-7,
+    0,
+    3.37068025245902e-7,
+    2.0663313497610907e-7,
+    0.9999999999999218,
+    0,
+    0,
+    0.01701178596925984,
+    0.15588533878326416,
+    1
+   ]
+  },
+  {
+   "file": "actors/Knight.glb",
+   "node": "1H_Sword",
+   "hand": "right",
+   "local": [
+    -1.0000000000000213,
+    2.6541334865870424e-7,
+    4.552999422985218e-9,
+    0,
+    2.6541334771790305e-7,
+    0.9999999999999434,
+    -2.0663202409591002e-7,
+    0,
+    -4.553054265882415e-9,
+    -2.066320228874759e-7,
+    -1.000000000000035,
+    0,
+    0,
+    0.03330930517626057,
+    -1.2071546962033608e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Knight.glb",
+   "node": "2H_Sword",
+   "hand": "right",
+   "local": [
+    -1.0000000000000213,
+    2.8014682318089426e-7,
+    1.823898668748622e-8,
+    0,
+    2.801468194121296e-7,
+    0.9999999999999394,
+    -2.066320260464941e-7,
+    0,
+    -1.823904457479078e-8,
+    -2.0663202093689183e-7,
+    -1.000000000000039,
+    0,
+    0,
+    0.03330930517626057,
+    -1.2071546962033608e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Mage.glb",
+   "node": "Spellbook",
+   "hand": "left",
+   "local": [
+    -1.000000268717713,
+    -2.654134010019497e-7,
+    1.2163589995447963e-8,
+    0,
+    1.2163589995447963e-8,
+    -1.343588724722622e-7,
+    1.000000134358874,
+    0,
+    -2.654134010019497e-7,
+    1.000000134358839,
+    -1.343588724722622e-7,
+    0,
+    -5.960464477539063e-8,
+    0.2657395248265291,
+    1.6041727946003448e-8,
+    1
+   ]
+  },
+  {
+   "file": "actors/Mage.glb",
+   "node": "Spellbook_open",
+   "hand": "left",
+   "local": [
+    -1.000000268717713,
+    -2.654134010019497e-7,
+    1.2163589995447963e-8,
+    0,
+    1.2163589995447963e-8,
+    -1.343588724722622e-7,
+    1.000000134358874,
+    0,
+    -2.654134010019497e-7,
+    1.000000134358839,
+    -1.343588724722622e-7,
+    0,
+    -5.960464477539063e-8,
+    0.14538810597372304,
+    6.955465980951203e-9,
+    1
+   ]
+  },
+  {
+   "file": "actors/Mage.glb",
+   "node": "1H_Wand",
+   "hand": "right",
+   "local": [
+    -1.000000000000004,
+    2.6541334838732203e-7,
+    4.55300058790963e-9,
+    0,
+    2.6541334798928526e-7,
+    0.9999999999999609,
+    -8.742273454512682e-8,
+    0,
+    -4.553023791070152e-9,
+    -8.74227333366966e-8,
+    -1.000000000000035,
+    0,
+    5.960464477539063e-8,
+    3.819317842546077e-7,
+    -1.2323022247073823e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Mage.glb",
+   "node": "2H_Staff",
+   "hand": "right",
+   "local": [
+    -1.000000000000004,
+    2.6541334838732203e-7,
+    4.55300058790963e-9,
+    0,
+    2.6541334798928526e-7,
+    0.9999999999999609,
+    -8.742273454512682e-8,
+    0,
+    -4.553023791070152e-9,
+    -8.74227333366966e-8,
+    -1.000000000000035,
+    0,
+    5.960464477539063e-8,
+    3.819317842546077e-7,
+    -1.2323022247073823e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue.glb",
+   "node": "Knife_Offhand",
+   "hand": "left",
+   "local": [
+    0.9999999999998832,
+    2.801468781399417e-7,
+    3.9396744000440913e-7,
+    0,
+    -2.8014687813991987e-7,
+    0.9999999999999608,
+    -1.1041924022753135e-13,
+    0,
+    -3.939674400044246e-7,
+    5.049182151348982e-17,
+    0.9999999999999224,
+    0,
+    0,
+    -0.00001565171766032547,
+    -4.022192356956111e-9,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue.glb",
+   "node": "1H_Crossbow",
+   "hand": "right",
+   "local": [
+    -1.3435888468471546e-7,
+    9.221463628397445e-8,
+    -1.0000001343589002,
+    0,
+    4.2833404336144645e-7,
+    0.999999999999904,
+    9.221463628397445e-8,
+    0,
+    1.0000001343588127,
+    -4.2833404336144645e-7,
+    -1.3435892420865514e-7,
+    0,
+    -0.10462832450866699,
+    -0.010373746886727708,
+    -1.2353707745660358e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue.glb",
+   "node": "2H_Crossbow",
+   "hand": "right",
+   "local": [
+    -1.3435888468471546e-7,
+    9.221463628397445e-8,
+    -1.0000001343589002,
+    0,
+    4.2833404336144645e-7,
+    0.999999999999904,
+    9.221463628397445e-8,
+    0,
+    1.0000001343588127,
+    -4.2833404336144645e-7,
+    -1.3435892420865514e-7,
+    0,
+    -0.10462832450866699,
+    -0.010373746886727708,
+    -1.2353707745660358e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue.glb",
+   "node": "Knife",
+   "hand": "right",
+   "local": [
+    -1.0000000000000213,
+    2.8014682318089426e-7,
+    1.823898668748622e-8,
+    0,
+    2.801468194121296e-7,
+    0.9999999999999394,
+    -2.066320260464941e-7,
+    0,
+    -1.823904457479078e-8,
+    -2.0663202093689183e-7,
+    -1.000000000000039,
+    0,
+    0,
+    -0.000015323892114060822,
+    -1.232314019716796e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue.glb",
+   "node": "Throwable",
+   "hand": "right",
+   "local": [
+    -1.000000000000004,
+    2.6541334838732203e-7,
+    4.55300058790963e-9,
+    0,
+    2.6541334798928526e-7,
+    0.9999999999999609,
+    -8.742273454512682e-8,
+    0,
+    -4.553023791070152e-9,
+    -8.74227333366966e-8,
+    -1.000000000000035,
+    0,
+    5.960464477539063e-8,
+    0.1802308057398821,
+    -1.0962320118323987e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Knife_Offhand",
+   "hand": "left",
+   "local": [
+    0.9999999999998832,
+    2.801468781399417e-7,
+    3.9396744000440913e-7,
+    0,
+    -2.8014687813991987e-7,
+    0.9999999999999608,
+    -1.1041924022753135e-13,
+    0,
+    -3.939674400044246e-7,
+    5.049182151348982e-17,
+    0.9999999999999224,
+    0,
+    0,
+    -0.00001565171766032547,
+    -4.022192356956111e-9,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "1H_Crossbow",
+   "hand": "right",
+   "local": [
+    -1.3435888468471546e-7,
+    9.221463628397445e-8,
+    -1.0000001343589002,
+    0,
+    4.2833404336144645e-7,
+    0.999999999999904,
+    9.221463628397445e-8,
+    0,
+    1.0000001343588127,
+    -4.2833404336144645e-7,
+    -1.3435892420865514e-7,
+    0,
+    -0.10462832450866699,
+    -0.010373746886727708,
+    -1.2353707745660358e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "2H_Crossbow",
+   "hand": "right",
+   "local": [
+    -1.3435888468471546e-7,
+    9.221463628397445e-8,
+    -1.0000001343589002,
+    0,
+    4.2833404336144645e-7,
+    0.999999999999904,
+    9.221463628397445e-8,
+    0,
+    1.0000001343588127,
+    -4.2833404336144645e-7,
+    -1.3435892420865514e-7,
+    0,
+    -0.10462832450866699,
+    -0.010373746886727708,
+    -1.2353707745660358e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Knife",
+   "hand": "right",
+   "local": [
+    -1.0000000000000213,
+    2.8014682318089426e-7,
+    1.823898668748622e-8,
+    0,
+    2.801468194121296e-7,
+    0.9999999999999394,
+    -2.066320260464941e-7,
+    0,
+    -1.823904457479078e-8,
+    -2.0663202093689183e-7,
+    -1.000000000000039,
+    0,
+    0,
+    -0.000015323892114060822,
+    -1.232314019716796e-7,
+    1
+   ]
+  },
+  {
+   "file": "actors/Rogue_Hooded.glb",
+   "node": "Throwable",
+   "hand": "right",
+   "local": [
+    -1.000000000000004,
+    2.6541334838732203e-7,
+    4.55300058790963e-9,
+    0,
+    2.6541334798928526e-7,
+    0.9999999999999609,
+    -8.742273454512682e-8,
+    0,
+    -4.553023791070152e-9,
+    -8.74227333366966e-8,
+    -1.000000000000035,
+    0,
+    5.960464477539063e-8,
+    0.1802308057398821,
+    -1.0962320118323987e-7,
+    1
+   ]
+  }
+ ]
+}

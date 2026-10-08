@@ -1,0 +1,3361 @@
+{
+ "source_sha256": "f58de791b216af3f6eec73dbf88e5263f1f523e407fd477ea1ee7deb528dbc9b",
+ "source_url": "pizza-fleet://private/execution-breakdown-2026-09-18/build-hierarchy.json",
+ "nodes": [
+  {
+   "id": "campaign:pizza-fleet-mvp",
+   "kind": "CAMPAIGN",
+   "title": "a new user can create a realm, build their village, and run their fleet from inside the world.",
+   "state": "DEFINED",
+   "parent_id": null,
+   "payload": {
+    "ref": "pizza-fleet-mvp",
+    "order": 0
+   }
+  },
+  {
+   "id": "questline:QL-1",
+   "kind": "QUEST_LINE",
+   "title": "Data / Contract Layer (the spine)",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-mvp",
+   "payload": {
+    "ref": "QL-1",
+    "order": 0
+   }
+  },
+  {
+   "id": "quest:QL-1.S01",
+   "kind": "QUEST",
+   "title": "Contract schema",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S01",
+    "order": 0,
+    "outcome": "a documented snapshot contract every view binds to, with a typed unresolved-**reason-code** enum (NO-TRACKER / ORPHANED-WORKER / NO-OWNING-MANAGER / UNMAPPED-INITIATIVE) and the four honest-empty display states, never a bare \"unknown\"",
+    "estimate": "6–12",
+    "step_ids": [
+     "QL-1.S01",
+     "QL-1.S01R"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S01",
+   "payload": {
+    "ref": "QL-1.S01",
+    "order": 0,
+    "acceptance": "Bounded snapshot composition accepted by CPO; 17 scoped tests and diff check pass. Full schema is tracked separately."
+   }
+  },
+  {
+   "id": "step:QL-1.S01R",
+   "kind": "STEP",
+   "title": "S01R",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S01",
+   "payload": {
+    "ref": "QL-1.S01R",
+    "order": 1,
+    "acceptance": "Complete typed source/provenance/completeness schema only after source-record fields and #4 fifth-state decision are settled."
+   }
+  },
+  {
+   "id": "quest:QL-1.S02",
+   "kind": "QUEST",
+   "title": "The rollup JOIN",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S02",
+    "order": 1,
+    "outcome": "each agent resolves to its Quest / Quest Line / Campaign via its manager, rendered **\"via `<manager>`\"**, never a flat value that makes five workers under one manager look like five coincidences",
+    "estimate": "12–24",
+    "step_ids": [
+     "QL-1.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S02",
+   "payload": {
+    "ref": "QL-1.S02",
+    "order": 0,
+    "acceptance": "CPO rollup review PASS (2026-09-18); pure manager→Quest→initiative→goal join, via reference, explicit PARTIAL on missing edges, 4 scoped tests pass; no live reads or invented edges. Review: docs/product/reviews/2026-09-18-ql-1-rollup-review.md."
+   }
+  },
+  {
+   "id": "quest:QL-1.S03",
+   "kind": "QUEST",
+   "title": "Build the initiative→goal feed",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S03",
+    "order": 2,
+    "outcome": "the Quest-Line→Campaign linkage renders LIVE instead of honest-empty-always (it is honest-empty **for us too** today)",
+    "estimate": "10–20; source shape prerequisite",
+    "step_ids": [
+     "QL-1.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S03",
+   "payload": {
+    "ref": "QL-1.S03",
+    "order": 0,
+    "acceptance": "Do not implement until initiative-goal source producer/map is available and named."
+   }
+  },
+  {
+   "id": "quest:QL-1.S04",
+   "kind": "QUEST",
+   "title": "Contract normalization + **attention split (cpo F2)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S04",
+    "order": 3,
+    "outcome": "one contract shape regardless of harness; **`needsAttention` SPLIT into `blockedOnHuman` and `wantsAttention`** — it conflates two distinct claims (invariant 3), and the universal half is uncomputed on both harnesses, so a single false→unknown is not enough; each of the two gets its own value and its own honest-unknown",
+    "estimate": "6–12; live adapters prerequisite",
+    "step_ids": [
+     "QL-1.S04",
+     "QL-1.S04R"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S04",
+   "payload": {
+    "ref": "QL-1.S04",
+    "order": 0,
+    "acceptance": "CPO attention review PASS; 5 tests pass; UNKNOWN remains distinct from false."
+   }
+  },
+  {
+   "id": "step:QL-1.S04R",
+   "kind": "STEP",
+   "title": "S04R",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S04",
+   "payload": {
+    "ref": "QL-1.S04R",
+    "order": 1,
+    "acceptance": "Normalize live source payloads only after named adapters exist; no invented feed or adapter."
+   }
+  },
+  {
+   "id": "quest:QL-1.S05",
+   "kind": "QUEST",
+   "title": "Honest-empty resolver",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S05",
+    "order": 4,
+    "outcome": "every absent value renders the right one of the four display states, per level per audience",
+    "estimate": "8–16; UI consumer prerequisite",
+    "step_ids": [
+     "QL-1.S05",
+     "QL-1.S05R"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S05",
+   "payload": {
+    "ref": "QL-1.S05",
+    "order": 0,
+    "acceptance": "CPO display review PASS; 7 tests pass; 403 remains access denial."
+   }
+  },
+  {
+   "id": "step:QL-1.S05R",
+   "kind": "STEP",
+   "title": "S05R",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S05",
+   "payload": {
+    "ref": "QL-1.S05R",
+    "order": 1,
+    "acceptance": "Bind every resolver state into the actual consumer UI only after the browser surface and feed contract are available."
+   }
+  },
+  {
+   "id": "quest:QL-1.S06",
+   "kind": "QUEST",
+   "title": "Display-state map (added per designer finding)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S06",
+    "order": 5,
+    "outcome": "a single complete fetch→display mapping every surface uses, with **every** display state given a trigger — including WORLD_DAMAGED",
+    "estimate": "0–4; bounded resolver accepted, integration remains",
+    "step_ids": [
+     "QL-1.S06",
+     "QL-1.S06R"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S06",
+   "kind": "STEP",
+   "title": "S06",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S06",
+   "payload": {
+    "ref": "QL-1.S06",
+    "order": 0,
+    "acceptance": "Bounded pure resolver mapping is accepted by CPO; live integration is separate."
+   }
+  },
+  {
+   "id": "step:QL-1.S06R",
+   "kind": "STEP",
+   "title": "S06R",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S06",
+   "payload": {
+    "ref": "QL-1.S06R",
+    "order": 1,
+    "acceptance": "Map named adapter outcomes only after source adapters and freshness/error contracts are available."
+   }
+  },
+  {
+   "id": "quest:QL-1.S07",
+   "kind": "QUEST",
+   "title": "PARTIAL bound-render (added per designer finding)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S07",
+    "order": 6,
+    "outcome": "any PARTIAL feed renders **the bound, not the estimate** (\"at least N steps\"), and the visual form matches the bound",
+    "estimate": "6–12",
+    "step_ids": [
+     "QL-1.S07",
+     "QL-1.S07R"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S07",
+   "kind": "STEP",
+   "title": "S07",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S07",
+   "payload": {
+    "ref": "QL-1.S07",
+    "order": 0,
+    "acceptance": "Lower-bound count formatter is covered by the accepted display suite; this is not rendered geometry."
+   }
+  },
+  {
+   "id": "step:QL-1.S07R",
+   "kind": "STEP",
+   "title": "S07R",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S07",
+   "payload": {
+    "ref": "QL-1.S07R",
+    "order": 1,
+    "acceptance": "Bounded synthetic PARTIAL fixture integrated; main Electron desktop/narrow 2/2 tests, unavailable/geometry/no-external-request checks PASS. Shared-shell and live integration remain open. Review: docs/product/reviews/2026-09-19-room-props-partial-integration.md"
+   }
+  },
+  {
+   "id": "quest:QL-1.S08",
+   "kind": "QUEST",
+   "title": "User-repo Quest-Step feed",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S08",
+    "order": 7,
+    "outcome": "Quest-Step renders LIVE for users, not just us",
+    "estimate": "NOT ESTIMABLE — GitHub Connect/source contract prerequisite",
+    "step_ids": [
+     "QL-1.S08"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S08",
+   "kind": "STEP",
+   "title": "S08",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S08",
+   "payload": {
+    "ref": "QL-1.S08",
+    "order": 0,
+    "acceptance": "GitHub/Quest-Step source door and access contract are not available; no invented adapter."
+   }
+  },
+  {
+   "id": "quest:QL-1.S09",
+   "kind": "QUEST",
+   "title": "The Map (render surface — spec 3005, The Map is inside QL-1)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S09",
+    "order": 8,
+    "outcome": "the Campaign map renders here: markers = Campaigns w/ a completion measure; drill-in = the four-level chain + relevant Chronicle entries; the measure never shows work-done as outcome-achieved",
+    "estimate": "16–32; outcome feed prerequisite",
+    "step_ids": [
+     "QL-1.S09"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-1.S09",
+   "kind": "STEP",
+   "title": "S09",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-1.S09",
+   "payload": {
+    "ref": "QL-1.S09",
+    "order": 0,
+    "acceptance": "Requires real initiative-goal and Quest-Step feeds plus #4 fifth-state decision before outcome/progress semantics can be accepted."
+   }
+  },
+  {
+   "id": "questline:QL-2",
+   "kind": "QUEST_LINE",
+   "title": "Realm Creation Flow",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-mvp",
+   "payload": {
+    "ref": "QL-2",
+    "order": 1
+   }
+  },
+  {
+   "id": "quest:QL-2.S01",
+   "kind": "QUEST",
+   "title": "Realm Gallery",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S01",
+    "order": 0,
+    "outcome": "list/enter/create realms; empty-state honest",
+    "estimate": "6–12",
+    "step_ids": [
+     "QL-2.S01"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-2.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-2.S01",
+   "payload": {
+    "ref": "QL-2.S01",
+    "order": 0,
+    "acceptance": "CPO bounded gallery review PASS (2026-09-18); 9 scoped tests, syntax, and diff checks pass; integrated projection has no persistence/auth/UI claim."
+   }
+  },
+  {
+   "id": "quest:QL-2.S02",
+   "kind": "QUEST",
+   "title": "Create form",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S02",
+    "order": 1,
+    "outcome": "name + icon (upload or generate) + fleet-structure choice",
+    "estimate": "8–16; icon/storage contract prerequisite",
+    "step_ids": [
+     "QL-2.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-2.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-2.S02",
+   "payload": {
+    "ref": "QL-2.S02",
+    "order": 0,
+    "acceptance": "CPO create review PASS (2026-09-18); 9 scoped tests, syntax, and diff pass; opaque descriptors only, with no registry, persistence, or Build claim."
+   }
+  },
+  {
+   "id": "quest:QL-2.S03",
+   "kind": "QUEST",
+   "title": "Build",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S03",
+    "order": 2,
+    "outcome": "produces an empty realm the village flow fills (empty-world-first)",
+    "estimate": "12–24; hosted persistence prerequisite",
+    "step_ids": [
+     "QL-2.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-2.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-2.S03",
+   "payload": {
+    "ref": "QL-2.S03",
+    "order": 0,
+    "acceptance": "Pure Build composition accepted: explicit BUILD validates the canonical form and returns one CREATE_EMPTY_REALM intent only when the save decision allows, otherwise zero; no spawn or persistence. CTO/CPO exact-hash PASS; 6 new tests. Full step remains BLOCKED. Evidence: private/review-router/receipts/4d3984e7b38a49d9ab8797f3796eeb41-result.json"
+   }
+  },
+  {
+   "id": "quest:QL-2.S04",
+   "kind": "QUEST",
+   "title": "**Suggested-structure review (NEW PRECEDENT — deep below)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S04",
+    "order": 3,
+    "outcome": "a connected source proposes a structure the user reviews/edits before adoption; never a silent bulk import",
+    "estimate": "16–32; source adapter and #4 scope prerequisite",
+    "step_ids": [
+     "QL-2.S04"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-2.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-2.S04",
+   "payload": {
+    "ref": "QL-2.S04",
+    "order": 0,
+    "acceptance": "Requires source structure contract and #4/joiner permission ruling; keep review explicit before adoption."
+   }
+  },
+  {
+   "id": "quest:QL-2.S05",
+   "kind": "QUEST",
+   "title": "**Provider/permission setup (NEW PRECEDENT — deep below)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S05",
+    "order": 4,
+    "outcome": "account-wide providers (primary/backup) + the bypass-permissions model set once",
+    "estimate": "20–40; auth/provider and permission decisions prerequisite",
+    "step_ids": [
+     "QL-2.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-2.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-2.S05",
+   "payload": {
+    "ref": "QL-2.S05",
+    "order": 0,
+    "acceptance": "Owner-approved pure permission defaults accepted: draft without sign-in/provider; empty-realm save requires sign-in evidence but no provider; agent actions need separate permission; bypass false. CTO/CPO exact-hash PASS; 5 new tests. Full step remains BLOCKED. Evidence: private/review-router/receipts/4d3984e7b38a49d9ab8797f3796eeb41-result.json"
+   }
+  },
+  {
+   "id": "questline:QL-3",
+   "kind": "QUEST_LINE",
+   "title": "Agent Village",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-mvp",
+   "payload": {
+    "ref": "QL-3",
+    "order": 2
+   }
+  },
+  {
+   "id": "quest:QL-3.S01",
+   "kind": "QUEST",
+   "title": "Great Hall + King (step 1)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S01",
+    "order": 0,
+    "outcome": "mandatory first placement, universal across patterns",
+    "estimate": "10–20",
+    "step_ids": [
+     "QL-3.S01"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-3.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-3.S01",
+   "payload": {
+    "ref": "QL-3.S01",
+    "order": 0,
+    "acceptance": "CPO bounded placement review PASS (2026-09-19); 10 tests, syntax and diff checks pass. Hall required, King optional opaque record; no live identity or runtime claim. Review: docs/product/reviews/2026-09-19-ql-3-placement-review.md."
+   }
+  },
+  {
+   "id": "quest:QL-3.S02",
+   "kind": "QUEST",
+   "title": "Room placement + props (step 2)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S02",
+    "order": 1,
+    "outcome": "rooms placed in the world, props cosmetic",
+    "estimate": "16–32",
+    "step_ids": [
+     "QL-3.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-3.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-3.S02",
+   "payload": {
+    "ref": "QL-3.S02",
+    "order": 0,
+    "acceptance": "Separate ROOM and cosmetic-prop validators integrated after CTO/CPO exact-hash PASS; main 22/22 tests, syntax/diff PASS. No runtime/UI/membership/persistence/#4 acceptance. Review: docs/product/reviews/2026-09-19-room-props-partial-integration.md"
+   }
+  },
+  {
+   "id": "quest:QL-3.S03",
+   "kind": "QUEST",
+   "title": "**Room-membership evaluator (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S03",
+    "order": 2,
+    "outcome": "a room's condition (file/folder/regex/freeform) resolves against the live fleet; matches-nothing renders honest-empty",
+    "estimate": "24–48; live fleet/evaluator contract prerequisite",
+    "step_ids": [
+     "QL-3.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-3.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-3.S03",
+   "payload": {
+    "ref": "QL-3.S03",
+    "order": 0,
+    "acceptance": "Requires live membership/Map feed and the #4 blocker owner decision; no inferred membership."
+   }
+  },
+  {
+   "id": "quest:QL-3.S04",
+   "kind": "QUEST",
+   "title": "**Sleep / Wake (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S04",
+    "order": 3,
+    "outcome": "agents sleep and wake with the right destruction weight and disclosure",
+    "estimate": "20–40; process/disclosure contract prerequisite",
+    "step_ids": [
+     "QL-3.S04"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-3.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-3.S04",
+   "payload": {
+    "ref": "QL-3.S04",
+    "order": 0,
+    "acceptance": "Process/lifecycle and disclosure contract is unresolved; no pane/process adapter."
+   }
+  },
+  {
+   "id": "quest:QL-3.S05",
+   "kind": "QUEST",
+   "title": "**Character card (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S05",
+    "order": 4,
+    "outcome": "Campaign 1: distinct Status / Stop / Sleep with actual permissions; Chat disabled as Available in Campaign 2, no transport/read/send. Campaign 2 QL-5 enables Chat.",
+    "estimate": "16–32",
+    "step_ids": [
+     "QL-3.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-3.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-3.S05",
+   "payload": {
+    "ref": "QL-3.S05",
+    "order": 0,
+    "acceptance": "Campaign 1 card renders Chat disabled/unavailable labeled “Available in Campaign 2”; no Chat transport/read/send. Status/Stop/Sleep remain distinct and require real source/permission checks. QL-3.S03 membership and #4 remain unresolved; QL-5 Chat transport does not block this slice."
+   }
+  },
+  {
+   "id": "questline:QL-4",
+   "kind": "QUEST_LINE",
+   "title": "World-View Chrome / the harness",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-mvp",
+   "payload": {
+    "ref": "QL-4",
+    "order": 3
+   }
+  },
+  {
+   "id": "quest:QL-4.S01",
+   "kind": "QUEST",
+   "title": "Shell layout",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S01",
+    "order": 0,
+    "outcome": "top bar + left rail + bottom selected-panel + Active Quests tracker, as DOM/CSS over QL-1's contract",
+    "estimate": "16–32; harness implementation prerequisite",
+    "step_ids": [
+     "QL-4.S01"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-4.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-4.S01",
+   "payload": {
+    "ref": "QL-4.S01",
+    "order": 0,
+    "acceptance": "CPO shell review PASS (2026-09-18) and manager main integration PASS after frozen-contract hash check; 3 static tests, syntax, Electron desktop/narrow runtime, four regions, and zero console errors/external requests. Minimap remains UNAVAILABLE."
+   }
+  },
+  {
+   "id": "quest:QL-4.S02",
+   "kind": "QUEST",
+   "title": "Left-rail view switching",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S02",
+    "order": 1,
+    "outcome": "the six views (Village/Quests/Code Dungeon/Chronicle/Map/Realm Chat) + Permissions/Settings, with fade transitions (never an instant cut)",
+    "estimate": "12–24",
+    "step_ids": [
+     "QL-4.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-4.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-4.S02",
+   "payload": {
+    "ref": "QL-4.S02",
+    "order": 0,
+    "acceptance": "CPO bounded rail review PASS (2026-09-18); 6 scoped tests and syntax check pass; DOM/timer/browser integration remains QL-4.S08."
+   }
+  },
+  {
+   "id": "quest:QL-4.S03",
+   "kind": "QUEST",
+   "title": "Dual selection → selected-panel",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S03",
+    "order": 2,
+    "outcome": "a room OR an agent is selectable and populates the same bottom panel (RTS click-a-building-or-unit); selecting one clears the other",
+    "estimate": "12–24",
+    "step_ids": [
+     "QL-4.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-4.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-4.S03",
+   "payload": {
+    "ref": "QL-4.S03",
+    "order": 0,
+    "acceptance": "CPO selection review PASS (2026-09-18); 8 scoped tests, syntax, and diff pass; DOM/source/auth/command wiring remains QL-4.S08."
+   }
+  },
+  {
+   "id": "quest:QL-4.S04",
+   "kind": "QUEST",
+   "title": "Resource chip (RENDER only — feed is QL-1's, per F1 re-homing)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S04",
+    "order": 3,
+    "outcome": "renders QL-1's resource-metric feed, **not** a decorative gauge, and honest-empty when that feed is ABSENT (OMP/non-tmux — cpo F2)",
+    "estimate": "6–12; QL-1 feed and F1 value ruling prerequisite",
+    "step_ids": [
+     "QL-4.S04"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-4.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-4.S04",
+   "payload": {
+    "ref": "QL-4.S04",
+    "order": 0,
+    "acceptance": "Requires QL-1 Map completeness/fifth-state decision; chip may render only accepted feed status."
+   }
+  },
+  {
+   "id": "quest:QL-4.S05",
+   "kind": "QUEST",
+   "title": "Campaign-mini + auto-cycle",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S05",
+    "order": 4,
+    "outcome": "the top-bar campaign strip cycles Campaigns; a real milestone/completion **pulses**",
+    "estimate": "10–20; real measure feed prerequisite",
+    "step_ids": [
+     "QL-4.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-4.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-4.S05",
+   "payload": {
+    "ref": "QL-4.S05",
+    "order": 0,
+    "acceptance": "Requires real campaign/Map measures; no timer-generated progress or mock feed."
+   }
+  },
+  {
+   "id": "quest:QL-4.S06",
+   "kind": "QUEST",
+   "title": "Two-scale progress carrier",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S06",
+    "order": 5,
+    "outcome": "a progress bar reads correctly at both detail-card and chrome (top-bar 5px) size",
+    "estimate": "6–12",
+    "step_ids": [
+     "QL-4.S06"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-4.S06",
+   "kind": "STEP",
+   "title": "S06",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-4.S06",
+   "payload": {
+    "ref": "QL-4.S06",
+    "order": 0,
+    "acceptance": "Prerequisite QL-1.S09 is not DONE; source measure remains an input, not invented."
+   }
+  },
+  {
+   "id": "quest:QL-4.S07",
+   "kind": "QUEST",
+   "title": "Honest-empty per chip",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S07",
+    "order": 6,
+    "outcome": "every chip is fed or shows the right honest-empty state — a dense always-visible HUD has nowhere to hide an unfed field",
+    "estimate": "12–24; QL-1 consumer contract prerequisite",
+    "step_ids": [
+     "QL-4.S07"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-4.S07",
+   "kind": "STEP",
+   "title": "S07",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-4.S07",
+   "payload": {
+    "ref": "QL-4.S07",
+    "order": 0,
+    "acceptance": "CPO bounded chip-state review PASS (2026-09-19); 7 tests, syntax and diff checks pass. Missing/no-verdict stays UNKNOWN/UNAVAILABLE; no ACTIONABLE_EMPTY or affordance policy. Review: docs/product/reviews/2026-09-19-ql-4-chip-states-review.md."
+   }
+  },
+  {
+   "id": "campaign:pizza-fleet-expansion",
+   "kind": "CAMPAIGN",
+   "title": "Populate the realm with the real build, onboard the internal team, and complete the collaborative fleet experience.",
+   "state": "DEFINED",
+   "parent_id": null,
+   "payload": {
+    "ref": "pizza-fleet-expansion",
+    "order": 1
+   }
+  },
+  {
+   "id": "questline:QL-12",
+   "kind": "QUEST_LINE",
+   "title": "Live Supabase Seeding & Internal Dev Onboarding",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-12",
+    "order": 0
+   }
+  },
+  {
+   "id": "quest:QL-12.S01",
+   "kind": "QUEST",
+   "title": "Exact ledger source and presentation",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-12",
+   "payload": {
+    "ref": "QL-12.S01",
+    "order": 0,
+    "outcome": "An independently reviewed current source bundle preserves every Campaign/Quest Line/Quest/Step/gate, stable IDs, provenance, source states and reward metadata without grants.",
+    "estimate": "0; accepted local preparation; current source recheck remains",
+    "step_ids": [
+     "QL-12.S01"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-12.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S01",
+   "payload": {
+    "ref": "QL-12.S01",
+    "order": 0,
+    "acceptance": "Reviewed bounded implementation PASS: private/realm-bootstrap-2026-09-19/cto-implementation-review.md and private/realm-bootstrap-2026-09-19/cpo-implementation-review.md. Exact prior source export 197 nodes/331 edges and 9 exporter tests accepted; source statuses/provenance and reward metadata preserved. This historical local preparation receipt does not accept the later two-Campaign/QL-12 expansion or a live import."
+   }
+  },
+  {
+   "id": "quest:QL-12.S02",
+   "kind": "QUEST",
+   "title": "Reviewed schema and deployment",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-12",
+   "payload": {
+    "ref": "QL-12.S02",
+    "order": 1,
+    "outcome": "Reviewed additive schema is deployed only after explicit Campaign 1 acceptance and the integrated QL-1–QL-4 UI gate, with verified target access and tenant policies.",
+    "estimate": "8–16",
+    "step_ids": [
+     "QL-12.S02",
+     "QL-12.S03",
+     "QL-12.S04"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-12.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S02",
+   "payload": {
+    "ref": "QL-12.S02",
+    "order": 0,
+    "acceptance": "Reviewed bounded implementation PASS: private/realm-bootstrap-2026-09-19/cto-implementation-review.md and private/realm-bootstrap-2026-09-19/cpo-implementation-review.md. Disposable PostgreSQL import/restart/readback/repeat and separate empty acceptance realm pass. Owner-only atomic import, tenant integrity, conflict rejection and member reads; hosted schema remains unverified."
+   }
+  },
+  {
+   "id": "step:QL-12.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S02",
+   "payload": {
+    "ref": "QL-12.S03",
+    "order": 1,
+    "acceptance": "CTO and CPO explicitly accept Campaign 1 (only QL-1–QL-4) and the integrated running data/realm/village/world UI in desktop+narrow browser; root records Campaign 2 unlock. Isolated contracts, mock database and bootstrap utility cannot satisfy this gate."
+   }
+  },
+  {
+   "id": "step:QL-12.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S02",
+   "payload": {
+    "ref": "QL-12.S04",
+    "order": 2,
+    "acceptance": "After Campaign 1 acceptance, verify intended project and existing schema, deploy reviewed additive migrations through authenticated administration, and inspect real grants/RLS; no invitation policy enablement inferred."
+   }
+  },
+  {
+   "id": "quest:QL-12.S05",
+   "kind": "QUEST",
+   "title": "Live import and persisted readback",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-12",
+   "payload": {
+    "ref": "QL-12.S05",
+    "order": 2,
+    "outcome": "The intended owner realm contains the exact current snapshot and survives readback/restart/repeat without changing unrelated user data.",
+    "estimate": "6–12",
+    "step_ids": [
+     "QL-12.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-12.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S05",
+   "payload": {
+    "ref": "QL-12.S05",
+    "order": 0,
+    "acceptance": "Regenerate and review exact current two-Campaign/QL-12-inclusive source and presentation before use. Verify owner and intended realm, explicitly import, read back IDs/counts/relationships/provenance/statuses, restart/sign-out/reload, repeat without duplicate data; verify independent empty acceptance realm stays empty."
+   }
+  },
+  {
+   "id": "quest:QL-12.S06",
+   "kind": "QUEST",
+   "title": "Collaborator invitation readiness and acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-12",
+   "payload": {
+    "ref": "QL-12.S06",
+    "order": 3,
+    "outcome": "Only intended authenticated, mailbox-verified collaborators can accept explicitly authorized invitations; revoke/expiry/role/error boundaries are proven.",
+    "estimate": "6–12",
+    "step_ids": [
+     "QL-12.S06",
+     "QL-12.S07",
+     "QL-12.S08"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-12.S06",
+   "kind": "STEP",
+   "title": "S06",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S06",
+   "payload": {
+    "ref": "QL-12.S06",
+    "order": 0,
+    "acceptance": "Reviewed bounded implementation PASS: private/realm-bootstrap-2026-09-19/cto-implementation-review.md and private/realm-bootstrap-2026-09-19/cpo-implementation-review.md. Email-bound expiring/revocable hashed-token invitations and default-off mailbox-policy guard reviewed; optional Slack candidate directory tests 9/9. No live Slack read, invite creation, delivery or member acceptance."
+   }
+  },
+  {
+   "id": "step:QL-12.S07",
+   "kind": "STEP",
+   "title": "S07",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S06",
+   "payload": {
+    "ref": "QL-12.S07",
+    "order": 1,
+    "acceptance": "Verify deployed mailbox confirmation and existing-account provenance, owner-approved workspace/channel and exact intended recipients; distinguish candidates from invite authority. Administrator may enable reviewed mailbox-policy flag only after evidence; disclose existing member editing permissions."
+   }
+  },
+  {
+   "id": "step:QL-12.S08",
+   "kind": "STEP",
+   "title": "S08",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S06",
+   "payload": {
+    "ref": "QL-12.S08",
+    "order": 2,
+    "acceptance": "An explicitly addressed intended user signs in and accepts scoped invitation; verify correct realm, member role, expiry/revoke/removal/replay and outsider denial. No automatic Slack/email delivery; actual delivery or account creation needs explicit owner instruction."
+   }
+  },
+  {
+   "id": "quest:QL-12.S09",
+   "kind": "QUEST",
+   "title": "Internal developer onboarding acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-12",
+   "payload": {
+    "ref": "QL-12.S09",
+    "order": 4,
+    "outcome": "Internal developers complete the actual integrated hosted journey; independent CTO/CPO reviews accept persistence, permissions and desktop/narrow behavior.",
+    "estimate": "8–16",
+    "step_ids": [
+     "QL-12.S09",
+     "QL-12.S10",
+     "QL-12.S11"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-12.S09",
+   "kind": "STEP",
+   "title": "S09",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S09",
+   "payload": {
+    "ref": "QL-12.S09",
+    "order": 0,
+    "acceptance": "Reviewed bounded implementation PASS: private/realm-bootstrap-2026-09-19/cto-implementation-review.md and private/realm-bootstrap-2026-09-19/cpo-implementation-review.md. Mocked desktop/narrow browser controls preserve explicit sign-in, realm selection, source preview/import, reload and invitation actions; sign-out clears records/tokens. Mocked browser is not live application acceptance."
+   }
+  },
+  {
+   "id": "step:QL-12.S10",
+   "kind": "STEP",
+   "title": "S10",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S09",
+   "payload": {
+    "ref": "QL-12.S10",
+    "order": 1,
+    "acceptance": "On actual integrated app, owner and intended internal collaborator enter/select realm, inspect the imported two-Campaign hierarchy and source states, navigate QL-1–QL-4 UI, sign out and restore safely; desktop+narrow and permission/error branches pass. No live-agent/reward grant inference."
+   }
+  },
+  {
+   "id": "step:QL-12.S11",
+   "kind": "STEP",
+   "title": "S11",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-12.S09",
+   "payload": {
+    "ref": "QL-12.S11",
+    "order": 2,
+    "acceptance": "Independent CTO and CPO approve actual hosted persistence, audience permissions and end-to-end onboarding evidence; manager records QL-12 completion without closing QL-5–QL-11 or importing bounded acceptance as parent completion."
+   }
+  },
+  {
+   "id": "questline:QL-5",
+   "kind": "QUEST_LINE",
+   "title": "Chat Surfaces",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-5",
+    "order": 1
+   }
+  },
+  {
+   "id": "quest:QL-5.S01",
+   "kind": "QUEST",
+   "title": "Realm Chat channels",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S01",
+    "order": 0,
+    "outcome": "multi-channel chat, human-only default, per-channel agent invite",
+    "estimate": "16–32",
+    "step_ids": [
+     "QL-5.S01"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-5.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-5.S01",
+   "payload": {
+    "ref": "QL-5.S01",
+    "order": 0,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Pure channel record, human-only default, and forward-only history rules have deterministic tests."
+   }
+  },
+  {
+   "id": "quest:QL-5.S02",
+   "kind": "QUEST",
+   "title": "Agent invite (read-only / read+write)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S02",
+    "order": 1,
+    "outcome": "an agent joins a channel at an explicit access level, reading only forward from the invite",
+    "estimate": "20–40; source audience/invite contract prerequisite",
+    "step_ids": [
+     "QL-5.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-5.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-5.S02",
+   "payload": {
+    "ref": "QL-5.S02",
+    "order": 0,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Source audience/invite contract and #4 joiner permission decision are missing; no widening claim."
+   }
+  },
+  {
+   "id": "quest:QL-5.S03",
+   "kind": "QUEST",
+   "title": "Card Chat transport",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S03",
+    "order": 2,
+    "outcome": "the card's Chat action sends/reads via agent-dispatch + pane-read",
+    "estimate": "8–16; agent-dispatch/pane-read contract prerequisite",
+    "step_ids": [
+     "QL-5.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-5.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-5.S03",
+   "payload": {
+    "ref": "QL-5.S03",
+    "order": 0,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Agent-dispatch/pane-read contract is unavailable; keep live transport out of pure module. Own enabling the QL-3 Chat control and verify allowed/denied/unavailable read/send behavior; Campaign 1 placeholder stays disabled."
+   }
+  },
+  {
+   "id": "quest:QL-5.S04",
+   "kind": "QUEST",
+   "title": "**Per-viewer access on a shared surface (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S04",
+    "order": 3,
+    "outcome": "on a shared/multi-viewer card, each viewer sees only what their own access to the source grants",
+    "estimate": "NOT ESTIMABLE — source audience/permission contract prerequisite",
+    "step_ids": [
+     "QL-5.S04"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-5.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-5.S04",
+   "payload": {
+    "ref": "QL-5.S04",
+    "order": 0,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Requires source audience/permission contract; realm membership never widens source speech."
+   }
+  },
+  {
+   "id": "quest:QL-5.S05",
+   "kind": "QUEST",
+   "title": "**Third-party speech in in-world chat (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S05",
+    "order": 4,
+    "outcome": "chat never leaks a third party's words or an agent's identity into a record they don't belong in",
+    "estimate": "16–32; structured source-record contract prerequisite",
+    "step_ids": [
+     "QL-5.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-5.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-5.S05",
+   "payload": {
+    "ref": "QL-5.S05",
+    "order": 0,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Requires QL-10 structured source-record producer/read contract; preserve original audience metadata."
+   }
+  },
+  {
+   "id": "questline:QL-6",
+   "kind": "QUEST_LINE",
+   "title": "Realm Settings & Integrations",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-6",
+    "order": 2
+   }
+  },
+  {
+   "id": "quest:QL-6.S01",
+   "kind": "QUEST",
+   "title": "Integrations list",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-6",
+   "payload": {
+    "ref": "QL-6.S01",
+    "order": 0,
+    "outcome": "each connected source listed, expandable to its mapping record",
+    "estimate": "8–16",
+    "step_ids": [
+     "QL-6.S01",
+     "QL-6.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-6.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-6.S01",
+   "payload": {
+    "ref": "QL-6.S01",
+    "order": 0,
+    "acceptance": "Pure list/expand/disconnect record shape preserves explicit source status; named test passes without network."
+   }
+  },
+  {
+   "id": "step:QL-6.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-6.S01",
+   "payload": {
+    "ref": "QL-6.S02",
+    "order": 1,
+    "acceptance": "Adapter maps one provider record to list and disconnect result with explicit absence/error states."
+   }
+  },
+  {
+   "id": "quest:QL-6.S03",
+   "kind": "QUEST",
+   "title": "**Count-based mapping record (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-6",
+   "payload": {
+    "ref": "QL-6.S03",
+    "order": 1,
+    "outcome": "every integration shows exactly what came from it, always \"connected, and here's what\" — never a bare \"connected\"",
+    "estimate": "12–24; source completeness contract prerequisite",
+    "step_ids": [
+     "QL-6.S03",
+     "QL-6.S06"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-6.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-6.S03",
+   "payload": {
+    "ref": "QL-6.S03",
+    "order": 0,
+    "acceptance": "Pure mapping record renders source count and provenance, never a bare connected label; offline fixtures pass."
+   }
+  },
+  {
+   "id": "step:QL-6.S06",
+   "kind": "STEP",
+   "title": "S06",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-6.S03",
+   "payload": {
+    "ref": "QL-6.S06",
+    "order": 1,
+    "acceptance": "Browser surface renders count/provenance and explicit unavailable states from the accepted record; no live provider claim."
+   }
+  },
+  {
+   "id": "quest:QL-6.S04",
+   "kind": "QUEST",
+   "title": "Connect a new source",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-6",
+   "payload": {
+    "ref": "QL-6.S04",
+    "order": 2,
+    "outcome": "re-runs QL-2's suggested-structure review (never a silent bulk import)",
+    "estimate": "12–24; QL-2 review flow prerequisite",
+    "step_ids": [
+     "QL-6.S04"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-6.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-6.S04",
+   "payload": {
+    "ref": "QL-6.S04",
+    "order": 0,
+    "acceptance": "New-source flow requires review result before import and rejects silent bulk import."
+   }
+  },
+  {
+   "id": "quest:QL-6.S05",
+   "kind": "QUEST",
+   "title": "Edit standing permissions/providers",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-6",
+   "payload": {
+    "ref": "QL-6.S05",
+    "order": 3,
+    "outcome": "the bypass model + providers set at creation, editable here",
+    "estimate": "10–20; QL-2 provider model prerequisite",
+    "step_ids": [
+     "QL-6.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-6.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-6.S05",
+   "payload": {
+    "ref": "QL-6.S05",
+    "order": 0,
+    "acceptance": "Edit preserves provider scope, bypass rules, and explicit permission state."
+   }
+  },
+  {
+   "id": "questline:QL-7",
+   "kind": "QUEST_LINE",
+   "title": "Room & Character Editors",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-7",
+    "order": 3
+   }
+  },
+  {
+   "id": "quest:QL-7.S01",
+   "kind": "QUEST",
+   "title": "Room editor — position, props + name",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-7",
+   "payload": {
+    "ref": "QL-7.S01",
+    "order": 0,
+    "outcome": "a placed room's location, cosmetic props, and its free-text NAME are editable",
+    "estimate": "16–32",
+    "step_ids": [
+     "QL-7.S01",
+     "QL-7.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-7.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S01",
+   "payload": {
+    "ref": "QL-7.S01",
+    "order": 0,
+    "acceptance": "Pure edit validation accepts position/props/name, rejects forbidden keys, and emits save/discard intent."
+   }
+  },
+  {
+   "id": "step:QL-7.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S01",
+   "payload": {
+    "ref": "QL-7.S05",
+    "order": 1,
+    "acceptance": "Browser editor saves an observed room record, shows dirty state, and preserves discard across reload; no persistence adapter claim."
+   }
+  },
+  {
+   "id": "quest:QL-7.S02",
+   "kind": "QUEST",
+   "title": "**Room membership-condition editor (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-7",
+   "payload": {
+    "ref": "QL-7.S02",
+    "order": 1,
+    "outcome": "editing the condition re-scopes what the room matches; the live match-count shows AS you edit; an edit that orphans it lands the room in QL-3's honest-empty",
+    "estimate": "20–40; QL-3 evaluator and #4 scope prerequisite",
+    "step_ids": [
+     "QL-7.S02",
+     "QL-7.S06"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-7.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S02",
+   "payload": {
+    "ref": "QL-7.S02",
+    "order": 0,
+    "acceptance": "Condition edits report observed match count and route zero-match to settled honest-empty state."
+   }
+  },
+  {
+   "id": "step:QL-7.S06",
+   "kind": "STEP",
+   "title": "S06",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S02",
+   "payload": {
+    "ref": "QL-7.S06",
+    "order": 1,
+    "acceptance": "Browser condition editor renders observed match counts and honest zero-match state without inventing evaluator results."
+   }
+  },
+  {
+   "id": "quest:QL-7.S03",
+   "kind": "QUEST",
+   "title": "Character editor — appearance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-7",
+   "payload": {
+    "ref": "QL-7.S03",
+    "order": 2,
+    "outcome": "a character's visual record (rig/face/props) is editable; cosmetic only",
+    "estimate": "12–24",
+    "step_ids": [
+     "QL-7.S03",
+     "QL-7.S07"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-7.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S03",
+   "payload": {
+    "ref": "QL-7.S03",
+    "order": 0,
+    "acceptance": "Cosmetic edit schema accepts rig/face/props only and rejects agent identity fields."
+   }
+  },
+  {
+   "id": "step:QL-7.S07",
+   "kind": "STEP",
+   "title": "S07",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S03",
+   "payload": {
+    "ref": "QL-7.S07",
+    "order": 1,
+    "acceptance": "Browser cosmetic editor saves/discards only allowed appearance fields and never exposes agent identity."
+   }
+  },
+  {
+   "id": "quest:QL-7.S04",
+   "kind": "QUEST",
+   "title": "**Takeover surface — enter / save / discard (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-7",
+   "payload": {
+    "ref": "QL-7.S04",
+    "order": 3,
+    "outcome": "a full-view editor mode with unambiguous escape/save/discard; unsaved edits never silently persist or silently vanish",
+    "estimate": "16–32; joiner permissions and persistence prerequisite",
+    "step_ids": [
+     "QL-7.S04",
+     "QL-7.S08"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-7.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S04",
+   "payload": {
+    "ref": "QL-7.S04",
+    "order": 0,
+    "acceptance": "Enter/dirty/save/discard transitions are explicit and discard persists nothing."
+   }
+  },
+  {
+   "id": "step:QL-7.S08",
+   "kind": "STEP",
+   "title": "S08",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-7.S04",
+   "payload": {
+    "ref": "QL-7.S08",
+    "order": 1,
+    "acceptance": "Browser enter/escape/save/discard path is verified at narrow and desktop widths; persistence and joiner access remain explicit inputs."
+   }
+  },
+  {
+   "id": "questline:QL-8",
+   "kind": "QUEST_LINE",
+   "title": "Code Dungeon",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-8",
+    "order": 4
+   }
+  },
+  {
+   "id": "quest:QL-8.S02",
+   "kind": "QUEST",
+   "title": "Dungeon render",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-8",
+   "payload": {
+    "ref": "QL-8.S02",
+    "order": 0,
+    "outcome": "the connected repo's structure renders as a folder-room grid in QL-4's frame",
+    "estimate": "20–40; GitHub/source adapter prerequisite",
+    "step_ids": [
+     "QL-8.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-8.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-8.S02",
+   "payload": {
+    "ref": "QL-8.S02",
+    "order": 0,
+    "acceptance": "Adapter-backed structure produces folder rooms and focal nodes with provenance; fixture adapter test passes without claiming a live repo."
+   }
+  },
+  {
+   "id": "quest:QL-8.S01",
+   "kind": "QUEST",
+   "title": "**Derived-surface contract (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-8",
+   "payload": {
+    "ref": "QL-8.S01",
+    "order": 1,
+    "outcome": "the dungeon re-derives from the repo (never orphans like an authored room); a derivation FAILURE renders as an instrument state, never as WORLD_DAMAGED",
+    "estimate": "12–24",
+    "step_ids": [
+     "QL-8.S01"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-8.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-8.S01",
+   "payload": {
+    "ref": "QL-8.S01",
+    "order": 0,
+    "acceptance": "Bounded source/refresh validator accepted in docs/product/reviews/2026-09-19-ql-8-derived-contract-review.md; 10 tests and syntax/diff checks pass. Explicit source/null plus NOT_RUN/RESOLVED/FAILED preserves no-source/401/403/transient/resolved distinctions; FAILED yields display:null and prior provenance only. No adapter, authored mutation, identity, persistence, browser, or #4 claim."
+   }
+  },
+  {
+   "id": "quest:QL-8.S03",
+   "kind": "QUEST",
+   "title": "No in-app editor (by derivation)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-8",
+   "payload": {
+    "ref": "QL-8.S03",
+    "order": 2,
+    "outcome": "the dungeon has no QL-7-style takeover editor — its \"authoring\" is the source repo",
+    "estimate": "0–4; bounded scope/documentation, no editor build",
+    "step_ids": [
+     "QL-8.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-8.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-8.S03",
+   "payload": {
+    "ref": "QL-8.S03",
+    "order": 0,
+    "acceptance": "Contract exposes no dungeon write/editor operation and documents upstream-repo-only authoring."
+   }
+  },
+  {
+   "id": "questline:QL-9",
+   "kind": "QUEST_LINE",
+   "title": "Chronicle",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-9",
+    "order": 5
+   }
+  },
+  {
+   "id": "quest:QL-9.S01",
+   "kind": "QUEST",
+   "title": "Chronicle feed render",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-9",
+   "payload": {
+    "ref": "QL-9.S01",
+    "order": 0,
+    "outcome": "a dated, time-ordered list in QL-4's frame",
+    "estimate": "16–32",
+    "step_ids": [
+     "QL-9.S01",
+     "QL-9.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-9.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-9.S01",
+   "payload": {
+    "ref": "QL-9.S01",
+    "order": 0,
+    "acceptance": "Pure feed normalizer orders observed events, preserves provenance/audience/reference, and rejects fabricated events."
+   }
+  },
+  {
+   "id": "step:QL-9.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-9.S01",
+   "payload": {
+    "ref": "QL-9.S05",
+    "order": 1,
+    "acceptance": "Browser Chronicle view renders ordered joined evidence, explicit source absence/error, provenance, and references without claiming a live feed."
+   }
+  },
+  {
+   "id": "quest:QL-9.S02",
+   "kind": "QUEST",
+   "title": "**Derived event-stream / multi-source JOIN (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-9",
+   "payload": {
+    "ref": "QL-9.S02",
+    "order": 1,
+    "outcome": "events from several derived sources merge into one stream, each carrying provenance, a realm-boundary audience gate, and a Quest/Campaign reference",
+    "estimate": "24–48; source adapters prerequisite",
+    "step_ids": [
+     "QL-9.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-9.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-9.S02",
+   "payload": {
+    "ref": "QL-9.S02",
+    "order": 0,
+    "acceptance": "Multi-source join emits deterministic ordering and explicit absent/error status per source."
+   }
+  },
+  {
+   "id": "quest:QL-9.S03",
+   "kind": "QUEST",
+   "title": "Milestone-completion entries are REAL deltas",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-9",
+   "payload": {
+    "ref": "QL-9.S03",
+    "order": 2,
+    "outcome": "a \"milestone met\" entry fires on a real cross-tick measure-delta (🎯→🎉), never a timer or a mock",
+    "estimate": "12–24; QL-1 Map measure prerequisite",
+    "step_ids": [
+     "QL-9.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-9.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-9.S03",
+   "payload": {
+    "ref": "QL-9.S03",
+    "order": 0,
+    "acceptance": "Entry emits only on a real cross-tick measure delta, never timer/mock."
+   }
+  },
+  {
+   "id": "quest:QL-9.S04",
+   "kind": "QUEST",
+   "title": "Cross-reference to the Map",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-9",
+   "payload": {
+    "ref": "QL-9.S04",
+    "order": 3,
+    "outcome": "a goal's detail shows its relevant Chronicle entries (and back)",
+    "estimate": "8–16",
+    "step_ids": [
+     "QL-9.S04"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-9.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-9.S04",
+   "payload": {
+    "ref": "QL-9.S04",
+    "order": 0,
+    "acceptance": "Map/Chronicle references round-trip by stable identity and render lost references honestly."
+   }
+  },
+  {
+   "id": "questline:QL-10",
+   "kind": "QUEST_LINE",
+   "title": "The Archive",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-10",
+    "order": 6
+   }
+  },
+  {
+   "id": "quest:QL-10.S01",
+   "kind": "QUEST",
+   "title": "Meeting notes",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-10",
+   "payload": {
+    "ref": "QL-10.S01",
+    "order": 0,
+    "outcome": "notes retain source provenance, original speech audience and a Quest reference",
+    "estimate": "NOT ESTIMABLE — QL-5 structured meeting producer/read contract prerequisite",
+    "step_ids": [
+     "QL-10.S01"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-10.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-10.S01",
+   "payload": {
+    "ref": "QL-10.S01",
+    "order": 0,
+    "acceptance": "Reader preserves source audience, provenance, Quest reference, invite-time/current scope, and mixed-time fail-closed behavior."
+   }
+  },
+  {
+   "id": "quest:QL-10.S02",
+   "kind": "QUEST",
+   "title": "Decision log",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-10",
+   "payload": {
+    "ref": "QL-10.S02",
+    "order": 1,
+    "outcome": "mark an existing meeting message as a decision tied to its Quest",
+    "estimate": "12–24; QL-5 meeting record and #4 fifth-state decision prerequisite",
+    "step_ids": [
+     "QL-10.S02"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-10.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-10.S02",
+   "payload": {
+    "ref": "QL-10.S02",
+    "order": 0,
+    "acceptance": "Mark-as-decision references an existing permitted message, preserves provenance/audience, and never composes blank decisions."
+   }
+  },
+  {
+   "id": "quest:QL-10.S03",
+   "kind": "QUEST",
+   "title": "Shared knowledge",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-10",
+   "payload": {
+    "ref": "QL-10.S03",
+    "order": 2,
+    "outcome": "proposed curated entries tied to a Quest; not authorized by the preceding two parts",
+    "estimate": "NOT ESTIMABLE — held pending explicit scope decision",
+    "step_ids": [
+     "QL-10.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-10.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-10.S03",
+   "payload": {
+    "ref": "QL-10.S03",
+    "order": 0,
+    "acceptance": "Scope decision is recorded before implementation; no code claims acceptance while held."
+   }
+  },
+  {
+   "id": "quest:QL-10.S04",
+   "kind": "QUEST",
+   "title": "**The authored-record contract (NEW — deep)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-10",
+   "payload": {
+    "ref": "QL-10.S04",
+    "order": 3,
+    "outcome": "an authored Archive entry carries provenance, an audience gate, and a real Quest reference; it can go stale (lost referent) and renders honest when it does; and a record of speech is REAL, never synthesized",
+    "estimate": "24–48; source audience, Quest reference, and #4 state prerequisites",
+    "step_ids": [
+     "QL-10.S04",
+     "QL-10.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-10.S04",
+   "kind": "STEP",
+   "title": "S04",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-10.S04",
+   "payload": {
+    "ref": "QL-10.S04",
+    "order": 0,
+    "acceptance": "Pure validator requires provenance, audience metadata, stable Quest reference, honest lost-referent state, and real-source attribution."
+   }
+  },
+  {
+   "id": "step:QL-10.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-10.S04",
+   "payload": {
+    "ref": "QL-10.S05",
+    "order": 1,
+    "acceptance": "Browser authored-state renderer shows provenance, audience, stable Quest reference and lost-referent honesty; #4 state is an explicit input and no meeting feed is claimed."
+   }
+  },
+  {
+   "id": "questline:QL-11",
+   "kind": "QUEST_LINE",
+   "title": "Player Profile & Fleet Stats",
+   "state": "DEFINED",
+   "parent_id": "campaign:pizza-fleet-expansion",
+   "payload": {
+    "ref": "QL-11",
+    "order": 7
+   }
+  },
+  {
+   "id": "quest:QL-11.S01",
+   "kind": "QUEST",
+   "title": "Player Profile",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-11",
+   "payload": {
+    "ref": "QL-11.S01",
+    "order": 0,
+    "outcome": "the player's identity surface (name/theme/character, profile chip)",
+    "estimate": "8–16",
+    "step_ids": [
+     "QL-11.S01",
+     "QL-11.S05"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-11.S01",
+   "kind": "STEP",
+   "title": "S01",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-11.S01",
+   "payload": {
+    "ref": "QL-11.S01",
+    "order": 0,
+    "acceptance": "Pure profile record accepts name/theme/character and rejects agent identity/projection fields."
+   }
+  },
+  {
+   "id": "step:QL-11.S05",
+   "kind": "STEP",
+   "title": "S05",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-11.S01",
+   "payload": {
+    "ref": "QL-11.S05",
+    "order": 1,
+    "acceptance": "Browser profile surface renders only accepted player fields and explicit unavailable states; no account adapter claim."
+   }
+  },
+  {
+   "id": "quest:QL-11.S02",
+   "kind": "QUEST",
+   "title": "Fleet Stats (within-realm only)",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-11",
+   "payload": {
+    "ref": "QL-11.S02",
+    "order": 1,
+    "outcome": "metrics about the player's fleet, scoped to ONE realm, never cross-realm, and limited to individually opted-in participants",
+    "estimate": "20–40; consent/permission contract prerequisite",
+    "step_ids": [
+     "QL-11.S02",
+     "QL-11.S06"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-11.S02",
+   "kind": "STEP",
+   "title": "S02",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-11.S02",
+   "payload": {
+    "ref": "QL-11.S02",
+    "order": 0,
+    "acceptance": "Stats include only individually opted-in participants, have no denominator/missing rows, and preserve realm scope."
+   }
+  },
+  {
+   "id": "step:QL-11.S06",
+   "kind": "STEP",
+   "title": "S06",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-11.S02",
+   "payload": {
+    "ref": "QL-11.S06",
+    "order": 1,
+    "acceptance": "Browser stats surface renders opted-in participants only, no denominator/missing rows, and explicit consent/absence states."
+   }
+  },
+  {
+   "id": "quest:QL-11.S03",
+   "kind": "QUEST",
+   "title": "**Consent ledger (NEW — deep; early decision #1's FIRST instance)**",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-11",
+   "payload": {
+    "ref": "QL-11.S03",
+    "order": 2,
+    "outcome": "a scope-versioned, timestamped, revocable consent RECORD — not a boolean — set right from line one",
+    "estimate": "16–32; scope/version decision prerequisite",
+    "step_ids": [
+     "QL-11.S03"
+    ]
+   }
+  },
+  {
+   "id": "step:QL-11.S03",
+   "kind": "STEP",
+   "title": "S03",
+   "state": "DEFINED",
+   "parent_id": "quest:QL-11.S03",
+   "payload": {
+    "ref": "QL-11.S03",
+    "order": 0,
+    "acceptance": "Bounded consent-ledger slice accepted in docs/product/reviews/2026-09-18-ql-11-consent-review.md; 8 tests and syntax checks pass. Scope-versioned, timestamped, revocable records validate with default-off and revoke fixtures. No auth, third-party permission, Voice, persistence, or full-Quest claim."
+   }
+  },
+  {
+   "id": "gate:QL-1.S10",
+   "kind": "GATE",
+   "title": "E2E display/error branch contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-1",
+   "payload": {
+    "ref": "QL-1.S10",
+    "order": 0,
+    "acceptance": "Preserve 403 denial, 401 expiry, transient RETRYING, no-source NOT_CONNECTED, cancel and unavailable branches without inventing content; CPO E2E review and named adapters required."
+   }
+  },
+  {
+   "id": "gate:QL-10.S06",
+   "kind": "GATE",
+   "title": "Archive and authored-state E2E",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-10",
+   "payload": {
+    "ref": "QL-10.S06",
+    "order": 1,
+    "acceptance": "Meeting/decision/archive paths preserve source speech audience, provenance, Quest reference, lost referents, and back/cancel/restart behavior; authored-state remains gated on #4."
+   }
+  },
+  {
+   "id": "gate:QL-11.S07",
+   "kind": "GATE",
+   "title": "Profile, HUD, and consent E2E",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-11",
+   "payload": {
+    "ref": "QL-11.S07",
+    "order": 2,
+    "acceptance": "Profile/resource HUD and consent paths preserve auth-as-player, low/backup/unavailable feed states, default-off opt-in, revoke, restart, and desktop/narrow rendering; no denominator, Voice disclosure, or third-party authorization claim."
+   }
+  },
+  {
+   "id": "gate:QL-2.S06",
+   "kind": "GATE",
+   "title": "Gallery/Create/Build browser + persistence acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S06",
+    "order": 3,
+    "acceptance": "Final Quest acceptance must exercise list/enter/create in a browser and persist an empty realm without launching processes; waits on model steps and provider/persistence contracts."
+   }
+  },
+  {
+   "id": "gate:QL-2.S07",
+   "kind": "GATE",
+   "title": "E2E entry/menu/gallery navigation contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S07",
+    "order": 4,
+    "acceptance": "CPO PASS WITH CONDITIONS (2026-09-19): MAIN_MENU routes to GALLERY/CREATE/JOIN; BACK/ESCAPE preserves local draft; RETURNING_ENTRY carries saved summary only; Join invalid/cancel stays on Join, valid emits AUTH_REQUIRED metadata, not-now retains code; no DOM/auth/network/storage/icon/pattern behavior. Manager integrated identical reviewed bytes; independent CTO and CPO PASS (2026-09-19), 11/11 tests and both syntax checks PASS. Evidence: private/end-to-end-2026-09-19/entry-result.md; docs/product/reviews/2026-09-19-ql-2-entry-flow-review.md. Full QL-2 and auth/UI/persistence journeys remain open."
+   }
+  },
+  {
+   "id": "gate:QL-2.S08",
+   "kind": "GATE",
+   "title": "Auth/session/join briefing contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S08",
+    "order": 5,
+    "acceptance": "Join code, required sign-in, not-now, restore/logout/error and eight-topic briefing provenance remain explicit; auth/provider and named producer unavailable."
+   }
+  },
+  {
+   "id": "gate:QL-2.S09",
+   "kind": "GATE",
+   "title": "Manual authored pattern preset contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S09",
+    "order": 6,
+    "acceptance": "Bounded four-field manual preset contract integrated after CTO/CPO exact-hash PASS; main 14/14 tests and syntax/diff PASS. Fixed structures; label/description edits; local adoption only. S15 owns DOM/browser/persistence. Review: docs/product/reviews/2026-09-20-ql2-presets-integration.md"
+   }
+  },
+  {
+   "id": "gate:QL-2.S10",
+   "kind": "GATE",
+   "title": "Provider/permission and optional GitHub flow contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S10",
+    "order": 7,
+    "acceptance": "Detect-first signed-in account; account-level primary/backup, bypass OFF/default ask, per-tool scopes, connect/reconnect and expiry branches; adapter/credential implementation and QL-8 source boundary remain unresolved."
+   }
+  },
+  {
+   "id": "gate:QL-2.S11",
+   "kind": "GATE",
+   "title": "Source-suggestion adoption contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S11",
+    "order": 8,
+    "acceptance": "Source proposals remain opaque, comparable, editable and explicitly adopted; GitHub/source adapter and provenance are unresolved."
+   }
+  },
+  {
+   "id": "gate:QL-2.S12",
+   "kind": "GATE",
+   "title": "Auth/session adapter contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S12",
+    "order": 9,
+    "acceptance": "Owned adapter boundary for detect-first account, sign-in/not-now, restore, logout, expiry and denied recovery; provider credentials and live service owner contract unresolved."
+   }
+  },
+  {
+   "id": "gate:QL-2.S13",
+   "kind": "GATE",
+   "title": "Local/account persistence contract",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S13",
+    "order": 10,
+    "acceptance": "Persist/reload unclaimed local draft, claimed account state and selected realm with conflict/logout/restart/error branches; storage owner and schema unresolved."
+   }
+  },
+  {
+   "id": "gate:QL-2.S14",
+   "kind": "GATE",
+   "title": "Join-code validation and briefing service",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S14",
+    "order": 11,
+    "acceptance": "Validate expiry/replay/invalid/cancelled codes, required sign-in and eight-topic briefing provenance; invite authority and real-source producer unresolved."
+   }
+  },
+  {
+   "id": "gate:QL-2.S15",
+   "kind": "GATE",
+   "title": "Gallery/Create/Join UI integration",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-2",
+   "payload": {
+    "ref": "QL-2.S15",
+    "order": 12,
+    "acceptance": "Actual desktop/narrow UI wires menu/gallery/create/join, preserves draft/back/cancel, and renders auth/join/persistence errors truthfully; reviewed adapters and browser evidence pending."
+   }
+  },
+  {
+   "id": "gate:QL-3.S06",
+   "kind": "GATE",
+   "title": "Great Hall/King + placement runtime acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S06",
+    "order": 13,
+    "acceptance": "Final Quest acceptance must render the Hall/King and placed props in a browser, then verify runtime membership/lifecycle boundaries; waits on live Map/membership and #4."
+   }
+  },
+  {
+   "id": "gate:QL-3.S07",
+   "kind": "GATE",
+   "title": "E2E Build-to-village composition",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S07",
+    "order": 14,
+    "acceptance": "Build creates an empty realm; explicit disclosed spawn/wake is separate from Hall/King placement; rooms/coaching require persistence, evaluator, browser and #4 gates."
+   }
+  },
+  {
+   "id": "gate:QL-3.S08",
+   "kind": "GATE",
+   "title": "E2E sleep/wake and configurable auto-sleep boundary",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-3",
+   "payload": {
+    "ref": "QL-3.S08",
+    "order": 15,
+    "acceptance": "Manual sleep/wake and separately scoped configurable auto-sleep retain disclosure and destruction boundaries; process owner, consent and auto-sleep policy unresolved."
+   }
+  },
+  {
+   "id": "gate:QL-4.S08",
+   "kind": "GATE",
+   "title": "Rail/selection/progress browser acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S08",
+    "order": 16,
+    "acceptance": "Bounded rail/selection fixture wiring is integrated after CTO/CPO PASS: main 4/4 tests including desktop/narrow Electron, unavailable progress, zero console errors/external requests; syntax/diff PASS. The shell renders supplied JSON and emits intents; production controller/loading, live progress, auth and full QL-4.S08 remain open. Final acceptance still requires actual shared chrome/detail progress and production integration."
+   }
+  },
+  {
+   "id": "gate:QL-4.S09",
+   "kind": "GATE",
+   "title": "E2E desktop/narrow shell navigation acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-4",
+   "payload": {
+    "ref": "QL-4.S09",
+    "order": 17,
+    "acceptance": "Desktop and narrow browser journeys cover menu/gallery/create/join/back, focus, denied/expired/offline/cancel branches and truthful HUD values; upstream contracts and browser wiring pending."
+   }
+  },
+  {
+   "id": "gate:QL-5.S06",
+   "kind": "GATE",
+   "title": "Channels/invite/Card Chat runtime acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S06",
+    "order": 18,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Final acceptance must exercise channel creation/read/post, forward-only invite access, and Card Chat dispatch/pane-read in a browser/runtime harness; waits on source audience and transport contracts. Own enabling the QL-3 Chat control and verify allowed/denied/unavailable read/send behavior; Campaign 1 placeholder stays disabled."
+   }
+  },
+  {
+   "id": "gate:QL-5.S07",
+   "kind": "GATE",
+   "title": "Shared-surface speech browser acceptance",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S07",
+    "order": 19,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Browser acceptance must prove per-viewer 403 denial and preservation of third-party audience metadata; waits on structured source-record producer/read contract."
+   }
+  },
+  {
+   "id": "gate:QL-5.S08",
+   "kind": "GATE",
+   "title": "E2E interaction and source-record boundary",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-5",
+   "payload": {
+    "ref": "QL-5.S08",
+    "order": 20,
+    "acceptance": "After explicit Campaign 1 acceptance (QL-12.S03), Campaign 2 only: Select/talk/meetings/PRs/issues/assign/create-agent/reporting-line paths preserve source audience and provenance; structured producer/read contract and runtime transport missing."
+   }
+  },
+  {
+   "id": "gate:QL-6.S07",
+   "kind": "GATE",
+   "title": "Provider and integration E2E",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-6",
+   "payload": {
+    "ref": "QL-6.S07",
+    "order": 21,
+    "acceptance": "Detect-first signed-in account, account-level primary/backup, connect/skip/reconnect and per-tool disclosure preserve bypass OFF (ask before real actions), expiry, and truthful unavailable states in desktop and narrow fixtures; detection never authorizes transmission or spawn."
+   }
+  },
+  {
+   "id": "gate:QL-7.S09",
+   "kind": "GATE",
+   "title": "Editor E2E",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-7",
+   "payload": {
+    "ref": "QL-7.S09",
+    "order": 22,
+    "acceptance": "Room/condition/character editor paths preserve draft, back/escape, observed zero-match, cosmetic-only fields, and reload behavior at desktop/narrow widths; no persistence or permission inference."
+   }
+  },
+  {
+   "id": "gate:QL-8.S04",
+   "kind": "GATE",
+   "title": "Source and derived refresh E2E",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-8",
+   "payload": {
+    "ref": "QL-8.S04",
+    "order": 23,
+    "acceptance": "GitHub setup/skip/reconnect and derived refresh preserve source-null, 401/403, transient retry, local FAILED, and no-authored-mutation distinctions; no live adapter claim."
+   }
+  },
+  {
+   "id": "gate:QL-9.S06",
+   "kind": "GATE",
+   "title": "Chronicle and source-event E2E",
+   "state": "DEFINED",
+   "parent_id": "questline:QL-9",
+   "payload": {
+    "ref": "QL-9.S06",
+    "order": 24,
+    "acceptance": "Chronicle/PR/issue/reporting surfaces preserve source status, audience, Quest references, denied/expired/offline/cancel recovery, and desktop/narrow rendering; no fabricated event or live-feed claim."
+   }
+  }
+ ],
+ "edges": [
+  {
+   "from_id": "step:QL-1.S01R",
+   "to_id": "step:QL-1.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S02",
+   "to_id": "step:QL-1.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S03",
+   "to_id": "step:QL-1.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S04R",
+   "to_id": "step:QL-1.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S05R",
+   "to_id": "step:QL-1.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S06",
+   "to_id": "step:QL-1.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S06R",
+   "to_id": "step:QL-1.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S07",
+   "to_id": "step:QL-1.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S07R",
+   "to_id": "step:QL-1.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S08",
+   "to_id": "step:QL-1.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S09",
+   "to_id": "step:QL-1.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S09",
+   "to_id": "step:QL-1.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-1.S09",
+   "to_id": "step:QL-1.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-2.S02",
+   "to_id": "step:QL-2.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-2.S03",
+   "to_id": "step:QL-2.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-2.S03",
+   "to_id": "step:QL-2.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-2.S04",
+   "to_id": "step:QL-2.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-3.S02",
+   "to_id": "step:QL-3.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-3.S03",
+   "to_id": "step:QL-3.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-3.S03",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-3.S04",
+   "to_id": "step:QL-3.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-3.S05",
+   "to_id": "step:QL-3.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S01",
+   "to_id": "step:QL-1.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S02",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S03",
+   "to_id": "step:QL-4.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S04",
+   "to_id": "step:QL-1.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S04",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S05",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S06",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-4.S07",
+   "to_id": "step:QL-1.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "step:QL-1.S04R",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "step:QL-1.S05R",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "step:QL-1.S06R",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "step:QL-1.S07R",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "gate:QL-2.S15",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "gate:QL-3.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "gate:QL-3.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S03",
+   "to_id": "gate:QL-4.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S04",
+   "to_id": "step:QL-12.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S04",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S05",
+   "to_id": "step:QL-12.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S05",
+   "to_id": "step:QL-12.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S07",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S07",
+   "to_id": "step:QL-12.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S07",
+   "to_id": "step:QL-12.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S08",
+   "to_id": "step:QL-12.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S08",
+   "to_id": "step:QL-12.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S10",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S10",
+   "to_id": "step:QL-12.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S10",
+   "to_id": "step:QL-12.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S10",
+   "to_id": "step:QL-12.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-12.S11",
+   "to_id": "step:QL-12.S10",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S01",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S02",
+   "to_id": "step:QL-5.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S02",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S03",
+   "to_id": "step:QL-5.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S03",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S04",
+   "to_id": "step:QL-5.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S04",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S05",
+   "to_id": "step:QL-5.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-5.S05",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-6.S02",
+   "to_id": "step:QL-6.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-6.S03",
+   "to_id": "step:QL-6.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-6.S06",
+   "to_id": "step:QL-6.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S05",
+   "to_id": "step:QL-7.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S05",
+   "to_id": "step:QL-3.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S05",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S02",
+   "to_id": "step:QL-3.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S06",
+   "to_id": "step:QL-7.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S06",
+   "to_id": "step:QL-3.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S06",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S03",
+   "to_id": "step:QL-3.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S07",
+   "to_id": "step:QL-7.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S07",
+   "to_id": "step:QL-3.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S07",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S04",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S08",
+   "to_id": "step:QL-7.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-7.S08",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-8.S02",
+   "to_id": "step:QL-8.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-8.S02",
+   "to_id": "step:QL-6.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-8.S03",
+   "to_id": "step:QL-8.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-8.S03",
+   "to_id": "step:QL-7.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-9.S01",
+   "to_id": "step:QL-8.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-9.S05",
+   "to_id": "step:QL-9.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-9.S05",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-9.S02",
+   "to_id": "step:QL-8.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-9.S03",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-9.S04",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-9.S04",
+   "to_id": "step:QL-9.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-10.S01",
+   "to_id": "step:QL-5.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-10.S02",
+   "to_id": "step:QL-10.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-10.S05",
+   "to_id": "step:QL-10.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-10.S05",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S01",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S05",
+   "to_id": "step:QL-11.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S05",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S02",
+   "to_id": "step:QL-1.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S02",
+   "to_id": "step:QL-11.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S06",
+   "to_id": "step:QL-11.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S06",
+   "to_id": "step:QL-11.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "step:QL-11.S06",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-1.S10",
+   "to_id": "step:QL-1.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-1.S10",
+   "to_id": "step:QL-1.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-10.S06",
+   "to_id": "step:QL-10.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-10.S06",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-11.S07",
+   "to_id": "step:QL-11.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-11.S07",
+   "to_id": "step:QL-11.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-11.S07",
+   "to_id": "step:QL-11.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-11.S07",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S06",
+   "to_id": "step:QL-2.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S06",
+   "to_id": "step:QL-2.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S06",
+   "to_id": "step:QL-2.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S07",
+   "to_id": "step:QL-2.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S08",
+   "to_id": "gate:QL-2.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S08",
+   "to_id": "step:QL-2.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S09",
+   "to_id": "step:QL-2.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S10",
+   "to_id": "step:QL-2.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S11",
+   "to_id": "step:QL-2.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S11",
+   "to_id": "gate:QL-2.S09",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S12",
+   "to_id": "step:QL-2.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S12",
+   "to_id": "gate:QL-2.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S13",
+   "to_id": "step:QL-2.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S13",
+   "to_id": "gate:QL-2.S12",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S14",
+   "to_id": "gate:QL-2.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S14",
+   "to_id": "gate:QL-2.S12",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S15",
+   "to_id": "gate:QL-2.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S15",
+   "to_id": "gate:QL-2.S12",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S15",
+   "to_id": "gate:QL-2.S13",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-2.S15",
+   "to_id": "gate:QL-2.S14",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S06",
+   "to_id": "step:QL-3.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S06",
+   "to_id": "step:QL-3.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S06",
+   "to_id": "step:QL-3.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S07",
+   "to_id": "step:QL-2.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S07",
+   "to_id": "step:QL-3.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S07",
+   "to_id": "step:QL-3.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S07",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-3.S08",
+   "to_id": "step:QL-3.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-4.S08",
+   "to_id": "step:QL-4.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-4.S08",
+   "to_id": "step:QL-4.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-4.S08",
+   "to_id": "step:QL-4.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-4.S08",
+   "to_id": "step:QL-4.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-4.S09",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-4.S09",
+   "to_id": "gate:QL-2.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S06",
+   "to_id": "step:QL-5.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S06",
+   "to_id": "step:QL-5.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S06",
+   "to_id": "step:QL-5.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S06",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S07",
+   "to_id": "step:QL-5.S04",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S07",
+   "to_id": "step:QL-5.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S07",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S08",
+   "to_id": "step:QL-5.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S08",
+   "to_id": "step:QL-5.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-5.S08",
+   "to_id": "step:QL-12.S03",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-6.S07",
+   "to_id": "step:QL-6.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-6.S07",
+   "to_id": "step:QL-6.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-6.S07",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-7.S09",
+   "to_id": "step:QL-7.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-7.S09",
+   "to_id": "step:QL-7.S06",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-7.S09",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-8.S04",
+   "to_id": "step:QL-8.S01",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-8.S04",
+   "to_id": "gate:QL-6.S07",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-8.S04",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-9.S06",
+   "to_id": "step:QL-9.S02",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-9.S06",
+   "to_id": "step:QL-9.S05",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  },
+  {
+   "from_id": "gate:QL-9.S06",
+   "to_id": "gate:QL-4.S08",
+   "kind": "DEPENDS_ON",
+   "payload": {}
+  }
+ ]
+}

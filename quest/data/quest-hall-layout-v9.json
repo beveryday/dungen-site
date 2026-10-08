@@ -1,0 +1,5129 @@
+{
+ "version": "v9 (2026-09-25, items 15-21): masonry terrace, mirrored floor, map_empty sheets, Guild Clerk, LARGER lower room, board on the back wall, no railing across the walkway",
+ "units": "1 unit = 1 dungeon-kit metre; cell = 4 units; y up; camera looks from +x,+z",
+ "placementRule": "For each prop: scale uniformly so h (height) / w (width) / size (longest side) of the UNROTATED model bounding box equals the rule value (the measured `scale` is already given); apply stretch if present; rotate with Euler order YXZ (yaw applied last); then move the rotated bounding box so its centre is at (x,z) and its bottom at y (or its centre at yc). The knight is a skinned rig: measure its BONES (+12% margin), not its mesh box. NEW: some props carry `stretch` [sx,sy,sz] multiplying the uniform scale per axis BEFORE rotation (kit beams, floor strips); `tint` replaces the model materials with a plain wood colour.",
+ "liveMockup": "https://claude.ai/artifact/QtFCTRhXAbRDKpd5pk8w7j",
+ "sourceOfTruth": "docs/product/art-direction/mockups/quest-hall-v8.template.html (behaviour) + this file (numbers, measured from that page)",
+ "shell": {
+  "groundFloor": {
+   "model": "dungeon/floor_wood_large_dark.gltf.glb",
+   "xs": "-12..20 step 4 (9)",
+   "zs": "-4..16 step 4 (6)",
+   "mirror": "every other tile ((i+j)%2==1) has scale.x = -1 (mirror, not rotate); three.js flips winding automatically for a negative determinant; keep a toggle to uniform",
+   "note": "lower room interior x -14..22, z -6..18 (about 36 x 24; the outer 1 unit of each side is the terrace face). Every other tile mirrored (scale.x=-1), toggle back to uniform."
+  },
+  "terrace": {
+   "idea": "masonry on masonry. The ground-floor walls rise to a SOLID stone terrace along the back, left and right; its top is the upper walkway. No wooden gallery, no posts.",
+   "walkwayTop": "dungeon/floor_tile_large.gltf.glb STONE, y=4.0, one full 4x4 tile deep: back z=-8 x=-16..24 step 4 (11 tiles); left x=-16 z=-4,0,4,8,12,16; right x=24 z=-4,0",
+   "faces": "dungeon/wall.gltf.glb w4 y=0: back z=-5.5 x=-16..24 step 4; left x=XL+.5=-13.5 rotated 90deg z=-4..16 step 4; left front end z=18.5 x=-16; right x=XR+.5=22.5 and outer x=XR+4.5=26.5 rotated z=-4,0",
+   "cornerPillars": "dungeon/pillar h4 at (-13.5,0,-5.5) and (22.5,0,-5.5)",
+   "balustrade": "dungeon/barrier_column w4 y=4.05 ONLY ALONG THE OPEN EDGE (Brandon item 20: never across the walkway, never at the stair top): back z=-5.75 x=-12..20 (the run STOPS short of the two corner columns x=-16 and x=24 so it does not cross the side walkways); left x=-13.75 rotated z=-4..16; left front end z=17.75 x=-16; right inner x=22.25 and outer x=25.75 rotated z=-4,0. Nothing at the top of the stairs.",
+   "stairs": "dungeon/stairs_walled w5 ry 0 at (24,0,4): rises toward -z to the walkway edge at z=2",
+   "upperWalls": "y=4.0 set back at z=-10.5 (x=-16..24, 11 pieces) and x=-18.5 (z=-8..16, 7 pieces); all wall_inset_shelves variants; corner (-18.4,4,-10.4)"
+  }
+ },
+ "props": [
+  {
+   "key": "dummyA",
+   "path": "dungeon/trainingdummy_a.gltf.glb",
+   "rule": {
+    "h": 2
+   },
+   "scale": 1.2031,
+   "rot": [
+    0,
+    0.5,
+    0
+   ],
+   "pos": {
+    "x": -10.6,
+    "y": 0,
+    "z": 10.6
+   },
+   "solid": "dummyA"
+  },
+  {
+   "key": "dummyB",
+   "path": "dungeon/trainingdummy_b.gltf.glb",
+   "rule": {
+    "h": 2
+   },
+   "scale": 1.2031,
+   "rot": [
+    0,
+    0.9,
+    0
+   ],
+   "pos": {
+    "x": -8.3,
+    "y": 0,
+    "z": 11
+   },
+   "solid": "dummyB"
+  },
+  {
+   "key": "keeper",
+   "path": "actors/character_tavernkeeper_full.gltf",
+   "rule": {
+    "h": 2.4
+   },
+   "scale": 1.3652,
+   "rot": [
+    0,
+    -1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 19.3,
+    "y": 0,
+    "z": 3.8
+   },
+   "solid": "keeper"
+  },
+  {
+   "key": "wallShelvesA",
+   "path": "dungeon/wall_inset_shelves_decoratedA.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesA",
+   "path": "dungeon/wall_inset_shelves_decoratedA.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesA",
+   "path": "dungeon/wall_inset_shelves_decoratedA.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesA",
+   "path": "dungeon/wall_inset_shelves_decoratedA.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesA",
+   "path": "dungeon/wall_inset_shelves_decoratedA.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -18.5,
+    "y": 4,
+    "z": -4
+   }
+  },
+  {
+   "key": "wallShelvesA",
+   "path": "dungeon/wall_inset_shelves_decoratedA.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -18.5,
+    "y": 4,
+    "z": 8
+   }
+  },
+  {
+   "key": "wallBroken",
+   "path": "dungeon/wall_inset_shelves_broken.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesB",
+   "path": "dungeon/wall_inset_shelves_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesB",
+   "path": "dungeon/wall_inset_shelves_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesB",
+   "path": "dungeon/wall_inset_shelves_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesB",
+   "path": "dungeon/wall_inset_shelves_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 24,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelvesB",
+   "path": "dungeon/wall_inset_shelves_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -18.5,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "wallShelvesB",
+   "path": "dungeon/wall_inset_shelves_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -18.5,
+    "y": 4,
+    "z": 4
+   }
+  },
+  {
+   "key": "wallShelvesB",
+   "path": "dungeon/wall_inset_shelves_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -18.5,
+    "y": 4,
+    "z": 16
+   }
+  },
+  {
+   "key": "armchair",
+   "path": "furniture/armchair.gltf",
+   "rule": {
+    "h": 1.22
+   },
+   "scale": 0.9967,
+   "rot": [
+    0,
+    -1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 24.9,
+    "y": 4.15,
+    "z": -1.8
+   }
+  },
+  {
+   "key": "wallShelves",
+   "path": "dungeon/wall_inset_shelves.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelves",
+   "path": "dungeon/wall_inset_shelves.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 4,
+    "z": -10.5
+   }
+  },
+  {
+   "key": "wallShelves",
+   "path": "dungeon/wall_inset_shelves.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -18.5,
+    "y": 4,
+    "z": 0
+   }
+  },
+  {
+   "key": "wallShelves",
+   "path": "dungeon/wall_inset_shelves.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -18.5,
+    "y": 4,
+    "z": 12
+   }
+  },
+  {
+   "key": "post",
+   "path": "dungeon/post.gltf",
+   "rule": {
+    "h": 5.4
+   },
+   "scale": 1.35,
+   "stretch": [
+    1.25,
+    1,
+    1.25
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -3.2,
+    "y": 0.3,
+    "z": -4.4
+   },
+   "solid": "postL"
+  },
+  {
+   "key": "post",
+   "path": "dungeon/post.gltf",
+   "rule": {
+    "h": 5.4
+   },
+   "scale": 1.35,
+   "stretch": [
+    1.25,
+    1,
+    1.25
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 11.2,
+    "y": 0.3,
+    "z": -4.4
+   },
+   "solid": "postR"
+  },
+  {
+   "key": "deskS",
+   "path": "furniture/desk.gltf",
+   "rule": {
+    "w": 1.6
+   },
+   "scale": 0.5333,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 23.5,
+    "y": 4.15,
+    "z": -1.8
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -0.7500000000000001,
+    "yc": 3.9850000000000003,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 1.15,
+    "yc": 3.9850000000000003,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 3.05,
+    "yc": 3.9850000000000003,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4.95,
+    "yc": 3.9850000000000003,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 6.8500000000000005,
+    "yc": 3.9850000000000003,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8.75,
+    "yc": 3.9850000000000003,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -0.7500000000000001,
+    "yc": 2.335,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 1.15,
+    "yc": 2.335,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 3.05,
+    "yc": 2.335,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4.95,
+    "yc": 2.335,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 6.8500000000000005,
+    "yc": 2.335,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "dagger",
+   "path": "weapons/dagger_A.gltf",
+   "rule": {
+    "size": 0.8
+   },
+   "scale": 0.621,
+   "rot": [
+    -1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8.75,
+    "yc": 2.335,
+    "z": -4.04
+   }
+  },
+  {
+   "key": "rug",
+   "path": "furniture/rug_rectangle_stripes_A.gltf",
+   "rule": {
+    "size": 6
+   },
+   "scale": 2,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0.02,
+    "z": -1.1000000000000005
+   },
+   "dim": 0.72
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 16.2
+   },
+   "scale": 4.05,
+   "stretch": [
+    1,
+    0.08395061728395063,
+    0.08395061728395063
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 5.25,
+    "z": -4.4
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 12
+   },
+   "scale": 3,
+   "stretch": [
+    1,
+    0.09999999999999999,
+    0.09999999999999999
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 4.35,
+    "z": -4.5
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 12
+   },
+   "scale": 3,
+   "stretch": [
+    1,
+    0.09999999999999999,
+    0.09999999999999999
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 0.65,
+    "z": -4.5
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 3.9
+   },
+   "scale": 0.975,
+   "stretch": [
+    1,
+    0.3076923076923077,
+    0.3076923076923077
+   ],
+   "rot": [
+    0,
+    0,
+    1.5707963267948966
+   ],
+   "pos": {
+    "x": -1.8499999999999996,
+    "yc": 2.5,
+    "z": -4.5
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 3.9
+   },
+   "scale": 0.975,
+   "stretch": [
+    1,
+    0.3076923076923077,
+    0.3076923076923077
+   ],
+   "rot": [
+    0,
+    0,
+    1.5707963267948966
+   ],
+   "pos": {
+    "x": 9.85,
+    "yc": 2.5,
+    "z": -4.5
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 0.9,
+    "z": -4.7
+   },
+   "tint": "0x57392a"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 1.34,
+    "z": -4.7
+   },
+   "tint": "0x4b3524"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 1.78,
+    "z": -4.7
+   },
+   "tint": "0x57392a"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 2.22,
+    "z": -4.7
+   },
+   "tint": "0x4b3524"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 2.66,
+    "z": -4.7
+   },
+   "tint": "0x57392a"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 3.1,
+    "z": -4.7
+   },
+   "tint": "0x4b3524"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 3.54,
+    "z": -4.7
+   },
+   "tint": "0x57392a"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 11.6
+   },
+   "scale": 2.9,
+   "stretch": [
+    1,
+    0.1724137931034483,
+    0.1724137931034483
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 3.98,
+    "z": -4.7
+   },
+   "tint": "0x4b3524"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 2.6
+   },
+   "scale": 0.65,
+   "stretch": [
+    1,
+    0.13,
+    0.13
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "yc": 4.75,
+    "z": -4.2
+   },
+   "tint": "0x6b4326"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.4
+   },
+   "scale": 1.1,
+   "stretch": [
+    1,
+    0.18181818181818182,
+    0.18181818181818182
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 3.95,
+    "z": -4.97
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.4
+   },
+   "scale": 1.1,
+   "stretch": [
+    1,
+    0.18181818181818182,
+    0.18181818181818182
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 0.85,
+    "z": -4.97
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 3.1
+   },
+   "scale": 0.775,
+   "stretch": [
+    1,
+    0.25806451612903225,
+    0.25806451612903225
+   ],
+   "rot": [
+    0,
+    0,
+    1.5707963267948966
+   ],
+   "pos": {
+    "x": 14.3,
+    "yc": 2.4,
+    "z": -4.97
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 3.1
+   },
+   "scale": 0.775,
+   "stretch": [
+    1,
+    0.25806451612903225,
+    0.25806451612903225
+   ],
+   "rot": [
+    0,
+    0,
+    1.5707963267948966
+   ],
+   "pos": {
+    "x": 18.7,
+    "yc": 2.4,
+    "z": -4.97
+   },
+   "tint": "0x7a4f2c"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.2
+   },
+   "scale": 1.05,
+   "stretch": [
+    1,
+    0.47619047619047616,
+    0.47619047619047616
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 1.1,
+    "z": -5.069999999999999
+   },
+   "tint": "0x4b3524"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.2
+   },
+   "scale": 1.05,
+   "stretch": [
+    1,
+    0.47619047619047616,
+    0.47619047619047616
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 1.6,
+    "z": -5.069999999999999
+   },
+   "tint": "0x3f2c1e"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.2
+   },
+   "scale": 1.05,
+   "stretch": [
+    1,
+    0.47619047619047616,
+    0.47619047619047616
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 2.1,
+    "z": -5.069999999999999
+   },
+   "tint": "0x4b3524"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.2
+   },
+   "scale": 1.05,
+   "stretch": [
+    1,
+    0.47619047619047616,
+    0.47619047619047616
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 2.6,
+    "z": -5.069999999999999
+   },
+   "tint": "0x3f2c1e"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.2
+   },
+   "scale": 1.05,
+   "stretch": [
+    1,
+    0.47619047619047616,
+    0.47619047619047616
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 3.1,
+    "z": -5.069999999999999
+   },
+   "tint": "0x4b3524"
+  },
+  {
+   "key": "beam",
+   "path": "prototype/Primitive_Beam.gltf",
+   "rule": {
+    "w": 4.2
+   },
+   "scale": 1.05,
+   "stretch": [
+    1,
+    0.47619047619047616,
+    0.47619047619047616
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16.5,
+    "yc": 3.6,
+    "z": -5.069999999999999
+   },
+   "tint": "0x3f2c1e"
+  },
+  {
+   "key": "lantern",
+   "path": "rpg/lantern.gltf",
+   "rule": {
+    "h": 0.5
+   },
+   "scale": 0.4518,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -5.6,
+    "y": 1.5,
+    "z": -4.9
+   }
+  },
+  {
+   "key": "lantern",
+   "path": "rpg/lantern.gltf",
+   "rule": {
+    "h": 0.45
+   },
+   "scale": 0.4066,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 13.4,
+    "y": 0.95,
+    "z": -5
+   }
+  },
+  {
+   "key": "chains",
+   "path": "mixed_bag_1/chain_hanging_A.gltf",
+   "rule": {
+    "h": 0.7
+   },
+   "scale": 0.3729,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 2.8,
+    "yc": 5,
+    "z": -4.4
+   }
+  },
+  {
+   "key": "chains",
+   "path": "mixed_bag_1/chain_hanging_A.gltf",
+   "rule": {
+    "h": 0.7
+   },
+   "scale": 0.3729,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 5.2,
+    "yc": 5,
+    "z": -4.4
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -0.7500000000000001,
+    "yc": 3.325,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 1.15,
+    "yc": 3.325,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 3.05,
+    "yc": 3.325,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4.95,
+    "yc": 3.325,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 6.8500000000000005,
+    "yc": 3.325,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8.75,
+    "yc": 3.325,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -0.7500000000000001,
+    "yc": 1.675,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 1.15,
+    "yc": 1.675,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 3.05,
+    "yc": 1.675,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4.95,
+    "yc": 1.675,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 6.8500000000000005,
+    "yc": 1.675,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "mapEmpty",
+   "path": "rpg/map_empty.gltf",
+   "rule": {
+    "w": 1.82
+   },
+   "scale": 0.9388,
+   "stretch": [
+    1,
+    1,
+    1.3
+   ],
+   "rot": [
+    1.5707963267948966,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8.75,
+    "yc": 1.675,
+    "z": -4.380000000000001
+   }
+  },
+  {
+   "key": "desk",
+   "path": "furniture/desk_large.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -8.5,
+    "y": 0,
+    "z": 4
+   },
+   "solid": "desk"
+  },
+  {
+   "key": "desk",
+   "path": "furniture/desk_large.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 17.6,
+    "y": 0,
+    "z": 3.8
+   },
+   "solid": "turnDesk"
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -2,
+    "y": 0.22,
+    "z": -4.2
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 2,
+    "y": 0.22,
+    "z": -4.2
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 6,
+    "y": 0.22,
+    "z": -4.2
+   }
+  },
+  {
+   "key": "floor",
+   "path": "dungeon/floor_wood_large_dark.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 10,
+    "y": 0.22,
+    "z": -4.2
+   }
+  },
+  {
+   "key": "bookcaseD",
+   "path": "dungeon/bookcase_double_decoratedB.gltf",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -12.7,
+    "y": 0,
+    "z": 2
+   },
+   "solid": "bookcaseD"
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 24,
+    "y": 4,
+    "z": -8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": -4
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": 0
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": 4
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": 8
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": 12
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4,
+    "z": 16
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 24,
+    "y": 4,
+    "z": -4
+   }
+  },
+  {
+   "key": "stone",
+   "path": "dungeon/floor_tile_large.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 24,
+    "y": 4,
+    "z": 0
+   }
+  },
+  {
+   "key": "roundTable",
+   "path": "dungeon/table_round_large.gltf",
+   "rule": {
+    "w": 5.6
+   },
+   "scale": 1.8667,
+   "stretch": [
+    1,
+    0.6,
+    1
+   ],
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": 6
+   },
+   "solid": "roundTable"
+  },
+  {
+   "key": "book",
+   "path": "rpg/journal_open.gltf",
+   "rule": {
+    "size": 1.8
+   },
+   "scale": 1.9177,
+   "rot": [
+    0,
+    0.3,
+    0
+   ],
+   "pos": {
+    "x": 17.6,
+    "y": 1,
+    "z": 2.9
+   }
+  },
+  {
+   "key": "pencil",
+   "path": "rpg/pencil_A_short.gltf",
+   "rule": {
+    "size": 0.3
+   },
+   "scale": 0.8,
+   "rot": [
+    0,
+    0.3,
+    -0.9
+   ],
+   "pos": {
+    "x": 18.3,
+    "y": 1.05,
+    "z": 3.1
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 24,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.5,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.5,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.5,
+    "y": 0,
+    "z": 4
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.5,
+    "y": 0,
+    "z": 8
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.5,
+    "y": 0,
+    "z": 12
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.5,
+    "y": 0,
+    "z": 16
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 0,
+    "z": 18.5
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 22.5,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 26.5,
+    "y": 0,
+    "z": -4
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 22.5,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "wall",
+   "path": "dungeon/wall.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 26.5,
+    "y": 0,
+    "z": 0
+   }
+  },
+  {
+   "key": "pillarS",
+   "path": "dungeon/pillar.gltf.glb",
+   "rule": {
+    "h": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -13.5,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "pillarS",
+   "path": "dungeon/pillar.gltf.glb",
+   "rule": {
+    "h": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 22.5,
+    "y": 0,
+    "z": -5.5
+   }
+  },
+  {
+   "key": "boxL",
+   "path": "dungeon/box_large.gltf.glb",
+   "rule": {
+    "h": 0.95
+   },
+   "scale": 0.6333,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 13.4,
+    "y": 0,
+    "z": -5
+   },
+   "solid": "boxR"
+  },
+  {
+   "key": "coins",
+   "path": "dungeon/coin_stack_medium.gltf.glb",
+   "rule": {
+    "h": 0.55
+   },
+   "scale": 0.8585,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 17.6,
+    "y": 1,
+    "z": 4.699999999999999
+   }
+  },
+  {
+   "key": "corner",
+   "path": "dungeon/wall_corner.gltf.glb",
+   "rule": {
+    "size": 2.5
+   },
+   "scale": 0.625,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -18.4,
+    "y": 4,
+    "z": -10.4
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -4,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 0,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 4,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 8,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 12,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 16,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 20,
+    "y": 4.05,
+    "z": -5.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.75,
+    "y": 4.05,
+    "z": -4
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.75,
+    "y": 4.05,
+    "z": 0
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.75,
+    "y": 4.05,
+    "z": 4
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.75,
+    "y": 4.05,
+    "z": 8
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.75,
+    "y": 4.05,
+    "z": 12
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -13.75,
+    "y": 4.05,
+    "z": 16
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -16,
+    "y": 4.05,
+    "z": 17.75
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 22.25,
+    "y": 4.05,
+    "z": -4
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 25.75,
+    "y": 4.05,
+    "z": -4
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 22.25,
+    "y": 4.05,
+    "z": 0
+   }
+  },
+  {
+   "key": "barrier",
+   "path": "dungeon/barrier_column.gltf.glb",
+   "rule": {
+    "w": 4
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 25.75,
+    "y": 4.05,
+    "z": 0
+   }
+  },
+  {
+   "key": "candle",
+   "path": "dungeon/candle_lit.gltf.glb",
+   "rule": {
+    "h": 0.6
+   },
+   "scale": 0.5708,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 23.5,
+    "y": 5.15,
+    "z": -1.8
+   }
+  },
+  {
+   "key": "candle",
+   "path": "dungeon/candle_lit.gltf.glb",
+   "rule": {
+    "h": 0.6
+   },
+   "scale": 0.5708,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -8.95,
+    "y": 1,
+    "z": 3.6999999999999997
+   }
+  },
+  {
+   "key": "torch",
+   "path": "dungeon/torch_mounted.gltf.glb",
+   "rule": {
+    "h": 1.1
+   },
+   "scale": 1.0353,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -3.2,
+    "yc": 3,
+    "z": -3.8500000000000005
+   }
+  },
+  {
+   "key": "torch",
+   "path": "dungeon/torch_mounted.gltf.glb",
+   "rule": {
+    "h": 1.1
+   },
+   "scale": 1.0353,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 11.2,
+    "yc": 3,
+    "z": -3.8500000000000005
+   }
+  },
+  {
+   "key": "stairsS",
+   "path": "dungeon/stairs_walled.gltf.glb",
+   "rule": {
+    "w": 5
+   },
+   "scale": 1,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": 24,
+    "y": 0,
+    "z": 4
+   },
+   "solid": "stairs"
+  },
+  {
+   "key": "crates",
+   "path": "dungeon/crates_stacked.gltf.glb",
+   "rule": {
+    "h": 1.5
+   },
+   "scale": 0.7002,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -5.6,
+    "y": 0,
+    "z": -4.9
+   },
+   "solid": "cratesL"
+  },
+  {
+   "key": "chest",
+   "path": "dungeon/chest_gold.glb",
+   "rule": {
+    "h": 1.1
+   },
+   "scale": 0.8462,
+   "rot": [
+    0,
+    -1.9,
+    0
+   ],
+   "pos": {
+    "x": 18.4,
+    "y": 0,
+    "z": 6.699999999999999
+   },
+   "solid": "chest"
+  },
+  {
+   "key": "barrels",
+   "path": "dungeon/barrel_small_stack.gltf.glb",
+   "rule": {
+    "h": 1.5
+   },
+   "scale": 0.8474,
+   "rot": [
+    0,
+    0,
+    0
+   ],
+   "pos": {
+    "x": -12.3,
+    "y": 0,
+    "z": 10.5
+   },
+   "solid": "barrels"
+  },
+  {
+   "key": "knight",
+   "path": "actors/BlackKnight.glb",
+   "rule": {
+    "h": 2.15
+   },
+   "scale": 0.6523,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": -10.4,
+    "y": 0,
+    "z": 4
+   },
+   "solid": "knight",
+   "skinned": true
+  },
+  {
+   "key": "mage",
+   "path": "adventurers/Mage.glb",
+   "rule": {
+    "h": 2.1
+   },
+   "scale": 1.5104,
+   "rot": [
+    0,
+    3.141592653589793,
+    0
+   ],
+   "pos": {
+    "x": -2.2,
+    "y": 4.15,
+    "z": -8.4
+   },
+   "skinned": true
+  },
+  {
+   "key": "rogue",
+   "path": "adventurers/Rogue_Hooded.glb",
+   "rule": {
+    "h": 2
+   },
+   "scale": 1.4384,
+   "rot": [
+    0,
+    1.5707963267948966,
+    0
+   ],
+   "pos": {
+    "x": 23.9,
+    "y": 4.15,
+    "z": 0.6
+   },
+   "skinned": true
+  }
+ ],
+ "kiosk": {
+  "note": "KZ=-1.9 (forward of the walkway). Wood only, no trees, no stone pillars.",
+  "posts": "dungeon/post, h 5.4, stretch [1.25,1,1.25], at x=BX-7.2 and BX+7.2 (BX=4), z=KZ, y=.3",
+  "platform": "floor_wood_large_dark tiles x=BX-6,-2,2,6 at z=KZ+.2, y=.22",
+  "beams": "prototype/Primitive_Beam, tint 0x7a4f2c, helper beam(len,t): scale len/4, stretch [1,t/s,t/s]. Top beam 16.2 x .34 at yc 5.25; top/bottom rails 12 x .3 at yc 4.35/.65; side rails 3.9 x .3 rotated z 90deg at x=BX+-5.85, yc 2.5; sign bar 2.6 x .13 at yc 4.75",
+  "backing": "8 stacked beam strips 11.6 x .5, alternating tints 0x57392a/0x4b3524, yc .9 + i*.44, z=KZ-.3",
+  "torches": "dungeon/torch_mounted h 1.1 at (BX+-7.2, yc 3.0, KZ+.55) IN FRONT of the posts; PointLights at (BX+-7.2, 3.1, -1.2)"
+ },
+ "board": {
+  "texture": {
+   "px": [
+    4096,
+    1200
+   ],
+   "grid": {
+    "cols": 6,
+    "rows": 2
+   },
+   "sheetRect": "x=col*682.67+22, y=row*600+20, w=638.67, h=560; sheet rotated by ((i*37)%7-3)*0.006 rad about its centre"
+  },
+  "world": {
+   "panelPlane": {
+    "size": [
+     11.4,
+     3.3
+    ],
+    "center": [
+     4,
+     2.5,
+     -1.92
+    ],
+    "facing": "+z"
+   },
+   "scrolls": "EACH quest line is a real rpg/map_empty.gltf (Brandon, item 17): w 1.82, stretch [1,1,1.3], rx +90deg (stood upright), at (sheetX, sheetY, KZ+.02), plus ONE dagger (weapons/dagger_A size .8, rx -90deg, blade into the board) at (sheetX, sheetY+.66, KZ+.36). Text panel (transparent, quest text only) at z=KZ+.24 sized 11.4 x 3.3; text is inset to the flat parchment between the rolled ends (x from 21.5% to 78.5% of each 1/6 cell). Long titles are ellipsized on the sheet (the live Sandom panel shows them in full).",
+   "sign": "QUEST BOARD plaque 2.6 x .52 at (BX,4.85,KZ+.3)"
+  },
+  "sheet": {
+   "headerBand": {
+    "h": 52,
+    "colors": {
+     "allDone": "#6b8f5a",
+     "someDone": "#e8973a",
+     "noneDone": "#b98a4a"
+    }
+   },
+   "paper": {
+    "normal": "#efdfb6",
+    "allDone": "#d9d3bd"
+   },
+   "text": {
+    "font": "Caveat",
+    "header": "700 32px (line id left, \"N of M done\" right)",
+    "lineTitle": "700 34px, wrapped, max 2 lines from y=92",
+    "quest": "600 27px, one line, ellipsized to the sheet width - 84px",
+    "rowPitch": 40,
+    "rowStart": "92 + min(titleLines,2)*34 + 14"
+   },
+   "box": {
+    "done": "green check + struck title",
+    "some": "amber half-fill",
+    "open": "empty"
+   },
+   "pin": "coloured dot at top centre, cycles #d8607b #5fb0d8 #9adf9a #f0c878"
+  },
+  "statesRule": "done = progress.done === progress.total; some = 0 < done < total; open = done === 0. Source: build-ledger.json campaigns[].questLines[].quests[].progress. Never invent counts.",
+  "sheets": [
+   {
+    "index": 0,
+    "line": "QL-1",
+    "title": "Data / Contract Layer (the spine)",
+    "col": 0,
+    "row": 0,
+    "rectPx": [
+     22.0,
+     20,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     -0.75,
+     3.25,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-1.S01",
+      "title": "Contract schema",
+      "done": 1,
+      "total": 2,
+      "state": "some"
+     },
+     {
+      "id": "QL-1.S02",
+      "title": "The rollup JOIN",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-1.S03",
+      "title": "Build the initiative\u2192goal feed",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-1.S04",
+      "title": "Contract normalization + attention split (cpo F2)",
+      "done": 1,
+      "total": 2,
+      "state": "some"
+     },
+     {
+      "id": "QL-1.S05",
+      "title": "Honest-empty resolver",
+      "done": 1,
+      "total": 2,
+      "state": "some"
+     },
+     {
+      "id": "QL-1.S06",
+      "title": "Display-state map (added per designer finding)",
+      "done": 1,
+      "total": 2,
+      "state": "some"
+     },
+     {
+      "id": "QL-1.S07",
+      "title": "PARTIAL bound-render (added per designer finding)",
+      "done": 1,
+      "total": 2,
+      "state": "some"
+     },
+     {
+      "id": "QL-1.S08",
+      "title": "User-repo Quest-Step feed",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-1.S09",
+      "title": "The Map (render surface \u2014 spec 3005, The Map is inside QL-1)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 1,
+    "line": "QL-2",
+    "title": "Realm Creation Flow",
+    "col": 1,
+    "row": 0,
+    "rectPx": [
+     704.67,
+     20,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     1.15,
+     3.25,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-2.S01",
+      "title": "Realm Gallery",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-2.S02",
+      "title": "Create form",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-2.S03",
+      "title": "Build",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-2.S04",
+      "title": "Suggested-structure review (NEW PRECEDENT \u2014 deep below)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-2.S05",
+      "title": "Provider/permission setup (NEW PRECEDENT \u2014 deep below)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 2,
+    "line": "QL-3",
+    "title": "Agent Village",
+    "col": 2,
+    "row": 0,
+    "rectPx": [
+     1387.33,
+     20,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     3.05,
+     3.25,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-3.S01",
+      "title": "Great Hall + King (step 1)",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-3.S02",
+      "title": "Room placement + props (step 2)",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-3.S03",
+      "title": "Room-membership evaluator (NEW \u2014 deep)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-3.S04",
+      "title": "Sleep / Wake (NEW \u2014 deep)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-3.S05",
+      "title": "Character card (NEW \u2014 deep)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 3,
+    "line": "QL-4",
+    "title": "World-View Chrome / the harness",
+    "col": 3,
+    "row": 0,
+    "rectPx": [
+     2070.0,
+     20,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     4.95,
+     3.25,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-4.S01",
+      "title": "Shell layout",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-4.S02",
+      "title": "Left-rail view switching",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-4.S03",
+      "title": "Dual selection \u2192 selected-panel",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-4.S04",
+      "title": "Resource chip (RENDER only \u2014 feed is QL-1's, per F1 re-homing)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-4.S05",
+      "title": "Campaign-mini + auto-cycle",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-4.S06",
+      "title": "Two-scale progress carrier",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-4.S07",
+      "title": "Honest-empty per chip",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     }
+    ]
+   },
+   {
+    "index": 4,
+    "line": "QL-12",
+    "title": "Live Supabase Seeding & Internal Dev Onboarding",
+    "col": 4,
+    "row": 0,
+    "rectPx": [
+     2752.67,
+     20,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     6.85,
+     3.25,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-12.S01",
+      "title": "Exact ledger source and presentation",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-12.S02",
+      "title": "Reviewed schema and deployment",
+      "done": 1,
+      "total": 3,
+      "state": "some"
+     },
+     {
+      "id": "QL-12.S05",
+      "title": "Live import and persisted readback",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-12.S06",
+      "title": "Collaborator invitation readiness and acceptance",
+      "done": 1,
+      "total": 3,
+      "state": "some"
+     },
+     {
+      "id": "QL-12.S09",
+      "title": "Internal developer onboarding acceptance",
+      "done": 1,
+      "total": 3,
+      "state": "some"
+     }
+    ]
+   },
+   {
+    "index": 5,
+    "line": "QL-5",
+    "title": "Chat Surfaces",
+    "col": 5,
+    "row": 0,
+    "rectPx": [
+     3435.33,
+     20,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     8.75,
+     3.25,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-5.S01",
+      "title": "Realm Chat channels",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-5.S02",
+      "title": "Agent invite (read-only / read+write)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-5.S03",
+      "title": "Card Chat transport",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-5.S04",
+      "title": "Per-viewer access on a shared surface (NEW \u2014 deep)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-5.S05",
+      "title": "Third-party speech in in-world chat (NEW \u2014 deep)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 6,
+    "line": "QL-6",
+    "title": "Realm Settings & Integrations",
+    "col": 0,
+    "row": 1,
+    "rectPx": [
+     22.0,
+     620,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     -0.75,
+     1.75,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-6.S01",
+      "title": "Integrations list",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-6.S03",
+      "title": "Count-based mapping record (NEW \u2014 deep)",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-6.S04",
+      "title": "Connect a new source",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-6.S05",
+      "title": "Edit standing permissions/providers",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 7,
+    "line": "QL-7",
+    "title": "Room & Character Editors",
+    "col": 1,
+    "row": 1,
+    "rectPx": [
+     704.67,
+     620,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     1.15,
+     1.75,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-7.S01",
+      "title": "Room editor \u2014 position, props + name",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-7.S02",
+      "title": "Room membership-condition editor (NEW \u2014 deep)",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-7.S03",
+      "title": "Character editor \u2014 appearance",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-7.S04",
+      "title": "Takeover surface \u2014 enter / save / discard (NEW \u2014 deep)",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 8,
+    "line": "QL-8",
+    "title": "Code Dungeon",
+    "col": 2,
+    "row": 1,
+    "rectPx": [
+     1387.33,
+     620,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     3.05,
+     1.75,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-8.S02",
+      "title": "Dungeon render",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-8.S01",
+      "title": "Derived-surface contract (NEW \u2014 deep)",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     },
+     {
+      "id": "QL-8.S03",
+      "title": "No in-app editor (by derivation)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 9,
+    "line": "QL-9",
+    "title": "Chronicle",
+    "col": 3,
+    "row": 1,
+    "rectPx": [
+     2070.0,
+     620,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     4.95,
+     1.75,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-9.S01",
+      "title": "Chronicle feed render",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-9.S02",
+      "title": "Derived event-stream / multi-source JOIN (NEW \u2014 deep)",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-9.S03",
+      "title": "Milestone-completion entries are REAL deltas",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-9.S04",
+      "title": "Cross-reference to the Map",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 10,
+    "line": "QL-10",
+    "title": "The Archive",
+    "col": 4,
+    "row": 1,
+    "rectPx": [
+     2752.67,
+     620,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     6.85,
+     1.75,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-10.S01",
+      "title": "Meeting notes",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-10.S02",
+      "title": "Decision log",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-10.S03",
+      "title": "Shared knowledge",
+      "done": 0,
+      "total": 1,
+      "state": "open"
+     },
+     {
+      "id": "QL-10.S04",
+      "title": "The authored-record contract (NEW \u2014 deep)",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     }
+    ]
+   },
+   {
+    "index": 11,
+    "line": "QL-11",
+    "title": "Player Profile & Fleet Stats",
+    "col": 5,
+    "row": 1,
+    "rectPx": [
+     3435.33,
+     620,
+     638.67,
+     560
+    ],
+    "worldCenter": [
+     8.75,
+     1.75,
+     -4.58
+    ],
+    "quests": [
+     {
+      "id": "QL-11.S01",
+      "title": "Player Profile",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-11.S02",
+      "title": "Fleet Stats (within-realm only)",
+      "done": 0,
+      "total": 2,
+      "state": "open"
+     },
+     {
+      "id": "QL-11.S03",
+      "title": "Consent ledger (NEW \u2014 deep; early decision #1's FIRST instance)",
+      "done": 1,
+      "total": 1,
+      "state": "done"
+     }
+    ]
+   }
+  ],
+  "sheetLook": "parchment #e6d2a1 with torn edges, radial edge darkening, speckles; header line id + \"N of M done\"; quest rows 26px Caveat with check boxes (done = green check + strike, some = amber half, open = empty)"
+ },
+ "wantedWall": {
+  "note": "SIMULATED. There is no bug data source; every poster is stamped SAMPLE. Do not ship as real data.",
+  "position": "WX=13, WZ=-4.85: hung on the FRONT FACE of the back terrace wall (the old outer wall is now inside the masonry). Panel at (13,2.4,WZ+.2).",
+  "frame": "beam rails 4.4 x .2 at yc 3.95/.85, side rails 3.1 x .2 rotated at x=15+-2.2, backing 6 strips 4.2 x .5",
+  "panel": "plane 4.0 x 2.89 at (15,2.4,WZ+.2), 2048 x 1480 canvas, 6 posters 3x2: WANTED / MISSING / DEAD types, bug doodle, name, reward \"N pts (sample)\", red SAMPLE stamp"
+ },
+ "roundTable": {
+  "model": "dungeon/table_round_large.gltf",
+  "w": 5.6,
+  "stretch": [
+   1,
+   0.6,
+   1
+  ],
+  "center": [
+   4,
+   0,
+   6.4
+  ],
+  "note": "near the rug (rug at (BX,.02,KZ+3.3)); wood rim torus at top +.05, radius w/2*.97, tube .07",
+  "miniature": {
+   "what": "The Map view WORLD level, shrunk onto the table. MUST come from the same pure functions the Map view uses (src/data/map-layout.ts: campaignBuildState, worldLayout/trailLayout, roadPiece, hexNeighborhood, terrainPlan + hash2, axialToPixel, colorForIndex, assetFileBase) and the same placement as src/views/map.ts (placeGround/placeStructure/placeRoads/placeTerrain: HEX_SIZE = 2/sqrt(3), tile at p*HEX_SIZE, tower scale .85 on a hex_grass tile, roads rotation.y = steps*PI/3, RAISED = stacked copies at y .5/1, hills/mountains get a grass base, rocks on 20% of grass). The mockup ports those functions verbatim into JS to prove the look; in the app REUSE them, do not reimplement.",
+   "data": "the ledger's campaigns, in ledger order: pizza-fleet-mvp (IN_PROGRESS, blue) and pizza-fleet-expansion (IN_PROGRESS, green), joined by 2 road hexes",
+   "models": "hexagon/hex_grass, hex_water, hills_A/B/C, mountain_A/B/C_grass, rock_single_A-E, hex_road_A/B/C, building_scaffolding, building_tower_base_{blue,green,red,yellow}, building_tower_A_{blue,green,red,yellow}",
+   "fit": "group scaled by f = (tableWidth/2*.9)/R where R = farthest tile centre from the bounding-box centre + 1; group centred on the table top at y = tableTop + .02",
+   "notMirrored": "labels, gates and click-to-drill are NOT in the miniature (mockup); the live app version should be a scaled Map scene (ask swe-map how to mount it) and may add the campaign tags"
+  }
+ },
+ "markers": {
+  "!": {
+   "over": "quartermaster",
+   "pos": [
+    -10.4,
+    3.7,
+    4.0
+   ],
+   "note": "Black Knight -- position from layoutV21.reflow (the top-level value here was stale, left over before the room grew)"
+  },
+  "?": {
+   "over": "guild clerk",
+   "pos": [
+    19.3,
+    3.95,
+    3.8
+   ],
+   "note": "Guild Clerk -- x matches his corrected position (far side of his desk, facing the room; layoutV21.reflow's own 15.9 assumed the pre-fix desk-front placement)"
+  },
+  "style": "BARE glyph sprite (no box, no glow, no light behind it), scale 1.9, gold-to-amber gradient with dark outline, depthTest false, gentle 0.12 bob, no bob under reduced-motion"
+ },
+ "lights": {
+  "renderer": "ACES filmic, exposure 0.95, sRGB output",
+  "hemisphere": "0xbfd6ff/0x3a2a1a @ 0.5",
+  "ambient": "0xffffff @ 0.22",
+  "sun": "0xfff1dc @ .8 at (14,22,18), shadow map 3072, frustum +-34",
+  "torchLights": "two PointLights 0xffa955 ~.8 flicker +-.14 distance 9 decay 2 at (BX+-7.2,3.1,-1.2); no other point lights"
+ },
+ "cameras": {
+  "establishing": {
+   "fov": 32,
+   "pos": [
+    28,
+    22,
+    33
+   ],
+   "target": [
+    4,
+    1.6,
+    -0.5
+   ]
+  },
+  "readBoard": {
+   "pos": [
+    4,
+    2.9,
+    12.6
+   ],
+   "target": [
+    4,
+    2.5,
+    -1.9
+   ]
+  },
+  "readLine": "pos=[sheetX,sheetY,KZ+2.6], target=[sheetX,sheetY,KZ-.1]",
+  "wantedWall": {
+   "pos": [
+    15,
+    2.8,
+    -5.2
+   ],
+   "target": [
+    15,
+    2.4,
+    -9.7
+   ]
+  },
+  "upperLibrary": {
+   "pos": [
+    9,
+    13,
+    6
+   ],
+   "target": [
+    6,
+    5.2,
+    -8
+   ]
+  },
+  "mapTable": {
+   "pos": [
+    8.5,
+    5.4,
+    12.4
+   ],
+   "target": [
+    4,
+    1.1,
+    6.4
+   ]
+  },
+  "ease": "800ms ease-in-out cubic"
+ },
+ "characters": {
+  "blackKnight": "skinned, measured from BONES; late-loaded",
+  "tavernKeeper": "part-built actor",
+  "upstairs": "adventurers/Mage.glb (-2.2,4.15,-8.4) and adventurers/Rogue_Hooded.glb (19.9,4.15,.6) borrowing Idle_A / Idle_B from adventurers/Rig_Medium_General.glb (no sitting clip exists in any pack)"
+ },
+ "notes": [
+  "modern furniture (monitors, keyboards) is not used; furniture/desk_large is the plain desk",
+  "loaded assets total ~13MB embedded in the mockup; the real app loads from disk",
+  "pending: live data + Sandom panels (swe-quests), gates/labels on the miniature (swe-map)",
+  "no wood in the second storey: the earlier wooden walkway, posts, rails and wooden stairs are removed",
+  "the kiosk posts and beams on the ground floor stay wooden (Brandon: wooden beamed board)"
+ ],
+ "references": "docs/agents/inbox/shots/2026-09-25-loft-reference-1..3.png (Brandon). Match: stone terrace top = walkway, stone balustrade, stone stairs against a wall, upper walls set back. NO wood, NO posts.",
+ "npcs": {
+  "quartermaster": "Black Knight behind desk_large, \"!\"",
+  "guildClerk": "GUILD CLERK (Brandon's pick, requirements item 18): actors/character_tavernkeeper.gltf at (11.9,0,1.0) facing +x, behind furniture/desk_large at (13.6,0,1.0); \"?\" marker over him. Name the object guildClerk."
+ },
+ "layoutV21": {
+  "board": "the beamed quest board stands flush against the BACK terrace face: KZ=-4.4 (posts x=BX+-7.2, BX=4, backing beam strips at z KZ-.3), centred on the back wall; rug in front (4,.02,-1.1)",
+  "reflow": "Quartermaster zone offset (-4,+2.8): desk x -8.5, knight (-10.4,0,4.0), \"!\" at (-10.4,3.7,4.0). Guild Clerk zone offset (+4,+2.8): keeper (15.9,0,3.8), desk (17.6,0,3.8), chest (18.4,0,6.7), \"?\" at (15.9,3.95,3.8). Round table (4,0,6.0) 5.6 wide near the rug. Training corner offset (-3,+6): dummies (-10.6,0,10.6) and (-8.3,0,11), barrels (-12.3,0,10.5). Wanted wall WX=16.5 WZ=-4.85 on the back terrace face right of the board. bookcase on the left terrace face (-12.7,0,2).",
+  "cameras": {
+   "establishing": {
+    "fov": 32,
+    "pos": [
+     40,
+     31,
+     46
+    ],
+    "target": [
+     4,
+     1.2,
+     5
+    ]
+   },
+   "readBoard": {
+    "pos": [
+     4,
+     3.3,
+     8.1
+    ],
+    "target": [
+     4,
+     2.5,
+     -4.4
+    ]
+   },
+   "wantedWall": {
+    "pos": [
+     16.5,
+     2.8,
+     -0.4
+    ],
+    "target": [
+     16.5,
+     2.4,
+     -4.9
+    ]
+   },
+   "upperLibrary": {
+    "pos": [
+     9,
+     14,
+     8
+    ],
+    "target": [
+     6,
+     5.2,
+     -9
+    ]
+   },
+   "mapTable": {
+    "pos": [
+     8.5,
+     5.4,
+     12.6
+    ],
+    "target": [
+     4,
+     1.1,
+     6.0
+    ]
+   },
+   "note": "camera far plane must be >= 300 in a room this size (80 clipped the far walls)"
+  },
+  "lights": "torch lights at (BX+-7.2,3.1,-3.4); sun (22,36,28), shadow frustum +-46, far 120"
+ }
+}

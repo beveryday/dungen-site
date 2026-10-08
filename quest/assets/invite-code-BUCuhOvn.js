@@ -1,0 +1,1 @@
+const r="ABCDEFGHJKLMNPQRSTUVWXYZ23456789",o=6;function s(e=n=>crypto.getRandomValues(n)){const n=e(new Uint8Array(6));return Array.from(n,t=>r[t%r.length]).join("")}function E(e){const n=(e??"").trim().toUpperCase();return n.length!==6?null:[...n].every(t=>r.includes(t))?n:null}export{o as I,s as i,E as p};

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DunGenAI Quest Demo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* The entry of the quest demo (dungen.ai/quest/), in Quest Run's look: its tokens, Barlow Condensed
+   display type and a gold call to action. Start the demo goes to Start a Quest; a code joins. */
+:root{
+  --night:#0b0e15; --stone:#141a26; --stone-2:#1b2333; --edge:#2b3548; --ink:#ece6d6; --muted:#9aa3b5;
+  --gold:#e2b552; --gold-deep:#a97a22; --warn:#e5674f;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--night);color:var(--ink);font:16px/1.5 var(--body)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.stage{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,3vh,28px);padding:32px 20px;text-align:center;
+  background:radial-gradient(ellipse at 50% 22%,rgba(226,181,82,.14),transparent 55%),radial-gradient(ellipse at 50% 120%,rgba(94,160,255,.08),transparent 60%),var(--night)}
+.mark{display:flex;align-items:center;gap:12px}
+.mark svg{width:46px;height:52px}
+.brand{font:italic 700 clamp(40px,8vw,64px)/1 var(--display);letter-spacing:.02em}
+.brand span{color:var(--gold)}
+.eyebrow{margin:0;font:600 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.lede{margin:0;max-width:34em;font-size:clamp(17px,2.4vw,21px);color:var(--ink)}
+.start{display:inline-flex;align-items:center;gap:12px;padding:16px 40px;border-radius:14px;border:1.5px solid #f6d48a;cursor:pointer;
+  font:italic 700 clamp(24px,4vw,30px)/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#1a1206;text-decoration:none;
+  background:linear-gradient(#f2cf7c,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 0 1px var(--gold),0 0 30px rgba(226,181,82,.4),0 8px 22px rgba(0,0,0,.45);transition:transform .15s}
+.start:hover{transform:translateY(-2px)}
+.start svg{width:20px;height:20px;fill:#1a1206}
+.join{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+.join label{color:var(--muted);font-size:14px}
+.join input{width:9em;padding:10px 12px;border-radius:10px;border:1.5px solid var(--gold-deep);background:linear-gradient(#1b2333,#131a27);outline:none;
+  font:700 20px/1 var(--display);letter-spacing:.3em;text-transform:uppercase;text-align:center}
+.join input:focus{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.join input[aria-invalid=true]{border-color:var(--warn)}
+.join button{padding:10px 18px;border-radius:10px;border:1.5px solid var(--gold-deep);background:var(--stone-2);cursor:pointer;
+  font:700 14px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.join button:hover{background:rgba(226,181,82,.14)}
+.err{margin:0;min-height:1.4em;color:var(--warn);font-size:14px}
+.demo-tag{font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#f0a24b;border:1px solid #f0a24b;border-radius:999px;padding:5px 10px}
+@media (prefers-reduced-motion:reduce){.start{transition:none}.start:hover{transform:none}}
+</style>
+  <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
+  <script type="module" crossorigin src="/quest/assets/quest-demo-4aA7UmNP.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/quest-session-DsAlfxxt.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/invite-code-BUCuhOvn.js">
+</head>
+<body>
+<main class="stage">
+  <div class="mark">
+    <svg viewBox="0 0 46 52" aria-hidden="true"><path d="M3 3h40v28c0 9-9 15-20 18C12 46 3 40 3 31z" fill="#141a26" stroke="#e2b552" stroke-width="2.5"/><path d="M9 9h28v21c0 6-6 10-14 13C15 40 9 36 9 30z" fill="none" stroke="#a97a22" stroke-width="1.2"/><path d="M23 14v20M15 22l8-8 8 8" fill="none" stroke="#e2b552" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h1 class="brand" style="margin:0">DunGen<span>AI</span></h1>
+  </div>
+  <p class="eyebrow">Quest demo</p>
+  <p class="lede">A quest demo: a party of AI agents builds a production-ready landing page, and two players steer it.</p>
+  <a class="start" id="start" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11h-4v-6a3 3 0 0 0-6 0v6z"/></svg>Start the demo</a>
+  <form class="join" id="join" autocomplete="off">
+    <label for="code">Have a code? Join</label>
+    <input id="code" name="code" maxlength="6" spellcheck="false" autocapitalize="characters" placeholder="ABC234" aria-describedby="err">
+    <button type="submit">Join</button>
+  </form>
+  <p class="err" id="err" role="alert"></p>
+  <span class="demo-tag">Simulated agents, real players</span>
+  <noscript><p>The demo needs JavaScript.</p></noscript>
+</main>
+</body>
+</html>

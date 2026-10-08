@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan the Quest</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Plan the Quest: between Party Select (experiments/quest-start/) and Quest Run (experiments/quest-run/).
+   Quest Run's tokens, Barlow Condensed labels, stone rows and gold goal frames; BEGIN QUEST is gold,
+   like Embark. */
+:root{
+  --night:#0b0e15; --stone:#141a26; --stone-2:#1b2333; --edge:#2b3548; --ink:#ece6d6; --muted:#9aa3b5;
+  --gold:#e2b552; --gold-deep:#a97a22; --blue:#3d7bff; --blue-glow:#5ea0ff; --ok:#68c58f; --ask:#f0a24b; --warn:#e5674f;
+  --fern:#ff8a6b;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--night);color:var(--ink);font:14px/1.45 var(--body)}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.screen{height:100%;display:grid;grid-template-rows:auto 1fr auto}
+
+/* top bar, as Quest Run's quest bar */
+.qbar{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;padding:12px 18px;background:linear-gradient(#151c2a,#10151f);border-bottom:1px solid var(--edge)}
+.brand{font:italic 700 20px/1 var(--display);letter-spacing:.02em}
+.brand span{color:var(--gold)}
+.demo-tag{font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ask);border:1px solid var(--ask);border-radius:999px;padding:4px 8px}
+.qbar .note{margin-left:auto;color:var(--muted);font-size:12px}
+.qbar .over{margin-left:auto;color:var(--muted);font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.qbar .over:hover{color:var(--gold)}
+
+/* the table */
+.table{min-height:0;overflow:auto;padding:clamp(16px,3vh,30px) 16px 24px;
+  background:radial-gradient(ellipse at 50% 0%,rgba(226,181,82,.12),transparent 55%),radial-gradient(ellipse at 50% 120%,rgba(94,160,255,.08),transparent 60%),var(--night)}
+.inner{width:min(1340px,100%);margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.eyebrow{margin:0;font:600 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1{margin:8px 0 0;font:italic 700 clamp(30px,5vh,44px)/1.02 var(--display)}
+.editors{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}
+.editors .k{font:600 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase}
+
+/* portraits: an agent's is an outline in its colour, a player's is filled, as in Quest Run's chat */
+.av{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 11px/1 var(--display);border:2px solid var(--edge);background:var(--stone-2)}
+.av.sm{width:20px;height:20px;font-size:9px;border-width:1.5px}
+.av.all{border-color:var(--gold-deep);color:var(--gold)}
+.av.all svg{width:12px;height:12px}
+
+/* the Quartermaster's line */
+.qm{display:grid;grid-template-columns:46px 1fr;gap:12px;align-items:center;padding:12px 14px;border:1.5px solid var(--gold-deep);border-radius:14px;
+  background:linear-gradient(#1b2333,#131a27);box-shadow:0 0 0 1px rgba(226,181,82,.18),0 10px 26px rgba(0,0,0,.35)}
+.crest{width:46px;height:52px}
+.qm .who{font:700 14px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
+.qm p{margin:4px 0 0;font-size:15px}
+.qm .log{margin:5px 0 0;font-size:12px;color:var(--muted);min-height:1em}
+.qm .log b{color:var(--fern);font-weight:600}
+.dots::after{content:"";display:inline-block;width:1.2em;text-align:left;animation:dots 1.2s steps(4) infinite}
+@keyframes dots{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+
+/* the plan: one gold-framed column per goal */
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,470px),1fr));gap:16px;align-items:start}
+.gcol{border:1.5px solid var(--gold-deep);border-radius:14px;background:rgba(20,26,38,.75);padding:12px;display:flex;flex-direction:column;gap:8px}
+.ghead{display:flex;gap:10px;align-items:center;margin-bottom:4px}
+.ghead b{font:italic 700 20px/1.05 var(--display);color:var(--gold)}
+.ghead small{display:block;color:var(--muted);font-size:12px}
+.steps{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.step:has(.menu){z-index:30}
+.step{position:relative;display:grid;grid-template-columns:auto auto 1fr auto auto;gap:8px;align-items:center;border:1.5px solid var(--edge);border-radius:10px;padding:7px 8px;background:var(--stone);
+  transition:border-color .2s,box-shadow .2s,opacity .2s}
+.step.enter{animation:enter .32s ease both}
+@keyframes enter{from{opacity:0;transform:translateY(8px)}}
+.step.dragging{opacity:.4}
+.step.drop-before{box-shadow:0 -3px 0 var(--gold)}
+.step.drop-after{box-shadow:0 3px 0 var(--gold)}
+.step.changed{border-color:var(--fern);box-shadow:0 0 0 1px var(--fern),0 0 18px rgba(255,138,107,.35)}
+.step.watched{border-color:rgba(255,138,107,.55)}
+.handle{all:unset;cursor:grab;display:grid;place-items:center;width:20px;height:28px;border-radius:5px;color:var(--muted)}
+.handle:hover{color:var(--ink);background:var(--stone-2)}
+.handle:active{cursor:grabbing}
+.handle svg{width:12px;height:16px}
+.n{font:700 18px/1 var(--display);color:var(--muted);width:18px;text-align:center}
+.title{all:unset;cursor:text;min-width:0;font:700 15.5px/1.2 var(--display);letter-spacing:.01em;padding:5px 6px;border-radius:6px;border:1px dashed transparent;overflow-wrap:anywhere}
+.title:hover{border-color:var(--edge);background:rgba(11,14,21,.4)}
+.title-input{min-width:0;width:100%;font:700 15.5px/1.2 var(--display);padding:4px 6px;border-radius:6px;border:1.5px solid var(--gold);background:var(--night);outline:none}
+.room{font:600 10.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:4px 7px;border-radius:999px;border:1px solid var(--edge);white-space:nowrap}
+.remove{all:unset;cursor:pointer;display:grid;place-items:center;width:24px;height:24px;border-radius:6px;color:var(--muted)}
+.remove:hover{color:var(--warn);background:rgba(229,103,79,.12)}
+.remove svg{width:12px;height:12px}
+
+/* the agent picker */
+.pick{position:relative}
+.pick-btn{all:unset;cursor:pointer;display:flex;align-items:center;gap:7px;padding:3px 8px 3px 4px;border-radius:999px;border:1px solid var(--edge);background:var(--stone-2);font:700 13px/1 var(--display);letter-spacing:.03em;white-space:nowrap}
+.pick-btn:hover,.pick-btn[aria-expanded="true"]{border-color:var(--gold-deep)}
+.pick-btn .caret{width:9px;height:9px;color:var(--muted)}
+.menu{position:absolute;right:0;top:calc(100% + 6px);z-index:20;min-width:240px;white-space:nowrap;padding:6px;margin:0;list-style:none;border-radius:10px;border:1.5px solid var(--gold-deep);
+  background:rgba(15,20,30,.98);box-shadow:0 14px 34px rgba(0,0,0,.6)}
+.menu li{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:7px;cursor:pointer;font:700 13.5px/1 var(--display);letter-spacing:.03em}
+.menu li:hover,.menu li.active{background:var(--stone-2)}
+.menu li[aria-selected="true"]{color:var(--gold)}
+.menu li[aria-disabled="true"]{opacity:.42;cursor:not-allowed}
+.menu li small{margin-left:auto;font:500 11px/1 var(--body);color:var(--muted);letter-spacing:0}
+.menu .sep{height:1px;padding:0;margin:4px 2px;background:var(--edge);cursor:default}
+
+/* the co-editor looking at a step */
+.presence{position:absolute;top:-10px;right:10px;z-index:5;display:flex;align-items:center;gap:5px;padding:2px 7px 2px 2px;border-radius:999px;background:var(--night);border:1px solid var(--fern);
+  font:700 10.5px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--fern);animation:enter .25s ease both}
+.presence .av{width:16px;height:16px;font-size:8px;border-width:1px}
+
+.add{all:unset;cursor:pointer;align-self:flex-start;display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:8px;color:var(--muted);font:700 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase}
+.add:hover{color:var(--gold);background:rgba(226,181,82,.08)}
+.add svg{width:12px;height:12px}
+
+/* a step's stack layers: chips that open the layer's discussion, and the picker that tags them */
+.tcell{min-width:0;display:flex;flex-direction:column;gap:3px}
+/* Task 16: the plan is the Quartermaster's suggestion. Its sources note, and each step's "why" on
+   hover or focus (always shown where there is no hover). */
+.qm .qm-sources{margin:4px 0 0;font-size:12px;color:var(--gold)}
+.qm .qm-sources[hidden]{display:none}
+.step .why{display:none;font-size:12px;line-height:1.3;color:var(--muted)}
+.step .why b{color:var(--gold);font-weight:600}
+.step:hover .why,.step:focus-within .why{display:block}
+@media (hover:none){.step .why{display:block}}
+.chips{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding-left:6px}
+.chip{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:5px;padding:2px 7px 2px 5px;border-radius:999px;border:1px solid color-mix(in srgb,var(--c) 55%,transparent);
+  background:color-mix(in srgb,var(--c) 12%,transparent);font:600 10.5px/1.3 var(--body);letter-spacing:.04em;color:var(--ink)}
+.chip i{width:7px;height:7px;border-radius:50%;background:var(--c)}
+.chip:hover{background:color-mix(in srgb,var(--c) 26%,transparent)}
+.tagpick{position:relative}
+.tag-btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border-radius:999px;color:var(--muted);font:600 10.5px/1.3 var(--body);letter-spacing:.04em;border:1px dashed var(--edge)}
+.tag-btn:hover,.tag-btn[aria-expanded="true"]{color:var(--gold);border-color:var(--gold-deep)}
+.tag-btn svg{width:11px;height:11px}
+.lmenu{left:0;right:auto;max-height:320px;overflow:auto}
+.lmenu .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.lmenu li[aria-selected="true"]{color:var(--ink)}
+.lmenu li[aria-selected="true"] .dot{box-shadow:0 0 0 2px var(--night),0 0 0 3.5px var(--gold)}
+.step.lit{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 16px rgba(226,181,82,.3)}
+
+/* the plan and the stack side by side */
+.work{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
+.stack{position:sticky;top:0;border:1.5px solid var(--gold-deep);border-radius:14px;background:rgba(20,26,38,.85);padding:12px;display:flex;flex-direction:column;gap:6px}
+.shead b{display:block;font:italic 700 20px/1.05 var(--display);color:var(--gold)}
+.shead small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.sextra{margin:6px 0 0;font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.layers{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.layer{border-radius:12px;border:1px solid transparent}
+.layer.open{border-color:var(--edge);background:var(--stone)}
+.layer.flash{border-color:var(--fern);box-shadow:0 0 0 1px var(--fern),0 0 14px rgba(255,138,107,.3)}
+/* each layer is a solid disc in its own colour, labelled in white; a dark shadow keeps white legible on
+   the light colours (gold, light grey), and the marks sit on a dark pill so gold reads on any disc */
+.lrow{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:6px;min-height:30px;padding:4px 6px 4px 12px;
+  border-radius:16px/50%;background:var(--c);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.75),0 0 1px rgba(0,0,0,.6);
+  box-shadow:inset 0 3px 0 rgba(255,255,255,.22),inset 0 -4px 0 rgba(0,0,0,.28);transition:filter .2s}
+.lrow:hover{filter:brightness(1.12)}
+.lrow:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.lname{min-width:0;font:700 14px/1.15 var(--display);letter-spacing:.03em}
+.lwhy{display:block;font:500 11.5px/1.25 var(--body);letter-spacing:0;color:#fff}
+.lmark,.ltalk-n{display:inline-flex;align-items:center;gap:4px;padding:3px 7px;border-radius:999px;background:rgba(11,14,21,.62);font:600 11px/1 var(--body);color:#e8ecf3;white-space:nowrap;text-shadow:none}
+.lmark svg,.ltalk-n svg{width:11px;height:11px}
+.lmark.ok{color:var(--gold)}
+.lmark.warn{color:#ffc27a;white-space:normal;text-align:right;max-width:120px;line-height:1.2}
+/* dim states desaturate the layer's own colour rather than recolour it */
+.s-undecided .lrow{filter:saturate(.45) brightness(.82)}
+.s-undecided .lrow:hover{filter:saturate(.6) brightness(.95)}
+.s-not-relevant .lrow{filter:saturate(.12) brightness(.6)}
+.s-not-relevant .lrow:hover{filter:saturate(.2) brightness(.72)}
+.s-not-relevant .lname{text-decoration:line-through;text-decoration-color:rgba(255,255,255,.6)}
+.s-uncovered .lrow{box-shadow:inset 0 3px 0 rgba(255,255,255,.22),inset 0 -4px 0 rgba(0,0,0,.28),0 0 0 2px #ffc27a,0 0 12px rgba(240,162,75,.55)}
+.lbody{padding:4px 8px 10px;display:flex;flex-direction:column;gap:7px}
+.lwho{margin:0;font-size:12.5px}
+.lwho small{color:var(--muted)}
+.lchoice{display:flex;gap:6px}
+.lchoose{all:unset;cursor:pointer;padding:5px 10px;border-radius:8px;border:1px solid var(--edge);font:700 12.5px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.lchoose:hover{color:var(--ink);border-color:var(--gold-deep)}
+.lchoose.yes[aria-pressed="true"]{color:#0b0e15;background:var(--gold);border-color:var(--gold)}
+.lchoose.no[aria-pressed="true"]{color:var(--ink);background:#3a4254;border-color:#5a6377}
+.lreason,.lsay input,.ladd select{min-width:0;width:100%;padding:6px 8px;border-radius:7px;border:1px solid var(--edge);background:var(--night);font-size:13px}
+.lreason:focus,.lsay input:focus,.ladd select:focus{border-color:var(--gold);outline:none}
+.ladd{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:7px;border-radius:8px;border:1px solid rgba(240,162,75,.5);background:rgba(240,162,75,.07);font-size:12.5px}
+.ladd label{display:flex;align-items:center;gap:6px;flex:1 1 180px}
+.ladd select{width:auto;flex:1}
+.ladd-go,.lsay button{all:unset;cursor:pointer;padding:6px 10px;border-radius:7px;font:700 12.5px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#1a1206;background:var(--gold)}
+.ladd-go:hover,.lsay button:hover{background:#f2cf7c}
+.lthread{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-height:220px;overflow:auto}
+.lthread li{display:flex;gap:7px;align-items:flex-start;font-size:13px;line-height:1.35}
+.lthread li b{display:block;font:700 12px/1.2 var(--display);letter-spacing:.04em}
+.lthread .empty{color:var(--muted);font-size:12px}
+.lsay{display:flex;gap:6px}
+
+/* the footer: ready pips and BEGIN QUEST */
+.foot{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px 26px;padding:14px 18px;border-top:1px solid var(--edge);background:linear-gradient(#10151f,#0b0e15)}
+.pips{display:flex;gap:14px}
+.pip{display:flex;align-items:center;gap:7px;font:700 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.pip i{width:11px;height:11px;border-radius:50%;border:2px solid var(--edge);background:transparent;transition:background .2s,border-color .2s,box-shadow .2s}
+.pip.ready{color:var(--ink)}
+.pip.ready i{background:var(--ok);border-color:var(--ok);box-shadow:0 0 10px rgba(104,197,143,.6)}
+.pip small{font:500 11px/1 var(--body);letter-spacing:0;text-transform:none;color:var(--muted)}
+.begin{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;border-radius:12px;border:1.5px solid #f6d48a;cursor:pointer;
+  font:italic 700 22px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#1a1206;
+  background:linear-gradient(#f2cf7c,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 0 1px var(--gold),0 0 26px rgba(226,181,82,.4),0 8px 22px rgba(0,0,0,.45);transition:transform .15s}
+.begin:hover:not(:disabled){transform:translateY(-2px)}
+.begin:disabled{opacity:.45;cursor:default;box-shadow:none}
+.begin svg{width:18px;height:18px;fill:#1a1206}
+.begin.is-ready{color:var(--gold);background:var(--stone-2);border-color:var(--gold);box-shadow:0 0 0 1px var(--gold-deep)}
+.begin.is-ready svg{fill:var(--gold)}
+.as-is{all:unset;cursor:pointer;font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.as-is:hover:not(:disabled){color:var(--gold)}
+.as-is:disabled{opacity:.45;cursor:default}
+.count{min-width:180px;text-align:center;font:700 14px/1.2 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.count b{color:var(--gold);font-size:20px}
+.stack-sum{flex-basis:100%;text-align:center;font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:2px;margin-top:-4px}
+.stack-sum b{font:700 14px/1.2 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.stack-sum:empty{display:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:980px){
+  .work{grid-template-columns:minmax(0,1fr)}
+  .stack{position:static}
+}
+@media (max-width:620px){
+  .qbar .note{display:none}
+  .step{grid-template-columns:auto auto 1fr auto;grid-template-areas:"h n t x" ". . p ."}
+  .handle{grid-area:h}.n{grid-area:n}.tcell{grid-area:t}.pick{grid-area:p;justify-self:start}.remove{grid-area:x}
+  .menu{left:0;right:auto}
+}
+@media (prefers-reduced-motion:reduce){.step.enter,.presence{animation:none}.begin{transition:none}.dots::after{animation:none;content:"..."}}
+</style>
+  <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
+  <script type="module" crossorigin src="/quest/assets/quest-plan-zMdEyx9Q.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/quest-session-DsAlfxxt.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-DtG-QnLQ.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">
+</head>
+<body>
+<div class="screen">
+  <header class="qbar">
+    <div class="brand">DunGen<span>AI</span></div>
+    <span class="demo-tag" title="Simulated agents, real players">Demo: simulated agents, real players</span>
+    <span id="net-pill" hidden></span>
+    <a class="over" id="start-over" href="#">Start over</a>
+  </header>
+  <main class="table">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <p class="eyebrow">Plan the Quest</p>
+          <h1 id="quest-title">Launch a production-ready landing page</h1>
+        </div>
+        <div class="editors" id="editors"></div>
+      </div>
+      <section class="qm" aria-live="polite">
+        <svg class="crest" viewBox="0 0 46 52" aria-hidden="true"><path d="M3 3h40v28c0 9-9 15-20 18C12 46 3 40 3 31z" fill="#141a26" stroke="#e2b552" stroke-width="2.5"/><path d="M9 9h28v21c0 6-6 10-14 13C15 40 9 36 9 30z" fill="none" stroke="#a97a22" stroke-width="1.2"/><text x="23" y="30" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="15" fill="#e2b552">QM</text></svg>
+        <div>
+          <div class="who">Quartermaster</div>
+          <p id="qm-line"><span class="dots">Drafting a first plan</span></p>
+          <p class="qm-sources" id="qm-sources" hidden></p>
+          <p class="log" id="log"></p>
+        </div>
+      </section>
+      <div class="work">
+        <div class="goals" id="plan"></div>
+        <aside class="stack" id="stack" aria-label="Production stack"></aside>
+      </div>
+      <p class="sr" id="announce" aria-live="polite"></p>
+    </div>
+  </main>
+  <footer class="foot">
+    <div class="pips" id="pips"></div>
+    <button type="button" class="begin" id="begin" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V10a7 7 0 0 1 14 0v11h-4v-6a3 3 0 0 0-6 0v6z"/></svg><span>Begin Quest</span></button>
+    <button type="button" class="as-is" id="as-is" disabled>Use the Quartermaster's plan as is</button>
+    <div class="count" id="count" aria-live="polite"></div>
+    <div class="stack-sum" id="stack-sum" aria-live="polite"></div>
+  </footer>
+</div>
+</body>
+</html>

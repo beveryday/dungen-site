@@ -1,0 +1,2529 @@
+{
+ "weapons/arrow_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow A",
+  "group": "weapon"
+ },
+ "weapons/arrow_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow B",
+  "group": "weapon"
+ },
+ "weapons/arrow_bow.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow bow",
+  "group": "weapon"
+ },
+ "weapons/arrow_bow_bundle.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow bow bundle",
+  "group": "weapon"
+ },
+ "weapons/arrow_crossbow.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow crossbow",
+  "group": "weapon"
+ },
+ "weapons/arrow_crossbow_bundle.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow crossbow bundle",
+  "group": "weapon"
+ },
+ "weapons/axe_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "axe A",
+  "group": "weapon"
+ },
+ "weapons/axe_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "axe B",
+  "group": "weapon"
+ },
+ "weapons/axe_C.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "axe C",
+  "group": "weapon"
+ },
+ "weapons/bow.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow",
+  "group": "weapon"
+ },
+ "weapons/bow_A.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow A",
+  "group": "weapon"
+ },
+ "weapons/bow_A_withString.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow A withString",
+  "group": "weapon"
+ },
+ "weapons/bow_B.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow B",
+  "group": "weapon"
+ },
+ "weapons/bow_B_withString.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow B withString",
+  "group": "weapon"
+ },
+ "weapons/bow_withString.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow withString",
+  "group": "weapon"
+ },
+ "weapons/dagger_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "dagger A",
+  "group": "weapon"
+ },
+ "weapons/dagger_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "dagger B",
+  "group": "weapon"
+ },
+ "weapons/fistweapon_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "fistweapon A",
+  "group": "weapon"
+ },
+ "weapons/fistweapon_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "fistweapon B",
+  "group": "weapon"
+ },
+ "weapons/halberd.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "halberd",
+  "group": "weapon"
+ },
+ "weapons/hammer_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "hammer A",
+  "group": "weapon"
+ },
+ "weapons/hammer_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "hammer B",
+  "group": "weapon"
+ },
+ "weapons/hammer_C.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "hammer C",
+  "group": "weapon"
+ },
+ "weapons/katana.gltf.glb": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "katana",
+  "group": "weapon"
+ },
+ "weapons/shield_A.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield A",
+  "group": "shield"
+ },
+ "weapons/shield_B.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield B",
+  "group": "shield"
+ },
+ "weapons/shield_C.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield C",
+  "group": "shield"
+ },
+ "weapons/spear_A.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "spear A",
+  "group": "weapon"
+ },
+ "weapons/staff_A.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": null,
+  "label": "staff A",
+  "group": "magic"
+ },
+ "weapons/staff_B.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": null,
+  "label": "staff B",
+  "group": "magic"
+ },
+ "weapons/sword_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "sword A",
+  "group": "weapon"
+ },
+ "weapons/sword_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "sword B",
+  "group": "weapon"
+ },
+ "weapons/sword_C.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "sword C",
+  "group": "weapon"
+ },
+ "weapons/sword_D.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "sword D",
+  "group": "weapon"
+ },
+ "weapons/sword_E.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "sword E",
+  "group": "weapon"
+ },
+ "weapons/wand_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "wand A",
+  "group": "magic"
+ },
+ "adventurers/arrow_bow.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow bow",
+  "group": "weapon"
+ },
+ "adventurers/arrow_bow_bundle.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow bow bundle",
+  "group": "weapon"
+ },
+ "adventurers/arrow_crossbow.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow crossbow",
+  "group": "weapon"
+ },
+ "adventurers/arrow_crossbow_bundle.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "arrow crossbow bundle",
+  "group": "weapon"
+ },
+ "adventurers/axe_1handed.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0.03330930517626057,
+   -1.2071546962033608e-7
+  ],
+  "rotation": [
+   3.1415924469577723,
+   -1.8239044574789675e-8,
+   -3.141592373442974
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "axe 1handed",
+  "group": "weapon"
+ },
+ "adventurers/axe_2handed.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0.03330930517626057,
+   -1.2071546962033608e-7
+  ],
+  "rotation": [
+   3.1415924469577723,
+   -1.8239044574789675e-8,
+   -3.141592373442974
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "axe 2handed",
+  "group": "weapon"
+ },
+ "adventurers/bow.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow",
+  "group": "weapon"
+ },
+ "adventurers/bow_withString.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "bow withString",
+  "group": "weapon"
+ },
+ "adventurers/crossbow_1handed.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   -0.10462832450866699,
+   -0.010373746886727708,
+   -1.2353707745660358e-7
+  ],
+  "rotation": [
+   9.221463628398304e-8,
+   1.570795877777635,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "crossbow 1handed",
+  "group": "weapon"
+ },
+ "adventurers/crossbow_2handed.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   -0.10462832450866699,
+   -0.010373746886727708,
+   -1.2353707745660358e-7
+  ],
+  "rotation": [
+   9.221463628398304e-8,
+   1.570795877777635,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "crossbow 2handed",
+  "group": "weapon"
+ },
+ "adventurers/dagger.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   -0.000015323892114060822,
+   -1.232314019716796e-7
+  ],
+  "rotation": [
+   3.1415924469577723,
+   -1.8239044574789675e-8,
+   -3.141592373442974
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "dagger",
+  "group": "weapon"
+ },
+ "adventurers/mug_empty.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "mug empty",
+  "group": "weapon"
+ },
+ "adventurers/mug_full.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0.3005661368370056,
+   -0.015636777415749925,
+   -1.2577926611356816e-7
+  ],
+  "rotation": [
+   3.1415924469577723,
+   -1.8239044574789675e-8,
+   -3.141592373442974
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "mug full",
+  "group": "weapon"
+ },
+ "adventurers/quiver.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "quiver",
+  "group": "weapon"
+ },
+ "adventurers/shield_badge.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0.01701178596925984,
+   0.15588533878326416
+  ],
+  "rotation": [
+   -2.0663313497612228e-7,
+   3.370680252459084e-7,
+   0.000002800595246566737
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield badge",
+  "group": "shield"
+ },
+ "adventurers/shield_badge_color.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield badge color",
+  "group": "shield"
+ },
+ "adventurers/shield_round.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0.01701178596925984,
+   0.15588533878326416
+  ],
+  "rotation": [
+   -2.0663313497612228e-7,
+   3.370680252459084e-7,
+   0.000002800595246566737
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield round",
+  "group": "shield"
+ },
+ "adventurers/shield_round_barbarian.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0.01701178596925984,
+   0.15588533878326416
+  ],
+  "rotation": [
+   -2.0663313497612228e-7,
+   3.370680252459084e-7,
+   0.000002800595246566737
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield round barbarian",
+  "group": "shield"
+ },
+ "adventurers/shield_round_color.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield round color",
+  "group": "shield"
+ },
+ "adventurers/shield_spikes.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0.01701178596925984,
+   0.15588533878326416
+  ],
+  "rotation": [
+   -2.0663313497612228e-7,
+   3.370680252459084e-7,
+   0.000002800595246566737
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield spikes",
+  "group": "shield"
+ },
+ "adventurers/shield_spikes_color.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield spikes color",
+  "group": "shield"
+ },
+ "adventurers/shield_square.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0.01701178596925984,
+   0.15588533878326416
+  ],
+  "rotation": [
+   -2.0663313497612228e-7,
+   3.370680252459084e-7,
+   0.000002800595246566737
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield square",
+  "group": "shield"
+ },
+ "adventurers/shield_square_color.gltf": {
+  "hands": "left",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "shield square color",
+  "group": "shield"
+ },
+ "adventurers/smokebomb.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   5.960464477539063e-8,
+   0.1802308057398821,
+   -1.0962320118323987e-7
+  ],
+  "rotation": [
+   3.14159256616706,
+   -4.553023791069975e-9,
+   -3.1415923881764454
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "smokebomb",
+  "group": "weapon"
+ },
+ "adventurers/spellbook_closed.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   -5.960464477539063e-8,
+   0.2657395248265291,
+   1.6041727946003448e-8
+  ],
+  "rotation": [
+   -1.570796461153751,
+   -2.654133653413095e-7,
+   -3.1415926414262048
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "spellbook closed",
+  "group": "magic"
+ },
+ "adventurers/spellbook_open.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   -5.960464477539063e-8,
+   0.14538810597372304,
+   6.955465980951203e-9
+  ],
+  "rotation": [
+   -1.570796461153751,
+   -2.654133653413095e-7,
+   -3.1415926414262048
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "spellbook open",
+  "group": "magic"
+ },
+ "adventurers/staff.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   5.960464477539063e-8,
+   3.819317842546077e-7,
+   -1.2323022247073823e-7
+  ],
+  "rotation": [
+   3.14159256616706,
+   -4.553023791069975e-9,
+   -3.1415923881764454
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": null,
+  "label": "staff",
+  "group": "magic"
+ },
+ "adventurers/sword_1handed.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0.03330930517626057,
+   -1.2071546962033608e-7
+  ],
+  "rotation": [
+   3.1415924469577705,
+   -4.553054265882158e-9,
+   -3.1415923881764454
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "attack",
+  "label": "sword 1handed",
+  "group": "weapon"
+ },
+ "adventurers/sword_2handed.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0.03330930517626057,
+   -1.2071546962033608e-7
+  ],
+  "rotation": [
+   3.1415924469577723,
+   -1.8239044574789675e-8,
+   -3.141592373442974
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "sword 2handed",
+  "group": "weapon"
+ },
+ "adventurers/sword_2handed_color.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "attack",
+  "label": "sword 2handed color",
+  "group": "weapon"
+ },
+ "adventurers/wand.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   5.960464477539063e-8,
+   3.819317842546077e-7,
+   -1.2323022247073823e-7
+  ],
+  "rotation": [
+   3.14159256616706,
+   -4.553023791069975e-9,
+   -3.1415923881764454
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "wand",
+  "group": "magic"
+ },
+ "rpg/axe.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "Chop",
+  "label": "axe",
+  "group": "tool"
+ },
+ "rpg/bucket_metal.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "bucket metal",
+  "group": "tool"
+ },
+ "rpg/chisel.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "chisel",
+  "group": "tool"
+ },
+ "rpg/drafting_compass.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "drafting compass",
+  "group": "tool"
+ },
+ "rpg/file.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "file",
+  "group": "tool"
+ },
+ "rpg/hammer.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "Hammer",
+  "label": "hammer",
+  "group": "tool"
+ },
+ "rpg/handdrill.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "handdrill",
+  "group": "tool"
+ },
+ "rpg/handplane.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "handplane",
+  "group": "tool"
+ },
+ "rpg/knife.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "knife",
+  "group": "tool"
+ },
+ "rpg/lantern.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "lantern",
+  "group": "tool"
+ },
+ "rpg/magnifying_glass.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "magnifying glass",
+  "group": "tool"
+ },
+ "rpg/mallet.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "Hammer",
+  "label": "mallet",
+  "group": "tool"
+ },
+ "rpg/pencil_A_long.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "pencil A long",
+  "group": "tool"
+ },
+ "rpg/pencil_A_short.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "pencil A short",
+  "group": "tool"
+ },
+ "rpg/pencil_B_long.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "pencil B long",
+  "group": "tool"
+ },
+ "rpg/pencil_B_short.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "pencil B short",
+  "group": "tool"
+ },
+ "rpg/pickaxe.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "Chop",
+  "label": "pickaxe",
+  "group": "tool"
+ },
+ "rpg/saw.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "Saw",
+  "label": "saw",
+  "group": "tool"
+ },
+ "rpg/scissors.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "scissors",
+  "group": "tool"
+ },
+ "rpg/screwdriver_A_long.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver A long",
+  "group": "tool"
+ },
+ "rpg/screwdriver_A_long_color.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver A long color",
+  "group": "tool"
+ },
+ "rpg/screwdriver_A_short.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver A short",
+  "group": "tool"
+ },
+ "rpg/screwdriver_A_short_color.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver A short color",
+  "group": "tool"
+ },
+ "rpg/screwdriver_B_long.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver B long",
+  "group": "tool"
+ },
+ "rpg/screwdriver_B_long_color.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver B long color",
+  "group": "tool"
+ },
+ "rpg/screwdriver_B_short.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver B short",
+  "group": "tool"
+ },
+ "rpg/screwdriver_B_short_color.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "screwdriver B short color",
+  "group": "tool"
+ },
+ "rpg/shovel.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": "Dig",
+  "label": "shovel",
+  "group": "tool"
+ },
+ "rpg/tongs.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "tongs",
+  "group": "tool"
+ },
+ "rpg/torch.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "torch",
+  "group": "tool"
+ },
+ "rpg/torch_burnt.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "torch burnt",
+  "group": "tool"
+ },
+ "rpg/trowel.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "trowel",
+  "group": "tool"
+ },
+ "rpg/wrench_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "wrench A",
+  "group": "tool"
+ },
+ "rpg/wrench_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "wrench B",
+  "group": "tool"
+ },
+ "smithy/hammer.gltf.glb": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": "Hammer",
+  "label": "hammer",
+  "group": "tool"
+ },
+ "smithy/thongs.glb": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "thongs",
+  "group": "tool"
+ },
+ "witch/Basket.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "Basket",
+  "group": "magic"
+ },
+ "witch/Basket_Mushrooms.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "Basket Mushrooms",
+  "group": "magic"
+ },
+ "witch/Broom.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": null,
+  "label": "Broom",
+  "group": "magic"
+ },
+ "witch/Mushroom.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "Mushroom",
+  "group": "magic"
+ },
+ "witch/Pestle.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "Pestle",
+  "group": "magic"
+ },
+ "mixed_bag_1/chicken_plushie_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "chicken plushie A",
+  "group": "fun"
+ },
+ "mixed_bag_1/chicken_plushie_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "chicken plushie B",
+  "group": "fun"
+ },
+ "mixed_bag_1/comicbook_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "comicbook A",
+  "group": "fun"
+ },
+ "mixed_bag_1/cup.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "cup",
+  "group": "fun"
+ },
+ "mixed_bag_1/fire_extinguisher.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": null,
+  "label": "fire extinguisher",
+  "group": "fun"
+ },
+ "mixed_bag_1/guitar_A.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": null,
+  "label": "guitar A",
+  "group": "fun"
+ },
+ "mixed_bag_1/guitar_B.gltf": {
+  "hands": "either",
+  "twoHanded": true,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": "combatIdle",
+  "use": null,
+  "label": "guitar B",
+  "group": "fun"
+ },
+ "mixed_bag_1/instantcamera.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "instantcamera",
+  "group": "fun"
+ },
+ "mixed_bag_1/instantcamera_green.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   1.5707963267948966
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "instantcamera green",
+  "group": "fun"
+ },
+ "mixed_bag_1/instantcamera_picture_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "instantcamera picture A",
+  "group": "fun"
+ },
+ "mixed_bag_1/instantcamera_picture_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "instantcamera picture B",
+  "group": "fun"
+ },
+ "mixed_bag_1/puzzlecube_complete.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "puzzlecube complete",
+  "group": "fun"
+ },
+ "mixed_bag_1/puzzlecube_incomplete.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "puzzlecube incomplete",
+  "group": "fun"
+ },
+ "mixed_bag_1/skateboard_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "skateboard A",
+  "group": "fun"
+ },
+ "mixed_bag_1/skateboard_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "skateboard B",
+  "group": "fun"
+ },
+ "mixed_bag_1/slushy_blue.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "slushy blue",
+  "group": "fun"
+ },
+ "mixed_bag_1/slushy_pink.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "slushy pink",
+  "group": "fun"
+ },
+ "mixed_bag_1/slushy_yellow.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "slushy yellow",
+  "group": "fun"
+ },
+ "mixed_bag_1/taco.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   -1.5707963267948966,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "taco",
+  "group": "fun"
+ },
+ "mixed_bag_1/umbrella_blue.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "umbrella blue",
+  "group": "fun"
+ },
+ "mixed_bag_1/umbrella_green.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "umbrella green",
+  "group": "fun"
+ },
+ "mixed_bag_1/umbrella_pink.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "umbrella pink",
+  "group": "fun"
+ },
+ "mixed_bag_1/umbrella_yellow.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "umbrella yellow",
+  "group": "fun"
+ },
+ "mixed_bag_1/waterbottle_A.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "waterbottle A",
+  "group": "fun"
+ },
+ "mixed_bag_1/waterbottle_B.gltf": {
+  "hands": "either",
+  "twoHanded": false,
+  "position": [
+   0,
+   0,
+   0
+  ],
+  "rotation": [
+   0,
+   0,
+   0
+  ],
+  "scale": 1,
+  "hold": null,
+  "use": null,
+  "label": "waterbottle B",
+  "group": "fun"
+ }
+}

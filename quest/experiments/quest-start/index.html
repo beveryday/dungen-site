@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start a Quest</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Start a Quest: the real Party Select (src/views/launch-screen.ts) dressed in Quest Run's look
+   (experiments/quest-run/index.html): its tokens, Barlow Condensed labels and stone cards, with gold
+   for a called card the way Quest Run lights an action card. These rules restyle the screen's
+   party-* classes on this page only; the app keeps its own (index.html, PARTY SELECT). */
+:root{
+  --night:#0b0e15; --stone:#141a26; --stone-2:#1b2333; --edge:#2b3548; --ink:#ece6d6; --muted:#9aa3b5;
+  --gold:#e2b552; --gold-deep:#a97a22; --blue:#3d7bff; --blue-glow:#5ea0ff; --ok:#68c58f; --ask:#f0a24b; --warn:#e5674f;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --body:"Barlow","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{margin:0;background:var(--night);color:var(--ink);font:14px/1.45 var(--body)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.screen{height:100%;display:grid;grid-template-rows:auto 1fr}
+
+/* top bar, as Quest Run's quest bar */
+.qbar{display:flex;align-items:center;gap:14px;padding:12px 18px;background:linear-gradient(#151c2a,#10151f);border-bottom:1px solid var(--edge)}
+.brand{font:italic 700 20px/1 var(--display);letter-spacing:.02em}
+.brand span{color:var(--gold)}
+.demo-tag{font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ask);border:1px solid var(--ask);border-radius:999px;padding:4px 8px}
+.qbar .note{margin-left:auto;color:var(--muted);font-size:12px}
+.qbar .over{margin-left:auto;color:var(--muted);font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.qbar .over:hover{color:var(--gold)}
+
+/* the stage */
+.launch{position:relative;min-height:0}
+.party-host{position:absolute;inset:0}
+.party-stage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,2.4vh,22px);
+  padding:clamp(14px,3vh,32px) 24px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 22%,rgba(226,181,82,.12),transparent 55%),radial-gradient(ellipse at 50% 120%,rgba(94,160,255,.08),transparent 60%),var(--night)}
+.party-head{text-align:center}
+.party-eyebrow{margin:0;font:600 12px/1 var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.party-title{margin:8px 0 0;font:italic 700 clamp(34px,6vh,48px)/1.02 var(--display);color:var(--ink)}
+.party-mission{width:min(640px,90%);padding:14px 16px;border-radius:12px;border:1.5px solid var(--gold-deep);outline:none;
+  background:linear-gradient(#1b2333,#131a27);color:var(--ink);font:500 16px/1.2 var(--body);
+  box-shadow:0 0 0 1px rgba(226,181,82,.25),0 0 22px rgba(226,181,82,.12),0 10px 30px rgba(0,0,0,.45)}
+.party-mission::placeholder{color:var(--muted)}
+.party-mission:focus{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 22px rgba(226,181,82,.3),0 10px 30px rgba(0,0,0,.45)}
+
+/* Task 16: the quest box's suggestions, the chips of where the quest came from, and the suggested
+   crew's line. Scripted for the demo; each labelled with its source by a drawn glyph. */
+.party-mission-wrap{position:relative;width:min(640px,90%);z-index:12}
+.party-mission-wrap>.party-mission{width:100%}
+.party-suggest{position:absolute;left:0;right:0;top:calc(100% + 6px);margin:0;padding:6px;list-style:none;max-height:min(52vh,420px);overflow-y:auto;
+  border-radius:12px;border:1.5px solid var(--gold-deep);background:rgba(15,20,30,.98);box-shadow:0 0 22px rgba(226,181,82,.18),0 16px 40px rgba(0,0,0,.6);animation:rise .16s ease both}
+.party-suggest[hidden]{display:none}
+.party-suggest-group{padding:9px 10px 4px;font:700 11px/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.party-suggest-group:first-child{padding-top:5px}
+.party-suggest-item{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;border:1px solid transparent}
+.party-suggest-item.is-active{background:rgba(226,181,82,.12);border-color:rgba(226,181,82,.45)}
+.party-suggest-glyph{flex:none;width:18px;height:18px;margin-top:1px;fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.party-suggest-glyph.is-past{stroke:var(--gold)}.party-suggest-glyph.is-repo{stroke:var(--ok)}.party-suggest-glyph.is-issue{stroke:var(--blue-glow)}.party-suggest-glyph.is-task{stroke:var(--ask)}
+.party-suggest-glyph.is-ai{fill:var(--gold);stroke:var(--gold);stroke-width:1;filter:drop-shadow(0 0 5px rgba(226,181,82,.5))}
+.party-suggest-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.party-suggest-title{color:var(--ink);font:600 14.5px/1.25 var(--body)}
+.party-suggest-item.is-ai .party-suggest-title{color:var(--gold)}
+.party-suggest-why{color:var(--muted);font-size:12px;line-height:1.3}
+.party-sources{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px;margin-top:-6px;max-width:min(640px,90%)}
+.party-sources[hidden]{display:none}
+.party-sources-label{color:var(--muted);font-size:12px}
+.party-source{display:inline-flex;align-items:center;gap:5px;padding:3px 9px 3px 7px;border-radius:999px;border:1px solid var(--edge);background:var(--stone);color:var(--ink);font:600 11.5px/1.2 var(--body)}
+.party-source-glyph{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.party-source.is-repo .party-source-glyph{color:var(--ok)}.party-source.is-issue .party-source-glyph{color:var(--blue-glow)}.party-source.is-task .party-source-glyph{color:var(--ask)}
+.party-crew-hint{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 12px;max-width:min(760px,94%);color:var(--ink);font-size:13px;text-align:center}
+.party-crew-hint[hidden]{display:none}
+.party-crew-hint-glyph{width:15px;height:15px;fill:var(--gold);filter:drop-shadow(0 0 5px rgba(226,181,82,.5))}
+.party-call-suggested{all:unset;box-sizing:border-box;cursor:pointer;padding:6px 13px;border-radius:999px;border:1.5px solid var(--gold-deep);background:linear-gradient(#1f283a,#131a27);
+  color:var(--gold);font:700 12.5px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;transition:box-shadow .15s,background .15s}
+.party-call-suggested:hover:not(:disabled){box-shadow:0 0 0 1px var(--gold),0 0 14px rgba(226,181,82,.3)}
+.party-call-suggested:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.party-call-suggested:disabled{opacity:.4;cursor:default}
+.party-reason{position:absolute;left:6px;right:6px;top:30px;z-index:3;padding:3px 6px;border-radius:6px;border:1px solid rgba(226,181,82,.55);background:rgba(11,14,21,.86);
+  color:var(--gold);font:600 10px/1.25 var(--body);text-align:center;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.party-reason[hidden]{display:none}
+.party-mini.is-suggested{opacity:1}
+.party-mini.is-suggested .party-mini-portrait{border-color:var(--gold);box-shadow:0 0 10px rgba(226,181,82,.35)}
+@media (max-width:640px){
+  .party-mission-wrap{width:100%}
+  .party-suggest{max-height:46vh}
+  .party-suggest-why{font-size:11.5px}
+  .party-crew-hint{font-size:12px}
+}
+
+/* the row: Players, then Agents. The crew stage's canvas lies over the wrapper. */
+.party-row-wrap{position:relative;max-width:100%}
+.party-row-wrap>canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+.party-row{position:relative;display:flex;gap:28px;align-items:flex-start;max-width:100%;padding:12px 6px 4px}
+.party-group{display:flex;flex-direction:column;gap:8px;min-width:0}
+.party-group-label{font:700 13px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-left:2px}
+.party-group-cards{display:flex;gap:12px;align-items:flex-start;padding-top:10px}
+.party-player-slot{display:flex;flex-direction:column;align-items:center;gap:8px}
+
+/* the agent carousel (src/views/party-carousel.ts): whole cards in a sliding viewport, round arrows
+   either side, a slim gold position bar under it. Without overflow it is just the cards. */
+.party-carousel{display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0}
+.party-carousel-body{display:flex;align-items:center;gap:10px}
+.party-carousel-viewport{overflow-x:clip;overflow-y:visible;touch-action:pan-y}
+.party-carousel.is-dragging .party-carousel-viewport{cursor:grabbing}
+.party-carousel.is-dragging .party-card{pointer-events:none}
+.party-carousel-track{display:flex;gap:12px;align-items:flex-start;width:max-content;will-change:transform}
+.party-carousel-arrow{all:unset;box-sizing:border-box;flex:none;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;cursor:pointer;
+  border:1.5px solid var(--gold-deep);background:linear-gradient(#1f283a,#131a27);color:var(--gold);
+  box-shadow:0 0 0 1px rgba(226,181,82,.18),0 6px 16px rgba(0,0,0,.45);transition:opacity .2s,transform .15s,box-shadow .15s,background .15s}
+.party-carousel-arrow svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.party-carousel-arrow:hover:not(:disabled){transform:scale(1.08);border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 18px rgba(226,181,82,.35),0 6px 16px rgba(0,0,0,.45)}
+.party-carousel-arrow:active:not(:disabled){transform:scale(.96)}
+.party-carousel-arrow:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.party-carousel-arrow:disabled{opacity:.22;cursor:default;box-shadow:none}
+.party-carousel-arrow[hidden],.party-carousel-bar[hidden]{display:none}
+.party-carousel-bar{position:relative;width:min(240px,60%);height:4px;border-radius:2px;background:rgba(255,255,255,.08);overflow:hidden}
+.party-carousel-thumb{position:absolute;top:0;bottom:0;border-radius:2px;background:linear-gradient(90deg,var(--gold-deep),var(--gold));box-shadow:0 0 8px rgba(226,181,82,.5)}
+.party-card{position:relative;flex:none;width:clamp(128px,11vw,150px);height:clamp(176px,30vh,236px);display:flex;flex-direction:column;align-items:center;
+  padding:0 8px 10px;border-radius:12px;border:1.5px solid var(--edge);background:linear-gradient(#1b2333,#131a27);color:var(--muted);cursor:pointer;
+  transition:transform .15s,box-shadow .15s,border-color .15s}
+.party-card:hover{transform:translateY(-6px)}
+.party-card.is-called{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 22px rgba(226,181,82,.3);transform:translateY(-8px)}
+.party-card.is-called:hover{transform:translateY(-10px)}
+.party-card.is-locked,.party-card.is-player{cursor:default}
+.party-card.is-locked:hover{transform:translateY(-8px)}
+.party-card.is-player{border-color:var(--gold-deep);box-shadow:none;transform:none;background:linear-gradient(#18202f,#111723)}
+.party-card.is-player:hover{transform:none}
+.party-card.is-player.is-ready{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 22px rgba(226,181,82,.3)}
+.party-card.is-player.is-ready .party-state{color:var(--gold)}
+.party-ready{all:unset;box-sizing:border-box;cursor:pointer;margin-top:7px;display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:999px;
+  border:1.5px solid var(--gold-deep);background:rgba(11,14,21,.6);color:var(--gold);font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;transition:background .15s,box-shadow .15s,transform .15s}
+.party-ready:hover{background:rgba(226,181,82,.16);box-shadow:0 0 12px rgba(226,181,82,.3)}
+.party-ready[aria-pressed="true"]{color:#1a1206;border-color:#f6d48a;background:linear-gradient(#f2cf7c,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 14px rgba(226,181,82,.45)}
+.party-ready:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.party-ready-icon{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+
+/* Invite a player, and the pending invites it leaves in the row */
+.party-card.is-invite{border:1.5px dashed var(--gold-deep);background:linear-gradient(rgba(226,181,82,.05),rgba(226,181,82,.02));color:var(--gold);justify-content:center}
+.party-card.is-invite:hover,.party-card.is-invite:focus-visible{transform:translateY(-6px);border-color:var(--gold);background:linear-gradient(rgba(226,181,82,.12),rgba(226,181,82,.04));box-shadow:0 0 22px rgba(226,181,82,.22)}
+.party-card.is-invite .party-name{color:var(--gold);font-size:15px;text-align:center}
+.party-card.is-invite .party-role{text-transform:none;letter-spacing:0;font-size:11px;line-height:1.3;max-width:110px}
+.party-invite-glyph{width:52px;height:52px;fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 8px rgba(226,181,82,.35));transition:transform .2s}
+.party-card.is-invite:hover .party-invite-glyph{transform:scale(1.08)}
+.party-card.is-pending{border-style:dashed;cursor:pointer;opacity:.92}
+.party-card.is-pending:hover{transform:translateY(-4px);border-color:var(--gold)}
+.party-silhouette{width:64px;height:64px;fill:#2a3346;opacity:.9;animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{opacity:.5}}
+.party-code{font:700 19px/1 var(--display);letter-spacing:.16em;color:var(--gold)}
+.party-card.is-player.is-pending .party-state{color:var(--muted)}
+.party-invite-cancel{all:unset;cursor:pointer;margin-top:6px;font:600 10px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.party-invite-cancel:hover{color:var(--warn)}
+.party-invite-cancel:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* the invite panel: a centred modal in Quest Run's panel look */
+@keyframes rise{from{opacity:0;transform:translateY(10px)}}
+.party-invite-scrim{position:absolute;inset:0;z-index:20;display:grid;place-items:center;background:rgba(5,7,12,.62);backdrop-filter:blur(2px);animation:fadein .18s ease both}
+@keyframes fadein{from{opacity:0}}
+.party-invite{position:relative;width:min(420px,92%);padding:24px 24px 20px;border-radius:14px;border:1.5px solid var(--gold);background:rgba(15,20,30,.98);
+  box-shadow:0 0 22px rgba(226,181,82,.25),0 16px 40px rgba(0,0,0,.6);text-align:center;animation:rise .24s cubic-bezier(.33,1,.68,1) both}
+.party-invite-close{all:unset;cursor:pointer;position:absolute;top:10px;right:10px;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;color:var(--muted)}
+.party-invite-close:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.party-invite-close:focus-visible{outline:2px solid var(--gold)}
+.party-invite-x{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+.party-invite-kicker{font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.party-invite-title{margin:6px 0 14px;font:italic 700 24px/1.05 var(--display)}
+.party-invite-code{margin:0 auto 12px;padding:10px 14px;border-radius:10px;border:1px solid var(--edge);background:var(--stone);
+  font:700 44px/1 var(--display);letter-spacing:.24em;padding-left:calc(14px + .24em);color:var(--gold);text-shadow:0 0 18px rgba(226,181,82,.35);user-select:all}
+.party-invite-link{width:100%;padding:9px 11px;border-radius:8px;border:1px solid var(--edge);background:#0f141e;color:var(--muted);font:500 12px/1.2 var(--body);outline:none}
+.party-invite-link:focus{border-color:var(--gold-deep);color:var(--ink)}
+.party-invite-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.party-invite-copy{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:10px 12px;border-radius:10px;
+  border:1.5px solid var(--gold-deep);background:linear-gradient(#1f283a,#131a27);color:var(--gold);font:700 14px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;transition:background .15s,box-shadow .15s}
+.party-invite-copy:hover{box-shadow:0 0 0 1px var(--gold),0 0 16px rgba(226,181,82,.3)}
+.party-invite-copy:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.party-invite-copy.is-copied{color:var(--ok);border-color:var(--ok)}
+.party-invite-copy-icon{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.party-invite-waiting{display:flex;align-items:center;justify-content:center;gap:9px;margin:16px 0 4px;color:var(--ink);font-size:13px}
+.party-invite-dots{display:inline-flex;gap:4px}
+.party-invite-dots i{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:dot 1.2s ease-in-out infinite}
+.party-invite-dots i:nth-child(2){animation-delay:.15s}.party-invite-dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.party-invite-note{margin:4px 0 0;color:var(--muted);font-size:11.5px}
+
+/* each other player's own agents: small, quiet, not callable; a hover names them */
+.party-others{display:flex;gap:6px;justify-content:center}
+.party-mini{position:relative;width:48px;display:flex;flex-direction:column;align-items:center;gap:3px;opacity:.75;transition:opacity .15s}
+.party-mini:hover,.party-mini:focus-visible{opacity:1}
+.party-mini:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:8px}
+.party-mini-portrait{position:relative;width:48px;height:60px;display:grid;place-items:center;border-radius:8px;border:1px solid var(--edge);background:linear-gradient(#171e2c,#10151f)}
+.party-mini-portrait .party-crest{width:26px;height:30px;font-size:11px;border-width:1.5px}
+.party-mini-name{font:700 10px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);max-width:56px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.party-mini::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translate(-50%,4px);white-space:nowrap;z-index:5;pointer-events:none;
+  padding:4px 8px;border-radius:6px;border:1px solid var(--edge);background:rgba(11,14,21,.95);color:var(--ink);font:600 11px/1 var(--body);opacity:0;transition:opacity .12s,transform .12s}
+.party-mini:hover::after,.party-mini:focus-visible::after{opacity:1;transform:translate(-50%,0)}
+
+/* reduced motion: a selected card bounces instead of its figure dancing */
+.party-card.is-bounce{animation:bounce .5s cubic-bezier(.33,1,.68,1)}
+@keyframes bounce{40%{translate:0 -10px}}
+.party-card.is-failed{border-color:var(--warn);box-shadow:0 0 0 1px var(--warn)}
+.party-portrait{position:relative;width:100%;flex:1;display:grid;place-items:center}
+.party-crest{width:58px;height:66px;display:grid;place-items:center;font:700 22px/1 var(--display);color:var(--gold);
+  background:var(--stone);border:2px solid var(--gold-deep);clip-path:polygon(0 0,100% 0,100% 70%,50% 100%,0 70%)}
+.party-crest[hidden]{display:none}
+.party-tag{position:absolute;top:8px;left:8px;z-index:3;padding:2px 5px;border-radius:4px;border:1px solid var(--edge);background:rgba(11,14,21,.7);
+  font:700 9.5px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.party-card.is-locked .party-tag{border-color:var(--gold-deep);color:var(--gold)}
+.party-name{font:700 17px/1.05 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+.party-role{min-height:12px;margin-top:3px;font:600 10px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:center}
+.party-card.is-player .party-role{text-transform:none;letter-spacing:0;font-size:11px}
+.party-state{margin-top:5px;font:700 10px/1.2 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.party-card.is-called .party-state{color:var(--gold)}
+.party-card.is-player .party-state{color:var(--ok)}
+.party-card.is-failed .party-state{color:var(--warn);text-transform:none;letter-spacing:0}
+.party-fix{all:unset;cursor:pointer;margin-top:6px;padding:3px 8px;border-radius:6px;border:1px solid var(--warn);color:var(--warn);font-size:10px}
+.party-fix[hidden]{display:none}
+.party-edit{all:unset;cursor:pointer;position:absolute;top:8px;right:8px;z-index:3;padding:3px 8px;border-radius:999px;border:1px solid var(--gold-deep);background:rgba(11,14,21,.78);color:var(--gold);font:700 10px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;opacity:0;transition:opacity .15s,background .15s}
+.party-card:hover .party-edit,.party-card:focus-within .party-edit,.party-edit:focus-visible{opacity:1}
+.party-edit:hover{background:rgba(226,181,82,.18)}
+.party-edit:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (hover:none){.party-edit{opacity:1}}
+
+.party-actions{display:flex;align-items:center;gap:20px}
+.party-embark{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;border-radius:12px;border:1.5px solid #f6d48a;cursor:pointer;
+  font:italic 700 22px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:#1a1206;
+  background:linear-gradient(#f2cf7c,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 0 1px var(--gold),0 0 26px rgba(226,181,82,.4),0 8px 22px rgba(0,0,0,.45);transition:transform .15s}
+.party-embark:hover:not(:disabled){transform:translateY(-2px)}
+.party-embark:disabled{opacity:.45;cursor:default;box-shadow:none}
+.party-embark.is-waiting{font-size:18px;letter-spacing:.04em}
+.party-embark.is-flourish{animation:flourish .7s cubic-bezier(.33,1,.68,1)}
+@keyframes flourish{0%{transform:scale(.94);box-shadow:0 0 0 1px var(--gold),0 0 0 rgba(226,181,82,0)}45%{transform:scale(1.06);box-shadow:0 0 0 2px #f6d48a,0 0 46px rgba(226,181,82,.75)}100%{transform:scale(1)}}
+.party-embark-icon{width:18px;height:18px;fill:#1a1206}
+.party-everyone{all:unset;cursor:pointer;font:600 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+.party-everyone:hover:not(:disabled){color:var(--gold)}
+.party-everyone:disabled{opacity:.45;cursor:default}
+/* The app's screen fades out on hand-off. Here the party stays in view while the quest field and Embark
+   give way, then the page goes on to Plan the Quest. */
+.party-stage.is-leaving{opacity:1;pointer-events:none}
+.party-stage.is-leaving>:is(.party-head,.party-mission,.party-mission-wrap,.party-sources,.party-crew-hint,.party-actions){display:none}
+
+/* ?join=CODE: the joining banner */
+.join-banner{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:15;display:flex;align-items:center;gap:12px;padding:10px 12px 10px 16px;border-radius:12px;
+  border:1.5px solid var(--gold);background:rgba(15,20,30,.97);box-shadow:0 0 18px rgba(226,181,82,.22),0 10px 28px rgba(0,0,0,.5);animation:rise .3s ease both;max-width:calc(100% - 32px)}
+.join-banner[hidden]{display:none}
+.join-banner b{font:italic 700 20px/1 var(--display);letter-spacing:.03em;white-space:nowrap}
+.join-banner b span{color:var(--gold);letter-spacing:.14em}
+.join-banner small{color:var(--muted);font-size:12px}
+.join-banner button{all:unset;cursor:pointer;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;color:var(--muted)}
+.join-banner button:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.join-banner svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+@media (prefers-reduced-motion:reduce){.party-suggest,.party-invite,.party-invite-scrim,.join-banner,.party-embark.is-flourish{animation:none}.party-silhouette,.party-invite-dots i{animation:none}.party-carousel-arrow{transition:none}}
+@media (prefers-reduced-motion:reduce){.party-card,.party-embark{transition:none}.party-card.is-called,.party-card:hover{transform:none}.party-stage.is-leaving{transition:none}}
+</style>
+  <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
+  <script type="module" crossorigin src="/quest/assets/quest-start-CUwAi9nm.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/quest-session-DsAlfxxt.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-qoB-Sjat.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/invite-code-BUCuhOvn.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">
+</head>
+<body>
+<div class="screen">
+  <header class="qbar">
+    <div class="brand">DunGen<span>AI</span></div>
+    <span class="demo-tag" title="Simulated agents, real players">Demo: simulated agents, real players</span>
+    <span id="net-pill" hidden></span>
+    <a class="over" id="start-over" href="#">Start over</a>
+  </header>
+  <main class="launch">
+    <div class="join-banner" id="join-banner" role="status" hidden>
+      <div><b>Joining <span id="join-code"></span>&hellip;</b><br><small>You play as Fernando. Brandon calls the party; press Ready up when you are set.</small></div>
+      <button type="button" id="join-close" aria-label="Dismiss"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <div class="party-host" id="party"></div>
+  </main>
+</div>
+</body>
+</html>
