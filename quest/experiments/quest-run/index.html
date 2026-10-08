@@ -29,15 +29,16 @@ button{font:inherit;color:inherit}
 .back{all:unset;cursor:pointer;color:var(--muted);font:600 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase}
 .qtitle .k{font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .qtitle h1{font:italic 700 26px/1.05 var(--display);margin:4px 0 0}
-.goals{display:flex;gap:8px;flex-wrap:wrap;flex:1;min-width:0}
-.goal{display:flex;align-items:center;gap:8px;background:var(--stone);border:1px solid var(--edge);border-radius:10px;padding:6px 9px}
+.goals{display:flex;gap:6px;flex-wrap:nowrap;flex:1 1 420px;min-width:0;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+.goal{flex:none;display:flex;align-items:center;gap:6px;background:var(--stone);border:1px solid var(--edge);border-radius:9px;padding:4px 8px}
 .goal svg{flex:none}
 .goal b{display:block;font:700 13px/1.1 var(--display);letter-spacing:.02em;white-space:nowrap}
-.goal small{color:var(--muted);font-size:11.5px}
+.goal small{color:var(--muted);font-size:11px;white-space:nowrap}
 .bar{height:5px;border-radius:3px;background:#0b0f17;overflow:hidden;margin-top:4px;width:100px}
 .bar i{display:block;height:100%;background:var(--gold)}
 .stamina{display:flex;flex-direction:column;gap:4px;min-width:170px}
 .stamina .bar{width:100%}
+.goal .bar{width:64px;margin-top:3px}
 .stamina .bar i{background:linear-gradient(90deg,var(--blue),var(--blue-glow))}
 .stamina small{color:var(--muted);font-size:11.5px}
 .toggle{margin-left:auto;display:flex;background:var(--night);border:1px solid var(--edge);border-radius:10px;padding:3px}
@@ -586,7 +587,7 @@ button{font:inherit;color:inherit}
 @media (prefers-reduced-motion:reduce){.lever-hint{animation:none}}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-run-D0wgSFS7.js"></script>
+  <script type="module" crossorigin src="/quest/assets/quest-run-aCxMVfUl.js"></script>
   <link rel="modulepreload" crossorigin href="/quest/assets/quest-session-DsAlfxxt.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-BnQHLNMF.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/preload-helper-Dh5Wm468.js">
