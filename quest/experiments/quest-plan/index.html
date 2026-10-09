@@ -4,7 +4,7 @@
 
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Plan the Quest</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
@@ -143,6 +143,8 @@ h1{margin:8px 0 0;font:italic 700 clamp(30px,5vh,44px)/1.02 var(--display)}
 /* the plan and the stack side by side */
 .work{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
 .stack{position:sticky;top:0;border:1.5px solid var(--gold-deep);border-radius:14px;background:rgba(20,26,38,.85);padding:12px;display:flex;flex-direction:column;gap:6px}
+.shead{all:unset;box-sizing:border-box;display:block;width:100%;cursor:default}
+.schev{display:none}
 .shead b{display:block;font:italic 700 20px/1.05 var(--display);color:var(--gold)}
 .shead small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
 .sextra{margin:6px 0 0;font:600 10.5px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
@@ -227,11 +229,34 @@ h1{margin:8px 0 0;font:italic 700 clamp(30px,5vh,44px)/1.02 var(--display)}
   .handle{grid-area:h}.n{grid-area:n}.tcell{grid-area:t}.pick{grid-area:p;justify-self:start}.remove{grid-area:x}
   .menu{left:0;right:auto}
 }
-@media (prefers-reduced-motion:reduce){.step.enter,.presence{animation:none}.begin{transition:none}.dots::after{animation:none;content:"..."}}
+/* phones: one column, the stack a section that folds to its heading, a compact footer clear of the home bar,
+   tap targets of 44 px and fields of 16 px (iOS zooms into anything smaller) */
+@media (max-width:719px){
+  .screen{height:100vh;height:100dvh}
+  .qbar{padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top));gap:8px 10px}
+  .qbar .demo-tag{font-size:10px}
+  .qbar .over{display:inline-flex;align-items:center;min-height:44px}
+  .table{padding-left:max(14px,env(safe-area-inset-left));padding-right:max(14px,env(safe-area-inset-right))}
+  .shead{cursor:pointer;position:relative;padding-right:26px;min-height:44px}
+  .schev{display:block;position:absolute;right:6px;top:50%;margin-top:-4px;color:var(--gold);transition:transform .2s}
+  .shead[aria-expanded="false"] .schev{transform:rotate(-90deg)}
+  .stack.folded .sbody{display:none}
+  .lrow{min-height:44px}
+  .lchoose,.ladd-go,.lsay button{min-height:44px;display:inline-flex;align-items:center}
+  .lreason,.lsay input,.ladd select,.title-input{font-size:16px}
+  .pick-btn{min-height:44px}
+  .add{min-height:44px}
+  .remove{width:44px;height:44px}
+  .foot{gap:8px 14px;padding:10px 14px;padding-bottom:max(10px,env(safe-area-inset-bottom))}
+  .begin{padding:12px 22px;font-size:20px;min-height:48px}
+  .as-is{min-height:44px;display:inline-flex;align-items:center}
+  .count{min-width:0}
+}
+@media (prefers-reduced-motion:reduce){.schev{transition:none}.step.enter,.presence{animation:none}.begin{transition:none}.dots::after{animation:none;content:"..."}}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-plan-BQTgWC7t.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-THAI3NPz.js">
+  <script type="module" crossorigin src="/quest/assets/quest-plan-8xXnvH6X.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-Cep8JAUU.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-C9YJ474T.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">
 </head>

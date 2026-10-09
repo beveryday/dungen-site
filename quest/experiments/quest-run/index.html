@@ -4,7 +4,7 @@
 
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Quest Run</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
@@ -25,35 +25,35 @@ button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 /* quest bar: a game HUD (task-hud). One row from 1181 px; the objectives take a second row below that.
-   Phone hooks: .hud-banner, .hud-badges, .goals, .hud-status, .hud-sys. */
+   Phone hooks: .hud-banner, .hud-badges, .qbar .goals, .hud-status, .hud-sys. */
 .qbar{grid-column:1/-1;min-width:0;position:relative;z-index:5;display:flex;flex-wrap:nowrap;align-items:center;gap:10px 14px;padding:12px 16px 9px;
   background:linear-gradient(180deg,#1a2233,#10151f 70%,#0d1119);border-bottom:2px solid #3a3020;box-shadow:inset 0 -1px 0 rgba(226,181,82,.18),0 4px 14px rgba(0,0,0,.45)}
-.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.qbar .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 /* the HUD's stone buttons: Back, and the small system buttons with their tooltips */
-.back,.hud-btn,.qbar .dfb-btn{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:grid;place-items:center;color:#c9b88f;
+.qbar .back,.hud-btn,.qbar .dfb-btn{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:grid;place-items:center;color:#c9b88f;
   background:linear-gradient(180deg,#2a3346,#1a2132);border:1px solid #46526b;border-radius:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 2px 0 #090c12}
-.back{flex:none;width:44px;height:46px;align-content:center;gap:2px;font:700 9.5px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.qbar .back{flex:none;width:44px;height:46px;align-content:center;gap:2px;font:700 9.5px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
 .hud-btn,.qbar .dfb-btn{width:30px;height:30px;padding:0;gap:0}
 .hud-btn svg,.qbar .dfb-btn svg{width:16px;height:16px}
 .qbar .dfb-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-.back:hover,.hud-btn:hover,.qbar .dfb-btn:hover{color:var(--gold);border-color:var(--gold-deep);background:linear-gradient(180deg,#343c4f,#20283a);box-shadow:inset 0 1px 0 rgba(255,231,166,.15),0 2px 0 #090c12,0 0 10px rgba(226,181,82,.25)}
-.back:active,.hud-btn:active,.qbar .dfb-btn:active{transform:translateY(1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
-.back:focus-visible,.hud-btn:focus-visible,.qbar .dfb-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.qbar .back:hover,.hud-btn:hover,.qbar .dfb-btn:hover{color:var(--gold);border-color:var(--gold-deep);background:linear-gradient(180deg,#343c4f,#20283a);box-shadow:inset 0 1px 0 rgba(255,231,166,.15),0 2px 0 #090c12,0 0 10px rgba(226,181,82,.25)}
+.qbar .back:active,.hud-btn:active,.qbar .dfb-btn:active{transform:translateY(1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.qbar .back:focus-visible,.hud-btn:focus-visible,.qbar .dfb-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .hud-btn[hidden]{display:none}
-.back[data-tip]::after,.hud-btn[data-tip]::after,.qbar .dfb-btn[data-tip]::after{content:attr(data-tip);position:absolute;top:calc(100% + 7px);right:0;z-index:40;pointer-events:none;opacity:0;transform:translateY(-3px);transition:opacity .12s,transform .12s;
+.qbar .back[data-tip]::after,.hud-btn[data-tip]::after,.qbar .dfb-btn[data-tip]::after{content:attr(data-tip);position:absolute;top:calc(100% + 7px);right:0;z-index:40;pointer-events:none;opacity:0;transform:translateY(-3px);transition:opacity .12s,transform .12s;
   white-space:nowrap;font:700 11px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:#0d1119;border:1px solid var(--gold-deep);border-radius:6px;padding:6px 8px;box-shadow:0 6px 16px rgba(0,0,0,.5)}
-.back[data-tip]::after{left:0;right:auto}
-.back:hover::after,.back:focus-visible::after,.hud-btn:hover::after,.hud-btn:focus-visible::after,.qbar .dfb-btn:hover::after,.qbar .dfb-btn:focus-visible::after{opacity:1;transform:none}
+.qbar .back[data-tip]::after{left:0;right:auto}
+.qbar .back:hover::after,.qbar .back:focus-visible::after,.hud-btn:hover::after,.hud-btn:focus-visible::after,.qbar .dfb-btn:hover::after,.qbar .dfb-btn:focus-visible::after{opacity:1;transform:none}
 .hud-sys{flex:none;display:grid;grid-template-rows:repeat(2,30px);grid-auto-flow:column;grid-auto-columns:30px;gap:5px}
 /* the quest banner: a carved plate with gold trim and rivets, the QUEST ribbon on its top edge */
-.qtitle{flex:0 1 auto;min-width:0;position:relative;padding:9px 14px 6px;border:1px solid #6d5320;border-radius:7px;
+.qbar .qtitle{flex:0 1 auto;min-width:0;position:relative;padding:9px 14px 6px;border:1px solid #6d5320;border-radius:7px;
   background:radial-gradient(circle at 5px 5px,#e2b552 1.3px,transparent 2px),radial-gradient(circle at calc(100% - 5px) 5px,#e2b552 1.3px,transparent 2px),
     radial-gradient(circle at 5px calc(100% - 5px),#e2b552 1.3px,transparent 2px),radial-gradient(circle at calc(100% - 5px) calc(100% - 5px),#e2b552 1.3px,transparent 2px),
     linear-gradient(180deg,#2a3247,#1a2131 55%,#151b28);
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.55),inset 0 1px 0 1px rgba(255,231,166,.12),0 2px 0 #07090e,0 0 0 1px rgba(226,181,82,.12)}
-.qtitle .k{position:absolute;top:-8px;left:12px;padding:3px 12px 2px;font:700 10px/1 var(--display);letter-spacing:.22em;text-transform:uppercase;color:#1b1406;
+.qbar .qtitle .k{position:absolute;top:-8px;left:12px;padding:3px 12px 2px;font:700 10px/1 var(--display);letter-spacing:.22em;text-transform:uppercase;color:#1b1406;
   background:linear-gradient(180deg,#f6d77f,var(--gold) 50%,#b88426);clip-path:polygon(0 0,100% 0,calc(100% - 5px) 50%,100% 100%,0 100%,5px 50%);filter:drop-shadow(0 1px 0 rgba(0,0,0,.6))}
-.qtitle h1{font:italic 700 23px/1.05 var(--display);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 14px rgba(226,181,82,.12)}
+.qbar .qtitle h1{font:italic 700 23px/1.05 var(--display);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 14px rgba(226,181,82,.12)}
 .demo-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:5px}
 .demo-tag,.qbar .net-pill,.qbar .net-continue{display:inline-flex;align-items:center;gap:5px;font:700 10.5px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
   padding:3px 7px 3px 6px;border-radius:4px;border:1px solid;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 0 #07090e;margin:0}
@@ -65,30 +65,30 @@ button{font:inherit;color:inherit}
 .qbar .net-continue{cursor:pointer;color:var(--gold);border-color:var(--gold-deep);background:linear-gradient(180deg,#2c2615,#1a160b)}
 .qbar .net-continue[hidden],.qbar .net-pill[hidden]{display:none}
 /* objectives: medallions that share the row (never a scrollbar), labels cut to two lines, full name on hover */
-.goals{flex:1 1 0;min-width:0;display:flex;gap:6px;align-items:stretch;justify-content:center}
-.goals > small{align-self:center}
-.goal{flex:1 1 auto;min-width:0;max-width:184px;position:relative;display:flex;align-items:center;gap:6px;padding:5px 7px 5px 5px;border-radius:10px;cursor:default;
+.qbar .goals{flex:1 1 0;min-width:0;display:flex;gap:6px;align-items:stretch;justify-content:center}
+.qbar .goals > small{align-self:center}
+.qbar .goal{flex:1 1 auto;min-width:0;max-width:184px;position:relative;display:flex;align-items:center;gap:6px;padding:5px 7px 5px 5px;border-radius:10px;cursor:default;
   background:linear-gradient(180deg,#222b3d,#151b28);border:1px solid #39445b;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -2px 0 rgba(0,0,0,.35),0 2px 0 #07090e}
-.goal .chest{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,#36425c,#121826 75%);border:1.5px solid #4a5670;box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
-.goal .chest svg{overflow:visible}
-.goal .glow{fill:#ffe7a6;opacity:0;filter:blur(2px)}
-.goal .lid{transform-box:fill-box;transform-origin:0% 100%}
-.goal .gtext{min-width:0;display:flex;flex-direction:column;gap:4px}
-.goal b{font:700 12px/1.05 var(--display);letter-spacing:.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
-.goal small{font:700 11px/1 var(--display);letter-spacing:.06em;color:var(--muted)}
-.pips{display:flex;gap:3px;flex-wrap:wrap}
-.pips i{width:8px;height:8px;border-radius:50%;background:#0a0e16;border:1px solid #4d5872;box-shadow:inset 0 1px 1px rgba(0,0,0,.6)}
-.pips i.on{border-color:#f3cf73;background:radial-gradient(circle at 35% 35%,#fff1c4,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 5px rgba(226,181,82,.6)}
-.goal.done{border-color:var(--gold-deep);background:linear-gradient(180deg,#2e2a1d,#191812);box-shadow:inset 0 1px 0 rgba(255,231,166,.14),0 2px 0 #07090e,0 0 10px rgba(226,181,82,.18)}
-.goal.done .chest{border-color:var(--gold);background:radial-gradient(circle at 50% 40%,#5a4618,#171208 75%);box-shadow:0 0 10px rgba(226,181,82,.55),inset 0 0 6px rgba(255,231,166,.35)}
-.goal.done .glow{opacity:.9}
-.goal.done .lid{transform:translate(-1px,-3px) rotate(-24deg)}
-.goal.done .pips i.on{border-color:#b9f0cf;background:radial-gradient(circle at 35% 35%,#e3ffef,var(--ok) 60%,#2f7a51);box-shadow:0 0 5px rgba(104,197,143,.6)}
-.goal.launch{border-color:#6d5320}
-.goal .crown{position:absolute;left:13px;top:-8px;filter:drop-shadow(0 1px 0 rgba(0,0,0,.7))}
-.goal.gain{animation:hudgain .9s cubic-bezier(.3,1.6,.5,1) var(--gain-delay,0ms) both}
-.goal.gain::after{content:"";position:absolute;inset:-1px;border-radius:10px;pointer-events:none;background:radial-gradient(ellipse at 22% 50%,rgba(255,231,166,.55),rgba(226,181,82,0) 70%);box-shadow:0 0 0 1.5px var(--gold),0 0 16px rgba(226,181,82,.6);animation:hudflash .9s ease-out var(--gain-delay,0ms) both}
-.goal.gain.done .lid{animation:hudlid .9s cubic-bezier(.3,1.6,.5,1) var(--gain-delay,0ms) both}
+.qbar .goal .chest{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,#36425c,#121826 75%);border:1.5px solid #4a5670;box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+.qbar .goal .chest svg{overflow:visible}
+.qbar .goal .glow{fill:#ffe7a6;opacity:0;filter:blur(2px)}
+.qbar .goal .lid{transform-box:fill-box;transform-origin:0% 100%}
+.qbar .goal .gtext{min-width:0;display:flex;flex-direction:column;gap:4px}
+.qbar .goal b{font:700 12px/1.05 var(--display);letter-spacing:.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.qbar .goal small{font:700 11px/1 var(--display);letter-spacing:.06em;color:var(--muted)}
+.qbar .pips{display:flex;gap:3px;flex-wrap:wrap}
+.qbar .pips i{width:8px;height:8px;border-radius:50%;background:#0a0e16;border:1px solid #4d5872;box-shadow:inset 0 1px 1px rgba(0,0,0,.6)}
+.qbar .pips i.on{border-color:#f3cf73;background:radial-gradient(circle at 35% 35%,#fff1c4,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 5px rgba(226,181,82,.6)}
+.qbar .goal.done{border-color:var(--gold-deep);background:linear-gradient(180deg,#2e2a1d,#191812);box-shadow:inset 0 1px 0 rgba(255,231,166,.14),0 2px 0 #07090e,0 0 10px rgba(226,181,82,.18)}
+.qbar .goal.done .chest{border-color:var(--gold);background:radial-gradient(circle at 50% 40%,#5a4618,#171208 75%);box-shadow:0 0 10px rgba(226,181,82,.55),inset 0 0 6px rgba(255,231,166,.35)}
+.qbar .goal.done .glow{opacity:.9}
+.qbar .goal.done .lid{transform:translate(-1px,-3px) rotate(-24deg)}
+.qbar .goal.done .pips i.on{border-color:#b9f0cf;background:radial-gradient(circle at 35% 35%,#e3ffef,var(--ok) 60%,#2f7a51);box-shadow:0 0 5px rgba(104,197,143,.6)}
+.qbar .goal.launch{border-color:#6d5320}
+.qbar .goal .crown{position:absolute;left:13px;top:-8px;filter:drop-shadow(0 1px 0 rgba(0,0,0,.7))}
+.qbar .goal.gain{animation:hudgain .9s cubic-bezier(.3,1.6,.5,1) var(--gain-delay,0ms) both}
+.qbar .goal.gain::after{content:"";position:absolute;inset:-1px;border-radius:10px;pointer-events:none;background:radial-gradient(ellipse at 22% 50%,rgba(255,231,166,.55),rgba(226,181,82,0) 70%);box-shadow:0 0 0 1.5px var(--gold),0 0 16px rgba(226,181,82,.6);animation:hudflash .9s ease-out var(--gain-delay,0ms) both}
+.qbar .goal.gain.done .lid{animation:hudlid .9s cubic-bezier(.3,1.6,.5,1) var(--gain-delay,0ms) both}
 @keyframes hudgain{0%{transform:none}25%{transform:translateY(-5px) scale(1.05)}55%{transform:translateY(1px)}75%{transform:translateY(-1px)}100%{transform:none}}
 @keyframes hudflash{0%{opacity:1}100%{opacity:0}}
 @keyframes hudlid{0%{transform:none}60%{transform:translate(-1px,-5px) rotate(-34deg)}100%{transform:translate(-1px,-3px) rotate(-24deg)}}
@@ -133,32 +133,32 @@ button{font:inherit;color:inherit}
 .st-bar{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;height:11px;padding:2px;background:#060910;border:1px solid #2f3a50;border-radius:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,.7)}
 .st-bar i{border-radius:1.5px;background:#171e2c}
 .st-bar i.on{background:linear-gradient(180deg,var(--st-hi),var(--st) 60%,color-mix(in srgb,var(--st) 70%,#000));box-shadow:0 0 4px color-mix(in srgb,var(--st) 55%,transparent)}
-@media (prefers-reduced-motion:reduce){.goal.gain,.goal.gain::after,.goal.gain.done .lid,.rs-time::before{animation:none}.goal.gain::after{display:none}.back::after,.hud-btn::after,.qbar .dfb-btn::after{transition:none}}
+@media (prefers-reduced-motion:reduce){.qbar .goal.gain,.qbar .goal.gain::after,.qbar .goal.gain.done .lid,.rs-time::before{animation:none}.qbar .goal.gain::after{display:none}.qbar .back::after,.hud-btn::after,.qbar .dfb-btn::after{transition:none}}
 /* below 1181 px: the objectives take their own row */
 @media (max-width:1180px){
   .qbar{flex-wrap:wrap}
   .hud-status{margin-left:auto}
-  .goals{order:10;flex:1 1 100%}
+  .qbar .goals{order:10;flex:1 1 100%}
 }
 /* phones: banner and buttons on the first row, the objectives as icons with pips, then round and stamina */
 @media (max-width:640px){
   .qbar{padding:12px 10px 8px;gap:8px}
-  .back{width:38px;height:42px}
-  .back span{display:none}
-  .qtitle{padding:8px 10px 5px}
-  .qtitle h1{font-size:19px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .qbar .back{width:38px;height:42px}
+  .qbar .back span{display:none}
+  .qbar .qtitle{padding:8px 10px 5px}
+  .qbar .qtitle h1{font-size:19px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
   .hud-sys{grid-template-rows:repeat(2,28px);grid-auto-columns:28px;gap:4px}
   .hud-btn,.qbar .dfb-btn{width:28px;height:28px}
-  .goals{gap:4px}
+  .qbar .goals{gap:4px}
   .hud-status{margin-left:0}
-  .qtitle{flex:1 1 0}
-  .goal{flex:1 1 0;flex-direction:column;justify-content:center;gap:4px;padding:5px 3px 4px;text-align:center}
-  .goal .chest{width:30px;height:30px}
-  .goal .gtext{align-items:center;gap:3px;width:100%}
-  .goal b{font-size:10.5px;-webkit-line-clamp:1;display:block;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
-  .goal .crown{left:50%;margin-left:-22px}
-  .pips{justify-content:center;gap:2px}
-  .pips i{width:6px;height:6px}
+  .qbar .qtitle{flex:1 1 0}
+  .qbar .goal{flex:1 1 0;flex-direction:column;justify-content:center;gap:4px;padding:5px 3px 4px;text-align:center}
+  .qbar .goal .chest{width:30px;height:30px}
+  .qbar .goal .gtext{align-items:center;gap:3px;width:100%}
+  .qbar .goal b{font-size:10.5px;-webkit-line-clamp:1;display:block;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
+  .qbar .goal .crown{left:50%;margin-left:-22px}
+  .qbar .pips{justify-content:center;gap:2px}
+  .qbar .pips i{width:6px;height:6px}
   .hud-status{order:11;flex:1 1 100%;width:auto;flex-direction:row;align-items:center;gap:10px}
   .round-strip{flex:0 1 auto}
   .stamina{flex:1 1 0}
@@ -728,11 +728,164 @@ button{font:inherit;color:inherit}
 .rs-actions a:hover{color:var(--gold)}
 .record-card{z-index:23}
 @media (prefers-reduced-motion:reduce){.lever-hint{animation:none}}
+
+/* ---- phones (phone-layout.js, PHONE_QUERY: under 720 px, a phone on its side, or a touch tablet up to 1000 px) ----
+   The board fills the screen under a collapsed quest bar (title, objective pips, the round's clock, you).
+   The rooms, the Dungeon/Plan toggle and the system buttons sit in a drawer at the board's top left; the
+   chat is a bottom sheet with a peek bar; the dock's tabs sit just above it and its cards slide up over
+   the board. Records, settings, the summary and the other cards open as full-screen sheets. */
+.chat-peek,.phone-drawer-btn{display:none}
+.phone-drawer[hidden]{display:none}
+@media (max-width:719px),(max-height:500px) and (pointer:coarse),(pointer:coarse) and (max-width:1000px){
+  html,body{height:100%;overflow:hidden}
+  .screen{height:100vh;height:100dvh;min-height:0;overflow:hidden;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr)}
+  .board{grid-row:2;grid-column:1;min-height:0}
+  /* the quest bar, collapsed */
+  .qbar{flex-wrap:wrap;gap:6px 8px;padding:max(6px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) 6px max(10px,env(safe-area-inset-left))}
+  .qbar .back{width:40px;height:44px}
+  .qbar .back span{display:none}
+  .qbar .qtitle{flex:1 1 0;padding:7px 10px 5px}
+  .qbar .qtitle .k{font-size:9px;top:-7px}
+  .qbar .qtitle h1{font-size:17px;white-space:nowrap;display:block;-webkit-line-clamp:unset}
+  .qbar .hud-badges{display:none}
+  .qbar .goals{order:10;flex:1 1 100%;gap:4px}
+  .qbar .goal{flex:1 1 0;flex-direction:row;justify-content:center;gap:4px;padding:3px 4px;border-radius:8px}
+  .qbar .goal .chest{width:20px;height:20px;border-width:1px}
+  .qbar .goal .chest svg{width:13px;height:13px}
+  .qbar .goal .gtext{align-items:center;width:auto}
+  .qbar .goal b,.qbar .goal .crown{display:none}
+  .qbar .pips{gap:2px}
+  .qbar .pips i{width:6px;height:6px}
+  .hud-status{order:2;flex:none;width:auto;margin:0;flex-direction:row;align-items:center}
+  .stamina,.rs-phase{display:none}
+  .rs-round{font-size:11px;padding:3px 9px 2px}
+  .rs-time{min-width:0}
+  .me-chip{order:3;height:30px;padding:0 9px 0 6px;font-size:12px;gap:5px}
+  /* the drawer: rooms, Dungeon/Plan and the system buttons */
+  .phone-drawer-btn{all:unset;box-sizing:border-box;cursor:pointer;position:absolute;left:max(8px,env(safe-area-inset-left));top:8px;z-index:12;display:inline-flex;align-items:center;gap:7px;height:44px;padding:0 13px 0 11px;border-radius:10px;
+    background:rgba(20,26,38,.92);border:1px solid var(--edge);color:var(--ink);font:700 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+  .phone-drawer-btn[aria-expanded="true"]{color:var(--gold);border-color:var(--gold-deep)}
+  .phone-drawer-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .phone-drawer{position:absolute;left:max(8px,env(safe-area-inset-left));top:58px;z-index:31;width:min(320px,calc(100% - 16px));max-height:calc(100% - 66px);overflow-y:auto;overscroll-behavior:contain;
+    display:flex;flex-direction:column;gap:10px;padding:10px;border-radius:14px;background:linear-gradient(#0f141e,#0b0e15);border:1px solid var(--gold-deep);box-shadow:0 14px 34px rgba(0,0,0,.65)}
+  .pd-head{display:flex;align-items:center;justify-content:space-between}
+  .pd-head .k{font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+  .pd-close{all:unset;cursor:pointer;width:44px;height:44px;display:grid;place-items:center;border-radius:10px;color:var(--muted)}
+  .phone-drawer .toggle{align-self:stretch;padding:3px}
+  .phone-drawer .toggle button{flex:1;text-align:center;min-height:44px;box-sizing:border-box;font-size:13px}
+  .phone-drawer .rooms{position:static;max-height:none;width:auto;min-width:0;overflow:visible}
+  .phone-drawer .rooms button{min-height:44px;box-sizing:border-box}
+  .phone-drawer .hud-sys{display:flex;flex-wrap:wrap;gap:8px;padding-top:10px;border-top:1px solid var(--edge)}
+  .phone-drawer .hud-btn,.phone-drawer .dfb-btn{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:inline-flex;align-items:center;gap:7px;height:44px;padding:0 12px;border-radius:10px;
+    color:#c9b88f;background:linear-gradient(180deg,#2a3346,#1a2132);border:1px solid #46526b;font:700 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase}
+  .phone-drawer .hud-btn[hidden]{display:none}
+  .phone-drawer .hud-btn svg,.phone-drawer .dfb-btn svg{width:16px;height:16px}
+  .phone-drawer .hud-btn::after{content:attr(data-tip);position:static;opacity:1;transform:none;background:none;border:0;padding:0;box-shadow:none;font:inherit;color:inherit}
+  .phone-drawer .hud-btn .sr{display:none}
+  /* the board: no zoom slider or mouse legend (pinch and two fingers), the next line under the drawer button */
+  .toolbar{right:max(8px,env(safe-area-inset-right));top:8px}
+  .tbtn{height:44px;padding:0 10px;border-radius:10px}
+  .pop{position:fixed;left:8px;right:8px;top:auto;width:auto;max-height:60dvh}
+  .zoom-dock,.keys{display:none}
+  .next-prompt,.board.in-arena .next-prompt{top:60px;bottom:auto;max-width:calc(100% - 24px);font-size:12.5px;padding:7px 12px}
+  .board:has(.phone-drawer-btn) .next-prompt{left:50%}
+  #level section[aria-label^="Conversation"]{top:60px !important;max-height:40%}
+  /* the chat: a bottom sheet with a peek bar */
+  .chat{position:fixed;left:0;right:0;bottom:0;z-index:30;grid-row:auto;grid-column:auto;height:calc(54px + env(safe-area-inset-bottom));min-height:0;overflow:hidden;
+    border:1px solid var(--gold-deep);border-bottom:0;border-radius:16px 16px 0 0;padding-bottom:env(safe-area-inset-bottom);box-shadow:0 -10px 28px rgba(0,0,0,.5);transition:height .25s ease}
+  .chat.open{height:min(78dvh,calc(100dvh - 64px))}
+  .chat:not(.open)>:not(.chat-peek){display:none}
+  .chat-peek{all:unset;box-sizing:border-box;cursor:pointer;flex:none;display:flex;align-items:center;gap:10px;height:54px;padding:0 max(14px,env(safe-area-inset-right)) 0 max(14px,env(safe-area-inset-left));border-bottom:1px solid transparent}
+  .chat.open .chat-peek{border-bottom-color:var(--edge)}
+  .peek-chev{flex:none;color:var(--gold);transition:transform .25s}
+  .chat.open .peek-chev{transform:rotate(180deg)}
+  .peek-line{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:13.5px;color:var(--ink)}
+  .peek-who{font:700 13.5px/1 var(--display);letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-right:7px}
+  .peek-unread{flex:none;min-width:24px;height:24px;padding:0 7px;border-radius:12px;display:grid;place-items:center;background:var(--gold);color:#1a1206;font:700 13px/1 var(--display)}
+  .peek-unread[hidden]{display:none}
+  .chat.open .peek-unread{display:none}
+  .input input{font-size:16px;min-height:44px}
+  .input button{min-height:44px;box-sizing:border-box}
+  .who-all,.who-face{height:36px}
+  .who-face{width:36px}
+  /* the dock: its tabs over the chat's peek bar, its cards sliding up over the board */
+  .dock{position:fixed;left:0;right:0;bottom:calc(54px + env(safe-area-inset-bottom));z-index:25;transform:translateY(100%);transition:transform .25s ease}
+  .dock.shown,.dock.open{transform:none}
+  .dock-tabs{position:absolute;left:0;right:0;bottom:100%;padding:0 max(8px,env(safe-area-inset-right)) 0 max(8px,env(safe-area-inset-left));gap:4px;overflow-x:auto;scrollbar-width:none}
+  .dock-tab,.dock-done{flex:none;min-height:44px;box-sizing:border-box;padding:0 12px}
+  .dock.shown .dock-tab[aria-pressed="true"] .chev,.dock.open .dock-tab[aria-pressed="true"] .chev{transform:rotate(180deg)}
+  .hand{padding:10px max(12px,env(safe-area-inset-right)) 10px max(12px,env(safe-area-inset-left))}
+  .card{flex-basis:108px;height:112px}
+  .view-bar .advanced{position:fixed;left:8px;right:8px;width:auto;bottom:auto;top:70px;max-height:60dvh}
+  /* full-screen sheets */
+  .record-card,.settings-panel,.run-summary,.meanwhile,.outcome{position:fixed;inset:0;z-index:40;transform:none;margin:0;width:auto;min-width:0;max-width:none;height:auto;max-height:none;border-radius:0;border-width:0;overflow-y:auto;overscroll-behavior:contain;
+    padding:max(14px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+  .record-card .close,.meanwhile .close,.settings-panel .close,.settings-panel .act,.mw-answer button,.run-summary .rs-actions button,.offer-actions button,.outcome button{min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
+  .run-summary h2{font-size:26px}
+  .rs-cols{grid-template-columns:1fr}
+  .settings-panel .cols{grid-template-columns:1fr}
+  .settings-panel select{font-size:16px}
+  .round-show{z-index:32;padding:10px}
+  .round-show h2{font-size:24px}
+  .gs-window{height:200px}
+  .pd-stand{gap:8px}
+  .pd-place{width:min(140px,40vw)}
+  .pd-figure{width:100px;height:120px}
+  .arena-hud{top:60px;max-width:calc(100% - 16px)}
+  .ah-row{flex-wrap:wrap;justify-content:center;gap:8px;padding:6px 10px}
+  .ah-how{font-size:12px}
+}
+@media (max-height:500px) and (pointer:coarse){
+  .chat.open{height:calc(100dvh - 12px)}
+  .qbar .goals{order:2;flex:1 1 0}
+  .gs-window{height:170px}.gs-card{height:150px}
+}
+@media (max-width:719px) and (prefers-reduced-motion:reduce),(max-height:500px) and (pointer:coarse) and (prefers-reduced-motion:reduce),(pointer:coarse) and (max-width:1000px) and (prefers-reduced-motion:reduce){.chat,.dock,.peek-chev{transition:none}}
+
+/* ---- touch screens (touch-controls.js): the stick in the board's left third, Use and Swing at the
+   bottom right. Pinch zooms and two fingers turn, so the zoom slider and the mouse legend go. ---- */
+.touch .zoom-dock,.touch .keys{display:none}
+.stick-zone{position:absolute;left:0;top:60px;bottom:52px;width:33.333%;z-index:9;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.phone .stick-zone{bottom:calc(104px + env(safe-area-inset-bottom));left:env(safe-area-inset-left)}
+.stick-base{position:absolute;width:112px;height:112px;margin:-56px 0 0 -56px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(15,20,30,.35),rgba(15,20,30,.6));border:2px solid rgba(226,181,82,.55);box-shadow:0 0 0 1px rgba(0,0,0,.4),inset 0 0 18px rgba(0,0,0,.5)}
+.stick-base[hidden]{display:none}
+.stick-knob{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%,#fff1c4,var(--gold) 55%,var(--gold-deep));box-shadow:0 4px 12px rgba(0,0,0,.55),0 0 14px rgba(226,181,82,.45)}
+.touch-actions{position:absolute;right:max(14px,env(safe-area-inset-right));bottom:62px;z-index:10;display:flex;align-items:flex-end;gap:12px;pointer-events:none}
+.phone .touch-actions{bottom:calc(112px + env(safe-area-inset-bottom))}
+.touch-actions button{all:unset;box-sizing:border-box;pointer-events:auto;cursor:pointer;display:grid;place-items:center;align-content:center;gap:2px;border-radius:50%;text-align:center;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+.touch-actions button[hidden]{display:none}
+.touch-actions .ta-use{width:68px;height:68px;color:#1a1206;border:2px solid #f6d48a;background:radial-gradient(circle at 40% 30%,#fbe3a0,var(--gold) 60%,var(--gold-deep));box-shadow:0 6px 16px rgba(0,0,0,.55),0 0 18px rgba(226,181,82,.4)}
+.ta-use b{font:italic 700 20px/1 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.ta-use small{font:700 10px/1 var(--display);letter-spacing:.1em;text-transform:uppercase}
+.touch-actions .ta-swing{width:96px;height:96px;color:#fff;border:2px solid #ffc5b6;background:radial-gradient(circle at 40% 30%,#ff9a82,var(--warn) 58%,#8f2d1d);box-shadow:0 8px 20px rgba(0,0,0,.6),0 0 22px rgba(229,103,79,.45)}
+.ta-swing b{font:italic 700 19px/1 var(--display);letter-spacing:.06em;text-transform:uppercase}
+.ta-use:active,.ta-swing:active{transform:scale(.94)}
+.ta-use:focus-visible,.ta-swing:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.board.in-arena .stick-zone{top:120px}
+
+/* The loading line's progress (loading.js): files done of asked, and the megabytes so far. */
+.board-loading.has-progress{display:flex;flex-direction:column;align-items:center;gap:10px;animation:none;text-align:center}
+.board-loading.has-progress[hidden]{display:none}
+.bl-label{animation:board-loading 1.6s ease-in-out infinite}
+.bl-bar{display:block;width:min(240px,60vw);height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
+.bl-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));transform:scaleX(0);transform-origin:0 50%;transition:transform .3s ease}
+.bl-count{font:600 11.5px/1 var(--body);letter-spacing:.06em;text-transform:none;color:var(--muted);min-height:1em;font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.bl-label{animation:none}.bl-bar i{transition:none}}
+/* No WebGPU: what the board would show, said plainly. */
+.no-gpu{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;width:min(460px,calc(100% - 32px));padding:18px 20px;border-radius:14px;
+  background:rgba(15,20,30,.97);border:1.5px solid var(--gold-deep);box-shadow:0 14px 34px rgba(0,0,0,.6);text-align:left}
+.no-gpu .k{font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.no-gpu h2{margin:6px 0 8px;font:italic 700 24px/1.05 var(--display)}
+.no-gpu p{margin:0 0 8px;font-size:14px;line-height:1.45}
+.no-webgpu :is(.stick-zone,.touch-actions,#zoom-controls,.keys,#start-game-btn){display:none !important}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-run-F5T15uJ_.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-THAI3NPz.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-DfUI0Iep.js">
+  <script type="module" crossorigin src="/quest/assets/quest-run-C5JMqNY-.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-Cep8JAUU.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-CRRnS7et.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/preload-helper-Dh5Wm468.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-C9YJ474T.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">

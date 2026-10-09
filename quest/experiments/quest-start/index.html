@@ -4,7 +4,7 @@
 
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Start a Quest</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
@@ -256,13 +256,62 @@ button{font:inherit;color:inherit}
 .join-banner button{all:unset;cursor:pointer;width:26px;height:26px;display:grid;place-items:center;border-radius:50%;color:var(--muted)}
 .join-banner button:hover{color:var(--ink);background:rgba(255,255,255,.06)}
 .join-banner svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round}
+
+/* Phones and short landscape screens: the stage scrolls, and Ready, Invite and Embark sit in a bar along
+   the bottom, in thumb's reach and clear of the home bar. Under 720 px the row is one column: the
+   players, then the agents' carousel (swipe it) at full width. Tap targets 44 px; the quest field 16 px. */
+.party-bar-btn{display:none}
+@media (max-width:719px),(max-height:500px) and (pointer:coarse){
+  .screen{height:100vh;height:100dvh}
+  .qbar{flex-wrap:wrap;gap:8px 10px;padding:8px 12px;padding-top:max(8px,env(safe-area-inset-top));padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+  .qbar .demo-tag{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px}
+  .qbar .over{display:inline-flex;align-items:center;min-height:44px}
+  .party-stage{overflow-y:auto;overscroll-behavior:contain;justify-content:flex-start;
+    padding:18px max(14px,env(safe-area-inset-right)) calc(150px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+  .party-mission{font-size:16px}
+  .party-actions{position:fixed;left:0;right:0;bottom:0;z-index:14;justify-content:center;gap:10px;flex-wrap:wrap;
+    padding:10px max(12px,env(safe-area-inset-right)) max(10px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+    background:linear-gradient(rgba(16,21,31,.94),#0b0e15);border-top:1px solid var(--edge);box-shadow:0 -10px 24px rgba(0,0,0,.45)}
+  .party-embark{order:-1;flex:1 1 100%;justify-content:center;max-width:420px;padding:12px 20px;font-size:19px;min-height:48px}
+  .party-embark.is-waiting{font-size:16px}
+  .party-everyone{min-height:44px;display:inline-flex;align-items:center}
+  .party-everyone[hidden]{display:none}
+  .party-bar-btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:48px;padding:0 16px;border-radius:12px;
+    border:1.5px solid var(--gold-deep);background:linear-gradient(#1f283a,#131a27);color:var(--gold);font:700 15px/1 var(--display);letter-spacing:.08em;text-transform:uppercase}
+  .party-bar-btn[hidden]{display:none}
+  .party-bar-btn[aria-pressed="true"]{color:#1a1206;border-color:#f6d48a;background:linear-gradient(#f2cf7c,var(--gold) 55%,var(--gold-deep))}
+  .party-bar-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .party-carousel-arrow{width:44px;height:44px}
+  .party-ready{min-height:36px}
+  .party-invite-close,.join-banner button{min-width:44px;min-height:44px;display:grid;place-items:center}
+  .party-edit{opacity:1}
+  .party-invite-copy{min-height:48px}
+  .party-invite-link{font-size:16px}
+  .party-stage.is-leaving{padding-bottom:18px}
+}
+@media (min-width:720px) and (max-height:500px) and (pointer:coarse){
+  .party-stage{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+  .party-embark{flex:0 1 auto}
+}
+@media (max-width:719px){
+  .party-row-wrap{width:100%}
+  .party-row{flex-direction:column;align-items:stretch;gap:16px;padding:8px 0 4px}
+  .party-group{width:100%}
+  .party-group-cards{justify-content:center}
+  .party-carousel{width:100%;min-width:0}
+  .party-stage>*{max-width:100%}
+  .party-card{width:116px;height:206px}
+  .party-title{font-size:32px}
+  .party-crew-hint{max-width:100%}
+  .party-sources{max-width:100%}
+}
 @media (prefers-reduced-motion:reduce){.party-suggest,.party-invite,.party-invite-scrim,.join-banner,.party-embark.is-flourish{animation:none}.party-silhouette,.party-invite-dots i{animation:none}.party-carousel-arrow{transition:none}}
 @media (prefers-reduced-motion:reduce){.party-card,.party-embark{transition:none}.party-card.is-called,.party-card:hover{transform:none}.party-stage.is-leaving{transition:none}}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-start-C4fvBm-d.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-THAI3NPz.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-DfUI0Iep.js">
+  <script type="module" crossorigin src="/quest/assets/quest-start-DW0yLEaA.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-Cep8JAUU.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-CRRnS7et.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/invite-code-BUCuhOvn.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">
 </head>

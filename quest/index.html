@@ -4,7 +4,7 @@
 
 
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DunGenAI Quest Demo</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;1,700&family=Barlow:wght@400;500;600&display=swap">
 <style>
@@ -45,11 +45,17 @@ button,input{font:inherit;color:inherit}
 .join button:hover{background:rgba(226,181,82,.14)}
 .err{margin:0;min-height:1.4em;color:var(--warn);font-size:14px}
 .demo-tag{font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#f0a24b;border:1px solid #f0a24b;border-radius:999px;padding:5px 10px}
+/* phones: clear of the notch and home bar, a 44 px Join button, a field large enough that iOS does not zoom */
+@media (max-width:719px),(max-height:500px) and (pointer:coarse){
+  .stage{min-height:100dvh;padding:max(24px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left))}
+  .join button{min-height:48px;padding:0 20px}
+  .join input{min-height:48px}
+}
 @media (prefers-reduced-motion:reduce){.start{transition:none}.start:hover{transform:none}}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-demo-kYE5PZPa.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-THAI3NPz.js">
+  <script type="module" crossorigin src="/quest/assets/quest-demo-DO6ILIFm.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-Cep8JAUU.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/invite-code-BUCuhOvn.js">
 </head>
 <body>
