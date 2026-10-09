@@ -24,25 +24,147 @@ body{margin:0;background:var(--night);color:var(--ink);font:14px/1.45 var(--body
 button{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
-/* quest bar */
-.qbar{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;padding:12px 18px;background:linear-gradient(#151c2a,#10151f);border-bottom:1px solid var(--edge)}
-.back{all:unset;cursor:pointer;color:var(--muted);font:600 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase}
-.qtitle .k{font:600 11px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-.qtitle h1{font:italic 700 26px/1.05 var(--display);margin:4px 0 0}
-.goals{display:flex;gap:6px;flex-wrap:nowrap;flex:1 1 420px;min-width:0;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
-.goal{flex:none;display:flex;align-items:center;gap:6px;background:var(--stone);border:1px solid var(--edge);border-radius:9px;padding:4px 8px}
-.goal svg{flex:none}
-.goal b{display:block;font:700 13px/1.1 var(--display);letter-spacing:.02em;white-space:nowrap}
-.goal small{color:var(--muted);font-size:11px;white-space:nowrap}
-.bar{height:5px;border-radius:3px;background:#0b0f17;overflow:hidden;margin-top:4px;width:100px}
-.bar i{display:block;height:100%;background:var(--gold)}
-.stamina{display:flex;flex-direction:column;gap:4px;min-width:170px}
-.stamina .bar{width:100%}
-.goal .bar{width:64px;margin-top:3px}
-.stamina .bar i{background:linear-gradient(90deg,var(--blue),var(--blue-glow))}
-.stamina small{color:var(--muted);font-size:11.5px}
-.toggle{margin-left:auto;display:flex;background:var(--night);border:1px solid var(--edge);border-radius:10px;padding:3px}
-.toggle button{all:unset;cursor:pointer;font:700 14px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:9px 16px;border-radius:7px}
+/* quest bar: a game HUD (task-hud). One row from 1181 px; the objectives take a second row below that.
+   Phone hooks: .hud-banner, .hud-badges, .goals, .hud-status, .hud-sys. */
+.qbar{grid-column:1/-1;min-width:0;position:relative;z-index:5;display:flex;flex-wrap:nowrap;align-items:center;gap:10px 14px;padding:12px 16px 9px;
+  background:linear-gradient(180deg,#1a2233,#10151f 70%,#0d1119);border-bottom:2px solid #3a3020;box-shadow:inset 0 -1px 0 rgba(226,181,82,.18),0 4px 14px rgba(0,0,0,.45)}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* the HUD's stone buttons: Back, and the small system buttons with their tooltips */
+.back,.hud-btn,.qbar .dfb-btn{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:grid;place-items:center;color:#c9b88f;
+  background:linear-gradient(180deg,#2a3346,#1a2132);border:1px solid #46526b;border-radius:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 2px 0 #090c12}
+.back{flex:none;width:44px;height:46px;align-content:center;gap:2px;font:700 9.5px/1 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.hud-btn,.qbar .dfb-btn{width:30px;height:30px;padding:0;gap:0}
+.hud-btn svg,.qbar .dfb-btn svg{width:16px;height:16px}
+.qbar .dfb-btn span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.back:hover,.hud-btn:hover,.qbar .dfb-btn:hover{color:var(--gold);border-color:var(--gold-deep);background:linear-gradient(180deg,#343c4f,#20283a);box-shadow:inset 0 1px 0 rgba(255,231,166,.15),0 2px 0 #090c12,0 0 10px rgba(226,181,82,.25)}
+.back:active,.hud-btn:active,.qbar .dfb-btn:active{transform:translateY(1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.back:focus-visible,.hud-btn:focus-visible,.qbar .dfb-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.hud-btn[hidden]{display:none}
+.back[data-tip]::after,.hud-btn[data-tip]::after,.qbar .dfb-btn[data-tip]::after{content:attr(data-tip);position:absolute;top:calc(100% + 7px);right:0;z-index:40;pointer-events:none;opacity:0;transform:translateY(-3px);transition:opacity .12s,transform .12s;
+  white-space:nowrap;font:700 11px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:#0d1119;border:1px solid var(--gold-deep);border-radius:6px;padding:6px 8px;box-shadow:0 6px 16px rgba(0,0,0,.5)}
+.back[data-tip]::after{left:0;right:auto}
+.back:hover::after,.back:focus-visible::after,.hud-btn:hover::after,.hud-btn:focus-visible::after,.qbar .dfb-btn:hover::after,.qbar .dfb-btn:focus-visible::after{opacity:1;transform:none}
+.hud-sys{flex:none;display:grid;grid-template-rows:repeat(2,30px);grid-auto-flow:column;grid-auto-columns:30px;gap:5px}
+/* the quest banner: a carved plate with gold trim and rivets, the QUEST ribbon on its top edge */
+.qtitle{flex:0 1 auto;min-width:0;position:relative;padding:9px 14px 6px;border:1px solid #6d5320;border-radius:7px;
+  background:radial-gradient(circle at 5px 5px,#e2b552 1.3px,transparent 2px),radial-gradient(circle at calc(100% - 5px) 5px,#e2b552 1.3px,transparent 2px),
+    radial-gradient(circle at 5px calc(100% - 5px),#e2b552 1.3px,transparent 2px),radial-gradient(circle at calc(100% - 5px) calc(100% - 5px),#e2b552 1.3px,transparent 2px),
+    linear-gradient(180deg,#2a3247,#1a2131 55%,#151b28);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.55),inset 0 1px 0 1px rgba(255,231,166,.12),0 2px 0 #07090e,0 0 0 1px rgba(226,181,82,.12)}
+.qtitle .k{position:absolute;top:-8px;left:12px;padding:3px 12px 2px;font:700 10px/1 var(--display);letter-spacing:.22em;text-transform:uppercase;color:#1b1406;
+  background:linear-gradient(180deg,#f6d77f,var(--gold) 50%,#b88426);clip-path:polygon(0 0,100% 0,calc(100% - 5px) 50%,100% 100%,0 100%,5px 50%);filter:drop-shadow(0 1px 0 rgba(0,0,0,.6))}
+.qtitle h1{font:italic 700 23px/1.05 var(--display);margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 14px rgba(226,181,82,.12)}
+.demo-row{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:5px}
+.demo-tag,.qbar .net-pill,.qbar .net-continue{display:inline-flex;align-items:center;gap:5px;font:700 10.5px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap;
+  padding:3px 7px 3px 6px;border-radius:4px;border:1px solid;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 1px 0 #07090e;margin:0}
+.demo-tag{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;color:var(--ask);border-color:rgba(240,162,75,.55);background:linear-gradient(180deg,rgba(240,162,75,.16),rgba(240,162,75,.05))}
+.demo-tag::before{content:"";display:inline-block;vertical-align:1px;margin-right:5px;width:6px;height:6px;transform:rotate(45deg);background:currentColor;box-shadow:0 0 5px currentColor}
+.qbar .net-pill{color:var(--muted);border-color:#3e4960;background:linear-gradient(180deg,#232b3c,#181e2b)}
+.qbar .net-pill.is-on{color:var(--gold);border-color:var(--gold-deep);background:linear-gradient(180deg,rgba(226,181,82,.16),rgba(226,181,82,.05));box-shadow:inset 0 1px 0 rgba(255,231,166,.1),0 0 8px rgba(226,181,82,.2)}
+.qbar .net-pill i{width:6px;height:6px}
+.qbar .net-continue{cursor:pointer;color:var(--gold);border-color:var(--gold-deep);background:linear-gradient(180deg,#2c2615,#1a160b)}
+.qbar .net-continue[hidden],.qbar .net-pill[hidden]{display:none}
+/* objectives: medallions that share the row (never a scrollbar), labels cut to two lines, full name on hover */
+.goals{flex:1 1 0;min-width:0;display:flex;gap:6px;align-items:stretch;justify-content:center}
+.goals > small{align-self:center}
+.goal{flex:1 1 auto;min-width:0;max-width:184px;position:relative;display:flex;align-items:center;gap:6px;padding:5px 7px 5px 5px;border-radius:10px;cursor:default;
+  background:linear-gradient(180deg,#222b3d,#151b28);border:1px solid #39445b;box-shadow:inset 0 1px 0 rgba(255,255,255,.06),inset 0 -2px 0 rgba(0,0,0,.35),0 2px 0 #07090e}
+.goal .chest{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,#36425c,#121826 75%);border:1.5px solid #4a5670;box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+.goal .chest svg{overflow:visible}
+.goal .glow{fill:#ffe7a6;opacity:0;filter:blur(2px)}
+.goal .lid{transform-box:fill-box;transform-origin:0% 100%}
+.goal .gtext{min-width:0;display:flex;flex-direction:column;gap:4px}
+.goal b{font:700 12px/1.05 var(--display);letter-spacing:.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.goal small{font:700 11px/1 var(--display);letter-spacing:.06em;color:var(--muted)}
+.pips{display:flex;gap:3px;flex-wrap:wrap}
+.pips i{width:8px;height:8px;border-radius:50%;background:#0a0e16;border:1px solid #4d5872;box-shadow:inset 0 1px 1px rgba(0,0,0,.6)}
+.pips i.on{border-color:#f3cf73;background:radial-gradient(circle at 35% 35%,#fff1c4,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 5px rgba(226,181,82,.6)}
+.goal.done{border-color:var(--gold-deep);background:linear-gradient(180deg,#2e2a1d,#191812);box-shadow:inset 0 1px 0 rgba(255,231,166,.14),0 2px 0 #07090e,0 0 10px rgba(226,181,82,.18)}
+.goal.done .chest{border-color:var(--gold);background:radial-gradient(circle at 50% 40%,#5a4618,#171208 75%);box-shadow:0 0 10px rgba(226,181,82,.55),inset 0 0 6px rgba(255,231,166,.35)}
+.goal.done .glow{opacity:.9}
+.goal.done .lid{transform:translate(-1px,-3px) rotate(-24deg)}
+.goal.done .pips i.on{border-color:#b9f0cf;background:radial-gradient(circle at 35% 35%,#e3ffef,var(--ok) 60%,#2f7a51);box-shadow:0 0 5px rgba(104,197,143,.6)}
+.goal.launch{border-color:#6d5320}
+.goal .crown{position:absolute;left:13px;top:-8px;filter:drop-shadow(0 1px 0 rgba(0,0,0,.7))}
+.goal.gain{animation:hudgain .9s cubic-bezier(.3,1.6,.5,1) var(--gain-delay,0ms) both}
+.goal.gain::after{content:"";position:absolute;inset:-1px;border-radius:10px;pointer-events:none;background:radial-gradient(ellipse at 22% 50%,rgba(255,231,166,.55),rgba(226,181,82,0) 70%);box-shadow:0 0 0 1.5px var(--gold),0 0 16px rgba(226,181,82,.6);animation:hudflash .9s ease-out var(--gain-delay,0ms) both}
+.goal.gain.done .lid{animation:hudlid .9s cubic-bezier(.3,1.6,.5,1) var(--gain-delay,0ms) both}
+@keyframes hudgain{0%{transform:none}25%{transform:translateY(-5px) scale(1.05)}55%{transform:translateY(1px)}75%{transform:translateY(-1px)}100%{transform:none}}
+@keyframes hudflash{0%{opacity:1}100%{opacity:0}}
+@keyframes hudlid{0%{transform:none}60%{transform:translate(-1px,-5px) rotate(-34deg)}100%{transform:translate(-1px,-3px) rotate(-24deg)}}
+/* round and stamina, stacked at the right */
+.rs-players{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px}
+.rs-players li{display:flex;align-items:center;gap:8px;font:700 14px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.rs-players li span{margin-left:auto;font:500 12px/1 var(--body);letter-spacing:0;text-transform:none;color:var(--muted)}
+.msg .who2 .lvl,.hover-tag .lvl,.card.member b .lvl{margin-right:5px}
+.hover-tag .lvl{font-size:13px}
+.me-chip{flex:none;display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 11px 0 8px;border-radius:999px;border:1px solid #3e4960;background:linear-gradient(180deg,#232b3c,#181e2b);color:var(--ink);font:700 13px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.me-chip:empty{display:none}
+.hud-status{flex:0 0 auto;width:226px;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.round-strip{display:flex;align-items:center;gap:6px;min-width:0;white-space:nowrap}
+.round-strip[hidden]{display:none}
+.rs-round{flex:none;font:italic 700 13px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:#1b1406;padding:4px 11px 3px;
+  background:linear-gradient(180deg,#fff0b8,#f0c869 40%,var(--gold) 60%,#b88426);clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 50%,calc(100% - 7px) 100%,7px 100%,0 50%);text-shadow:0 1px 0 rgba(255,255,255,.35)}
+.rs-phase{--tag:#8592ab;min-width:0;overflow:hidden;text-overflow:ellipsis;font:700 10.5px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--tag);padding:3px 6px;border-radius:4px;
+  background:color-mix(in srgb,var(--tag) 16%,transparent);border:1px solid color-mix(in srgb,var(--tag) 55%,transparent)}
+.rs-phase[data-phase="turn"]{--tag:var(--blue-glow)}
+.rs-phase[data-phase="roulette"],.rs-phase[data-phase="game"]{--tag:var(--gold)}
+.rs-phase[data-phase="podium"]{--tag:#c58bff}
+.rs-phase[data-phase="over"]{--tag:var(--ok)}
+.rs-time{flex:none;display:inline-flex;align-items:center;gap:4px;font:700 14px/1 var(--display);font-variant-numeric:tabular-nums;color:var(--ink);min-width:44px}
+.rs-time::before{content:"";flex:none;width:11px;height:11px;border-radius:50%;border:1.5px solid var(--gold);
+  background:linear-gradient(var(--gold),var(--gold)) 50% 1.5px/1.5px 4px no-repeat;animation:hudtick 4s steps(4) infinite}
+@keyframes hudtick{to{transform:rotate(360deg)}}
+.rs-time[hidden],.rs-pips[hidden],.rs-pip[hidden]{display:none}
+.rs-pips{flex:none;display:flex;gap:4px}
+/* Start a mini-game stands before Done in the dock, so Done appearing with the turn never moves it
+   from under the pointer. Done pips are dots alone (Brandon, then Fernando; their names in the tooltip). */
+.rs-pip{display:inline-flex;cursor:default}
+.rs-pip i{width:12px;height:12px;border-radius:50%;border:1.5px solid #5b6578;background:#0b0f17;box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
+.rs-pip.on i{border-color:#fff1c4;background:radial-gradient(circle at 35% 35%,#ffe7a6,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 9px rgba(226,181,82,.8)}
+.stamina{--st:var(--blue-glow);--st-hi:#a9cbff;display:flex;align-items:center;gap:6px;min-width:0}
+.stamina[data-level="mid"]{--st:var(--ask);--st-hi:#ffd29a}
+.stamina[data-level="low"]{--st:var(--warn);--st-hi:#ffa592}
+.stamina[data-level="none"]{--st:#5b6578;--st-hi:#5b6578}
+.st-ico{flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:6px;color:var(--st);background:#0b0f17;border:1px solid #39445b;filter:drop-shadow(0 0 4px color-mix(in srgb,var(--st) 45%,transparent))}
+.st-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.st-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font:700 10px/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.st-top em{font-style:normal;letter-spacing:.04em;font-size:11.5px;color:var(--st);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st-bar{display:grid;grid-template-columns:repeat(10,1fr);gap:2px;height:11px;padding:2px;background:#060910;border:1px solid #2f3a50;border-radius:4px;box-shadow:inset 0 1px 2px rgba(0,0,0,.7)}
+.st-bar i{border-radius:1.5px;background:#171e2c}
+.st-bar i.on{background:linear-gradient(180deg,var(--st-hi),var(--st) 60%,color-mix(in srgb,var(--st) 70%,#000));box-shadow:0 0 4px color-mix(in srgb,var(--st) 55%,transparent)}
+@media (prefers-reduced-motion:reduce){.goal.gain,.goal.gain::after,.goal.gain.done .lid,.rs-time::before{animation:none}.goal.gain::after{display:none}.back::after,.hud-btn::after,.qbar .dfb-btn::after{transition:none}}
+/* below 1181 px: the objectives take their own row */
+@media (max-width:1180px){
+  .qbar{flex-wrap:wrap}
+  .hud-status{margin-left:auto}
+  .goals{order:10;flex:1 1 100%}
+}
+/* phones: banner and buttons on the first row, the objectives as icons with pips, then round and stamina */
+@media (max-width:640px){
+  .qbar{padding:12px 10px 8px;gap:8px}
+  .back{width:38px;height:42px}
+  .back span{display:none}
+  .qtitle{padding:8px 10px 5px}
+  .qtitle h1{font-size:19px;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .hud-sys{grid-template-rows:repeat(2,28px);grid-auto-columns:28px;gap:4px}
+  .hud-btn,.qbar .dfb-btn{width:28px;height:28px}
+  .goals{gap:4px}
+  .hud-status{margin-left:0}
+  .qtitle{flex:1 1 0}
+  .goal{flex:1 1 0;flex-direction:column;justify-content:center;gap:4px;padding:5px 3px 4px;text-align:center}
+  .goal .chest{width:30px;height:30px}
+  .goal .gtext{align-items:center;gap:3px;width:100%}
+  .goal b{font-size:10.5px;-webkit-line-clamp:1;display:block;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
+  .goal .crown{left:50%;margin-left:-22px}
+  .pips{justify-content:center;gap:2px}
+  .pips i{width:6px;height:6px}
+  .hud-status{order:11;flex:1 1 100%;width:auto;flex-direction:row;align-items:center;gap:10px}
+  .round-strip{flex:0 1 auto}
+  .stamina{flex:1 1 0}
+}
+.toggle{display:flex;align-items:center;background:rgba(11,14,21,.85);border:1px solid var(--edge);border-radius:8px;padding:2px}
+.toggle button{all:unset;cursor:pointer;font:700 11px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:6px 9px;border-radius:6px}
 .toggle button[aria-pressed="true"]{background:var(--stone-2);color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold-deep)}
 
 /* board */
@@ -159,7 +281,7 @@ button{font:inherit;color:inherit}
 .note b{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.step.current,.step.asking,.flow{animation:none}}
 @media (max-width:1000px){
-  .screen{grid-template-columns:1fr}
+  .screen{grid-template-columns:minmax(0,1fr)}
   .chat{grid-row:auto;grid-column:1;min-height:420px;border-left:0;border-top:1px solid var(--edge)}
   .note{display:none}
   .plan-body{grid-template-columns:1fr;gap:20px}
@@ -167,12 +289,6 @@ button{font:inherit;color:inherit}
 }
 
 /* demo: label, panels, done states */
-.demo-row{display:flex;align-items:center;gap:8px;margin-top:6px}
-.demo-tag{font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--ask);border:1px solid var(--ask);border-radius:999px;padding:4px 8px}
-.demo-restart{all:unset;cursor:pointer;font:600 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:underline}
-.demo-restart:hover{color:var(--gold)}
-.goal.done{border-color:rgba(104,197,143,.6)}
-.goal.done .bar i{background:var(--ok)}
 .gcol.done{border-color:rgba(104,197,143,.6)}
 .muted{color:var(--muted)}
 .plan{overflow-y:auto}
@@ -201,7 +317,9 @@ button{font:inherit;color:inherit}
 /* the live board and its toolbar */
 #level{position:absolute;inset:0}
 /* Top right of the board; the conversation column starts below it. */
-.toolbar{position:absolute;right:14px;top:14px;display:flex;gap:6px;z-index:8}
+.toolbar{position:absolute;right:14px;top:14px;display:flex;align-items:center;gap:6px;z-index:8}
+.tb-3d{display:flex;gap:6px}
+.toolbar:has(#t-plan[aria-pressed="true"]) .tb-3d{display:none}
 .tb-slot{position:relative}
 .preview-flyout{position:fixed;z-index:30;padding:6px;border-radius:12px;background:rgba(15,20,30,.97);border:1px solid var(--gold-deep);box-shadow:0 12px 30px rgba(0,0,0,.6);pointer-events:none}
 .preview-flyout canvas,.preview-flyout video{display:block;border-radius:8px}
@@ -243,6 +361,29 @@ button{font:inherit;color:inherit}
 .rooms button:hover{color:var(--gold);background:rgba(30,38,54,.96)}
 .rooms button[aria-current="true"]{color:var(--gold);box-shadow:inset 3px 0 0 var(--gold)}
 .rooms button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+/* The selected room opens into its checklist (src/data/room-checklist.ts): compact, under its button;
+   the list scrolls inside its box when it runs long. */
+.rooms{max-height:calc(100% - 96px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--gold-deep) transparent;width:min(300px,calc(100% - 28px))}
+.rooms:not(.expanded){width:auto}
+.rooms button[aria-expanded="true"]{border-radius:9px 9px 0 0}
+.room-check{margin-top:-4px;padding:6px 10px 8px 12px;border-radius:0 0 9px 9px;background:rgba(14,19,28,.94);box-shadow:inset 3px 0 0 var(--gold);font:12px/1.3 var(--body);color:var(--ink)}
+.ck-head{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-bottom:5px;font:600 10.5px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ck-who{color:var(--ink);text-transform:none;letter-spacing:.01em;font-size:11.5px}
+.ck-status{padding:2px 6px;border-radius:999px;border:1px solid currentColor}
+.ck-status[data-status="fogged"]{color:#8a93a4}
+.ck-status[data-status="in-progress"]{color:var(--gold)}
+.ck-status[data-status="done"]{color:#9fc7ff}
+.ck-status[data-status="verified"]{color:#7fd39a}
+.ck-count{margin-left:auto}
+.ck-list{list-style:none;margin:0;padding:0;display:grid;gap:3px}
+.ck-item{display:grid;grid-template-columns:13px 1fr;gap:7px;align-items:start;color:#c9cfdb}
+.ck-item .ck-box{margin-top:1px}
+.ck-item.done{color:#8f98a8}
+.ck-item[data-kind="proof"] span,.ck-item[data-kind="output"] span,.ck-item[data-kind="door"] span,.ck-item[data-kind="monster"] span{color:var(--gold)}
+.ck-item.done[data-kind] span{opacity:.75}
+.ck-none{grid-template-columns:1fr;color:var(--muted);font-style:italic}
+/* The same checklist under the selected step card in the plan. */
+.plan-check{margin:-6px 0 2px;border:1.5px solid var(--edge);border-top:none;box-shadow:none;background:rgba(14,19,28,.7);position:relative;z-index:1}
 #level button[aria-label="Step out"]{display:none !important}
 /* The hover name tag beside the pointer. */
 .hover-tag{position:fixed;left:0;top:0;z-index:40;pointer-events:none;padding:6px 10px;border-radius:8px;background:rgba(15,20,30,.94);border:1px solid var(--gold-deep);color:var(--gold);font:700 14px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;box-shadow:0 6px 16px rgba(0,0,0,.5)}
@@ -331,6 +472,9 @@ button{font:inherit;color:inherit}
 .view-bar .presets button[aria-pressed="true"]{color:var(--gold);border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 22px rgba(226,181,82,.3)}
 .view-bar .preset-image,.view-bar .presets video{display:block;width:134px;height:86px;border-radius:8px;object-fit:cover;background:#0b0e15}
 .view-bar .presets svg{width:134px;height:86px;padding:22px 40px;box-sizing:border-box;border-radius:8px;background:#0b0e15}
+/* A camera angle's card is a drawn diagram of the angle (view-controls.js angleCard), not a picture. */
+.view-bar .presets svg.angle-card{padding:0;background:none;transition:filter .15s}
+.view-bar .presets button:hover svg.angle-card,.view-bar .presets button[aria-pressed="true"] svg.angle-card{filter:brightness(1.18) drop-shadow(0 0 6px rgba(226,181,82,.25))}
 .view-bar .advanced-toggle{all:unset;box-sizing:border-box;cursor:pointer;flex:0 0 auto;align-self:stretch;display:flex;align-items:center;padding:0 18px;border-radius:12px;border:1.5px dashed var(--edge);color:var(--muted);font:700 13px/1 var(--display);letter-spacing:.06em;text-transform:uppercase}
 .view-bar .advanced-toggle:hover,.view-bar .advanced-toggle[aria-expanded="true"]{color:var(--gold);border-color:var(--gold-deep)}
 .view-bar .advanced{position:absolute;right:18px;bottom:calc(100% + 44px);width:340px;max-height:60vh;overflow-y:auto;display:grid;gap:10px;padding:12px;border-radius:14px;border:1px solid var(--edge);background:linear-gradient(#0f141e,#0b0e15);box-shadow:0 12px 30px rgba(0,0,0,.6);font:13px/1.4 var(--body)}
@@ -408,6 +552,7 @@ button{font:inherit;color:inherit}
 .agent-label{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:2px;max-width:220px;padding:4px 9px 5px;border-radius:8px;background:rgba(15,20,30,.86);border:1px solid var(--edge);border-top:2px solid var(--c,var(--gold));box-shadow:0 4px 12px rgba(0,0,0,.45);transition:opacity .4s ease;will-change:transform}
 .agent-label b{font:700 12.5px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
 .agent-label span{font:500 11px/1.25 var(--body);color:var(--muted);text-align:center;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.agent-label b>.lvl.lvl{display:inline-flex;margin-right:5px;font-size:11px;overflow:visible;-webkit-line-clamp:unset;color:#e2b552;text-align:left}
 .agent-label.idle{opacity:.4;padding:3px 8px}
 .agent-label.idle span{display:none}
 .agent-label.off{visibility:hidden}
@@ -438,20 +583,6 @@ button{font:inherit;color:inherit}
 
 /* The round (multiplayer plan, Task 6): the strip in the quest bar, Done by the dock tabs, and the
    board's overlays: the game show's reel and the podium. */
-.round-strip{display:flex;align-items:center;gap:9px;background:var(--stone);border:1px solid var(--edge);border-radius:10px;padding:6px 10px;white-space:nowrap}
-.round-strip[hidden]{display:none}
-.rs-round{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
-.rs-phase{font:700 15px/1 var(--display);letter-spacing:.02em}
-.rs-phase[data-phase="roulette"],.rs-phase[data-phase="game"]{color:var(--gold)}
-.rs-time{font:600 13px/1 var(--body);font-variant-numeric:tabular-nums;color:var(--muted);min-width:34px}
-.rs-time[hidden],.rs-pips[hidden]{display:none}
-.rs-pips{display:flex;gap:6px}
-/* Start a mini-game stands before Done in the dock, so Done appearing with the turn never moves it
-   from under the pointer. Done pips are dots alone (Brandon, then Fernando; their names in the tooltip), so the quest bar
-   keeps its goals on as few rows as before. */
-.rs-pip{display:inline-flex;cursor:default}
-.rs-pip i{width:11px;height:11px;border-radius:50%;border:1.5px solid #5b6578;background:#0b0f17}
-.rs-pip.on i{border-color:var(--gold);background:radial-gradient(circle at 35% 35%,#ffe7a6,var(--gold) 55%,var(--gold-deep));box-shadow:0 0 8px rgba(226,181,82,.7)}
 .dock-start{color:var(--night);background:linear-gradient(#f0c869,var(--gold));box-shadow:0 0 12px rgba(226,181,82,.25)}
 .dock-start:hover{filter:brightness(1.08)}
 .dock-done:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
@@ -505,6 +636,9 @@ button{font:inherit;color:inherit}
 .pd-perk{display:flex;flex-direction:column;gap:3px}
 .pd-perk b{font:700 20px/1.1 var(--display);color:var(--ink)}
 .pd-perk small{color:var(--muted)}
+.pd-cleared{display:inline-flex;align-items:center;gap:12px;margin:0;font:600 13px/1 var(--body);color:var(--muted)}
+.pd-cleared b{font:700 22px/1 var(--display);color:var(--gold);letter-spacing:.04em}
+.pd-cleared span{display:inline-flex;align-items:center;gap:5px}
 @media (max-width:640px){.round-show h2{font-size:26px}.gs-window{height:210px}.pd-stand{gap:10px}.pd-place{width:140px}.pd-figure{width:110px;height:130px}}
 @media (prefers-reduced-motion:reduce){.gs-card.picked,.gs-result b,.gs-pointer.tick::before,.gs-pointer.tick::after{animation:none}.gs-result .burst{display:none}}
 
@@ -596,40 +730,44 @@ button{font:inherit;color:inherit}
 @media (prefers-reduced-motion:reduce){.lever-hint{animation:none}}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-run-Bf6nNGWN.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/quest-session-ByRhcwlZ.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-D1nJY2Em.js">
+  <script type="module" crossorigin src="/quest/assets/quest-run-F5T15uJ_.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-THAI3NPz.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-DfUI0Iep.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/preload-helper-Dh5Wm468.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-C9YJ474T.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">
-  <link rel="stylesheet" crossorigin href="/quest/assets/quest-run-Cmzdjw8N.css">
+  <link rel="stylesheet" crossorigin href="/quest/assets/quest-run-B-uB4vU0.css">
 </head>
 <body>
 
 
 <div class="screen">
+  <!-- The quest bar as a game HUD: the banner (title, badges), the objective medallions, the round and
+       stamina, and the small system buttons. Class hooks for the phone layout: .hud-banner, .hud-badges,
+       .goals, .hud-status, .hud-sys. -->
   <header class="qbar">
-    <button class="back" id="back" aria-label="Back to the realm (retreats in the demo)">&larr; Realm</button>
-    <div class="qtitle"><div class="k">Quest · planned with the Quartermaster</div><h1 id="quest-title">Launch a production-ready landing page</h1>
-      <div class="demo-row"><span class="demo-tag" id="demo-tag">Demo quest: simulated party</span><span id="net-pill" hidden></span><button type="button" class="demo-restart" id="restart">Restart demo</button><a class="demo-restart" id="start-over" href="#">Start over</a></div></div>
+    <button class="back" id="back" aria-label="Back to the realm (retreats in the demo)" data-tip="Back to the realm"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 4 12l7 7"/><path d="M5 12h15"/></svg><span>Realm</span></button>
+    <div class="qtitle hud-banner"><div class="k" title="Planned with the Quartermaster">Quest</div><h1 id="quest-title">Launch a production-ready landing page</h1>
+      <div class="demo-row hud-badges"><span class="demo-tag" id="demo-tag">Demo quest: simulated party</span><span id="net-pill" hidden></span></div></div>
     <div class="goals" id="goals"></div>
-    <div class="stamina" id="stamina"></div>
-    <div class="round-strip" id="round-strip" role="status" aria-label="Round" hidden></div>
-    <div class="toggle" role="group" aria-label="View">
-      <button id="t-dungeon" aria-pressed="true">Dungeon</button>
-      <button id="t-plan" aria-pressed="false">Plan</button>
+    <div class="hud-status">
+      <div class="round-strip" id="round-strip" role="status" aria-label="Round" hidden></div>
+      <div class="stamina" id="stamina"></div>
+    </div>
+    <div class="me-chip" id="me-chip" aria-label="You"></div>
+    <div class="hud-sys" role="group" aria-label="Demo">
+      <button type="button" class="demo-restart hud-btn" id="restart" data-tip="Restart demo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12a7.5 7.5 0 1 0 2.2-5.3"/><path d="M4 4v5h5"/></svg><span class="sr">Restart demo</span></button>
+      <a class="demo-restart hud-btn" id="start-over" href="#" data-tip="Start over"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 5v14"/><path d="M18 6l-8 6 8 6z" fill="currentColor"/></svg><span class="sr">Start over</span></a>
     </div>
   </header>
 
   <main class="board">
-    <!-- DUNGEON VIEW: the live tutorial level -->
-    <section class="view" id="v-dungeon" aria-label="Dungeon">
-      <div id="level"></div>
-      <nav class="rooms" id="rooms" aria-label="Rooms"></nav>
-      <div class="board-loading" id="board-loading" role="status">Entering the Dungen</div>
-      <div class="zoom-dock" id="zoom-controls" aria-label="Zoom"></div>
-      <p class="keys" aria-label="Controls">Wheel zoom · Left-drag rotate · Right-drag pan · Click go</p>
       <div class="toolbar" role="toolbar" aria-label="View">
+        <div class="toggle" role="group" aria-label="Dungeon or plan">
+          <button id="t-dungeon" aria-pressed="true">Dungeon</button>
+          <button id="t-plan" aria-pressed="false">Plan</button>
+        </div>
+        <div class="tb-3d">
                 <div class="tb-slot">
           <button class="tbtn" id="open-rotation" aria-haspopup="true" aria-expanded="false" title="Rotation" aria-label="Rotation"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 5.5 14.2 12 12 18.5 9.8 12z"/><path d="M12 5.5 14.2 12H9.8z" fill="currentColor"/></svg><span class="tb-val" id="val-rotation"></span><svg class="chev" viewBox="0 0 12 12" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
           <div class="pop" id="rotation-pop" hidden>
@@ -644,7 +782,15 @@ button{font:inherit;color:inherit}
             <p id="copied" role="status" aria-live="polite"></p>
           </div>
         </div>
+        </div>
       </div>
+    <!-- DUNGEON VIEW: the live tutorial level -->
+    <section class="view" id="v-dungeon" aria-label="Dungeon">
+      <div id="level"></div>
+      <nav class="rooms" id="rooms" aria-label="Rooms"></nav>
+      <div class="board-loading" id="board-loading" role="status">Entering the Dungen</div>
+      <div class="zoom-dock" id="zoom-controls" aria-label="Zoom"></div>
+      <p class="keys" aria-label="Controls">Wheel zoom · Left-drag rotate · Right-drag pan · Click go</p>
     </section>
 
     <!-- PLAN VIEW -->
