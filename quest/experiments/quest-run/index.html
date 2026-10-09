@@ -74,7 +74,13 @@ button{font:inherit;color:inherit}
 .qbar .goal .glow{fill:#ffe7a6;opacity:0;filter:blur(2px)}
 .qbar .goal .lid{transform-box:fill-box;transform-origin:0% 100%}
 .qbar .goal .gtext{min-width:0;display:flex;flex-direction:column;gap:4px}
-.qbar .goal b{font:700 12px/1.05 var(--display);letter-spacing:.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.qbar .goal b{font:700 12px/1.05 var(--display);letter-spacing:.02em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:normal;overflow-wrap:normal;hyphens:none}
+/* a goal's name breaks only between words; one word too long for the line is cut with an ellipsis */
+.qbar .goal b .w{display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:top}
+/* Wide enough that a one-word goal (Launch) shows whole rather than as an ellipsis. */
+@media (min-width:1400px){.qbar .goal{min-width:104px}.qbar .goal.launch{flex:0 0 auto}}
+/* Narrower desktops: each goal is its chest and step pips, its name on hover (title), so nothing clips or overlaps. */
+@media (min-width:1001px) and (max-width:1399px){.qbar .goals{gap:4px}.qbar .goal{flex:0 0 auto;gap:4px;padding:4px 6px 4px 4px}.qbar .goal .chest{width:28px;height:28px}.qbar .goal b{display:none}}
 .qbar .goal small{font:700 11px/1 var(--display);letter-spacing:.06em;color:var(--muted)}
 .qbar .pips{display:flex;gap:3px;flex-wrap:wrap}
 .qbar .pips i{width:8px;height:8px;border-radius:50%;background:#0a0e16;border:1px solid #4d5872;box-shadow:inset 0 1px 1px rgba(0,0,0,.6)}
@@ -156,6 +162,7 @@ button{font:inherit;color:inherit}
   .qbar .goal .chest{width:30px;height:30px}
   .qbar .goal .gtext{align-items:center;gap:3px;width:100%}
   .qbar .goal b{font-size:10.5px;-webkit-line-clamp:1;display:block;white-space:nowrap;text-overflow:ellipsis;max-width:100%}
+  .qbar .goal b .w{display:inline;max-width:none}
   .qbar .goal .crown{left:50%;margin-left:-22px}
   .qbar .pips{justify-content:center;gap:2px}
   .qbar .pips i{width:6px;height:6px}
@@ -564,6 +571,35 @@ button{font:inherit;color:inherit}
 .speech.off{visibility:hidden}
 @keyframes speech-in{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){.speech{animation:none}.agent-label{transition:none}}
+/* the Verify tag over each finished room waiting on a look (page.js showMarks; the window: verify-window.js) */
+.verify-pins{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:3}
+.verify-pins[hidden]{display:none}
+.verify-pin{all:unset;box-sizing:border-box;pointer-events:auto;cursor:pointer;position:absolute;left:0;top:0;display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 12px 0 10px;border-radius:999px;
+  font:700 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:#1b1406;background:linear-gradient(180deg,#f6d77f,var(--gold) 55%,#b88426);border:1px solid #7a5418;
+  box-shadow:0 0 0 3px rgba(226,181,82,.18),0 0 18px rgba(226,181,82,.55),0 6px 14px rgba(0,0,0,.5);will-change:transform;animation:verifypulse 2.2s ease-in-out infinite}
+.verify-pin small{display:none;max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 12px/1 var(--body);letter-spacing:0;text-transform:none}
+.verify-pin:hover,.verify-pin:focus-visible{filter:brightness(1.1)}
+.verify-pin:hover small,.verify-pin:focus-visible small{display:inline}
+.verify-pin:focus-visible{outline:2px solid #fff3c4;outline-offset:2px}
+html.touch .verify-pin{min-height:44px;padding:0 14px 0 12px}
+@keyframes verifypulse{50%{box-shadow:0 0 0 5px rgba(226,181,82,.1),0 0 26px rgba(226,181,82,.75),0 6px 14px rgba(0,0,0,.5)}}
+@media (prefers-reduced-motion:reduce){.verify-pin{animation:none}}
+.verify-open{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;width:100%;min-height:36px;margin-top:8px;border-radius:8px;
+  font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--gold-deep);color:var(--gold);background:rgba(226,181,82,.06)}
+.verify-open.due{color:#1b1406;background:linear-gradient(180deg,#f6d77f,var(--gold) 55%,#b88426);border-color:#7a5418}
+.verify-open:hover{filter:brightness(1.1)}
+.verify-open:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.record-card .verified-by{margin-left:8px;color:var(--gold);font-weight:600}
+.run-summary .rs-verify{margin-top:18px}
+.run-summary .rs-tally{margin-left:6px;color:var(--gold)}
+.run-summary .rs-vcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.run-summary .rs-vlist{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.run-summary .rs-vlist li{display:flex;gap:8px;align-items:flex-start}
+.run-summary .rs-vlist svg{flex:none;margin-top:3px}
+.run-summary .rs-vlist button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:1px;font-size:13px;line-height:1.3}
+.run-summary .rs-vlist button:hover span{color:var(--gold)}
+.run-summary .rs-vlist button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.run-summary .rs-vlist small{color:var(--muted);font-size:12px}
 /* A room's record card (its plaque, clicked). */
 .record-card{position:absolute;right:14px;top:56px;z-index:22;width:min(360px,calc(100% - 28px));max-height:calc(100% - 80px);overflow-y:auto;background:rgba(15,20,30,.97);border:1.5px solid var(--gold-deep);border-radius:14px;padding:14px 16px;box-shadow:0 14px 34px rgba(0,0,0,.6);font-size:13.5px}
 .record-card[hidden]{display:none}
@@ -883,12 +919,12 @@ button{font:inherit;color:inherit}
 .no-webgpu :is(.stick-zone,.touch-actions,#zoom-controls,.keys,#start-game-btn){display:none !important}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-run-CubCtSCx.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-Bi2poPO6.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-7Ja5KThk.js">
+  <script type="module" crossorigin src="/quest/assets/quest-run-CiSX59VG.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-DaXP4gj5.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-BP3Sk3AB.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/preload-helper-Dh5Wm468.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-C9YJ474T.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/session-_Nnaz2dt.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-DbawFCdE.js">
   <link rel="stylesheet" crossorigin href="/quest/assets/quest-run-B-uB4vU0.css">
 </head>
 <body>
