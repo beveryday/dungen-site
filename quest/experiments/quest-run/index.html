@@ -91,7 +91,16 @@ button{font:inherit;color:inherit}
 
 /* chat */
 .chat{grid-row:2/4;grid-column:2;background:#0f141e;border-left:1px solid var(--edge);display:flex;flex-direction:column;min-height:0}
-.chat-head{display:flex;gap:6px;padding:12px;border-bottom:1px solid var(--edge);flex-wrap:wrap}
+.chat-head{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--edge)}
+.who-row{display:flex;align-items:center;gap:5px;min-width:0;flex:1;overflow-x:auto;scrollbar-width:thin;padding:3px 2px}
+.who-all{all:unset;cursor:pointer;flex:none;height:28px;padding:0 11px;border-radius:999px;border:1px solid var(--edge);font:700 11px/28px var(--display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.who-all[aria-pressed="true"]{color:var(--night);background:var(--ink);border-color:var(--ink)}
+.who-face{all:unset;cursor:pointer;flex:none;width:28px;height:28px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#1b2333;border:2px solid var(--edge);font:700 10px/1 var(--display);opacity:.6;transition:opacity .15s,border-color .15s,transform .15s}
+.who-face img{width:100%;height:100%;object-fit:cover}
+.who-face.is-player{border-color:rgba(226,181,82,.55)}
+.who-face:hover,.who-face:focus-visible{opacity:1;transform:translateY(-1px)}
+.who-face[aria-pressed="true"]{opacity:1;border-color:var(--gold);box-shadow:0 0 0 2px rgba(226,181,82,.35)}
+.who-label{flex:none;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:700 12px/1 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--gold)}
 .log{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
 .msg{display:grid;grid-template-columns:30px 1fr;gap:9px}
 .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 12px/1 var(--display);border:2px solid var(--edge);background:var(--stone-2)}
@@ -587,11 +596,11 @@ button{font:inherit;color:inherit}
 @media (prefers-reduced-motion:reduce){.lever-hint{animation:none}}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-run-aCxMVfUl.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/quest-session-DsAlfxxt.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-BnQHLNMF.js">
+  <script type="module" crossorigin src="/quest/assets/quest-run-BXOlCEvs.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/quest-session-ByRhcwlZ.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-D1nJY2Em.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/preload-helper-Dh5Wm468.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-DtG-QnLQ.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-C9YJ474T.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/session-CgcecJ-B.js">
   <link rel="stylesheet" crossorigin href="/quest/assets/quest-run-Cmzdjw8N.css">
 </head>
