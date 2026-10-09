@@ -556,6 +556,7 @@ button{font:inherit;color:inherit}
    board's own controls stay on top; never in the way of the pointer. */
 .agent-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .agent-labels[hidden]{display:none}
+.agent-label[hidden]{display:none}
 .agent-label{position:absolute;left:0;top:0;display:flex;flex-direction:column;align-items:center;gap:2px;max-width:220px;padding:4px 9px 5px;border-radius:8px;background:rgba(15,20,30,.86);border:1px solid var(--edge);border-top:2px solid var(--c,var(--gold));box-shadow:0 4px 12px rgba(0,0,0,.45);transition:opacity .4s ease;will-change:transform}
 .agent-label b{font:700 12.5px/1 var(--display);letter-spacing:.05em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
 .agent-label span{font:500 11px/1.25 var(--body);color:var(--muted);text-align:center;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
@@ -908,6 +909,15 @@ html.touch .verify-pin{min-height:44px;padding:0 14px 0 12px}
 .bl-label{animation:board-loading 1.6s ease-in-out infinite}
 .bl-bar{display:block;width:min(240px,60vw);height:6px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
 .bl-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-deep),var(--gold));transform:scaleX(0);transform-origin:0 50%;transition:transform .3s ease}
+.stream-pip{position:absolute;left:50%;top:14px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:6px;padding:4px 9px 4px 6px;border-radius:999px;background:rgba(15,20,30,.55);border:1px solid rgba(255,255,255,.06);font:600 11px/1 var(--body);letter-spacing:.04em;color:var(--muted);font-variant-numeric:tabular-nums;pointer-events:none;opacity:.8;transition:opacity .4s}
+.stream-pip[hidden]{display:none}
+.stream-pip.done{opacity:0}
+.stream-pip svg{transform:rotate(-90deg)}
+.stream-pip circle{fill:none;stroke-width:3}
+.stream-pip .sp-track{stroke:rgba(255,255,255,.1)}
+.stream-pip .sp-fill{stroke:var(--gold);stroke-dasharray:100;stroke-dashoffset:100;stroke-linecap:round;transition:stroke-dashoffset .3s ease}
+.board.in-arena .stream-pip{display:none}
+@media (prefers-reduced-motion:reduce){.stream-pip,.stream-pip .sp-fill{transition:none}}
 .bl-count{font:600 11.5px/1 var(--body);letter-spacing:.06em;text-transform:none;color:var(--muted);min-height:1em;font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.bl-label{animation:none}.bl-bar i{transition:none}}
 /* No WebGPU: what the board would show, said plainly. */
@@ -919,9 +929,9 @@ html.touch .verify-pin{min-height:44px;padding:0 14px 0 12px}
 .no-webgpu :is(.stick-zone,.touch-actions,#zoom-controls,.keys,#start-game-btn){display:none !important}
 </style>
   <script type="importmap">{"imports":{"@sandom/color/color.wasm":"/quest/assets/sandom-color.wasm","@sandom/gain-map/gain-map.wasm":"/quest/assets/sandom-gain-map.wasm","@sandom/font-metrics/font-metrics.wasm":"/quest/assets/sandom-font-metrics.wasm"}}</script>
-  <script type="module" crossorigin src="/quest/assets/quest-run-gzxIwgzp.js"></script>
-  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-D8uTQrfL.js">
-  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-B6g9Q4jR.js">
+  <script type="module" crossorigin src="/quest/assets/quest-run-Cw2A3MrJ.js"></script>
+  <link rel="modulepreload" crossorigin href="/quest/assets/demo-feedback-panel-BM5bO4hV.js">
+  <link rel="modulepreload" crossorigin href="/quest/assets/character-builder-C7MtEjaH.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/preload-helper-Dh5Wm468.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/session-_Nnaz2dt.js">
   <link rel="modulepreload" crossorigin href="/quest/assets/demo-script-DbawFCdE.js">
@@ -978,6 +988,7 @@ html.touch .verify-pin{min-height:44px;padding:0 14px 0 12px}
       <div id="level"></div>
       <nav class="rooms" id="rooms" aria-label="Rooms"></nav>
       <div class="board-loading" id="board-loading" role="status">Entering the Dungen</div>
+      <div class="stream-pip" id="stream-pip" role="status" hidden><svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true"><circle cx="10" cy="10" r="8" class="sp-track"/><circle cx="10" cy="10" r="8" class="sp-fill" pathLength="100"/></svg><span class="sp-text"></span></div>
       <div class="zoom-dock" id="zoom-controls" aria-label="Zoom"></div>
       <p class="keys" aria-label="Controls">Wheel zoom · Left-drag rotate · Right-drag pan · Click go</p>
     </section>
