@@ -132,19 +132,12 @@ h3 { font-size: 26px; line-height: 1.1; text-transform: uppercase; letter-spacin
 .band p { margin: 0; font-size: 18px; }
 .band .pills { margin-top: 16px; }
 
-/* proof chart */
-.chart { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--orange); padding: 32px 36px; display: grid; gap: 34px; }
-.metric h3 { font-size: 22px; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-.metric h3 strong { font: italic 800 44px/1 var(--display); color: var(--blue-deep); }
-.bars { display: grid; gap: 10px; margin-top: 16px; }
-.bar { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 14px; align-items: center; font-size: 15px; color: var(--ink-soft); }
-.bar div { height: 34px; background: #e9e1d1; position: relative; }
-.bar i { position: absolute; inset: 0 auto 0 0; background: var(--ink); display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; }
-.bar.hot i { background: var(--orange); }
-.bar b { font: 800 18px/1 var(--display); color: #fff; font-style: normal; }
-.bar.hot b { color: var(--ink); }
-.bar i.tiny { justify-content: flex-start; padding: 0; }
-.bar i.tiny b { position: absolute; left: calc(100% + 8px); color: var(--ink); }
+/* lessons */
+.lessons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--orange); }
+.lessons article { padding: 32px 28px; display: grid; gap: 12px; align-content: start; }
+.lessons article + article { border-left: 1px solid var(--line); }
+.lessons .ln { width: 44px; height: 44px; border-radius: 50%; background: var(--orange); border: 2px solid var(--ink); display: grid; place-items: center; font: italic 800 24px/1 var(--display); }
+.lessons p { margin: 0; color: var(--ink-soft); }
 
 /* comparison rows */
 .rows { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
@@ -253,8 +246,8 @@ html.has-reveal .reveal.shown { transition: none; }
   .band .pills { justify-content: center; }
   .footer { grid-template-columns: 1fr; justify-items: center; text-align: center; }
   .footer .links { justify-self: center; }
-  .bar { grid-template-columns: 1fr; gap: 6px; }
-  .chart { padding: 24px 20px; box-shadow: 6px 6px 0 var(--orange); }
+  .lessons { grid-template-columns: 1fr; box-shadow: 6px 6px 0 var(--orange); }
+  .lessons article + article { border-left: 0; border-top: 1px solid var(--line); }
   .card.star, .lead-aud { box-shadow: 6px 6px 0 var(--orange); }
 }
 @media (max-width: 600px) {
@@ -333,26 +326,14 @@ html.has-reveal .reveal.shown { transition: none; }
     <section id="proof" class="section shell">
       <div class="head reveal">
         <p class="eyebrow">Why now</p>
-        <h2>Five engineers, <em>six times the output</em></h2>
-        <p class="lede">At the founder&rsquo;s last startup, the same five engineers went from 147 prod pushes a quarter to 914 once they learned to work with AI agents. More output brings a new problem: review. That gap is what DunGenAI is built to close.</p>
+        <h2>Agents multiply output. <em>They multiply the gaps too.</em></h2>
+        <p class="lede">The founder led an engineering team through the shift to AI agents. Three lessons from that shift shaped DunGenAI.</p>
       </div>
-      <div class="chart narrow reveal d1">
-        <div class="metric">
-          <h3>Prod pushes per quarter, same five engineers <strong>6.2&times;</strong></h3>
-          <div class="bars">
-            <div class="bar"><span>Before agents</span><div><i style="width:16.1%"><b>147</b></i></div></div>
-            <div class="bar hot"><span>With agents</span><div><i style="width:100%"><b>914</b></i></div></div>
-          </div>
-        </div>
-        <div class="metric">
-          <h3>Merged PRs with a human review comment <strong>63% &rarr; 23%</strong></h3>
-          <div class="bars">
-            <div class="bar"><span>January 2026</span><div><i style="width:63%"><b>63%</b></i></div></div>
-            <div class="bar hot"><span>July 2026</span><div><i style="width:23%"><b>23%</b></i></div></div>
-          </div>
-        </div>
+      <div class="lessons narrow reveal d1">
+        <article><span class="ln">1</span><h3>Leading beats prompting</h3><p>The jump in output came when people learned to plan, split and hand off work to agents, not when they found a better prompt.</p></article>
+        <article><span class="ln">2</span><h3>Review becomes the bottleneck</h3><p>Agents ship faster than people can check. Unless review is built into the workflow, it quietly falls away.</p></article>
+        <article><span class="ln">3</span><h3>One power user isn&rsquo;t a team</h3><p>Skills spread unevenly. The gains only stick when everyone has a clear path from first prompt to running a crew.</p></article>
       </div>
-      <p class="fine">Prod pushes: pull requests merged to production per quarter across one startup&rsquo;s repositories on GitHub, 2023 Q3 vs 2026 Q1, five engineers in each quarter. PR count is a rough proxy for output. Review: share of merged pull requests with a human review comment at one startup, January vs July 2026. Not DunGenAI data. Bars drawn to scale.</p>
     </section>
 
     <section id="how" class="section shell">
