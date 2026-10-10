@@ -4,8 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f4eddf" />
-  <meta name="description" content="A real-time 3D world for the AI agents already doing your work. Every one of them a character with a face, a room and a job." />
-  <title>DunGenAI — Real Work. Real Fun.</title>
+  <meta name="description" content="DunGenAI orchestrates real AI agent crews, with a built-in path that takes anyone from their first prompt to running a fleet." />
+  <title>DunGenAI — The agentic harness you learn by playing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,800;1,800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 <style>
 :root {
   --cream: #f4eddf;
@@ -245,6 +248,74 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   .pricing-grid > div { border-right: 0; border-bottom: 1px solid var(--line); }
   .pricing-grid > div:last-child { border-bottom: 0; }
 }
+
+/* --- deck-beats rebuild, 2026-10-09 -------------------------------------
+   Brandon: "the video is way too big and everything should be centered and
+   positioned correctly on the page." The hero is no longer a full-bleed half:
+   copy is centered on top and the video sits below it in a contained frame.
+   Every section below follows the investor deck's beats, centered headings,
+   centered grids. These rules come last so they win over the older ones. */
+body .hero { display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 0; padding: 72px 20px 80px; gap: 48px; }
+body .hero-copy { grid-column: auto; max-width: 960px; padding: 0; }
+body .hero h1 { font-size: clamp(46px, 6.2vw, 84px); line-height: .9; text-wrap: balance; }
+body .hero .sub { margin-top: 22px; }
+body .hero .lede { margin: 24px auto 30px; max-width: 680px; }
+body .hero-actions, body .proof-row { justify-content: center; }
+body .proof-row { margin-top: 34px; }
+body .proof-row span { color: var(--on-dark); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.18); }
+body .proof-row span.lit { color: var(--blue); border-color: rgba(116,224,252,.5); }
+body .hero-art { grid-column: auto; width: min(680px, 100%); height: auto !important; aspect-ratio: 4 / 3; border-radius: 18px; overflow: hidden; border: 2px solid rgba(116,224,252,.35); box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+body .text-link { border-bottom-color: var(--blue); }
+.head { text-align: center; max-width: 900px; margin: 0 auto 56px; }
+.head h2 { font-size: clamp(42px, 5.2vw, 72px); text-wrap: balance; }
+.head h2 em, .band h2 em { color: var(--blue); font-style: italic; }
+.head .lede { margin: 22px auto 0; max-width: 680px; font-size: 19px; }
+.grid { display: grid; gap: 24px; }
+.g2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.g4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card h3 { font-size: 28px; }
+.card .ic svg, .card > svg { width: 30px; height: 30px; color: var(--blue-deep); }
+.kicker { font: 800 13px/1 "Barlow Condensed", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--blue-deep); margin: 0; }
+.fine { max-width: 900px; margin: 28px auto 0; text-align: center; font-size: 12.5px; line-height: 1.6; color: var(--on-dark-muted); opacity: .8; }
+.band { margin-top: 40px; padding: 36px 40px; border: 2px solid rgba(116,224,252,.3); background: rgba(116,224,252,.06); border-radius: 16px; display: grid; grid-template-columns: auto 1fr; gap: 36px; align-items: center; text-align: left; }
+.band .big { font: italic 800 clamp(56px, 6vw, 84px)/1 "Barlow Condensed", sans-serif; color: var(--blue); white-space: nowrap; }
+.band .big small { display: block; font-size: 14px; font-style: normal; letter-spacing: .16em; text-transform: uppercase; color: var(--on-dark-muted); margin-top: 6px; }
+.band p { margin: 0; font-size: 19px; line-height: 1.6; color: var(--on-dark); }
+.band .pills { margin-top: 16px; }
+.stat-card .big { font: italic 800 72px/1 "Barlow Condensed", sans-serif; color: var(--ink); }
+.stat-card .big span { font-size: 26px; color: var(--blue-deep); margin-left: 6px; font-style: normal; }
+.rows { background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--ink); max-width: 980px; margin: 0 auto; }
+.rows > div { display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 8px 28px; padding: 20px 28px; border-bottom: 1px solid var(--line); align-items: baseline; }
+.rows > div:last-child { border-bottom: 0; }
+.rows b { font: 800 26px/1.1 "Barlow Condensed", sans-serif; text-transform: uppercase; }
+.rows span { color: #526064; font-size: 17px; line-height: 1.55; }
+.rows > div.hl { background: #fdf1d8; }
+.flow { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; max-width: 1080px; margin: 64px auto 0; }
+.flow .card { gap: 18px; }
+.step { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }
+.step .n { width: 34px; height: 34px; border-radius: 50%; background: var(--gold-logo); border: 2px solid var(--ink); display: grid; place-items: center; font: 800 18px/1 "Barlow Condensed", sans-serif; color: var(--ink); }
+.step b { display: block; font-size: 17px; }
+.step span { color: #526064; font-size: 15.5px; line-height: 1.5; }
+.ladder { max-width: 980px; margin: 0 auto; display: grid; gap: 14px; }
+.rung { display: grid; grid-template-columns: 64px minmax(0, 13rem) minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 16px 22px; }
+.rung .lv { font: italic 800 40px/1 "Barlow Condensed", sans-serif; color: var(--blue-deep); text-align: center; }
+.rung b { font: 800 26px/1 "Barlow Condensed", sans-serif; text-transform: uppercase; }
+.rung span { color: #526064; font-size: 15.5px; line-height: 1.45; }
+.rung:nth-child(5) { box-shadow: 8px 8px 0 var(--gold-logo); }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border: 1.5px solid var(--ink); border-radius: 99px; font-size: 14px; font-weight: 600; color: var(--ink); background: #fff; }
+.pill svg { width: 16px; height: 16px; flex: none; }
+.band .pill { color: var(--on-dark); background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.25); }
+.card .price { font: italic 800 54px/1 "Barlow Condensed", sans-serif; color: var(--ink); }
+.price small { font-size: 20px; color: var(--muted); font-style: normal; }
+.section.tight { padding-block: 100px; }
+#waitlist { text-align: center; }
+#waitlist .waitlist-form { margin-inline: auto; }
+#waitlist .lede { margin-inline: auto; }
+body .duo { padding-top: 90px; }
+@media (max-width: 1000px) { .g4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } .rung { grid-template-columns: 52px 1fr; gap: 4px 16px; } .rung .lv { grid-row: span 3; } .rung span:not(.lv) { grid-column: 2; } }
+@media (max-width: 760px) { .g2, .g3, .g4, .flow { grid-template-columns: 1fr; } .rows > div { grid-template-columns: 1fr; } .band { grid-template-columns: 1fr; text-align: center; padding: 28px 22px; } .band .pills { justify-content: center; } body .hero { padding-top: 48px; } }
 </style>
 </head>
 <body>
@@ -254,34 +325,29 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
       <img src="assets/dungenai-logo.webp" width="240" height="97" alt="DunGenAI" decoding="async" />
     </a>
     <nav aria-label="Primary navigation">
-      <a href="#why">Why</a>
+      <a href="#why">Why</a><a href="#how">How it works</a><a href="#ranks">Ranks</a><a href="#your-way">Your way</a><a href="#pricing">Pricing</a>
     </nav>
-    <a class="button button-small" href="#pricing">Pricing</a>
+    <a class="button button-small" href="#waitlist">Join the waitlist</a>
   </header>
 
   <main id="top">
     <section class="hero">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Mission control for your AI crew.</p>
-        <h1>Real Work. Real Fun.</h1>
-        <p class="lede">Bring your fleet. Bring your friends. Visualize agent stacks across your team.</p>
+        <p class="eyebrow">MULTI-AGENT HARNESS &middot; AI LEARNING PLATFORM</p>
+        <h1>The agentic harness <em>you learn by playing</em></h1>
+        <p class="sub">Real Work. Real Fun.</p>
+        <p class="lede">DunGenAI orchestrates real AI agent crews, with a built-in path that takes anyone from their first prompt to running a fleet.</p>
         <div class="hero-actions">
-          <a class="text-link" href="#why">Look around <span>↘</span></a>
+          <a class="button" href="#waitlist">Join the waitlist</a>
+          <a class="text-link" href="#why">Look around <span>&searr;</span></a>
         </div>
         <div class="proof-row">
-          <span>Multiplayer</span><span>Bring your own fleet</span><span>Pick your theme</span>
+          <span class="lit">Multi-agent harness</span><span>Model-agnostic</span><span>Human verification</span><span>AI maturity model</span><span>AI Strategies</span><span>Token tracking</span>
         </div>
       </div>
-
-      <!-- HERO: the video plays immediately. Brandon, 2026-10-04: "load the video right away
-           instead of showing the logo and the quest accepted tag" — so the mark intro, the 2.2s
-           .swap sequence and the Quest-accepted card are all gone. The poster frame covers the
-           load so there is never a blank box, and the reduced-motion handler below strips
-           autoplay on every video[autoplay], which leaves the poster showing and nothing moving.
-           Source is 1080x1080 (square), re-encoded to 720x720 H.264, and as of 2026-10-04 it
-           FILLS the hero's right half edge to edge (see the .hero comment in the style block).
-           The two .orbit rings used to sit behind it; an opaque full-bleed video covers them
-           completely, so the divs and their CSS are gone rather than left as dead decoration. -->
+      <!-- HERO VIDEO, 2026-10-09: contained and centered under the copy (was the full right
+           half of the window). Square source, framed 4:3 and anchored to the bottom so the
+           wordmark and banner stay in frame. -->
       <div class="hero-art reveal delay-1">
         <video class="hero-base" src="assets/dungenai-hero.mp4" poster="assets/dungenai-hero-poster.webp"
                width="720" height="720" autoplay muted loop playsinline preload="auto"
@@ -296,7 +362,67 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
       </div>
     </section>
 
-    <section id="why" class="shell duo" aria-label="The three problems">
+    <section id="why" class="section shell">
+      <div class="head reveal">
+        <p class="eyebrow">THE PROBLEM</p>
+        <h2>Everyone&rsquo;s been told to use AI. <em>Almost nobody&rsquo;s been taught.</em></h2>
+      </div>
+      <div class="grid g4 reveal delay-1">
+        <article class="card"><h3>People feel behind</h3><p>Across hundreds of tech professionals we&rsquo;ve talked to, the average self-rated AI understanding is 1.5 out of 5.</p></article>
+        <article class="card"><h3>Tutorials don&rsquo;t stick</h3><p>Watching a video about agents is not the same as running one. Skills fade before they&rsquo;re used.</p></article>
+        <article class="card"><h3>Real agents are scary</h3><p>An agent that can edit files can also break them. Beginners have nowhere safe to practice.</p></article>
+        <article class="card"><h3>Power users lose sight</h3><p>Once a team codes with agents, human review drops fast. We watched it fall by nearly two-thirds.</p></article>
+      </div>
+      <div class="band reveal delay-2">
+        <div class="big">2 in 3<small>workers untrained</small></div>
+        <p>55% of workers use AI regularly, but only 1 in 3 had any employer AI training in the last six months. Companies are paying for AI seats their people don&rsquo;t know how to use well.</p>
+      </div>
+      <p class="fine">2 in 3 and 55%: Conference Board survey of ~1,300 US workers, 2026. 1.5/5: self-ratings from the founder&rsquo;s conversations with ~400&ndash;500 tech professionals, not a formal survey. Review drop: share of merged pull requests with a human review comment at one startup, 63% to 23%, Jan vs Jul 2026.</p>
+    </section>
+
+    <section id="proof" class="section shell tight">
+      <div class="head reveal">
+        <p class="eyebrow">WHY NOW</p>
+        <h2>Three engineers with agents <em>outshipped a team of 32</em></h2>
+        <p class="lede">At the founder&rsquo;s last startup, the team shrank from 32 engineers to 3. Output went up, not down, once the team learned to work with AI agents.</p>
+      </div>
+      <div class="grid g2 reveal delay-1" style="max-width:880px;margin-inline:auto">
+        <article class="card stat-card"><div class="big">6.2&times;<span>more output</span></div><p>The same five engineers: 147 prod pushes a quarter before agents, 914 with them.</p></article>
+        <article class="card stat-card card-star"><div class="big">28&times;<span>more output</span></div><p>Three engineers with agents shipped 1,260 prod pushes in a quarter. Thirty-two without them shipped 45.</p></article>
+      </div>
+      <p class="fine">Pull requests merged per quarter across one startup&rsquo;s repositories, GitHub: 2023 Q3 vs 2026 Q1 (5 engineers each) and 2024 Q1 (32) vs 2026 Q2 (3). Headcounts approximate. Not DunGenAI data.</p>
+    </section>
+
+    <section id="how" class="section shell">
+      <div class="head reveal">
+        <p class="eyebrow">THE SOLUTION</p>
+        <h2>The classroom <em>is the workplace</em></h2>
+        <p class="lede">Courses teach and stop at a certificate. Agent tools do the work but assume you already know how. DunGenAI teaches you inside the same engine you&rsquo;ll use for real.</p>
+      </div>
+      <div class="rows reveal delay-1">
+        <div><b>Like Duolingo</b><span>Short daily quests and streaks that build a habit.</span></div>
+        <div><b>Like Codecademy</b><span>Learn by doing: real agents, real output, in a practice world.</span></div>
+        <div><b>Like Khanmigo</b><span>A guide that hints and asks questions instead of doing it for you.</span></div>
+        <div><b>Like an RPG</b><span>Characters, ranks and campaigns that unlock as you level up.</span></div>
+        <div class="hl"><b>Unlike all of them</b><span>A real multi-agent harness. The tool you learn in runs your actual work.</span></div>
+      </div>
+      <div class="flow reveal delay-1">
+        <article class="card"><p class="kicker">Learn to lead</p>
+          <div class="step"><span class="n">1</span><div><b>Onboarding dungeon</b><span>A scripted first adventure. No account or AI model needed to start.</span></div></div>
+          <div class="step"><span class="n">2</span><div><b>Start a quest</b><span>Type a goal, or pick one suggested from your Jira, Shortcut or GitHub.</span></div></div>
+          <div class="step"><span class="n">3</span><div><b>Pick your party</b><span>DunGenAI suggests the crew and why. Invite a friend with a code.</span></div></div>
+          <div class="step"><span class="n">4</span><div><b>Plan with the Quartermaster</b><span>It drafts the steps. You rename, reorder and assign agents.</span></div></div>
+        </article>
+        <article class="card card-star"><p class="kicker">Lead to ship</p>
+          <div class="step"><span class="n">5</span><div><b>Agents get to work</b><span>Each walks to the room of its step. Fog lifts as rooms are done.</span></div></div>
+          <div class="step"><span class="n">6</span><div><b>Doors and monsters</b><span>Agent questions show as doors, failing tests as monsters. You decide.</span></div></div>
+          <div class="step"><span class="n">7</span><div><b>Play while they work</b><span>A short mini-game fills the wait until there&rsquo;s something to review.</span></div></div>
+          <div class="step"><span class="n">8</span><div><b>Verify and level up</b><span>Check the real output, approve it, earn the rank.</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="shell duo" aria-label="What it looks like">
       <div class="duo-row flip reveal">
         <figure class="duo-art">
           <video src="assets/hero-overview.mp4" width="1280" height="832" autoplay loop muted playsinline preload="metadata"
@@ -345,12 +471,93 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
       </div>
     </section>
 
+    <section id="ranks" class="section shell">
+      <div class="head reveal">
+        <p class="eyebrow">AI MATURITY MODEL</p>
+        <h2>Five ranks, <em>one maturity model</em></h2>
+        <p class="lede">&ldquo;Rate yourself 1 to 5&rdquo; becomes a visible path with proof at every rung. A rank is earned only when a quest&rsquo;s real output is verified, never by watching.</p>
+      </div>
+      <div class="ladder reveal delay-1">
+        <div class="rung"><span class="lv">1</span><b>Apprentice</b><span>Write a launch email with AI</span><span>Get one good result from a model</span></div>
+        <div class="rung"><span class="lv">2</span><b>Adventurer</b><span>Fix a bug with one agent</span><span>Let an agent change real files, safely</span></div>
+        <div class="rung"><span class="lv">3</span><b>Artificer</b><span>Add tests the agent must pass</span><span>Give agents tools and checks</span></div>
+        <div class="rung"><span class="lv">4</span><b>Party Leader</b><span>Launch a landing page with three agents</span><span>Plan, split and assign work to a crew</span></div>
+        <div class="rung"><span class="lv">5</span><b>Captain</b><span>Run a fleet with a reviewer agent</span><span>Orchestrate many agents and verify at scale</span></div>
+      </div>
+    </section>
+
+    <section id="your-way" class="section shell">
+      <div class="head reveal">
+        <p class="eyebrow">MODEL-AGNOSTIC HARNESS</p>
+        <h2>Run agents your way. <em>We make the time count.</em></h2>
+      </div>
+      <div class="grid g2 reveal delay-1" style="max-width:1080px;margin-inline:auto">
+        <article class="card"><h3>Where they run</h3><div class="pills"><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg>Your machine</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></svg>The cloud</span></div><p>Agents run locally on your laptop or in the cloud, wherever your work already lives.</p></article>
+        <article class="card"><h3>Which model</h3><div class="pills"><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" style="color:#d97757"><path fill="currentColor" d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>Anthropic Claude</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" style="color:#102531"><path fill="currentColor" d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.0729zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"/></svg>OpenAI</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" style="color:#8e75b2"><path fill="currentColor" d="M11.04 19.32Q12 21.51 12 24q0-2.49.93-4.68.96-2.19 2.58-3.81t3.81-2.55Q21.51 12 24 12q-2.49 0-4.68-.93a12.3 12.3 0 0 1-3.81-2.58 12.3 12.3 0 0 1-2.58-3.81Q12 2.49 12 0q0 2.49-.96 4.68-.93 2.19-2.55 3.81a12.3 12.3 0 0 1-3.81 2.58Q2.49 12 0 12q2.49 0 4.68.96 2.19.93 3.81 2.55t2.55 3.81"/></svg>Google Gemini</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>Local models</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>Any model</span></div><p>Bring the model plan you already pay for, or run an open model on your own hardware.</p></article>
+        <article class="card"><h3>What the harness adds</h3><div class="pills"><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg>Quests</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 21 19"/></svg>Agent management</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg>Review</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg>Ranks</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-5"/></svg>Token spend</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2"/><path d="M9 2h6"/></svg>Runway forecast</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></svg>Spend by quest</span></div><p>See what you spend, when you&rsquo;ll run out and what it went to, while quests and review turn hours with AI into shipped work.</p></article>
+        <article class="card"><h3>You stay in control</h3><div class="pills"><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Scoped access</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>Guardrails</span><span class="pill"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>Human verification</span></div><p>You set what each agent can reach, our guardrails keep it there, and nothing ships until a person signs it off.</p></article>
+      </div>
+      <div class="band reveal delay-2" style="max-width:1080px;margin-inline:auto;margin-top:40px">
+        <div class="big">$0<small>token markup</small></div>
+        <p>No lock-in. We don&rsquo;t resell models. Whatever you run and wherever you run it, DunGenAI is the layer that helps you get the most out of your time with AI.</p>
+      </div>
+      <p class="fine">Provider names and logos are trademarks of their owners, shown to indicate supported models.</p>
+    </section>
+
+    <section id="teams" class="section shell">
+      <div class="head reveal">
+        <p class="eyebrow">WHO IT&rsquo;S FOR</p>
+        <h2>Any team using AI, <em>one engine</em></h2>
+      </div>
+      <div class="grid g4 reveal delay-1">
+        <article class="card card-star"><h3>Startup teams</h3><p>Software teams running agentic AI across every seat, not just one power user.</p></article>
+        <article class="card"><h3>AI-powered businesses</h3><p>Companies that aren&rsquo;t software shops but run on AI, like content studios, that need people trained and agents managed.</p></article>
+        <article class="card"><h3>Learners</h3><p>Anyone who feels behind on AI and wants to learn by doing.</p></article>
+        <article class="card"><h3>Schools and bootcamps</h3><p>Programs that need a hands-on AI track with proof of skill at every rank.</p></article>
+      </div>
+      <div class="band reveal delay-2">
+        <div class="big" style="font-size:clamp(40px,4.4vw,56px)">AI Strategies<small>simple machines</small></div>
+        <div><p>Like the lever and the pulley, a few simple machines power all work with AI. We teach them once and they apply anywhere, from a code base to a content studio.</p>
+          <div class="pills"><span class="pill">Plan</span><span class="pill">Split</span><span class="pill">Delegate</span><span class="pill">Verify</span><span class="pill">Review</span></div></div>
+      </div>
+    </section>
+
+    <section id="next" class="section shell">
+      <div class="head reveal">
+        <p class="eyebrow">COMING NEXT</p>
+        <h2>The <em>Wishlist</em></h2>
+        <p class="lede">The big features that turn lessons into a habit, and a solo player into a crew.</p>
+      </div>
+      <div class="grid g3 reveal delay-1">
+        <article class="card"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M5 20V10l3-2 3 2v10"/><path d="M13 20V7l3-3 3 3v13"/></svg><h3>Multiplayer Realms</h3><p>Persistent shared worlds where a whole team or class plays, learns and ships together.</p></article>
+        <article class="card"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20a6 6 0 0 1 12 0"/><path d="M10 20a6 6 0 0 1 12 0"/></svg><h3>Co-op Quests</h3><p>Players join one quest live, each bringing their own agents.</p></article>
+        <article class="card"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 .3 1.6 1 2.6 2.2 3C11 8.5 11.5 5.5 12 3z"/></svg><h3>Streaks and XP</h3><p>A short daily quest keeps the streak alive; every verified quest earns XP toward the next rank.</p></article>
+        <article class="card"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4"/><path d="M5 4h11l-2 4 2 4H5"/></svg><h3>Campaigns</h3><p>Full courses packaged as quest lines, from Apprentice to Captain.</p></article>
+        <article class="card"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><h3>Themes</h3><p>Dungeon today; Mars base, neon city, pirate cove and sky castle next.</p></article>
+        <article class="card"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19z"/></svg><h3>Character and World Builder</h3><p>Design how your agents look, then build and share your own worlds.</p></article>
+      </div>
+      <p class="fine">Planned features. Final behavior and timing may change.</p>
+    </section>
+
+    <section id="pricing" class="section shell tight">
+      <div class="head reveal">
+        <p class="eyebrow">WHAT IT COSTS</p>
+        <h2>Start free. <em>$20 to bring your crew.</em></h2>
+        <p class="lede">Agents run on your own AI model plan, so you never pay us for tokens.</p>
+      </div>
+      <div class="grid g3 reveal delay-1" style="max-width:1080px;margin-inline:auto">
+        <article class="card"><p class="card-tier">SOLO</p><p class="price">Free</p><p>Onboarding, first quests and your own fleet as a living world.</p><a class="button" href="#waitlist">Join the waitlist</a></article>
+        <article class="card card-star"><p class="card-tier">CREW PASS</p><p class="price">$20 <small>a month</small></p><p>Full campaigns, co-op realms and every course. One pass per player, good in every realm they join.</p><a class="button" href="#waitlist">Join the waitlist</a></article>
+        <article class="card"><p class="card-tier">TEAMS AND SCHOOLS</p><p class="price">Let&rsquo;s talk</p><p>Team training: a cohort is a shared realm with a teacher. Sold to teams and schools.</p><a class="button" href="#waitlist">Join the waitlist</a></article>
+      </div>
+    </section>
+
     <!-- WAITLIST: the one email capture on the page. There is no download to send anyone
          yet — the releases repo went private on 2026-10-04 and no current signed build has shipped.
          Posts to Supabase public.waitlist. The key below is the PUBLISHABLE key and the
          table is INSERT-only for anon with no SELECT policy, so it grants "add a row" and
          nothing else — the list cannot be read back through it. -->
-    <section id="waitlist" class="section shell">
+    <section id="waitlist" class="section shell tight">
       <div class="waitlist-head">
         <p class="eyebrow">NOT OUT YET</p>
         <h2>Get the first build.</h2>
@@ -367,58 +574,6 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
         <p class="waitlist-status" id="waitlist-status" role="status" aria-live="polite"></p>
       </form>
     </section>
-
-    <!-- MEDIA-SLOT S4: theme montage beside the tiers. EMPTY by rule. -->
-    <section id="pricing" class="section shell">
-      <div class="section-heading centered reveal">
-        <p class="eyebrow">WHAT IT COSTS</p>
-        <h2>Two ways to play.</h2>
-      </div>
-      <div class="cards reveal delay-1">
-        <!-- The free card is SWITCHED, not deleted: SHOW_FREE_TIER in the page script
-             (default off) renders it. Brandon's word flips the switch, nobody else's.
-             Ruling: the tracked marketing record, 2026-09-15. Copy re-verifies against
-             the record at flip-on. -->
-        <article class="card" id="free-card" hidden>
-          <p class="card-tier">FREE</p>
-          <p class="card-price">Free</p>
-          <h3>The Clean world</h3>
-          <p>Your whole fleet as a living world. The rituals, the quests, the map &mdash; in the clean theme, drawn from nothing. On your own machine.</p>
-          <button class="button card-btn" type="button" disabled>Coming Soon</button>
-          <!-- HELD: the free download link is gone because beveryday/pizza-fleet-releases is
-               PRIVATE as of 2026-10-04 (Brandon's call) — the link 404'd. It also pointed at
-               free-28 (2026-09-13), which predates this codebase's first commit (2026-09-21),
-               so it would have handed someone a dead build. Restore a download only when a
-               current signed build ships. SHOW_FREE_TIER is untouched. -->
-        </article>
-        <article class="card card-star">
-          <p class="card-tier">WORLDS</p>
-          <p class="card-price">$10 <small>once</small></p>
-          <h3>The Worlds Pack</h3>
-          <p>Download the game and play in the default themes. One purchase, yours for good.</p>
-          <button class="button card-btn" type="button" disabled>Coming Soon</button>
-          <!-- HELD: the Worlds buy link (buy.stripe.com/bJecN5aVQaJw30f7sB5AQ01) and the
-               delivery sentence ("Checkout hands you the download on the spot — ten-minute
-               link") return TOGETHER when one e2e purchase actually delivers a download.
-               Gate: the tracked marketing record. -->
-        </article>
-        <article class="card">
-          <p class="card-tier">CREW</p>
-          <p class="card-price">$10 <small>a month</small></p>
-          <h3>The Crew</h3>
-          <p>Multiplayer realms: your team joins your world from their own machines.</p>
-          <p class="card-cta">Bring your crew. It&rsquo;s game time!</p>
-          <button class="button card-btn" type="button" disabled>Coming Soon</button>
-          <!-- HELD: the Crew subscribe link (buy.stripe.com/7sYdR9bZU18WeIX8wF5AQ00) returns when
-               the Crew Stripe description matches THE CREW CHECKOUT STRINGS (8e's paste) and
-               the Worlds e2e opens the paid surfaces. -->
-        </article>
-      </div>
-      <!-- REFUND-SLOT: TWO SENTENCES, tier-shaped, land here beside the tiers — one for
-           Worlds ($10 once), one for Crew ($10/mo) — per the cfo proposal's structure
-           (confirmed 2026-09-13). Text is whatever Brandon ACTUALLY APPROVES, verbatim;
-           EMPTY by rule until his yes. Authority CEO/CPO+Brandon. -->
-    </section>
   </main>
 
   <footer class="footer shell">
@@ -434,7 +589,7 @@ h2 { font-size: clamp(54px, 6vw, 86px); line-height: .92; text-transform: upperc
   <script>
 // SHOW_FREE_TIER: default OFF per the tracked marketing record (2026-09-15 pricing
 // ruling). Brandon's word flips it — a one-constant commit, nobody else's call.
-const SHOW_FREE_TIER = false;
+const SHOW_FREE_TIER = false; // old free card is gone; kept so the switch below stays harmless
 
 // Reduced motion: hold every product video on its first frame.
 if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -447,7 +602,7 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
 // refused the poster simply stays, which is a correct state rather than a broken one.
 const heroVid = document.querySelector('video.hero-base');
 if (heroVid && heroVid.hasAttribute('autoplay')) { heroVid.play().catch(() => {}); }
-if (SHOW_FREE_TIER) { document.getElementById('free-card').hidden = false; }
+if (SHOW_FREE_TIER && document.getElementById('free-card')) { document.getElementById('free-card').hidden = false; }
 
 // WAITLIST -> Supabase. return=minimal is REQUIRED: the table has no SELECT policy for
 // anon, so return=representation would need a read it is not granted and would fail.
