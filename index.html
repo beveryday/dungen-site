@@ -104,7 +104,7 @@ h3 { font-size: 26px; line-height: 1.1; text-transform: uppercase; letter-spacin
 .hero .lede { margin: 22px 0 28px; }
 .hero-actions { display: flex; justify-content: flex-start; align-items: center; gap: 28px; flex-wrap: wrap; }
 .hero-art { position: relative; width: 100%; max-width: 560px; justify-self: end; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; border: 2px solid rgba(116, 224, 252, .35); box-shadow: 0 30px 80px rgba(0, 0, 0, .5); background: #030b2d; }
-.hero-art video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-art video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
 .pause { position: absolute; right: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .5); background: rgba(4, 17, 43, .7); color: #fff; display: grid; place-items: center; cursor: pointer; }
 .pause svg { width: 18px; height: 18px; }
 
@@ -164,8 +164,9 @@ h3 { font-size: 26px; line-height: 1.1; text-transform: uppercase; letter-spacin
 
 /* ranks */
 .ladder { display: grid; gap: 14px; }
-.rung { display: grid; grid-template-columns: 64px minmax(0, 12rem) minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 16px 22px; }
+.rung { display: grid; grid-template-columns: 44px 88px minmax(0, 10rem) minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: center; background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 16px 22px; }
 .rung .lv { font: italic 800 40px/1 var(--display); color: var(--blue-deep); text-align: center; }
+.rung .av { width: 88px; height: 106px; object-fit: contain; object-position: 50% 100%; margin-block: -22px -8px; filter: drop-shadow(0 6px 6px rgba(16, 37, 49, .25)); }
 .rung b { font: 800 24px/1 var(--display); text-transform: uppercase; }
 .rung span:not(.lv) { color: var(--ink-soft); font-size: 15px; line-height: 1.45; }
 .rung:last-child { box-shadow: 8px 8px 0 var(--orange); }
@@ -239,9 +240,10 @@ html.has-reveal .reveal.shown { transition: none; }
   .nav { grid-template-columns: 1fr auto; }
   .menu-btn { display: grid; }
   .problems { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .rung { grid-template-columns: 52px minmax(0, 1fr); gap: 4px 16px; }
+  .rung { grid-template-columns: 34px 68px minmax(0, 1fr); gap: 4px 14px; }
   .rung .lv { grid-row: span 3; }
-  .rung span:not(.lv) { grid-column: 2; }
+  .rung .av { grid-row: span 3; width: 68px; height: 84px; margin: 0; }
+  .rung b, .rung span:not(.lv) { grid-column: 3; }
 }
 @media (max-width: 760px) {
   .g2, .g3, .roadmap, .lead-aud { grid-template-columns: 1fr; }
@@ -379,11 +381,11 @@ html.has-reveal .reveal.shown { transition: none; }
         <p class="lede">A visible path with proof at every rung. Ranks are earned only when a person verifies real output.</p>
       </div>
       <div class="ladder narrow reveal d1">
-        <div class="rung"><span class="lv">1</span><b>Apprentice</b><span>Write a launch email with AI</span><span>Get one good result from a model</span></div>
-        <div class="rung"><span class="lv">2</span><b>Adventurer</b><span>Fix a bug with one agent</span><span>Let an agent change real files, safely</span></div>
-        <div class="rung"><span class="lv">3</span><b>Artificer</b><span>Add tests the agent must pass</span><span>Give agents tools and checks</span></div>
-        <div class="rung"><span class="lv">4</span><b>Party Leader</b><span>Launch a landing page with three agents</span><span>Plan, split and assign work to a crew</span></div>
-        <div class="rung"><span class="lv">5</span><b>Captain</b><span>Run a fleet with a reviewer agent</span><span>Orchestrate many agents and verify at scale</span></div>
+        <div class="rung"><span class="lv">1</span><img class="av" src="assets/rank-apprentice.webp" width="220" height="260" alt="Apprentice: a hooded rogue in green" loading="lazy" decoding="async" /><b>Apprentice</b><span>Write a launch email with AI</span><span>Get one good result from a model</span></div>
+        <div class="rung"><span class="lv">2</span><img class="av" src="assets/rank-adventurer.webp" width="220" height="260" alt="Adventurer: a ranger with a blue scarf" loading="lazy" decoding="async" /><b>Adventurer</b><span>Fix a bug with one agent</span><span>Let an agent change real files, safely</span></div>
+        <div class="rung"><span class="lv">3</span><img class="av" src="assets/rank-artificer.webp" width="220" height="260" alt="Artificer: a mage in a wide purple hat" loading="lazy" decoding="async" /><b>Artificer</b><span>Add tests the agent must pass</span><span>Give agents tools and checks</span></div>
+        <div class="rung"><span class="lv">4</span><img class="av" src="assets/rank-party-leader.webp" width="220" height="260" alt="Party Leader: a knight with sword and spiked shield" loading="lazy" decoding="async" /><b>Party Leader</b><span>Launch a landing page with three agents</span><span>Plan, split and assign work to a crew</span></div>
+        <div class="rung"><span class="lv">5</span><img class="av" src="assets/rank-captain.webp" width="220" height="260" alt="Captain: the Black Knight in dark plate armor" loading="lazy" decoding="async" /><b>Captain</b><span>Run a fleet with a reviewer agent</span><span>Orchestrate many agents and verify at scale</span></div>
       </div>
     </section>
 
