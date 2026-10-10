@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DunGenAI — Run a team of AI agents. Learn how as you go.</title>
   <meta name="description" content="DunGenAI is a multi-agent harness that shows your AI agents as a crew you can read at a glance, and teaches you to lead them one verified quest at a time. In private build; join the waitlist." />
-  <meta name="theme-color" content="#04112b" />
+  <meta name="theme-color" content="#0b0e18" />
   <link rel="canonical" href="https://dungen.ai/" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png" />
@@ -29,7 +29,7 @@
 /* All page CSS lives here; styles.css in this repo is not linked. */
 :root {
   color-scheme: dark;
-  --navy: #04112b;
+  --navy: #101828;
   --paper: #fffaf0;
   --ink: #102531;
   --ink-soft: #46555a;
@@ -49,7 +49,7 @@
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
 html { scroll-behavior: smooth; overflow-x: clip; scroll-padding-top: 84px; }
-body { margin: 0; background: radial-gradient(ellipse at 50% 30%, #031533 0%, #04112b 48%, #040f25 78%, #020a1c 100%) fixed var(--navy); color: var(--on-dark); font: 400 17px/1.6 var(--body); overflow-x: clip; }
+body { margin: 0; background: var(--navy); color: var(--on-dark); font: 400 17px/1.6 var(--body); overflow-x: clip; }
 a { color: inherit; text-decoration: none; }
 img, video { max-width: 100%; }
 a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
@@ -59,7 +59,19 @@ h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
 p { text-wrap: pretty; }
 
 /* header */
-.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(4, 17, 43, .88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+/* Background: dark slate base, three slow-drifting blurred glows, a top-lit vignette and faint grain (after creator.frontro.com). */
+.aurora { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.aurora i { position: absolute; border-radius: 50%; filter: blur(64px); will-change: transform; animation: ease-in-out infinite alternate; }
+.aurora .a { left: -25%; top: -20%; width: 70%; height: 70%; background: rgba(79, 57, 246, .2); animation-name: aurora-a; animation-duration: 18s; }
+.aurora .b { right: -25%; top: 10%; width: 60%; height: 60%; background: rgba(200, 0, 222, .15); animation-name: aurora-b; animation-duration: 22s; }
+.aurora .c { left: 33%; bottom: -10%; width: 50%; height: 50%; background: rgba(130, 0, 219, .12); animation-name: aurora-c; animation-duration: 26s; }
+.aurora::before { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 50% at 50% 0%, transparent 0%, rgba(5, 5, 10, .55) 70%, rgba(5, 5, 10, .92) 100%); }
+.aurora::after { content: ""; position: absolute; inset: 0; opacity: .04; mix-blend-mode: overlay; background: url("data:image/svg+xml,%3Csvg width='256' height='256' viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+@keyframes aurora-a { to { transform: translate(8%, 6%) scale(1.12); } }
+@keyframes aurora-b { from { transform: scale(1.05); } to { transform: translate(-10%, 4%) scale(1); } }
+@keyframes aurora-c { to { transform: translate(4%, -8%) scale(1.15); } }
+@media (prefers-reduced-motion: reduce) { .aurora i { animation: none; } }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(11, 14, 24, .82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
 .nav { height: 72px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
 .brand { display: inline-flex; align-items: center; min-height: 44px; }
 .brand img { display: block; height: 40px; width: auto; }
@@ -105,7 +117,7 @@ h3 { font-size: 26px; line-height: 1.1; text-transform: uppercase; letter-spacin
 .hero-actions { display: flex; justify-content: flex-start; align-items: center; gap: 28px; flex-wrap: wrap; }
 .hero-art { position: relative; width: 100%; max-width: 560px; justify-self: end; aspect-ratio: 1 / 1; border-radius: 18px; overflow: hidden; border: 2px solid rgba(116, 224, 252, .35); box-shadow: 0 30px 80px rgba(0, 0, 0, .5); background: #030b2d; }
 .hero-art video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
-.pause { position: absolute; right: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .5); background: rgba(4, 17, 43, .7); color: #fff; display: grid; place-items: center; cursor: pointer; }
+.pause { position: absolute; right: 12px; bottom: 12px; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, .5); background: rgba(11, 14, 24, .7); color: #fff; display: grid; place-items: center; cursor: pointer; }
 .pause svg { width: 18px; height: 18px; }
 
 /* ticker */
@@ -271,6 +283,7 @@ html.has-reveal .reveal.shown { transition: none; }
 </style>
 </head>
 <body>
+  <div class="aurora" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
   <header class="top">
     <div class="nav shell">
       <a href="#top" class="brand" aria-label="DunGenAI home"><img src="assets/dungenai-logo.webp" width="240" height="97" alt="DunGenAI" decoding="async" /></a>
@@ -351,9 +364,9 @@ html.has-reveal .reveal.shown { transition: none; }
       </div>
       <div class="narrow">
         <div class="rows reveal d1">
-          <div><b>Like Duolingo</b><span>Short daily quests that build a habit.</span></div>
-          <div><b>Like Codecademy</b><span>Learn by doing, with real agents.</span></div>
-          <div><b>Like Khanmigo</b><span>A guide that hints instead of doing it for you.</span></div>
+          <div><b>Like a language app</b><span>Short daily quests that build a habit.</span></div>
+          <div><b>Like a coding course</b><span>Learn by doing, with real agents.</span></div>
+          <div><b>Like a good tutor</b><span>A guide that hints instead of doing it for you.</span></div>
           <div><b>Like an RPG</b><span>Characters and ranks that unlock as you level up.</span></div>
           <div><b>Unlike all of them</b><span>The tool you learn in runs your actual work.</span></div>
         </div>
