@@ -150,12 +150,12 @@ h3 { font-size: 26px; line-height: 1.1; text-transform: uppercase; letter-spacin
 .output figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-bottom: 18px; }
 .output figcaption b { font: 800 24px/1.1 var(--display); text-transform: uppercase; }
 .output figcaption span { font-size: 14px; color: var(--ink-soft); }
-.bars { position: relative; height: 230px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 6px; align-items: end; border-bottom: 2px solid var(--ink); background: repeating-linear-gradient(to top, transparent 0 56px, rgba(16, 37, 49, .08) 56px 57px); }
-.bars i { display: block; background: #cfc6b2; border-radius: 3px 3px 0 0; }
+.bars { position: relative; height: 230px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; align-items: end; border-bottom: 2px solid var(--ink); background: repeating-linear-gradient(to top, transparent 0 56px, rgba(16, 37, 49, .08) 56px 57px); }
+.bars i { display: block; width: 62%; justify-self: center; background: #cfc6b2; border-radius: 3px 3px 0 0; }
 .bars i.hot { background: var(--orange); box-shadow: inset 0 0 0 1.5px var(--ink); }
-.callout { position: absolute; right: calc(300% / 12 + 10px); top: 8%; max-width: 30%; margin: 0; font: 800 13px/1.15 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--blue-deep); text-align: right; }
+.callout { position: absolute; right: calc(25% + 10px); top: 8%; max-width: 30%; margin: 0; font: 800 13px/1.15 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--blue-deep); text-align: right; }
 .phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
-.phases span { border-top: 3px solid #cfc6b2; padding-top: 6px; font: 800 12px/1.2 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.phases span { border-top: 3px solid #cfc6b2; padding-top: 6px; text-align: center; font: 800 12px/1.2 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
 .phases span.hot { border-color: var(--orange); color: var(--ink); }
 .lessons { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); background: var(--paper); color: var(--ink); border: 2px solid var(--ink); box-shadow: 10px 10px 0 var(--orange); }
 .lessons article { padding: 32px 28px; display: grid; gap: 12px; align-content: start; }
@@ -393,10 +393,10 @@ html.has-reveal .reveal.shown { transition: none; }
         <p class="lede">Three lessons from leading an engineering team through the shift to AI agents.</p>
       </div>
       <figure class="output narrow reveal d1">
-        <figcaption><b>Shipped changes per quarter</b><span>One engineering team as its tools changed (illustrative)</span></figcaption>
-        <div class="bars" role="img" aria-label="Bar chart, illustrative: one team's shipped changes per quarter stay low with no AI, with AI autocomplete and with a code CLI, then climb steeply once the team works agentically.">
-          <p class="callout" aria-hidden="true">Team learns to lead agents &rarr;</p>
-          <i style="height:5%"></i><i style="height:6%"></i><i style="height:5%"></i><i style="height:7%"></i><i style="height:8%"></i><i style="height:7%"></i><i style="height:9%"></i><i style="height:10%"></i><i style="height:12%"></i><i class="hot" style="height:46%"></i><i class="hot" style="height:72%"></i><i class="hot" style="height:100%"></i>
+        <figcaption><b>Output with each kind of AI tool</b><span>Average output (illustrative)</span></figcaption>
+        <div class="bars" role="img" aria-label="Bar chart, illustrative: average output stays low with no AI, with AI autocomplete and with a code CLI, then jumps several times higher with agentic work.">
+          <p class="callout" aria-hidden="true">Learning to lead agents &rarr;</p>
+          <i style="height:7%"></i><i style="height:10%"></i><i style="height:14%"></i><i class="hot" style="height:100%"></i>
         </div>
         <div class="phases" aria-hidden="true"><span>No AI</span><span>AI autocomplete</span><span>Code CLI</span><span class="hot">Agentic</span></div>
       </figure>
