@@ -187,7 +187,7 @@ h3 { font-size: 26px; line-height: 1.1; text-transform: uppercase; letter-spacin
 .rank.r4 { --tint: 150, 160, 175; margin-top: 28px; }
 .rank.r5 { --size: 290px; --tint: 244, 148, 40; --lift: -33px; margin-top: 0px; box-shadow: 8px 8px 0 var(--orange); }
 .stage { position: relative; height: 150px; border-bottom: 2px solid var(--ink); background: radial-gradient(80% 90% at 50% 100%, rgba(var(--tint), .55), rgba(var(--tint), .12) 70%), #0e1a2e; clip-path: inset(-100px -40px 0 -40px); }
-.stage img { position: absolute; left: 50%; bottom: calc(-97px + var(--lift, 0px)); width: var(--size, 260px); max-width: none; height: auto; transform: translateX(-50%); filter: brightness(.8) contrast(1.08) saturate(1.05) drop-shadow(0 10px 14px rgba(0, 0, 0, .45)); transition: transform .35s cubic-bezier(.2, .8, .2, 1); }
+.stage img { position: absolute; left: 50%; bottom: calc(-97px + var(--lift, 0px)); width: var(--size, 260px); max-width: none; height: auto; transform: translateX(-50%); filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .45)); transition: transform .35s cubic-bezier(.2, .8, .2, 1); }
 .rank:hover .stage img { transform: translateX(-50%) translateY(-10px) scale(1.04); }
 .rank-body { padding: 16px 18px 20px; display: grid; gap: 8px; }
 .rank .lv { margin: 0; font: italic 800 15px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--blue-deep); }
