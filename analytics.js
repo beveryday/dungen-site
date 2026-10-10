@@ -173,16 +173,18 @@
     if (signal) return;
     var button = document.createElement('button');
     button.type = 'button';
-    button.textContent = 'Privacy';
-    button.setAttribute('aria-label', 'Privacy: recording of this site and the demo');
     var footer = document.querySelector('footer');
+    // Pages that already link the privacy policy get a distinct label, placed beside that link.
+    var policy = footer && footer.querySelector('a[href*="privacy"]');
+    button.textContent = policy ? 'Privacy settings' : 'Privacy';
+    button.setAttribute('aria-label', 'Privacy settings: recording of this site and the demo');
     button.className = footer ? 'dan-privacy' : 'dan-privacy dan-float';
     button.addEventListener('click', function () {
       if (notice && !notice.hidden) { notice.hidden = true; return; }
       showNotice();
       notice.querySelector('.dan-ok').focus({ preventScroll: true });
     });
-    (footer || document.body).appendChild(button);
+    if (policy) policy.after(button); else (footer || document.body).appendChild(button);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
