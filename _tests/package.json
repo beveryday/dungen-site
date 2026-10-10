@@ -1,0 +1,8 @@
+{
+  "name": "dungen-site-tests",
+  "private": true,
+  "description": "Checks for the site's scripts. Jekyll does not publish folders starting with _.",
+  "type": "module",
+  "scripts": { "test": "node --test" },
+  "devDependencies": { "jsdom": "^30.1.2" }
+}

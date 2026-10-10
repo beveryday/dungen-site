@@ -5,8 +5,8 @@
 //
 // - POSTHOG_KEY empty, or a local preview without ?analytics=1: nothing loads, is drawn or is sent.
 //   Every event carries `app: 'site'` and `env` ('prod' on dungen.ai, 'dev' elsewhere).
-// - No choice yet: the notice shows; PostHog keeps nothing on the device (memory persistence) and
-//   sends only `consent_shown`.
+// - No choice yet: the notice shows; PostHog is not loaded (no /flags, no remote config, nothing
+//   stored): one beacon sends `consent_shown` with a throwaway id and no person profile.
 // - OK: localStorage+cookie persistence (returning visitors count for daily, weekly and monthly
 //   actives), `$pageview`, `cta_clicked` and `outbound_clicked`. The site records no screen replays.
 // - No thanks, Do Not Track or Global Privacy Control: nothing is loaded or sent.
@@ -42,6 +42,7 @@
     return {
       api_host: POSTHOG_HOST,
       defaults: '2026-05-30',
+      // Only ever loaded after OK; memory is for a No thanks after that (reset, nothing kept).
       persistence: granted ? 'localStorage+cookie' : 'memory',
       autocapture: false,
       capture_pageview: false,
@@ -79,6 +80,16 @@
   function send(event, props) {
     if (client) { try { client.capture(event, props || {}); } catch (e) { /* never break the page */ } return; }
     if (loading && !failed && queue.length < 50) queue.push([event, props]);
+  }
+  /** `consent_shown` without PostHog: one beacon to the capture endpoint, a random id that is never
+   *  kept, no person profile. */
+  function beaconShown() {
+    var id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'anon-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+    var body = JSON.stringify({
+      api_key: POSTHOG_KEY, event: 'consent_shown', distinct_id: id, timestamp: new Date().toISOString(),
+      properties: { $process_person_profile: false, app: 'site', env: PROD ? 'prod' : 'dev', page: location.pathname, $current_url: location.origin + location.pathname, $lib: 'dungen-beacon' },
+    });
+    try { if (navigator.sendBeacon) navigator.sendBeacon(POSTHOG_HOST + '/i/v0/e/', new Blob([body], { type: 'text/plain' })); } catch (e) { /* blocked */ }
   }
   function track(event, props) { if (consent === 'granted') send(event, props); }
 
@@ -137,6 +148,7 @@
       notice.className = 'dan-notice';
       notice.setAttribute('role', 'region');
       notice.setAttribute('aria-label', 'Privacy');
+      notice.setAttribute('aria-live', 'polite');
       notice.innerHTML = '<p class="dan-k">Privacy</p><p></p><p class="dan-now"></p>'
         + '<div class="dan-acts"><button type="button" class="dan-no" data-choice="denied">No thanks</button><button type="button" class="dan-ok" data-choice="granted">OK</button></div>';
       notice.children[1].textContent = CONSENT_TEXT;
@@ -157,7 +169,7 @@
     style.textContent = CSS;
     document.head.appendChild(style);
     if (consent === 'granted') { load(); send('$pageview'); }
-    else if (consent === 'undecided') { load(); send('consent_shown'); showNotice(); }
+    else if (consent === 'undecided') { beaconShown(); showNotice(); }
     if (signal) return;
     var button = document.createElement('button');
     button.type = 'button';
